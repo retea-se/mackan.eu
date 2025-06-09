@@ -333,3 +333,26 @@ select {
 }
 
 /* ******************* SLUT components.css - v5 ******************* */
+/* ******************* START icon-button ******************* */
+.icon-button {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-button:hover {
+  color: var(--primary-color);
+}
+
+.icon-button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+/* ******************* SLUT icon-button ******************* */

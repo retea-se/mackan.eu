@@ -1,26 +1,29 @@
 <?php
+// =============================================================
+// index.php - v7
+// feat: tar bort dubbla rubriker och behåller endast titeln från layout
+// - Behåller info-ikon separat
+// - Titel skrivs nu bara ut via layout/header.php
+// =============================================================
+
 $title = 'Lösenordsgenerator';
 $metaDescription = 'Generera säkra och anpassade lösenord direkt i webbläsaren med kontroll över teckentyper, längd och antal.';
 include '../../includes/layout-start.php';
 ?>
 
 <main class="container">
-  <h1 class="title" data-tippy-content="Skapa ett eller flera säkra lösenord med full kontroll på längd och innehåll.">
-    <?= $title ?>
-    <?php include '../../includes/readme-icon.php'; ?>
-  </h1>
 
   <!-- ********** START Sektion: Förhandslösenord ********** -->
   <div class="form-group">
-    <label data-tippy-content="Ett starkt exempel baserat på dina aktuella inställningar.">Förhandsvisning (exempel)</label>
     <div class="center" style="gap: 0.75rem; flex-wrap: wrap;">
       <h2 id="previewDisplay" class="mono" style="font-weight: 600;"></h2>
       <div>
-        <button id="regenPreview" class="button-small" aria-label="Generera nytt lösenord" data-tippy-content="Generera nytt lösenord"><i class="fa-solid fa-rotate-right"></i></button>
-        <button id="copyPreview" class="button-small" aria-label="Kopiera lösenord" data-tippy-content="Kopiera lösenord"><i class="fa-solid fa-copy"></i></button>
+        <button id="regenPreview" class="icon-button" aria-label="Generera nytt lösenord" data-tippy-content="Generera nytt lösenord"><i class="fa-solid fa-rotate-right"></i></button>
+        <button id="copyPreview" class="icon-button" aria-label="Kopiera lösenord" data-tippy-content="Kopiera lösenord"><i class="fa-solid fa-copy"></i></button>
       </div>
     </div>
   </div>
+  <?php include '../../includes/readme-icon.php'; ?>
   <!-- ********** SLUT Sektion: Förhandslösenord ********** -->
 
   <!-- ********** START Sektion: Formulär ********** -->
