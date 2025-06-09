@@ -17,7 +17,7 @@ $metaDescription = 'En teknisk och detaljerad beskrivning av testdata-generatorn
 
     <h2>Datakällor och struktur</h2>
     <p>
-      Testdatan hämtas  dynamiskt från flera förberedda datakällor som lagras i databastabeller. Dessa inkluderar:
+      Testdatan hämtas dynamiskt från flera förberedda datakällor som lagras i databastabeller. Dessa inkluderar:
     </p>
     <ul>
       <li><strong>Förnamn</strong> – Med koppling till kön (man, kvinna, okänd).</li>
@@ -42,7 +42,7 @@ $metaDescription = 'En teknisk och detaljerad beskrivning av testdata-generatorn
       <li>Personnummer hämtas via separat generering och valideras mot kön med Luhn-algoritmen.</li>
     </ol>
 
-    <h2>Viktigt om telefonnummer i media</h2>
+    <h2>Viktigt om telefonnummer i media!</h2>
     <p>
       Använd inte riktiga telefonnummer i böcker, filmer eller andra medier eftersom det kan orsaka oönskade problem för den som har numret. I stället har vi reserverat några nummerserier för fast och mobil telefoni som du fritt kan använda nummer ur.
     </p>

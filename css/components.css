@@ -374,3 +374,31 @@ select {
   background-color: #222; /* vissa webbläsare kräver hårdkodad färg */
   color: #eee;
 }
+/* ******************* START tag-styrka ******************* */
+.tag-svag {
+  color: #fff;
+  background-color: #e74c3c;
+  padding: 0.2em 0.5em;
+  border-radius: 0.25em;
+  font-size: 0.8em;
+  margin-left: 0.5em;
+}
+
+.tag-medel {
+  color: #fff;
+  background-color: #f39c12;
+  padding: 0.2em 0.5em;
+  border-radius: 0.25em;
+  font-size: 0.8em;
+  margin-left: 0.5em;
+}
+
+.tag-stark {
+  color: #fff;
+  background-color: #2ecc71;
+  padding: 0.2em 0.5em;
+  border-radius: 0.25em;
+  font-size: 0.8em;
+  margin-left: 0.5em;
+}
+/* ******************* SLUT tag-styrka ******************* */
