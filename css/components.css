@@ -1,0 +1,376 @@
+/* ******************* components.css - v4 ******************* */
+/* Ansvar: knappar, formulärfält, kort, tabeller, specialkomponenter */
+
+/* ------------------- Formulärgrupper ------------------- */
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.format-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+/* ------------------- Knappar ------------------- */
+.button {
+  font-family: var(--font-family-button, var(--font-family, 'Poppins', sans-serif));
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  margin: var(--spacing-unit) auto;
+}
+
+.button:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button[disabled] {
+  background-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.button-small {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+}
+
+.button-large {
+  font-size: 1.2rem;
+  padding: 12px 24px;
+}
+
+.danger-button {
+  background-color: #e74c3c;
+}
+
+.danger-button:hover {
+  background-color: #c0392b;
+}
+
+/* ------------------- Inputs & Textrutor ------------------- */
+.input {
+  width: 20ch;
+  min-width: 120px;
+  max-width: 100%;
+  padding: var(--spacing-unit);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.textarea {
+  width: 100%;
+  padding: var(--spacing-unit);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  resize: vertical;
+}
+
+/* ------------------- Dropdown / Select ------------------- */
+select {
+  width: 100%;
+  padding: var(--spacing-unit);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* ------------------- Select + Option fix för dark mode ------------------- */
+select {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-unit);
+  border-radius: var(--border-radius);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+[data-theme="dark"] select {
+  background-color: #222;
+  color: #eee;
+  border-color: #444;
+}
+
+[data-theme="dark"] option {
+  background-color: #222; /* vissa webbläsare kräver hårdkodad färg */
+  color: #eee;
+}
+
+/* ------------------- Kort ------------------- */
+.card {
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.card::-webkit-scrollbar {
+  height: 8px;
+}
+
+.card::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* ------------------- Tabeller ------------------- */
+.table {
+  width: 100%;
+  min-width: 950px;
+  border-collapse: collapse;
+  background-color: var(--table-bg);
+  margin: 0;
+  color: var(--table-fg);
+}
+
+.table th,
+.table td {
+  padding: 12px 16px;
+  border: 1px solid var(--table-border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table th {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-fg);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table tr:nth-child(even) {
+  background-color: var(--table-row-alt-bg);
+}
+
+/* ------------------- Totalsträcka / Info-rad ------------------- */
+.info-text {
+  padding: 0.75rem 1rem;
+  font-family: monospace;
+  font-size: 1rem;
+  text-align: right;
+  color: #333;
+  font-weight: bold;
+  border-top: 1px solid var(--border-color);
+  background-color: #fafafa;
+  margin: 0;
+}
+
+/* ------------------- Toast ------------------- */
+.toast {
+  visibility: hidden;
+  min-width: 160px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px 20px;
+  position: fixed;
+  z-index: 9999;
+  bottom: 30px;
+  right: 30px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.4s;
+  transform: translateY(20px);
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------- Terminal-output ------------------- */
+.terminal-output {
+  background: var(--card-background, #111);
+  color: var(--text-color, #00ff88);
+  font-family: monospace;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color, #333);
+  box-shadow: inset 0 0 10px rgba(0, 255, 136, 0.2);
+  white-space: pre-wrap;
+  position: relative;
+}
+
+.terminal-output .copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #00ff88;
+  color: #000;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.terminal-output .copy-btn:hover {
+  background: #00dd77;
+}
+
+/* ------------------- Infoikon vid h1 ------------------- */
+.info-link-floating {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.info-link-floating:hover {
+  background-color: var(--hover-color);
+}
+
+.info-link-floating.hidden {
+  display: none;
+}
+
+[data-theme="dark"] .info-link-floating {
+  background-color: #555;
+  color: #fff;
+}
+
+/* ------------------- Kortsamling på startsida ------------------- */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.menu-card {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.menu-card span {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Info-länk med ikon */
+.info-link-inline {
+  color: var(--text-color);
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.info-link-inline:hover {
+  color: var(--hover-color);
+}
+select {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-unit);
+  border-radius: var(--border-radius);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+[data-theme="dark"] select {
+  background-color: #222;
+  color: #eee;
+  border-color: #444;
+}
+/* ------------------- Select + Option fix för dark mode ------------------- */
+select {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-unit);
+  border-radius: var(--border-radius);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+[data-theme="dark"] select {
+  background-color: #222;
+  color: #eee;
+  border-color: #444;
+}
+
+[data-theme="dark"] option {
+  background-color: #222; /* vissa webbläsare kräver hårdkodad färg */
+  color: #eee;
+}

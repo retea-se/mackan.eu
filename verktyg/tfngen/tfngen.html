@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFN - Telefonnummergenerator</title>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MKP7SFFM');</script>
+    <!-- End Google Tag Manager -->
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+        <link rel="manifest" href="/icon/site.webmanifest">
+        <link rel="shortcut icon" href="/icon/favicon.ico">
+
+    <!-- CSS från assets -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/utilities.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/typography.css">
+
+    <!-- Bibliotek -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.3/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKP7SFFM"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+        <div class="form-group">
+            <label for="antalNummer" class="form-group label">Antal telefonnummer:</label>
+            <input type="number" id="antalNummer" class="input" min="1" value="1">
+        </div>
+
+        <div class="form-group">
+            <label for="formatVal" class="form-group label">Internationellt format?</label>
+            <select id="formatVal" class="input">
+                <option value="ja">Ja</option>
+                <option value="nej">Nej</option>
+                <option value="slumpa">Slumpa</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button class="button" onclick="genereraNummer()">Generera Telefonnummer</button>
+        </div>
+
+        <div class="form-group">
+            <p id="telefonnummer"></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Genererade Nummer:</h2>
+        <ul id="nummerLista" class="list"></ul>
+    </div>
+
+    <div class="container hidden" id="exportContainer">
+        <div class="form-group">
+            <label for="exportFormat" class="form-group label">Exportformat:</label>
+            <select id="exportFormat" class="input">
+                <option value="excel">Excel</option>
+                <option value="csv">CSV</option>
+                <option value="text">Text</option>
+            </select>
+        </div>
+        <button class="button" onclick="exporteraNummer()">Exportera</button>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+    <script src="../common.js"></script>
+
+    <footer class="footer">
+        <div class="footer-left">
+            <a href="javascript:history.back()" class="back-link">
+                <span class="back-icon">&larr;</span> Tillbaka
+            </a>
+        </div>
+        <div class="footer-center">
+            © <span id="currentYear"></span> Mackan.eu
+        </div>
+    </footer>
+    
+    <script>
+        // Dynamiskt uppdatera årtal
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    
+</body>
+</html>

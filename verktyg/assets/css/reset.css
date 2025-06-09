@@ -1,0 +1,36 @@
+/* ******************* START reset.css ******************* */
+/* Filnamn: reset.css
+   Beskrivning: Återställer standardstilar för HTML-element för att säkerställa konsekvent rendering över olika webbläsare.
+*/
+
+/* Reset standardmarginaler och paddningar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Gör att alla element ärvs från typsnittet */
+  html {
+    font-size: 100%; /* Standardstorlek för text (16px) */
+    line-height: 1.5;
+  }
+  
+  body {
+    font-family: sans-serif; /* Standardtypsnitt */
+    background-color: #fff; /* Grundläggande bakgrundsfärg */
+    color: #000; /* Grundläggande textfärg */
+  }
+  
+  /* Ta bort list-stilar */
+  ul,
+  ol {
+    list-style: none;
+  }
+  
+  /* Ta bort understrykning på länkar */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  

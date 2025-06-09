@@ -1,0 +1,48 @@
+/* ******************* START reset.css ******************* */
+/* Filnamn: reset.css
+   Beskrivning: Återställer standardstilar för HTML-element för att säkerställa konsekvent rendering över olika webbläsare.
+*/
+
+/* Reset standardmarginaler och paddningar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Gör att alla element ärvs från typsnittet */
+html {
+  font-family: var(--font-family, 'Poppins', sans-serif);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Ta bort list-stil på ul/ol */
+ul, ol {
+  list-style: none;
+}
+
+/* Ta bort standardlänk-stil */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Ta bort border på bilder */
+img {
+  border: 0;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ta bort outline på fokus (hanteras med egna klasser) */
+:focus {
+  outline: none;
+}
+
+/* ******************* SLUT reset.css ******************* */

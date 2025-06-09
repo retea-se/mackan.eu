@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Utforska Mackan.eu – en modern webbplats med resurser och verktyg för alla dina behov.">
+    <meta name="keywords" content="Mackan, verktyg, modern webbplats, resurser, svenska tjänster">
+    <meta name="author" content="Mackan AB">
+    <title>Välkommen till Mackan.eu</title>
+
+    <!-- Open Graph för delning -->
+    <meta property="og:title" content="Välkommen till Mackan.eu">
+    <meta property="og:description" content="Utforska Mackan.eu – en modern webbplats med resurser och verktyg för alla dina behov.">
+    <meta property="og:image" content="https://mackan.eu/logo.png">
+    <meta property="og:url" content="https://mackan.eu">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+    <link rel="manifest" href="/icon/site.webmanifest">
+    <link rel="shortcut icon" href="/icon/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="verktyg/assets/css/reset.css">
+    <link rel="stylesheet" href="verktyg/assets/css/layout.css">
+
+    <!-- JavaScript -->
+    <script defer src="https://www.googletagmanager.com/gtm.js?id=GTM-MKP7SFFM"></script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKP7SFFM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <!-- Header -->
+    <header style="background-color: #333; color: #fff; padding: 1rem 0; text-align: center;">
+        <h1>Välkommen till Mackan.eu</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main style="text-align: center; padding: 2rem 0;">
+        <p>Utforska webbplatsen för mer information!</p>
+        <a href="/verktyg/" style="color: #007BFF; font-size: 1.5rem; text-decoration: none;">
+            <i class="fas fa-tools" style="font-size: 2rem;"></i> Gå till verktygen
+        </a>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: #222; color: #f2f2f2; padding: 1rem; text-align: center;">
+        <p>© <span id="currentYear"></span> Mackan.eu. Alla rättigheter förbehållna.</p>
+        <p>Kontakt: <a href="mailto:hej@mackan.eu" style="color: #00BFFF; text-decoration: underline;">hej@mackan.eu</a></p>
+    </footer>
+
+    <!-- Inline JavaScript -->
+    <script>
+        // Dynamiskt uppdatera årtalet i footern
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

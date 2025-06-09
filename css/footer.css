@@ -1,0 +1,62 @@
+/* ******************* footer.css - v3 ******************* */
+/* Sidfot med samma färg som header, låg höjd, temastöd och responsivitet */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  background-color: var(--primary-color) !important;
+  color: #fff;
+  padding: 0 20px;
+  font-size: 0.7rem;
+  border-top: 1px solid var(--border-color);
+  box-sizing: border-box;
+}
+
+.footer-home {
+  font-size: 1rem;
+  color: #fff !important;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-home:hover {
+  color: var(--hover-color) !important;
+}
+
+.footer-center {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .footer-center {
+    text-align: center;
+  }
+}
+
+/* ********** Navbar-husikon + varumärke ********** */
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff !important;
+  text-decoration: none;
+  gap: 0.5rem;
+}
+
+.brand-link:hover {
+  color: var(--hover-color) !important;
+}
+/* ******************* SLUT footer.css - v3 ******************* */

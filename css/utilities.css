@@ -1,0 +1,41 @@
+/* ******************* START utilities.css ******************* */
+/* Filnamn: utilities.css
+   Beskrivning: Innehåller användbara hjälpklasser som används för generella stilar och snabb layoutjustering.
+*/
+
+/* Göm element */
+.hidden {
+  display: none !important;
+}
+
+/* Flex-centering */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Marginal och padding helpers */
+.mt-1 {
+  margin-top: var(--spacing-unit);
+}
+
+.mb-1 {
+  margin-bottom: var(--spacing-unit);
+}
+
+.p-1 {
+  padding: var(--spacing-unit);
+}
+
+/* Fullbreddsblock */
+.full-width {
+  width: 100%;
+}
+
+/* Textcentrering */
+.text-center {
+  text-align: center;
+}
+
+/* ******************* SLUT utilities.css ******************* */

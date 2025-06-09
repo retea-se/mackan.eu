@@ -1,0 +1,39 @@
+/* tools.css - rensad version */
+/* Ansvar: Formulärspecifika grupper och ev. specialfunktioner */
+
+/* ********** Formulärgrupper ********** */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* Om du har specialformulär eller unika komponenter, lägg dem här */
+/* Exempel: */
+.form-hint {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-top: 0.25rem;
+}
+
+/* Lägg till fler formulärspecifika regler här vid behov */
+/* components.css eller utilities.css */
+
+.menu-card {
+  position: relative;
+}
+
+.info-float {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.9rem;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 2px rgba(0,0,0,0.3);
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOTTA Tool</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MKP7SFFM');</script>
+    <!-- End Google Tag Manager -->
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+        <link rel="manifest" href="/icon/site.webmanifest">
+        <link rel="shortcut icon" href="/icon/favicon.ico">
+
+    <!-- CSS från assets -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/utilities.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/typography.css">
+</head>
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKP7SFFM"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+        <header class="header-section">
+            <h1>PNR-verktyg</h1>
+        </header>
+
+        <textarea id="personnummerList" class="textarea" rows="10" placeholder="Klistra in personnummer här..."></textarea>
+        <button class="button" onclick="processPersonnummer()">Bearbeta</button>
+
+        <h2 id="resultsHeader" class="hidden">Resultat:</h2>
+        <div id="summary" class="hidden">
+            <p>Antal män: <span id="maleCount">0</span> (<span id="malePercentage">0%</span>)</p>
+            <p>Antal kvinnor: <span id="femaleCount">0</span> (<span id="femalePercentage">0%</span>)</p>
+            <p>Snittålder: <span id="averageAge">0</span> år</p>
+        </div>
+
+        <table id="resultsTable" class="table hidden">
+            <thead>
+                <tr>
+                    <th>Personnummer</th>
+                    <th>Validering</th>
+                    <th>Kommentar</th>
+                    <th>Kön</th>
+                    <th>Ålder</th>
+                    <th>Stjärntecken</th>
+                    <th>Dagar kvar till födelsedag</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <button id="exportButton" class="button hidden">Exportera</button>
+    </div>
+
+    <!-- Script och bibliotek -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+    <script defer src="script.js"></script>
+    <script src="../common.js"></script>
+
+    <footer class="footer">
+        <p>&copy; 2024 STOTTA Tool</p>
+    </footer>
+
+    <div id="themeToggle" onclick="toggleTheme()" class="theme-toggle">
+        <span id="sunIcon" style="display: none;">☀️</span>
+        <span id="moonIcon">🌙</span>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-left">
+            <a href="javascript:history.back()" class="back-link">
+                <span class="back-icon">&larr;</span> Tillbaka
+            </a>
+        </div>
+        <div class="footer-center">
+            © <span id="currentYear"></span> Mackan.eu
+        </div>
+    </footer>
+    
+    <script>
+        // Dynamiskt uppdatera årtal
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    
+</body>
+
+</html>

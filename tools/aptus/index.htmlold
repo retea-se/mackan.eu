@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MKP7SFFM');
+    </script>
+    <!-- End Google Tag Manager -->
+         <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+    <link rel="manifest" href="/icon/site.webmanifest">
+    <link rel="shortcut icon" href="/icon/favicon.ico">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex till Dec Konverterare</title>
+
+    <!-- CSS-filer -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/google-fonts.css">
+    <link rel="stylesheet" href="../assets/css/typography.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/utilities.css">
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKP7SFFM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <main class="container">
+        <h1 class="title">Hex till Dec Konverterare</h1>
+
+        <form id="converter-form" class="form-group">
+            <textarea id="hexInput" class="input" placeholder="Klistra in hexadecimala värden här, ett per rad"></textarea>
+            <div class="horizontal-tools">
+                <button type="button" class="button" id="convertButton" onclick="convertHex()">Konvertera</button>
+                <button type="button" class="button hidden" id="exportButton" onclick="exportToCSV()">Exportera till CSV</button>
+                <button type="button" class="button hidden" id="clearButton" onclick="clearResults()">Rensa</button>
+            </div>
+        </form>
+
+        <table id="resultTable" class="table">
+            <thead>
+                <tr>
+                    <th>Original EM</th>
+                    <th>Aptus</th>
+                </tr>
+            </thead>
+            <tbody id="resultBody">
+                <!-- Resultaten kommer att dyka upp här -->
+            </tbody>
+        </table>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-left">
+            <a href="javascript:history.back()" class="back-link">
+                <span class="back-icon">&larr;</span> Tillbaka
+            </a>
+        </div>
+        <div class="footer-center">
+            © <span id="currentYear"></span> Mackan.eu
+        </div>
+    </footer>
+
+    <script>
+        // Dynamiskt uppdatera årtal
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function convertHex() {
+            console.log('Konvertering startad...');
+            const hexInput = document.getElementById('hexInput').value;
+            const hexValues = hexInput.split('\n').map(val => val.trim()).filter(val => val);
+            const resultBody = document.getElementById('resultBody');
+
+            if (!hexValues.length) {
+                alert('Inga hexadecimala värden att konvertera.');
+                return;
+            }
+
+            resultBody.innerHTML = '';
+            hexValues.forEach(hex => {
+                const dec = parseInt(hex, 16);
+                const row = `<tr><td>${hex}</td><td>${isNaN(dec) ? 'Ogiltig' : dec}</td></tr>`;
+                resultBody.innerHTML += row;
+            });
+
+            document.getElementById('exportButton').classList.remove('hidden');
+            document.getElementById('clearButton').classList.remove('hidden');
+        }
+
+        function exportToCSV() {
+            console.log('Export till CSV startad...');
+            const rows = Array.from(document.querySelectorAll('#resultTable tbody tr'));
+            const data = rows.map(row => {
+                const cells = Array.from(row.querySelectorAll('td')).map(cell => cell.textContent);
+                return cells.join(',');
+            });
+            const csvContent = 'data:text/csv;charset=utf-8,' + ['Original EM,Aptus', ...data].join('\n');
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement('a');
+            link.setAttribute('href', encodedUri);
+            link.setAttribute('download', 'hex_to_dec.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function clearResults() {
+            console.log('Resultat rensades.');
+            document.getElementById('resultBody').innerHTML = '';
+            document.getElementById('exportButton').classList.add('hidden');
+            document.getElementById('clearButton').classList.add('hidden');
+        }
+    </script>
+
+
+
+</body>
+</html>

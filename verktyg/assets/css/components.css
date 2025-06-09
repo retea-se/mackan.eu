@@ -1,0 +1,196 @@
+/* ******************* components.css - v2 ******************* */
+/* Ansvar: knappar, formulärfält, kort, tabeller, specialkomponenter */
+
+:root {
+  --spacing-unit: 8px;
+  --border-radius: 6px;
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --border-color: #ddd;
+  --hover-color: #2980b9;
+  --font-family: 'Poppins', sans-serif;
+  --font-family-button: 'Poppins', sans-serif;
+}
+
+/* ------------------- Knappar ------------------- */
+.button {
+  font-family: var(--font-family-button);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  margin: var(--spacing-unit) auto;
+}
+
+.button:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button[disabled] {
+  background-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.button-small {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+}
+
+.button-large {
+  font-size: 1.2rem;
+  padding: 12px 24px;
+}
+
+.danger-button {
+  background-color: #e74c3c;
+}
+
+.danger-button:hover {
+  background-color: #c0392b;
+}
+
+/* ------------------- Inputs & Textrutor ------------------- */
+.input,
+.textarea {
+  width: 100%;
+  padding: var(--spacing-unit);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  resize: vertical;
+}
+
+/* ------------------- Kort ------------------- */
+.card {
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: var(--border-radius);
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.card::-webkit-scrollbar {
+  height: 8px;
+}
+
+.card::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* ------------------- Tabeller ------------------- */
+.table {
+  width: 100%;
+  min-width: 950px;
+  border-collapse: collapse;
+  background-color: #fff;
+  margin: 0;
+}
+
+.table th,
+.table td {
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* ------------------- Totalsträcka / Info-rad ------------------- */
+.info-text {
+  padding: 0.75rem 1rem;
+  font-family: monospace;
+  font-size: 1rem;
+  text-align: right;
+  color: #333;
+  font-weight: bold;
+  border-top: 1px solid var(--border-color);
+  background-color: #fafafa;
+  margin: 0;
+}
+
+/* ------------------- Toast ------------------- */
+.toast {
+  visibility: hidden;
+  min-width: 160px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px 20px;
+  position: fixed;
+  z-index: 9999;
+  bottom: 30px;
+  right: 30px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.4s;
+  transform: translateY(20px);
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.terminal-output {
+  background: var(--card-background, #111);
+  color: var(--text-color, #00ff88);
+  font-family: monospace;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color, #333);
+  box-shadow: inset 0 0 10px rgba(0, 255, 136, 0.2);
+  white-space: pre-wrap;
+  position: relative;
+}
+
+.terminal-output .copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #00ff88;
+  color: #000;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.terminal-output .copy-btn:hover {
+  background: #00dd77;
+}
+
+.hidden {
+  display: none;
+}

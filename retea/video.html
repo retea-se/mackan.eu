@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TV6ZNDGF');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .video-container {
+            position: relative; /* Ändra position till relativ för att innehållet ska vara placerat inuti */
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+        }
+
+        .content {
+            position: absolute; /* Ändra position till absolut för att kunna placera innehållet ovanpå videon */
+            bottom: 20px; /* Placera texten 20px från botten av sidan */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            text-align: center;
+            color: #fff; /* Vit text för att kontrastera med videon */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Svart färg med 50% genomsiktighet */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2; /* Sätt z-index högre än videon för att synas ovanpå */
+        }
+
+        .overlay-text {
+            color: #fff; /* Vit textfärg */
+            font-size: 24px;
+            white-space: nowrap; /* Förhindra radbrytning */
+        }
+
+        .overlay-text a {
+            color: #00c6c5; /* Färg för länken */
+            text-decoration: underline; /* Understrykning för länken */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TV6ZNDGF"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="retea1.mp4" type="video/mp4">
+            Din webbläsare stödjer inte video-taggen.
+        </video>
+        <div class="content">
+            <div class="overlay">
+                <div class="overlay-text">
+                    <p><a href="retea1.mp4">Se denna video med ljud</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

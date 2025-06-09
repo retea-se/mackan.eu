@@ -1,0 +1,17 @@
+// .eslintrc.json - v1
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "no-mixed-spaces-and-tabs": "error",
+    "no-trailing-spaces": "warn"
+  }
+}

@@ -1,0 +1,55 @@
+/* variables.css */
+/* Definierar globala färger, typsnitt och avståndsvariabler */
+
+:root {
+  --primary-color: #0066cc;
+  --secondary-color: #f5f5f5;
+  --accent-color: #ffcc00;
+  --error-color: #d32f2f;
+  --success-color: #388e3c;
+
+  --text-color: #222;
+  --background-color: #fff;
+  --border-color: #ccc;
+  --hover-color: #e6f0fa;
+
+  --border-radius: 6px;
+  --spacing-unit: 8px;
+
+  --font-family: 'Poppins', sans-serif;
+  --font-family-button: 'Poppins', sans-serif;
+
+  /* Tabellfärger */
+  --table-bg: #fff;
+  --table-fg: #222;
+  --table-border: #ccc;
+  --table-header-bg: #f5f5f5;
+  --table-header-fg: #222;
+  --table-row-alt-bg: #fafafa;
+
+  /* Kort bakgrund för terminal-output */
+  --card-background: #111;
+}
+
+/* Mörkt tema */
+[data-theme="dark"] {
+  --primary-color: #3388ff;
+  --secondary-color: #222;
+  --accent-color: #ffd700;
+  --error-color: #ff6666;
+  --success-color: #66ff99;
+
+  --text-color: #eee;
+  --background-color: #181a1b;
+  --border-color: #444;
+  --hover-color: #232a3a;
+
+  --table-bg: #222;
+  --table-fg: #eee;
+  --table-border: #444;
+  --table-header-bg: #181a1b;
+  --table-header-fg: #eee;
+  --table-row-alt-bg: #232323;
+
+  --card-background: #222;
+}

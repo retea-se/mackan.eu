@@ -1,0 +1,71 @@
+{
+  // ********** FORMATTERING **********
+  "editor.formatOnSave": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.wordWrap": "on",
+
+  // ********** FILHANTERING **********
+  "files.autoSave": "onFocusChange",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/dist": true
+  },
+
+  // ********** ESLINT SOM FORMATTERARE **********
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSave": true
+  },
+
+  // ********** PRETTIER-INSTÄLLNINGAR **********
+  "prettier.singleQuote": true,
+  "prettier.semi": false,
+  "prettier.trailingComma": "es5",
+  "prettier.bracketSpacing": true,
+  "prettier.arrowParens": "avoid",
+
+  // ********** JAVASCRIPT / HTML / CSS **********
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "html.format.enable": true,
+
+  // ********** UI & UX **********
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Default Dark+",
+  "explorer.confirmDelete": false,
+
+  // ********** ESLINT **********
+  "eslint.validate": ["javascript", "html"],
+  "eslint.format.enable": true,
+
+  // ********** STYLELINT **********
+  "stylelint.validate": ["css", "scss"],
+  "css.validate": false,
+
+  // ********** PHP INTELEPHENSE **********
+  "intelephense.diagnostics.enable": true,
+  "intelephense.environment.includePaths": ["includes", "config"],
+  "intelephense.files.associations": ["**/*.php"],
+  "intelephense.stubs": [
+    "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core",
+    "ctype", "curl", "date", "dba", "dom", "enchant", "exif", "fileinfo",
+    "filter", "ftp", "gd", "gettext", "gmp", "hash", "iconv", "imap", "intl",
+    "json", "ldap", "libxml", "mbstring", "mcrypt", "meta", "mssql", "mysqli",
+    "mysqlnd", "oci8", "odbc", "openssl", "pcntl", "pcre", "PDO", "pdo_ibm",
+    "pdo_mysql", "pdo_pgsql", "pdo_sqlite", "pgsql", "Phar", "posix", "pspell",
+    "readline", "recode", "Reflection", "regex", "session", "shmop", "SimpleXML",
+    "snmp", "soap", "sockets", "sodium", "SPL", "sqlite3", "standard", "superglobals",
+    "sybase", "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer", "wddx", "xml",
+    "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib"
+  ]
+}

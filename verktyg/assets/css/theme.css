@@ -1,0 +1,80 @@
+/* theme.css - v1 */
+
+:root {
+  --primary-color: #3498db;
+  --hover-color: #2980b9;
+  --background-color: #ffffff;
+  --text-color: #222;
+  --border-color: #ddd;
+}
+
+[data-theme="dark"] {
+  --primary-color: #888;
+  --hover-color: #aaa;
+  --background-color: #111;
+  --text-color: #eee;
+  --border-color: #333;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Header + footer anpassningar */
+.header {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+[data-theme="dark"] .header {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.footer {
+  background-color: #f8f8f8;
+  color: #666;
+  padding: 1rem;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+[data-theme="dark"] .footer {
+  background-color: #111;
+  color: #999;
+}
+
+/* Temaknapp + infoikon */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg);
+}
+
+.info-link {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+[data-theme="dark"] .info-link {
+  background-color: #555;
+  color: #fff;
+}

@@ -1,0 +1,111 @@
+/* dashboard.css - v2.2 */
+
+body {
+  margin: 0;
+  font-family: 'Share Tech Mono', monospace, 'Segoe UI', sans-serif;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  overflow-x: hidden;
+}
+
+.dash-container {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #2c303a;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #58a6ff;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* Buttons */
+.btn {
+  background: #1c2128;
+  color: #58a6ff;
+  border: 1px solid #3d4552;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+  background: #2a313d;
+  border-color: #58a6ff;
+}
+
+/* Stat cards */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  flex: 1 1 22%;
+  background: #161b22;
+  border-left: 4px solid #58a6ff;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #d2e1f0;
+  transition: background 0.2s ease;
+}
+
+.stat-card:hover {
+  background: #1e242d;
+}
+
+/* Graph grid */
+.graph-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* Chart boxes */
+.chart-box {
+  background: #161b22;
+  border: 1px solid #2b313c;
+  padding: 1rem;
+  border-radius: 6px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-box h2 {
+  font-size: 0.95rem;
+  color: #8b949e;
+  margin: 0 0 0.8rem 0;
+  font-weight: 500;
+}
+
+/* Chart containers */
+.chart {
+  flex: 1;
+  min-height: 150px;
+  max-height: 200px;
+}
+
+/* Media query för mindre skärmar */
+@media (max-width: 768px) {
+  .stat-card {
+    flex: 1 1 45%;
+  }
+}

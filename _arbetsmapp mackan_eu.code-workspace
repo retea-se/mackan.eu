@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "_arbetsmapp mackan_eu",
+		"postman.settings.dotenv-detection-notification-visibility": false
+	}
+}

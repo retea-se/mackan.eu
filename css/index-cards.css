@@ -1,0 +1,15 @@
+/* index-cards.css - v1 */
+/* Grid för startsidan med kort för verktyg */
+
+/* OBS! .menu-grid och .menu-card finns redan i components.css.
+   Om du vill undvika dubbletter, ta bort dessa från denna fil
+   eller låt denna fil endast innehålla eventuella overrides/specifika regler för startsidan.
+*/
+
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+/* Om du vill ha unika stilar för startsidan, lägg dem här. */

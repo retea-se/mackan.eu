@@ -1,0 +1,116 @@
+# BEGIN LSCACHE
+<IfModule LiteSpeed>
+  RewriteEngine on
+  CacheLookup on
+  RewriteRule .* - [E=Cache-Control:no-autoflush]
+  RewriteRule \.litespeed_conf\.dat - [F,L]
+
+  # Cache vissa dynamiska resurser
+  RewriteRule wp-content/.*/[^/]*(responsive|css|js|dynamic|loader|fonts)\.php - [E=cache-control:max-age=3600]
+
+  # Favicon cache
+  RewriteRule favicon\.ico$ - [E=cache-control:max-age=86400]
+
+  # Ta bort spårningsparametrar från cache-nycklar
+  CacheKeyModify -qs:fbclid
+  CacheKeyModify -qs:gclid
+  CacheKeyModify -qs:utm*
+  CacheKeyModify -qs:_ga
+</IfModule>
+# END LSCACHE
+
+# BEGIN NON_LSCACHE
+## (ingen icke-litespeed-konfig nu)
+# END NON_LSCACHE
+
+# Ange standardfiler (prioritera index.php)
+DirectoryIndex index.php index.html
+
+# Cache Headers
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 1 day"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType application/json "access plus 1 year"
+  ExpiresByType application/manifest+json "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>
+
+# Preconnect för prestanda
+<IfModule mod_headers.c>
+  Header set Link "<https://fonts.googleapis.com>; rel=preconnect, <https://cdnjs.cloudflare.com>; rel=preconnect"
+</IfModule>
+
+# Skydd mot överbelastning
+<IfModule mod_evasive20.c>
+  DOSHashTableSize 3097
+  DOSPageCount 5
+  DOSSiteCount 50
+  DOSPageInterval 1
+  DOSSiteInterval 1
+  DOSBlockingPeriod 300
+  DOSLogDir "/var/log/mod_evasive"
+</IfModule>
+
+# Komprimering
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml image/webp
+</IfModule>
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/x-javascript application/json
+  AddOutputFilterByType BROTLI_COMPRESS image/svg+xml image/webp
+</IfModule>
+
+# Säkerhetshuvuden
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header set Referrer-Policy "no-referrer-when-downgrade"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), fullscreen=(self)"
+</IfModule>
+
+# Förhindra kataloglistning & dolda filer
+Options -Indexes
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Honeypotfälla
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} /honeypot [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+# HTTPS & www → non-www
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</IfModule>
+
+# Cache-control för säkerhet (no-cache på ETags)
+<IfModule mod_headers.c>
+  FileETag None
+  Header unset ETag
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires 0
+</IfModule>

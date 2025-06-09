@@ -1,0 +1,23 @@
+databas: visits
+User: visits_db_user
+Pass: I%O@$72RL_z%
+
+
+const pool = mysql.createPool({
+  host: 'omega.hostup.se',
+  user: 'm_todo_user',
+  password: 'testar',
+  database: 'm_todo_db',
+  port: 3306,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
+
+
+ MySQL returnerade ett tomt resultat (dvs inga rader). (Frågan tog 0.0052 sekunder.)
+CREATE TABLE visits ( id INT AUTO_INCREMENT PRIMARY KEY, visited_at DATETIME DEFAULT CURRENT_TIMESTAMP, ip VARCHAR(45), user_agent TEXT, page VARCHAR(255), referer VARCHAR(255), language VARCHAR(64), get_data TEXT, post_data TEXT, cookies TEXT, click_event TEXT, time_on_page INT, screen_size VARCHAR(32), error_message TEXT );
+<?php
+$res = $conn->query("SELECT * FROM visits ORDER BY visited_at DESC LIMIT 20");
+...
+<td><?= htmlspecialchars($row['visited_at']) ?></td>

@@ -1,0 +1,10 @@
+<!-- 404.php - v1 -->
+<?php $title = '404 – Sidan finns inte'; ?>
+<?php include __DIR__ . '/includes/layout-start.php'; ?>
+
+<main class="container">
+  <p>Oj då! Sidan du försöker nå finns inte.</p>
+  <p><a href="/" class="button">Till startsidan</a></p>
+</main>
+
+<?php include __DIR__ . '/includes/layout-end.php'; ?>

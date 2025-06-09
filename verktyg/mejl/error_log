@@ -1,0 +1,172 @@
+[27-Dec-2023 21:04:07 UTC] PHP Warning:  require(../../phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 8
+[27-Dec-2023 21:04:07 UTC] PHP Warning:  require(../../phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 8
+[27-Dec-2023 21:04:07 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../phpmailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/mackaneu/public_html/verktyg/mejl/epost.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 8
+[27-Dec-2023 21:04:22 UTC] PHP Warning:  require(../../phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 8
+[27-Dec-2023 21:04:22 UTC] PHP Warning:  require(../../phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 8
+[27-Dec-2023 21:04:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../phpmailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/mackaneu/public_html/verktyg/mejl/epost.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 8
+[27-Dec-2023 21:07:55 UTC] PHP Warning:  require(../../phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 8
+[27-Dec-2023 21:07:55 UTC] PHP Warning:  require(../../phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 8
+[27-Dec-2023 21:07:55 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../../phpmailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/mackaneu/public_html/verktyg/mejl/epost.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 8
+[27-Dec-2023 21:11:46 UTC] PHP Parse error:  Unclosed '{' on line 4 in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 46
+[27-Dec-2023 21:25:36 UTC] PHP Parse error:  Unclosed '{' on line 4 in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 46
+[27-Dec-2023 22:26:27 UTC] PHP Parse error:  Unclosed '{' on line 4 in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 45
+[28-Dec-2023 09:11:45 UTC] PHP Warning:  require(/home/mackaneu/public_html/phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 6
+[28-Dec-2023 09:11:45 UTC] PHP Warning:  require(/home/mackaneu/public_html/phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 6
+[28-Dec-2023 09:11:45 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/mackaneu/public_html/phpmailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/mackaneu/public_html/verktyg/mejl/epost.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 6
+[28-Dec-2023 09:14:17 UTC] PHP Warning:  require(/home/mackaneu/public_html/phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 6
+[28-Dec-2023 09:14:17 UTC] PHP Warning:  require(/home/mackaneu/public_html/phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 6
+[28-Dec-2023 09:14:17 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/mackaneu/public_html/phpmailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/mackaneu/public_html/verktyg/mejl/epost.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 6
+[28-Dec-2023 09:17:27 UTC] PHP Warning:  require(/home/mackaneu/public_html/phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 9
+[28-Dec-2023 09:17:27 UTC] PHP Warning:  require(/home/mackaneu/public_html/phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 9
+[28-Dec-2023 09:17:27 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/mackaneu/public_html/phpmailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/mackaneu/public_html/verktyg/mejl/epost.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 9
+[28-Dec-2023 09:19:04 UTC] PHP Warning:  require(/home/mackaneu/public_html/verktyg/mejl/../../phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 9
+[28-Dec-2023 09:19:04 UTC] PHP Warning:  require(/home/mackaneu/public_html/verktyg/mejl/../../phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 9
+[28-Dec-2023 09:19:04 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/mackaneu/public_html/verktyg/mejl/../../phpmailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/mackaneu/public_html/verktyg/mejl/epost.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 9
+[28-Dec-2023 09:22:12 UTC] PHP Warning:  require(/home/mackaneu/public_html/verktyg/mejl/phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 9
+[28-Dec-2023 09:22:12 UTC] PHP Warning:  require(/home/mackaneu/public_html/verktyg/mejl/phpmailer/src/PHPMailer.php): Failed to open stream: No such file or directory in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 9
+[28-Dec-2023 09:22:12 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/mackaneu/public_html/verktyg/mejl/phpmailer/src/PHPMailer.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/mackaneu/public_html/verktyg/mejl/epost.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 9
+[28-Dec-2023 09:24:51 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer" not found in /home/mackaneu/public_html/verktyg/mejl/epost.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 17
+[28-Dec-2023 09:29:18 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer" not found in /home/mackaneu/public_html/verktyg/mejl/epost.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 17
+[28-Dec-2023 09:38:45 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer" not found in /home/mackaneu/public_html/verktyg/mejl/epost.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 17
+[28-Dec-2023 09:41:07 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer" not found in /home/mackaneu/public_html/verktyg/mejl/epost.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/mackaneu/public_html/verktyg/mejl/epost.php on line 18
+[28-Dec-2023 09:46:35 UTC] Loaded /home/mackaneu/public_html/verktyg/mejl/phpmailer/src/Exception.php
+[28-Dec-2023 09:46:35 UTC] Loaded /home/mackaneu/public_html/verktyg/mejl/phpmailer/src/PHPMailer.php
+[28-Dec-2023 09:46:35 UTC] Loaded /home/mackaneu/public_html/verktyg/mejl/phpmailer/src/SMTP.php
+[28-Dec-2023 09:46:35 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 220-omega.hostup.se ESMTP Exim 4.96.2 #2 Thu, 28 Dec 2023 09:46:35 +0000 
+220-We do not authorize the use of this system to transport unsolicited, 
+220 and/or bulk e-mail.
+
+[28-Dec-2023 09:46:35 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: EHLO mackan.eu
+
+[28-Dec-2023 09:46:35 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 250-omega.hostup.se Hello mackan.eu [10.0.0.135]
+250-SIZE 52428800
+250-8BITMIME
+250-PIPELINING
+250-PIPECONNECT
+250-AUTH PLAIN LOGIN
+250 HELP
+
+[28-Dec-2023 09:46:35 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: AUTH LOGIN
+
+[28-Dec-2023 09:46:35 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[28-Dec-2023 09:46:35 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: [credentials hidden]
+[28-Dec-2023 09:46:35 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[28-Dec-2023 09:46:35 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: [credentials hidden]
+[28-Dec-2023 09:46:37 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 535 Incorrect authentication data
+
+[28-Dec-2023 09:46:37 UTC] PHPMailer Debug level 1: SMTP ERROR: Password command failed: 535 Incorrect authentication data
+
+[28-Dec-2023 09:46:37 UTC] PHPMailer Debug level 2: SMTP Error: Could not authenticate.
+[28-Dec-2023 09:46:37 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: QUIT
+
+[28-Dec-2023 09:46:37 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 221 omega.hostup.se closing connection
+
+[28-Dec-2023 09:46:37 UTC] PHPMailer Debug level 2: SMTP Error: Could not authenticate.
+[28-Dec-2023 09:46:37 UTC] PHPMailer Exception: SMTP Error: Could not authenticate.
+[28-Dec-2023 09:57:47 UTC] Loaded /home/mackaneu/public_html/verktyg/mejl/phpmailer/src/Exception.php
+[28-Dec-2023 09:57:47 UTC] Loaded /home/mackaneu/public_html/verktyg/mejl/phpmailer/src/PHPMailer.php
+[28-Dec-2023 09:57:47 UTC] Loaded /home/mackaneu/public_html/verktyg/mejl/phpmailer/src/SMTP.php
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 220-omega.hostup.se ESMTP Exim 4.96.2 #2 Thu, 28 Dec 2023 09:57:47 +0000 
+220-We do not authorize the use of this system to transport unsolicited, 
+220 and/or bulk e-mail.
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: EHLO mackan.eu
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 250-omega.hostup.se Hello mackan.eu [10.0.0.135]
+250-SIZE 52428800
+250-8BITMIME
+250-PIPELINING
+250-PIPECONNECT
+250-AUTH PLAIN LOGIN
+250 HELP
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: AUTH LOGIN
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: [credentials hidden]
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: [credentials hidden]
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 235 Authentication succeeded
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: MAIL FROM:<noreply@mackan.eu>
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 250 OK
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: RCPT TO:<marcus.ornstedt@gmail.com>
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 250 Accepted
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: DATA
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 354 Enter message, ending with "." on a line by itself
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: Date: Thu, 28 Dec 2023 09:57:47 +0000
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: To: marcus.ornstedt@gmail.com
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: From: Mackan <noreply@mackan.eu>
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: Subject: Test Email
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: Message-ID: <ystOllILx32kodK9tijsXr7naEogGyWzX50bR6Prmc@mackan.eu>
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: X-Mailer: PHPMailer 6.9.1 (https://github.com/PHPMailer/PHPMailer)
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: MIME-Version: 1.0
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: Content-Type: text/plain; charset=iso-8859-1
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: 
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: dfgd
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: 
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: .
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 250 OK id=1rIn9A-00BLp7-2R
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 1: CLIENT -> SERVER: QUIT
+
+[28-Dec-2023 09:57:47 UTC] PHPMailer Debug level 2: SERVER -> CLIENT: 221 omega.hostup.se closing connection
+
