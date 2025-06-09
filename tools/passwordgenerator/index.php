@@ -1,72 +1,62 @@
+<!-- index.php - v10 -->
 <?php
-// =============================================================
-// index.php - v7
-// feat: tar bort dubbla rubriker och behåller endast titeln från layout
-// - Behåller info-ikon separat
-// - Titel skrivs nu bara ut via layout/header.php
-// =============================================================
-
 $title = 'Lösenordsgenerator';
-$metaDescription = 'Generera säkra och anpassade lösenord direkt i webbläsaren med kontroll över teckentyper, längd och antal.';
-include '../../includes/layout-start.php';
+$metaDescription = 'Generera säkra lösenord och ordfraser direkt i webbläsaren med olika inställningar och exportfunktion.';
 ?>
+<?php include '../../includes/layout-start.php'; ?>
 
 <main class="container">
+  <?php include '../../includes/title.php'; ?>
 
   <!-- ********** START Sektion: Förhandslösenord ********** -->
-  <div class="form-group">
-    <div class="center" style="gap: 0.75rem; flex-wrap: wrap;">
-      <h2 id="previewDisplay" class="mono" style="font-weight: 600;"></h2>
-      <div>
-        <button id="regenPreview" class="icon-button" aria-label="Generera nytt lösenord" data-tippy-content="Generera nytt lösenord"><i class="fa-solid fa-rotate-right"></i></button>
-        <button id="copyPreview" class="icon-button" aria-label="Kopiera lösenord" data-tippy-content="Kopiera lösenord"><i class="fa-solid fa-copy"></i></button>
-      </div>
-    </div>
-  </div>
-  <!--<?php include '../../includes/readme-icon.php'; ?>-->
+  <section class="preview-section">
+    <h2 class="preview-password">
+      <span id="previewText">Förhandslösenord</span>
+      <button id="previewRefresh" class="icon-button" aria-label="Generera nytt lösenord">
+        <i class="fa-solid fa-rotate"></i>
+      </button>
+      <button id="previewCopy" class="icon-button" aria-label="Kopiera lösenord">
+        <i class="fa-solid fa-copy"></i>
+      </button>
+    </h2>
+  </section>
   <!-- ********** SLUT Sektion: Förhandslösenord ********** -->
 
   <!-- ********** START Sektion: Formulär ********** -->
   <form id="generatorForm" class="form-group">
-    <div class="form-group">
-      <label for="length" data-tippy-content="Hur många tecken varje lösenord ska innehålla. Rekommenderat: minst 12.">Lösenordslängd (4–128)</label>
-      <input type="number" id="length" class="input" min="4" max="128" value="24" aria-label="Lösenordslängd">
-    </div>
+    <label for="length">Lösenordslängd (4–128)</label>
+    <input type="number" id="length" class="input" min="4" max="128" value="20">
 
-    <div class="form-group">
-      <label for="amount" data-tippy-content="Hur många lösenord du vill generera på en gång.">Antal lösenord</label>
-      <input type="number" id="amount" class="input" min="1" max="100" value="1" aria-label="Antal lösenord">
-    </div>
+    <label for="amount">Antal att generera</label>
+    <input type="number" id="amount" class="input" min="1" max="100" value="5">
 
-    <div class="form-group" data-tippy-content="Välj vilka typer av tecken som ska användas i lösenordet.">
-      <label class="checkbox"><input type="checkbox" id="useLower" checked> Små bokstäver (a–z)</label>
-      <label class="checkbox"><input type="checkbox" id="useUpper" checked> Stora bokstäver (A–Z)</label>
-      <label class="checkbox"><input type="checkbox" id="useNumbers" checked> Siffror (0–9)</label>
-      <label class="checkbox"><input type="checkbox" id="useSymbols" checked> Specialtecken (!@#...)</label>
-    </div>
+    <label><input type="checkbox" id="useLower" checked> Små bokstäver</label>
+    <label><input type="checkbox" id="useUpper" checked> Versaler</label>
+    <label><input type="checkbox" id="useNumbers" checked> Siffror</label>
+    <label><input type="checkbox" id="useSymbols" checked> Symboler</label>
+    <label><input type="checkbox" id="usePassphrase"> Använd ordfras</label>
 
-    <div class="horizontal-tools">
-      <button type="submit" class="button" data-tippy-content="Klicka för att generera lösenord med aktuella inställningar.">Generera</button>
-      <button type="button" id="exportBtn" class="button hidden" data-tippy-content="Exportera lösenord till fil (txt, csv, json).">Exportera</button>
-      <button type="button" id="resetBtn" class="button hidden" data-tippy-content="Töm resultatlistan och börja om.">Rensa</button>
-    </div>
+    <button type="submit" class="button" data-tippy-content="Generera nya lösenord">Generera</button>
   </form>
   <!-- ********** SLUT Sektion: Formulär ********** -->
 
-  <!-- ********** START Sektion: Resultat ********** -->
-  <table class="table mt-1" id="resultTable">
+  <!-- ********** START Sektion: Resultattabell ********** -->
+  <table class="table" id="resultTable">
     <thead>
-      <tr>
-        <th data-tippy-content="Här visas varje genererat lösenord tillsammans med dess styrka.">Lösenord</th>
-        <th data-tippy-content="Tryck på knappen för att kopiera lösenordet till urklipp.">Kopiera</th>
-      </tr>
+      <tr><th>Lösenord</th><th>Åtgärd</th></tr>
     </thead>
     <tbody></tbody>
   </table>
-  <!-- ********** SLUT Sektion: Resultat ********** -->
+  <button id="exportBtn" class="button hidden">Exportera</button>
+  <button id="resetBtn" class="button hidden">Rensa</button>
+  <!-- ********** SLUT Sektion: Resultattabell ********** -->
 </main>
 
+<!-- ********** START Sektion: Scripts ********** -->
+<script src="script.js"></script>
+<script src="preview.js"></script>
+<script src="passphrase.js"></script>
+<script src="export.js"></script>
+<!-- ********** SLUT Sektion: Scripts ********** -->
+
 <?php include '../../includes/layout-end.php'; ?>
-<script src="script.js" defer></script>
-<script src="export.js" defer></script>
-<script src="preview.js" defer></script>

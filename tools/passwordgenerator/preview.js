@@ -1,48 +1,45 @@
-// preview.js - v2
-console.log("🧪 preview.js v2 laddad");
+// preview.js - v8
+// git commit: Förhandslösenord visas direkt vid sidladdning med FA-ikoner
+
+console.log("🧪 preview.js v8 laddad");
 
 document.addEventListener("DOMContentLoaded", () => {
-  const display = document.getElementById("previewDisplay");
-  const regenBtn = document.getElementById("regenPreview");
-  const copyBtn = document.getElementById("copyPreview");
-
-  function hämtaInställningar() {
-    return {
-      längd: parseInt(document.getElementById("length").value, 10),
-      lower: document.getElementById("useLower").checked,
-      upper: document.getElementById("useUpper").checked,
-      numbers: document.getElementById("useNumbers").checked,
-      symbols: document.getElementById("useSymbols").checked
-    };
-  }
+  const previewEl = document.getElementById("previewText");
+  const knapp = document.getElementById("previewRefresh");
+  const kopiera = document.getElementById("previewCopy");
 
   function genereraPreview() {
-    const inst = hämtaInställningar();
-    const aktiva = Object.values(inst).slice(1).filter(Boolean);
-    if (!aktiva.length) {
-      display.textContent = "Välj minst en teckentyp";
-      return;
+    if (!previewEl) return console.warn("⚠️ previewText saknas i DOM");
+
+    if (typeof window.genereraLösenord === "function") {
+      const defaultSettings = {
+        lower: true,
+        upper: true,
+        numbers: true,
+        symbols: true,
+      };
+      const lösenord = window.genereraLösenord(20, defaultSettings);
+      previewEl.textContent = lösenord;
+      console.log("🔁 Nytt förhandslösenord:", lösenord);
+    } else {
+      previewEl.textContent = "[funktion saknas]";
     }
-
-    const inställningar = {
-      lower: inst.lower,
-      upper: inst.upper,
-      numbers: inst.numbers,
-      symbols: inst.symbols,
-    };
-
-    const pw = window.genereraLösenord(inst.längd, inställningar);
-    display.textContent = pw || "Fel vid generering";
-    console.log("🔁 Nytt förhandslösenord:", pw);
   }
 
-  regenBtn.addEventListener("click", genereraPreview);
-  copyBtn.addEventListener("click", () => {
-    const pw = display.textContent;
-    navigator.clipboard.writeText(pw).then(() => {
-      console.log("📋 Förhandslösenord kopierat:", pw);
+  if (knapp) {
+    knapp.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i>';
+    knapp.setAttribute("data-tippy-content", "Generera nytt säkert lösenord");
+    knapp.addEventListener("click", genereraPreview);
+  }
+
+  if (kopiera) {
+    kopiera.innerHTML = '<i class="fa-solid fa-copy"></i>';
+    kopiera.setAttribute("data-tippy-content", "Kopiera förhandslösenordet");
+    kopiera.addEventListener("click", () => {
+      const text = previewEl?.textContent;
+      if (text) navigator.clipboard.writeText(text);
     });
-  });
+  }
 
   genereraPreview();
 });

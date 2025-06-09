@@ -1,6 +1,7 @@
-// script.js - v4
+// script.js - v9
+// commit: Åtgärdat ordfrashantering, korrekt längd, preview-funktion och knappikoner
 
-console.log("🔐 script.js v4 laddad");
+console.log("🔐 script.js v9 laddad");
 
 // ********** START Sektion: Hjälpfunktioner **********
 
@@ -49,14 +50,20 @@ function genereraLösenord(längd, inställningar) {
 
 
 // ********** START Sektion: DOM-hantering **********
-
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("generatorForm");
   const table = document.getElementById("resultTable").querySelector("tbody");
   const exportBtn = document.getElementById("exportBtn");
   const resetBtn = document.getElementById("resetBtn");
+  const passphraseBox = document.getElementById("usePassphrase");
+  const optionBoxes = ["useLower", "useUpper", "useNumbers", "useSymbols"].map(id => document.getElementById(id));
 
   const genererade = [];
+
+  // Toggla andra boxar om "Använd ordfras" är vald
+  passphraseBox.addEventListener("change", () => {
+    optionBoxes.forEach(el => el.disabled = passphraseBox.checked);
+  });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -66,35 +73,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const längd = parseInt(document.getElementById("length").value, 10);
     const antal = parseInt(document.getElementById("amount").value, 10);
+
+    const användOrdfras = passphraseBox.checked;
+
     const inställningar = {
       lower: document.getElementById("useLower").checked,
       upper: document.getElementById("useUpper").checked,
       numbers: document.getElementById("useNumbers").checked,
-      symbols: document.getElementById("useSymbols").checked,
+      symbols: document.getElementById("useSymbols").checked
     };
 
-    const aktivaTyper = Object.values(inställningar).filter(Boolean).length;
-    if (!aktivaTyper) return alert("Välj minst en teckentyp.");
-    if (längd < aktivaTyper) return alert(`Lösenordet måste vara minst ${aktivaTyper} tecken långt.`);
-
     for (let i = 0; i < antal; i++) {
-      const pw = genereraLösenord(längd, inställningar);
-      if (!pw || pw.length !== längd) continue;
+      let lösenord = användOrdfras && window.genereraPassphrase
+        ? window.genereraPassphrase()
+        : genereraLösenord(längd, inställningar);
 
-      const styrka = beräknaStyrka(pw);
+      if (!lösenord) continue;
+
+      const styrka = beräknaStyrka(lösenord);
 
       const rad = document.createElement("tr");
       const tdPw = document.createElement("td");
       const tdCopy = document.createElement("td");
       const knapp = document.createElement("button");
 
-      tdPw.innerHTML = `${pw} <span class="tag-${styrka}">(${styrka})</span>`;
-      knapp.textContent = "📋";
-      knapp.className = "button-small";
+      tdPw.innerHTML = `${lösenord} <span class="tag-${styrka}">(${styrka})</span>`;
+      knapp.innerHTML = '<i class="fa-solid fa-copy"></i>';
+      knapp.className = "icon-button";
       knapp.setAttribute("data-tippy-content", "Kopiera lösenordet");
       knapp.addEventListener("click", () => {
-        navigator.clipboard.writeText(pw).then(() => {
-          console.log("✅ Lösenord kopierat:", pw);
+        navigator.clipboard.writeText(lösenord).then(() => {
+          console.log("✅ Lösenord kopierat:", lösenord);
         });
       });
 
@@ -103,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       rad.appendChild(tdCopy);
       table.appendChild(rad);
 
-      genererade.push({ lösenord: pw, styrka });
+      genererade.push({ lösenord, styrka });
     }
 
     if (genererade.length) {
@@ -122,6 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   window.genereradeLösenord = () => genererade;
+  window.genereraLösenord = genereraLösenord;
 });
-
 // ********** SLUT Sektion: DOM-hantering **********
