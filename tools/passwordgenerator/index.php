@@ -10,28 +10,41 @@ include '../../includes/layout-start.php';
     <?php include '../../includes/readme-icon.php'; ?>
   </h1>
 
+  <!-- ********** START Sektion: Förhandslösenord ********** -->
+  <div class="form-group">
+    <label data-tippy-content="Ett starkt exempel baserat på dina aktuella inställningar.">Förhandsvisning (exempel)</label>
+    <div class="center" style="gap: 0.75rem; flex-wrap: wrap;">
+      <h2 id="previewDisplay" class="mono" style="font-weight: 600;"></h2>
+      <div>
+        <button id="regenPreview" class="button-small" aria-label="Generera nytt lösenord" data-tippy-content="Generera nytt lösenord"><i class="fa-solid fa-rotate-right"></i></button>
+        <button id="copyPreview" class="button-small" aria-label="Kopiera lösenord" data-tippy-content="Kopiera lösenord"><i class="fa-solid fa-copy"></i></button>
+      </div>
+    </div>
+  </div>
+  <!-- ********** SLUT Sektion: Förhandslösenord ********** -->
+
   <!-- ********** START Sektion: Formulär ********** -->
   <form id="generatorForm" class="form-group">
     <div class="form-group">
       <label for="length" data-tippy-content="Hur många tecken varje lösenord ska innehålla. Rekommenderat: minst 12.">Lösenordslängd (4–128)</label>
-      <input type="number" id="length" class="input" min="4" max="128" value="16" aria-label="Lösenordslängd">
+      <input type="number" id="length" class="input" min="4" max="128" value="24" aria-label="Lösenordslängd">
     </div>
 
     <div class="form-group">
-      <label for="amount" data-tippy-content="Hur många unika lösenord du vill generera samtidigt.">Antal lösenord</label>
+      <label for="amount" data-tippy-content="Hur många lösenord du vill generera på en gång.">Antal lösenord</label>
       <input type="number" id="amount" class="input" min="1" max="100" value="1" aria-label="Antal lösenord">
     </div>
 
-    <div class="form-group" data-tippy-content="Välj vilka typer av tecken som ska kunna användas. Minst en måste vara vald.">
+    <div class="form-group" data-tippy-content="Välj vilka typer av tecken som ska användas i lösenordet.">
       <label class="checkbox"><input type="checkbox" id="useLower" checked> Små bokstäver (a–z)</label>
       <label class="checkbox"><input type="checkbox" id="useUpper" checked> Stora bokstäver (A–Z)</label>
       <label class="checkbox"><input type="checkbox" id="useNumbers" checked> Siffror (0–9)</label>
-      <label class="checkbox"><input type="checkbox" id="useSymbols"> Specialtecken (!@#...)</label>
+      <label class="checkbox"><input type="checkbox" id="useSymbols" checked> Specialtecken (!@#...)</label>
     </div>
 
     <div class="horizontal-tools">
-      <button type="submit" class="button" data-tippy-content="Klicka för att skapa lösenord enligt dina val.">Generera</button>
-      <button type="button" id="exportBtn" class="button hidden" data-tippy-content="Ladda ner lösenorden i olika format (txt, csv, json).">Exportera</button>
+      <button type="submit" class="button" data-tippy-content="Klicka för att generera lösenord med aktuella inställningar.">Generera</button>
+      <button type="button" id="exportBtn" class="button hidden" data-tippy-content="Exportera lösenord till fil (txt, csv, json).">Exportera</button>
       <button type="button" id="resetBtn" class="button hidden" data-tippy-content="Töm resultatlistan och börja om.">Rensa</button>
     </div>
   </form>
@@ -41,7 +54,7 @@ include '../../includes/layout-start.php';
   <table class="table mt-1" id="resultTable">
     <thead>
       <tr>
-        <th data-tippy-content="Ditt genererade lösenord visas här. Styrkan anges med färg: röd = svag, gul = medel, grön = stark.">Lösenord</th>
+        <th data-tippy-content="Här visas varje genererat lösenord tillsammans med dess styrka.">Lösenord</th>
         <th data-tippy-content="Tryck på knappen för att kopiera lösenordet till urklipp.">Kopiera</th>
       </tr>
     </thead>
@@ -53,3 +66,4 @@ include '../../includes/layout-start.php';
 <?php include '../../includes/layout-end.php'; ?>
 <script src="script.js" defer></script>
 <script src="export.js" defer></script>
+<script src="preview.js" defer></script>
