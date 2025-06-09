@@ -1,0 +1,26 @@
+# Ignorera Node.js-moduler
+node_modules/
+
+# PHP / Composer
+vendor/
+
+# VS Code-projektfiler
+.vscode/
+
+# OS-specifika skräpfiler
+.DS_Store
+Thumbs.db
+
+# Loggar
+*.log
+
+# Miljövariabler / hemligheter
+.env
+
+# Cache & temporära filer
+*.cache
+*.tmp
+
+# Deployment/SFTP-konfig
+sftp.json
+*.code-workspace
