@@ -17,7 +17,7 @@ $metaDescription = 'En teknisk och detaljerad beskrivning av testdata-generatorn
 
     <h2>Datakällor och struktur</h2>
     <p>
-      Testdatan hämtas dynamiskt från flera förberedda datakällor som lagras i databastabeller. Dessa inkluderar:
+      Testdatan hämtas  dynamiskt från flera förberedda datakällor som lagras i databastabeller. Dessa inkluderar:
     </p>
     <ul>
       <li><strong>Förnamn</strong> – Med koppling till kön (man, kvinna, okänd).</li>
