@@ -8,6 +8,7 @@ include '../../includes/layout-start.php';
 <main class="container">
   <h1 class="title">
     <?= $title ?>
+      <!--nedan kan strula och generera dubbla titlar på sidan. undersöks närmare-->
     <?php include '../../includes/readme-icon.php'; ?>
   </h1>
 

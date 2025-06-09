@@ -23,7 +23,7 @@ include '../../includes/layout-start.php';
       </div>
     </div>
   </div>
-  <?php include '../../includes/readme-icon.php'; ?>
+  <!--<?php include '../../includes/readme-icon.php'; ?>-->
   <!-- ********** SLUT Sektion: Förhandslösenord ********** -->
 
   <!-- ********** START Sektion: Formulär ********** -->
