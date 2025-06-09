@@ -5,7 +5,7 @@ include '../../includes/layout-start.php';
 ?>
 
 <main class="container">
-  <h1 class="title">
+  <h1 class="title" data-tippy-content="Skapa ett eller flera säkra lösenord med full kontroll på längd och innehåll.">
     <?= $title ?>
     <?php include '../../includes/readme-icon.php'; ?>
   </h1>
@@ -13,16 +13,16 @@ include '../../includes/layout-start.php';
   <!-- ********** START Sektion: Formulär ********** -->
   <form id="generatorForm" class="form-group">
     <div class="form-group">
-      <label for="length">Lösenordslängd (4–128)</label>
+      <label for="length" data-tippy-content="Hur många tecken varje lösenord ska innehålla. Rekommenderat: minst 12.">Lösenordslängd (4–128)</label>
       <input type="number" id="length" class="input" min="4" max="128" value="16" aria-label="Lösenordslängd">
     </div>
 
     <div class="form-group">
-      <label for="amount">Antal lösenord</label>
+      <label for="amount" data-tippy-content="Hur många unika lösenord du vill generera samtidigt.">Antal lösenord</label>
       <input type="number" id="amount" class="input" min="1" max="100" value="1" aria-label="Antal lösenord">
     </div>
 
-    <div class="form-group">
+    <div class="form-group" data-tippy-content="Välj vilka typer av tecken som ska kunna användas. Minst en måste vara vald.">
       <label class="checkbox"><input type="checkbox" id="useLower" checked> Små bokstäver (a–z)</label>
       <label class="checkbox"><input type="checkbox" id="useUpper" checked> Stora bokstäver (A–Z)</label>
       <label class="checkbox"><input type="checkbox" id="useNumbers" checked> Siffror (0–9)</label>
@@ -30,9 +30,9 @@ include '../../includes/layout-start.php';
     </div>
 
     <div class="horizontal-tools">
-      <button type="submit" class="button" data-tippy-content="Generera lösenord enligt dina val">Generera</button>
-      <button type="button" id="exportBtn" class="button hidden" data-tippy-content="Exportera genererade lösenord">Exportera</button>
-      <button type="button" id="resetBtn" class="button hidden" data-tippy-content="Rensa resultatlistan">Rensa</button>
+      <button type="submit" class="button" data-tippy-content="Klicka för att skapa lösenord enligt dina val.">Generera</button>
+      <button type="button" id="exportBtn" class="button hidden" data-tippy-content="Ladda ner lösenorden i olika format (txt, csv, json).">Exportera</button>
+      <button type="button" id="resetBtn" class="button hidden" data-tippy-content="Töm resultatlistan och börja om.">Rensa</button>
     </div>
   </form>
   <!-- ********** SLUT Sektion: Formulär ********** -->
@@ -41,8 +41,8 @@ include '../../includes/layout-start.php';
   <table class="table mt-1" id="resultTable">
     <thead>
       <tr>
-        <th data-tippy-content="Lösenordet som genererats">Lösenord</th>
-        <th data-tippy-content="Klicka för att kopiera">Kopiera</th>
+        <th data-tippy-content="Ditt genererade lösenord visas här. Styrkan anges med färg: röd = svag, gul = medel, grön = stark.">Lösenord</th>
+        <th data-tippy-content="Tryck på knappen för att kopiera lösenordet till urklipp.">Kopiera</th>
       </tr>
     </thead>
     <tbody></tbody>

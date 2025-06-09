@@ -1,6 +1,6 @@
-// script.js - v3
+// script.js - v4
 
-console.log("🔐 script.js v3 laddad");
+console.log("🔐 script.js v4 laddad");
 
 // ********** START Sektion: Hjälpfunktioner **********
 
@@ -61,6 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    table.innerHTML = '';
+    genererade.length = 0;
+
     const längd = parseInt(document.getElementById("length").value, 10);
     const antal = parseInt(document.getElementById("amount").value, 10);
     const inställningar = {
@@ -76,7 +79,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (let i = 0; i < antal; i++) {
       const pw = genereraLösenord(längd, inställningar);
-      if (!pw) continue;
+      if (!pw || pw.length !== längd) continue;
+
       const styrka = beräknaStyrka(pw);
 
       const rad = document.createElement("tr");
@@ -117,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("🧹 Resultat rensat");
   });
 
-  // Gör genererade lösenord tillgängliga för export.js
   window.genereradeLösenord = () => genererade;
 });
 
