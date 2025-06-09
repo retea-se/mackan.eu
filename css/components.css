@@ -1,7 +1,7 @@
-/* ******************* components.css - v4 ******************* */
+/* ******************* components.css - v5 ******************* */
 /* Ansvar: knappar, formulärfält, kort, tabeller, specialkomponenter */
 
-/* ------------------- Formulärgrupper ------------------- */
+/* === Formulärgrupper === */
 .form-group {
   margin-bottom: 1.5rem;
   display: flex;
@@ -18,7 +18,7 @@
   margin: 1rem 0;
 }
 
-/* ------------------- Knappar ------------------- */
+/* === Knappar === */
 .button {
   font-family: var(--font-family-button, var(--font-family, 'Poppins', sans-serif));
   font-size: 1rem;
@@ -67,62 +67,32 @@
   background-color: #c0392b;
 }
 
-/* ------------------- Inputs & Textrutor ------------------- */
+/* === Inputs & Textrutor === */
+.input,
+textarea,
+select {
+  width: 100%;
+  padding: var(--spacing-unit);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
 .input {
   width: 20ch;
   min-width: 120px;
   max-width: 100%;
-  padding: var(--spacing-unit);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  font-family: var(--font-family);
-  font-size: 1rem;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .textarea {
-  width: 100%;
-  padding: var(--spacing-unit);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  font-family: var(--font-family);
-  font-size: 1rem;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
   resize: vertical;
 }
 
-/* ------------------- Dropdown / Select ------------------- */
-select {
-  width: 100%;
-  padding: var(--spacing-unit);
-  border-radius: var(--border-radius);
-  font-family: var(--font-family);
-  font-size: 1rem;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-select:focus {
-  border-color: var(--primary-color);
-  outline: none;
-}
-
-/* ------------------- Select + Option fix för dark mode ------------------- */
-select {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-  padding: var(--spacing-unit);
-  border-radius: var(--border-radius);
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
+/* Dark mode för select/option */
 [data-theme="dark"] select {
   background-color: #222;
   color: #eee;
@@ -130,11 +100,11 @@ select {
 }
 
 [data-theme="dark"] option {
-  background-color: #222; /* vissa webbläsare kräver hårdkodad färg */
+  background-color: #222;
   color: #eee;
 }
 
-/* ------------------- Kort ------------------- */
+/* === Kort === */
 .card {
   padding: 1rem;
   margin-top: 2rem;
@@ -154,14 +124,14 @@ select {
   border-radius: 4px;
 }
 
-/* ------------------- Tabeller ------------------- */
+/* === Tabeller === */
 .table {
   width: 100%;
   min-width: 950px;
   border-collapse: collapse;
   background-color: var(--table-bg);
-  margin: 0;
   color: var(--table-fg);
+  margin: 0;
 }
 
 .table th,
@@ -169,7 +139,9 @@ select {
   padding: 12px 16px;
   border: 1px solid var(--table-border);
   text-align: left;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-all;
+  max-width: 100%;
 }
 
 .table th {
@@ -184,7 +156,7 @@ select {
   background-color: var(--table-row-alt-bg);
 }
 
-/* ------------------- Totalsträcka / Info-rad ------------------- */
+/* === Info-rad & toast === */
 .info-text {
   padding: 0.75rem 1rem;
   font-family: monospace;
@@ -197,7 +169,6 @@ select {
   margin: 0;
 }
 
-/* ------------------- Toast ------------------- */
 .toast {
   visibility: hidden;
   min-width: 160px;
@@ -222,7 +193,7 @@ select {
   transform: translateY(0);
 }
 
-/* ------------------- Terminal-output ------------------- */
+/* === Terminal-output === */
 .terminal-output {
   background: var(--card-background, #111);
   color: var(--text-color, #00ff88);
@@ -253,7 +224,7 @@ select {
   background: #00dd77;
 }
 
-/* ------------------- Infoikon vid h1 ------------------- */
+/* === Infoikon vid rubriker === */
 .info-link-floating {
   margin-left: 0.5rem;
   font-size: 1rem;
@@ -274,16 +245,12 @@ select {
   background-color: var(--hover-color);
 }
 
-.info-link-floating.hidden {
-  display: none;
-}
-
 [data-theme="dark"] .info-link-floating {
   background-color: #555;
   color: #fff;
 }
 
-/* ------------------- Kortsamling på startsida ------------------- */
+/* === Menykort på startsida === */
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -325,7 +292,7 @@ select {
   color: var(--text-color);
 }
 
-/* Info-länk med ikon */
+/* === Info-länk inline === */
 .info-link-inline {
   color: var(--text-color);
   margin-left: 0.5rem;
@@ -336,45 +303,8 @@ select {
 .info-link-inline:hover {
   color: var(--hover-color);
 }
-select {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-  padding: var(--spacing-unit);
-  border-radius: var(--border-radius);
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
 
-[data-theme="dark"] select {
-  background-color: #222;
-  color: #eee;
-  border-color: #444;
-}
-/* ------------------- Select + Option fix för dark mode ------------------- */
-select {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-  padding: var(--spacing-unit);
-  border-radius: var(--border-radius);
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
-[data-theme="dark"] select {
-  background-color: #222;
-  color: #eee;
-  border-color: #444;
-}
-
-[data-theme="dark"] option {
-  background-color: #222; /* vissa webbläsare kräver hårdkodad färg */
-  color: #eee;
-}
-/* ******************* START tag-styrka ******************* */
+/* === Lösenordsstyrka-taggar === */
 .tag-svag {
   color: #fff;
   background-color: #e74c3c;
@@ -401,4 +331,5 @@ select {
   font-size: 0.8em;
   margin-left: 0.5em;
 }
-/* ******************* SLUT tag-styrka ******************* */
+
+/* ******************* SLUT components.css - v5 ******************* */
