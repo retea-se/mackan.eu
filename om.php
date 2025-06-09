@@ -9,5 +9,3 @@
 </main>
 
 <?php include 'includes/layout-end.php'; ?>
-</body>
-</html>
