@@ -27,17 +27,28 @@ function versalStart(str) {
 
 function generatePassphrase(maxTecken = 20) {
   if (ordlista.length === 0) return "[ordlista saknas]";
+  let försök = 0;
   let resultat = [];
   let total = 0;
 
-  while (true) {
-    const nyttOrd = versalStart(slumpaOrd());
-    const tillagt = resultat.length === 0 ? nyttOrd.length : nyttOrd.length + 1; // +1 för bindestreck
-    if ((total + tillagt) > maxTecken) break;
-    resultat.push(nyttOrd);
-    total += tillagt;
+  // Försök hitta minst två ord, annars nöj dig med ett
+  while (försök < 10) {
+    resultat = [];
+    total = 0;
+    while (true) {
+      const nyttOrd = versalStart(slumpaOrd());
+      const tillagt = resultat.length === 0 ? nyttOrd.length : nyttOrd.length + 1;
+      if ((total + tillagt) > maxTecken) break;
+      resultat.push(nyttOrd);
+      total += tillagt;
+    }
+    if (resultat.length >= 2) break;
+    försök++;
   }
-
+  // Om det inte gick att få två ord, ta ett ord om det får plats
+  if (resultat.length === 1) return resultat[0];
+  // Om inget ord får plats, visa fel
+  if (resultat.length === 0) return "[för kort längd]";
   return resultat.join("-");
 }
 
