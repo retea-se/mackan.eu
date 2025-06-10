@@ -127,7 +127,7 @@ select {
 /* === Tabeller === */
 .table {
   width: 100%;
-  min-width: 950px;
+  min-width: 0; /* eller t.ex. 320px om du vill ha en minsta bredd */
   border-collapse: collapse;
   background-color: var(--table-bg);
   color: var(--table-fg);
@@ -382,4 +382,11 @@ select {
   flex-shrink: 0;
   display: flex;
   gap: 0.5rem;
+}
+
+/* === Responsiv tabell === */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }

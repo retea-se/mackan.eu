@@ -43,12 +43,14 @@ $metaDescription = 'Generera säkra lösenord och ordfraser direkt i webbläsare
   <!-- ********** SLUT Sektion: Formulär ********** -->
 
   <!-- ********** START Sektion: Resultattabell ********** -->
-  <table class="table" id="resultTable">
-    <thead>
-      <tr><th>Lösenord</th><th>Åtgärd</th></tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table" id="resultTable">
+      <thead>
+        <tr><th>Lösenord</th><th>Åtgärd</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
   <button id="exportBtn" class="button hidden" data-tippy-content="Exportera till fil">Exportera</button>
   <button id="resetBtn" class="button hidden" data-tippy-content="Rensa resultat">Rensa</button>
   <!-- ********** SLUT Sektion: Resultattabell ********** -->
