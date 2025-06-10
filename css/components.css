@@ -356,3 +356,24 @@ select {
   outline-offset: 2px;
 }
 /* ******************* SLUT icon-button ******************* */
+/* Lägg till i din CSS-fil */
+.preview-password-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.preview-password-row #previewText {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.preview-actions {
+  flex-shrink: 0;
+  display: flex;
+  gap: 0.5rem;
+}

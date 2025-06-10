@@ -10,14 +10,16 @@ $metaDescription = 'Generera säkra lösenord och ordfraser direkt i webbläsare
 
   <!-- ********** START Sektion: Förhandslösenord ********** -->
   <section class="preview-section">
-    <h2 class="preview-password">
+    <h2 class="preview-password-row">
       <span id="previewText">Förhandslösenord</span>
-      <button id="previewRefresh" class="icon-button" aria-label="Generera nytt lösenord" data-tippy-content="Generera nytt lösenord">
-        <i class="fa-solid fa-rotate"></i>
-      </button>
-      <button id="previewCopy" class="icon-button" aria-label="Kopiera lösenord" data-tippy-content="Kopiera lösenord">
-        <i class="fa-solid fa-copy"></i>
-      </button>
+      <span class="preview-actions">
+        <button id="previewRefresh" class="icon-button" aria-label="Generera nytt lösenord" data-tippy-content="Generera nytt lösenord">
+          <i class="fa-solid fa-rotate"></i>
+        </button>
+        <button id="previewCopy" class="icon-button" aria-label="Kopiera lösenord" data-tippy-content="Kopiera lösenord">
+          <i class="fa-solid fa-copy"></i>
+        </button>
+      </span>
     </h2>
   </section>
   <!-- ********** SLUT Sektion: Förhandslösenord ********** -->

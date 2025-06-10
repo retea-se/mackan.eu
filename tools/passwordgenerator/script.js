@@ -84,8 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     for (let i = 0; i < antal; i++) {
-      let lösenord = användOrdfras && window.genereraPassphrase
-        ? window.genereraPassphrase()
+      let lösenord = användOrdfras && window.generatePassphrase
+        ? window.generatePassphrase(längd)
         : genereraLösenord(längd, inställningar);
 
       if (!lösenord) continue;
