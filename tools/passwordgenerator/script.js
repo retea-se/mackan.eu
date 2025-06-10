@@ -88,28 +88,40 @@ document.addEventListener("DOMContentLoaded", () => {
         ? window.generatePassphrase(längd)
         : genereraLösenord(längd, inställningar);
 
+      console.log("Genererat lösenord:", JSON.stringify(lösenord));
+
       if (!lösenord) continue;
 
       const styrka = beräknaStyrka(lösenord);
 
       const rad = document.createElement("tr");
       const tdPw = document.createElement("td");
-      const tdCopy = document.createElement("td");
-      const knapp = document.createElement("button");
+      tdPw.className = "pw-cell";
 
-      tdPw.innerHTML = `${lösenord} <span class="tag-${styrka}">(${styrka})</span>`;
-      knapp.innerHTML = '<i class="fa-solid fa-copy"></i>';
-      knapp.className = "icon-button";
-      knapp.setAttribute("data-tippy-content", "Kopiera lösenordet");
-      knapp.addEventListener("click", () => {
-        navigator.clipboard.writeText(lösenord).then(() => {
-          console.log("✅ Lösenord kopierat:", lösenord);
-        });
+      // Skapa lösenordstext
+      const pwText = document.createTextNode(lösenord + " ");
+
+      // Skapa färgad styrka-tag inom parentes
+      const tag = document.createElement("span");
+      tag.className = `tag-${styrka}`;
+      tag.textContent = `(${styrka})`;
+
+      tdPw.appendChild(pwText);
+      tdPw.appendChild(tag);
+
+      const tdActions = document.createElement("td");
+      const copyBtn = document.createElement("button");
+      copyBtn.className = "icon-button";
+      copyBtn.setAttribute("aria-label", "Kopiera lösenord");
+      copyBtn.setAttribute("data-tippy-content", "Kopiera lösenord");
+      copyBtn.innerHTML = '<i class="fa-solid fa-copy"></i>';
+      copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(lösenord);
       });
 
-      tdCopy.appendChild(knapp);
+      tdActions.appendChild(copyBtn);
       rad.appendChild(tdPw);
-      rad.appendChild(tdCopy);
+      rad.appendChild(tdActions);
       table.appendChild(rad);
 
       genererade.push({ lösenord, styrka });

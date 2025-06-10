@@ -144,6 +144,12 @@ select {
   max-width: 100%;
 }
 
+.table td {
+  white-space: pre;      /* Visa på en rad, även mellanslag */
+  word-break: normal;    /* Bryt inte mitt i ord */
+  max-width: none;       /* Ingen maxbredd */
+}
+
 .table th {
   background-color: var(--table-header-bg);
   color: var(--table-header-fg);
