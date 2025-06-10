@@ -6,16 +6,16 @@ $metaDescription = 'Generera säkra lösenord och ordfraser direkt i webbläsare
 <?php include '../../includes/layout-start.php'; ?>
 
 <main class="container">
-  <?php include '../../includes/title.php'; ?>
+
 
   <!-- ********** START Sektion: Förhandslösenord ********** -->
   <section class="preview-section">
     <h2 class="preview-password">
       <span id="previewText">Förhandslösenord</span>
-      <button id="previewRefresh" class="icon-button" aria-label="Generera nytt lösenord">
+      <button id="previewRefresh" class="icon-button" aria-label="Generera nytt lösenord" data-tippy-content="Generera nytt lösenord">
         <i class="fa-solid fa-rotate"></i>
       </button>
-      <button id="previewCopy" class="icon-button" aria-label="Kopiera lösenord">
+      <button id="previewCopy" class="icon-button" aria-label="Kopiera lösenord" data-tippy-content="Kopiera lösenord">
         <i class="fa-solid fa-copy"></i>
       </button>
     </h2>
@@ -47,8 +47,8 @@ $metaDescription = 'Generera säkra lösenord och ordfraser direkt i webbläsare
     </thead>
     <tbody></tbody>
   </table>
-  <button id="exportBtn" class="button hidden">Exportera</button>
-  <button id="resetBtn" class="button hidden">Rensa</button>
+  <button id="exportBtn" class="button hidden" data-tippy-content="Exportera till fil">Exportera</button>
+  <button id="resetBtn" class="button hidden" data-tippy-content="Rensa resultat">Rensa</button>
   <!-- ********** SLUT Sektion: Resultattabell ********** -->
 </main>
 
@@ -57,6 +57,16 @@ $metaDescription = 'Generera säkra lösenord och ordfraser direkt i webbläsare
 <script src="preview.js"></script>
 <script src="passphrase.js"></script>
 <script src="export.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (window.tippy) {
+      tippy('[data-tippy-content]', {
+        theme: 'light',
+        delay: [100, 0],
+      });
+    }
+  });
+</script>
 <!-- ********** SLUT Sektion: Scripts ********** -->
 
 <?php include '../../includes/layout-end.php'; ?>

@@ -97,5 +97,11 @@ return [
   'href'  => '/tools/testdata/index.php',
   'icon'  => 'fa-address-book'
 ]
+,
+        [
+  'title' => 'Lösenordsgenerator',
+  'href'  => '/tools/passwordgenerator/index.php',
+  'icon'  => 'fa-address-book'
+]
   // Fler verktyg kan läggas till här
 ];
