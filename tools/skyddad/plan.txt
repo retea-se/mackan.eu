@@ -1,0 +1,164 @@
+# 📋 Projektplan: Skyddad
+**Version:** 1.0
+**Datum:** `YYYY-MM-DD`
+**Namn:** Skyddad
+
+---
+
+## 🔍 1. Sammanfattning
+Utöka befintlig lösenordsgenerator med en **säker, självhostad lösning** för att:
+- Generera **tillfälliga länkar** till hemligheter (lösenord eller valfri text)
+- Begränsa till **1 visning**
+- Automatisk förstöring efter **24 timmar**
+- **Kryptera** all data (AES-256)
+- Möjlighet att dela mer text än bara lösenord (t.ex. meddelanden, API-nycklar)
+
+---
+
+## ⚙️ 2. Teknisk Översikt
+
+### 🔧 Backend
+| Komponent       | Teknik               | Ansvar                                   |
+|-----------------|----------------------|------------------------------------------|
+| Server          | Apache/Nginx + PHP   | Hanterar logik & lagring                 |
+| Databas         | SQLite/MySQL         | Lagrar krypterade lösenord               |
+| Kryptering      | OpenSSL (AES-256-CBC)| Säkerställer dataskydd                   |
+| Säkerhet        | HTTPS (Let’s Encrypt)| Krypterad kommunikation                  |
+
+### 🎨 Frontend
+| Komponent       | Teknik         | Ansvar                              |
+|-----------------|----------------|-------------------------------------|
+| Formulär        | HTML + JS      | Inmatning av hemlighet (valfri text) |
+| Gränssnitt      | CSS            | Visa länk & hemlighet               |
+
+---
+
+## 🛠️ 3. Implementering
+
+### 📂 Filstruktur
+/password-share
+├── includes/
+│ ├── config.php # Krypteringsnyckel
+│ └── db.php # Databaskoppling
+├── create.php # Sparar hemlighet
+├── view.php # Visar & raderar
+└── templates/
+└── share-form.php # Delningsformulär
+
+### 💾 Databasschema (SQL)
+```sql
+CREATE TABLE passwords (
+    id VARCHAR(32) PRIMARY KEY,
+    encrypted_data TEXT NOT NULL,
+    views_left INT DEFAULT 1,
+    expires_at INT NOT NULL  -- Unix timestamp
+);
+```
+> **Notera:** `encrypted_data` kan nu innehålla valfri text, inte bara lösenord.
+
+API-Endpoints
+create.php
+<?php
+$password = $_POST['password'];
+$id = bin2hex(random_bytes(16));
+$encrypted = openssl_encrypt($password, 'AES-256-CBC', ENCRYPTION_KEY);
+// Spara i databas...
+echo "https://din-webb.se/view.php?id=$id";
+?>
+
+view.php
+
+<?php
+$id = $_GET['id'];
+// Hämta från DB → dekryptera → radera
+echo "Lösenord: $decrypted_password";
+?>
+
+4. Säkerhetsåtgärder
+✅ HTTPS (obligatoriskt)
+
+✅ CSRF-skydd på alla formulär
+
+✅ Rate Limiting (max 10 förfrågningar/minut)
+
+✅ Loggning av IP-adresser för rate limiting och övervakning
+
+✅ Säkra filbehörigheter på config.php (endast läsbart för webbservern)
+
+✅ Använd environment variables för känsliga nycklar (t.ex. ENCRYPTION_KEY)
+
+> **OBS!**  
+> För närvarande ligger databasuppgifter och krypteringsnycklar i källkoden.  
+> **Detta måste flyttas till miljövariabler (environment variables) innan produktion**  
+> för att undvika säkerhetsrisker och hårdkodade credentials.
+
+✅ Automatisk städning (cronjob)
+0 0 * * * php /path/to/cleanup.php  # Körs dagligen
+
+ 5. Testplan
+Testfall	Förväntat Resultat
+Skapa länk	Krypterat lösenord sparas i DB
+Första visning	Lösenord visas → raderas från DB
+Andra visning	Fel: "Lösenordet har visats"
+Förfallotid (24h)	Fel: "Lösenordet är utgånget"
+⏳ 6. Tidsplan
+Aktivitet	Tid (h)	Status
+Backend	8	[ ]
+Frontend	4	[ ]
+Testning	3	[ ]
+Dokumentation	2	[ ]
+Totalt	17
+⚠️ 7. Riskhantering
+Risk	Åtgärd
+Databasläckage	Kryptera all data med AES-256
+Gissningsbara länkar	Använd random_bytes(16) för ID:n
+Brute force	Rate limiting + IP-begränsning
+📄 8. Leverabler
+Funktionell backend (create.php, view.php)
+
+Frontend-formulär för delning
+
+Dokumentation (README.md)
+
+✍️ 9. Godkännande
+Namn	Roll	Datum	Signatur
+[Ditt namn]	Projektledare	[YYYY-MM-DD]	_________
+Bifogat:
+
+Källkod
+
+Databasschema
+
+Testprotokoll
+
+Skriv ut denna rapport för referens 🖨️
+
+---
+
+## 🚀 Möjliga förbättringar för framtida versioner
+
+- **Förbättrad integritet:**
+  Möjlighet att lägga till en lösenfras/passphrase för extra skydd. Endast de som har lösenfrasen kan visa hemligheten.
+
+- **Självförstörande länkar:**
+  Hemligheten raderas permanent från servern efter visning eller när den har gått ut. Ingen kopia sparas.
+
+- **Efterlevnad och säkerhet:**
+  Utforma lösningen så att den kan hjälpa till att möta krav enligt SOC2, GDPR, CCPA och HIPAA för säker informationshantering.
+  Information om efterlevnad (t.ex. SOC2, ISO 27001) kan dokumenteras för transparens.
+
+- **Säker delning inom team:**
+  Möjlighet att dela känsliga uppgifter (t.ex. användarnamn/lösenord, API-nycklar) säkert med teammedlemmar.
+
+- **Förhindra läckor:**
+  Förhindra att känsliga uppgifter hamnar i e-post eller chattloggar.
+
+- **Åtkomstloggning:**
+  Möjlighet att logga när och av vem en hemlighet har visats (utan att kräva registrering).
+
+- **Enforce security protocols:**
+  Stöd för att upprätthålla säkerhetsrutiner vid hantering av känslig information.
+
+> **Not:** Ingen möjlighet för användarregistrering ska införas.
+
+---

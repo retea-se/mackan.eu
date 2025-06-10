@@ -1,0 +1,26 @@
+<?php
+// skapa.php - v4
+// git commit: Uppdatera includes-sökvägar
+
+require_once __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/csrf.php';
+require_once __DIR__ . '/includes/db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!validate_csrf_token($_POST['csrf_token'] ?? '')) {
+        die('❌ Ogiltig CSRF-token');
+    }
+
+    $password = $_POST['password'] ?? '';
+    $id = bin2hex(random_bytes(16));
+    $encrypted = openssl_encrypt($password, 'AES-256-CBC', ENCRYPTION_KEY, 0, ENCRYPTION_IV);
+    $expires = time() + 86400;
+
+    $stmt = $db->prepare("INSERT INTO passwords (id, encrypted_data, views_left, expires_at) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$id, $encrypted, 1, $expires]);
+
+    $token = hash_hmac('sha256', $id, TOKEN_SECRET);
+    $url = "https://mackan.eu/tools/skyddad/visa.php?id=$id&token=$token";
+
+    echo "<p><strong>✅ Skapad länk:</strong><br><a href=\"$url\">$url</a></p>";
+}

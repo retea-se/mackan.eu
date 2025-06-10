@@ -84,3 +84,11 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
 }
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+html[data-theme="dark"] .container,
+html[data-theme="dark"] .card,
+html[data-theme="dark"] main {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}

@@ -101,7 +101,13 @@ return [
         [
   'title' => 'Lösenordsgenerator',
   'href'  => '/tools/passwordgenerator/index.php',
-  'icon'  => 'fa-address-book'
+  'icon'  => 'fa-key'
+]
+,
+        [
+  'title' => 'Skyddad',
+  'href'  => '/tools/skyddad/index.php',
+  'icon'  => 'fa-shield-halved'
 ]
   // Fler verktyg kan läggas till här
 ];
