@@ -1,11 +1,27 @@
 <?php
-// config.php - v2
-// git commit: Lägg till TOKEN_SECRET för länkverifiering
+// config.php - v3
+// git commit: Lägg till stöd för .env-laddning och flytta känsliga nycklar
+
+$envPath = dirname(__DIR__) . '/.env';
+if (!file_exists($envPath)) {
+    die('❌ Fel: .env-fil saknas');
+}
+
+$lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+foreach ($lines as $line) {
+    if (str_starts_with(trim($line), '#') || !str_contains($line, '=')) continue;
+    [$name, $value] = explode('=', $line, 2);
+    putenv(trim($name) . '=' . trim($value));
+}
 
 // 🔐 Kryptering (AES-256-CBC)
-define('ENCRYPTION_KEY', '7f260289c15f5d39e7ec5fa0f99a2295a5d3d60bfd1ee7c6cbd9db0ae5f070e7');
-define('ENCRYPTION_IV', substr(hash('sha256', '1cf22c32fda8ff2dfc1aab3e447697ef'), 0, 16));
+$rawIv = getenv('ENCRYPTION_IV');
+define('ENCRYPTION_KEY', getenv('ENCRYPTION_KEY'));
+define('ENCRYPTION_IV', substr(hash('sha256', $rawIv), 0, 16));
 
 // 🔑 Token-skydd för visningslänk
-define('TOKEN_SECRET', 'e35cd3f123aa77db8f0e7f8fefc0aaf20c30f15e93eb3c7ab986e0dc147f2267');
-?>
+define('TOKEN_SECRET', getenv('TOKEN_SECRET'));
+
+// ✅ Debug (tillfälligt – ta bort efter test)
+# echo "<!-- ENCRYPTION_KEY: " . ENCRYPTION_KEY . " -->";
+

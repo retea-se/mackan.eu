@@ -1,45 +1,46 @@
+<!-- dela-handler.php - v5 -->
 <?php
-// dela-handler.php - v6
-// git commit: Visa länk snyggt i card med radbrytning och kopieraknapp
+error_log("📥 POST körs i dela-handler.php", 0);
 
-require_once __DIR__ . '/includes/config.php';
-require_once __DIR__ . '/includes/csrf.php';
-require_once __DIR__ . '/includes/db.php';
+// git commit: Byt ut $db mot $pdo (fix för undefined variable)
+
+require_once __DIR__ . '/includes/bootstrap.php';
 
 $result = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!validate_csrf_token($_POST['csrf_token'] ?? '')) {
-        $result = '❌ Ogiltig CSRF-token';
+    $csrf_token = $_POST['csrf_token'] ?? '';
+    if (!verifyCsrfToken($csrf_token)) {
+        $result = '<div class="error">❌ Ogiltig CSRF-token. Försök igen.</div>';
         return;
     }
 
-    $text = trim($_POST['secret'] ?? '');
-    if ($text === '') {
-        $result = '❌ Ingen text angiven.';
+    $secret = trim($_POST['secret'] ?? '');
+    if (empty($secret)) {
+        $result = '<div class="error">❌ Ingen text angiven.</div>';
         return;
     }
+
+    $encrypted = openssl_encrypt($secret, 'AES-256-CBC', ENCRYPTION_KEY, 0, ENCRYPTION_IV);
 
     $id = bin2hex(random_bytes(16));
-    $encrypted = openssl_encrypt($text, 'AES-256-CBC', ENCRYPTION_KEY, 0, ENCRYPTION_IV);
+    $token = hash_hmac('sha256', $id, TOKEN_SECRET);
     $expires = time() + 86400;
 
-    $stmt = $db->prepare("INSERT INTO passwords (id, encrypted_data, views_left, expires_at) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$id, $encrypted, 1, $expires]);
+    $stmt = $pdo->prepare("INSERT INTO passwords (id, encrypted_data, expires_at, views_left) VALUES (?, ?, ?, 1)");
+    $stmt->execute([$id, $encrypted, $expires]);
 
-    $token = hash_hmac('sha256', $id, TOKEN_SECRET);
-    $url = "https://mackan.eu/tools/skyddad/visa.php?id=$id&token=$token";
+    // Logga skapandet
+    $logStmt = $pdo->prepare("INSERT INTO log_events (event_type, secret_id, ip) VALUES (?, ?, ?)");
+    $logStmt->execute(['created', $id, $_SERVER['REMOTE_ADDR']]);
 
-$result = <<<HTML
-<h2 class="mb-1">Dela!</h2>
-<div class="card">
-  <div class="preview-password-row">
-    <span id="secretLink" style="word-break: break-word; font-family: monospace;">$url</span>
-    <div class="preview-actions">
-      <button type="button" class="button tiny" data-tippy-content="Kopiera länk" onclick="copyLink()">Kopiera</button>
-    </div>
-  </div>
+    $url = "https://$_SERVER[HTTP_HOST]/tools/skyddad/visa.php?id=$id&token=$token";
+
+    $result = <<<HTML
+<div class="success">
+  ✅ Länk skapad! <br>
+  <pre id="secretLink">$url</pre>
+  <button onclick="copyLink()" class="button tiny" data-tippy-content="Kopiera länken">Kopiera</button>
 </div>
 HTML;
-
 }

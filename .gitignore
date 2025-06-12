@@ -24,3 +24,5 @@ Thumbs.db
 # Deployment/SFTP-konfig
 sftp.json
 *.code-workspace
+
+tools/skyddad/.env

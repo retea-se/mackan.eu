@@ -1,9 +1,8 @@
 <?php
-// visa-handler.php - v4
-// git commit: Korrigera heredoc och säkra utskrift av dekrypterad text
+// visa-handler.php - v5
+// git commit: Byt till bootstrap och $pdo istället för config/db och $db
 
-require_once __DIR__ . '/includes/config.php';
-require_once __DIR__ . '/includes/db.php';
+require_once __DIR__ . '/includes/bootstrap.php';
 
 $result = '';
 
@@ -21,7 +20,7 @@ if (!hash_equals($expected_token, $token)) {
     return;
 }
 
-$stmt = $db->prepare("SELECT encrypted_data FROM passwords WHERE id = ? AND views_left > 0 AND expires_at > ?");
+$stmt = $pdo->prepare("SELECT encrypted_data FROM passwords WHERE id = ? AND views_left > 0 AND expires_at > ?");
 $stmt->execute([$id, time()]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -31,8 +30,14 @@ if (!$row) {
 }
 
 $decrypted = openssl_decrypt($row['encrypted_data'], 'AES-256-CBC', ENCRYPTION_KEY, 0, ENCRYPTION_IV);
-$stmt = $db->prepare("DELETE FROM passwords WHERE id = ?");
+
+// Ta bort efter visning
+$stmt = $pdo->prepare("DELETE FROM passwords WHERE id = ?");
 $stmt->execute([$id]);
+
+// Logga visningen
+$logStmt = $pdo->prepare("INSERT INTO log_events (event_type, secret_id, ip) VALUES (?, ?, ?)");
+$logStmt->execute(['viewed', $id, $_SERVER['REMOTE_ADDR']]);
 
 if (!$decrypted) {
     $result = '❌ Något gick fel vid dekryptering.';

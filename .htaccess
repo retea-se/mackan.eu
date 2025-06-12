@@ -114,3 +114,8 @@ Options -Indexes
   Header set Pragma "no-cache"
   Header set Expires 0
 </IfModule>
+
+<FilesMatch "^\.env$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

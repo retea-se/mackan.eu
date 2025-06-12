@@ -1,20 +1,17 @@
+<!-- mallar/dela-form.php - v2 -->
 <?php
-// mallar/dela-form.php - v5
-// git commit: Korrigera includes-sökväg relativt till mall
+require_once __DIR__ . '/../includes/csrf.php';
 
-if (!function_exists('generate_csrf_token')) {
-    require_once __DIR__ . '/../includes/csrf.php';
-}
+$csrf_token = generateCsrfToken();
 ?>
 
-<h2>Dela en hemlighet</h2>
-
 <form method="POST" action="dela.php">
-  <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
+  <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token) ?>">
 
-  <label for="secret"></label><br>
+  <label for="secret">Hemlig text:</label><br>
   <textarea id="secret" name="secret" rows="6" cols="50" required></textarea><br><br>
-<button type="submit" class="button" data-tippy-content="Skapa en unik engångslänk till texten ovan">Skapa delningslänk</button>
 
-
+  <button type="submit" class="button" data-tippy-content="Skapa en unik engångslänk till texten ovan">
+    Skapa delningslänk
+  </button>
 </form>

@@ -1,4 +1,6 @@
 <?php
+
+
 // tools/skyddad/index.php - v2
 $title = 'Skyddad delning';
 $metaDescription = 'Dela hemliga meddelanden via engångslänk som självförstörs efter visning.';

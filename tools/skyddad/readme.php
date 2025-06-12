@@ -1,5 +1,7 @@
 <?php
-// tools/skyddad/readme.php - v1
+// tools/skyddad/readme.php - v5
+// git commit: Förbättra tabellutseende och breddanpassning på desktop
+
 $title = 'Om Skyddad';
 $metaDescription = 'Lär dig hur Skyddad fungerar, vilka säkerhetsnivåer som används, och hur du skyddar dina hemliga texter via engångslänkar.';
 ?>
@@ -39,6 +41,20 @@ $metaDescription = 'Lär dig hur Skyddad fungerar, vilka säkerhetsnivåer som a
       <li>⌛ <strong>24h gräns</strong> för alla hemligheter.</li>
     </ul>
 
+    <h2>Förkortningar</h2>
+    <div class="table-wrapper">
+      <table class="table">
+        <thead><tr><th>Förkortning</th><th>Beskrivning</th></tr></thead>
+        <tbody>
+          <tr><td>CSRF</td><td>Cross-Site Request Forgery – skydd mot otillåtna formuläranrop</td></tr>
+          <tr><td>HMAC</td><td>Hash-based Message Authentication Code – skyddar länkar från att manipuleras</td></tr>
+          <tr><td>AES-256-CBC</td><td>Advanced Encryption Standard med 256-bitars nyckel och CBC-läge – stark kryptering</td></tr>
+          <tr><td>IP</td><td>Internet Protocol – används för att visa varifrån en händelse kommer</td></tr>
+          <tr><td>Cron</td><td>Automatiskt serverjobb som körs med jämna mellanrum</td></tr>
+        </tbody>
+      </table>
+    </div>
+
     <h2>Exempel</h2>
     <pre class="terminal-output">
 Text: "Min API-nyckel till staging: xyz123"
@@ -48,30 +64,35 @@ Genererad länk: https://mackan.eu/tools/skyddad/visa.php?id=...
     </pre>
 
     <h2>Status</h2>
-    <table class="table">
-      <thead><tr><th>Del</th><th>Vad det innebär</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td>🔐 CSRF-skydd</td><td>Skyddar formulär mot extern manipulation</td><td>✔</td></tr>
-        <tr><td>🔑 HMAC-token</td><td>Unik signatur i länken skyddar mot gissning</td><td>✔</td></tr>
-        <tr><td>🔏 AES-256</td><td>Kryptering innan lagring</td><td>✔</td></tr>
-        <tr><td>🗑 Självförstöring</td><td>Text tas bort efter visning</td><td>✔</td></tr>
-        <tr><td>⌛ 24h giltighet</td><td>Automatisk utgång efter ett dygn</td><td>✔</td></tr>
-        <tr><td>📁 Kodstruktur</td><td>Separata mappar för logik och mallar</td><td>✔</td></tr>
-        <tr><td>🧪 Felvisning</td><td>PHP-errors visas i dev-läge</td><td>✔</td></tr>
-      </tbody>
-    </table>
+    <div class="table-wrapper">
+      <table class="table">
+        <thead><tr><th>Del</th><th>Vad det innebär</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>🔐 CSRF-skydd</td><td>Skyddar formulär mot extern manipulation</td><td>✔</td></tr>
+          <tr><td>🔑 HMAC-token</td><td>Unik signatur i länken skyddar mot gissning</td><td>✔</td></tr>
+          <tr><td>🔏 AES-256</td><td>Kryptering innan lagring</td><td>✔</td></tr>
+          <tr><td>🗑 Självförstöring</td><td>Text tas bort efter visning</td><td>✔</td></tr>
+          <tr><td>⌛ 24h giltighet</td><td>Automatisk utgång efter ett dygn</td><td>✔</td></tr>
+          <tr><td>📁 Kodstruktur</td><td>Separata mappar för logik och mallar</td><td>✔</td></tr>
+          <tr><td>🧪 Felvisning</td><td>PHP-errors visas i dev-läge</td><td>✔</td></tr>
+          <tr><td>📊 Adminpanel</td><td>Visar antal skapade och visade texter</td><td>✔</td></tr>
+          <tr><td>📈 Statistikdiagram</td><td>Stapeldiagram via ECharts</td><td>✔</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Integritet</h2>
+    <p>Skyddad skyddar din hemlighet. Ingen loggning, ingen spårning, ingen insyn. Vi sparar ingen metadata eller klartext. Händelser i systemet är anonyma och visas endast i form av statistik eller totalsiffror.</p>
 
     <h2>Förslag på framtida utveckling</h2>
     <ul>
-      <li>🧹 <strong>Cron-städning</strong>: ta bort gamla hemligheter automatiskt</li>
-      <li>⏱ <strong>Rate limiting</strong>: begränsa försök per IP/min</li>
-      <li>📊 <strong>Statistikpanel</strong>: få översikt över användning</li>
-      <li>📂 <strong>Export som .txt</strong>: ladda ner hemlighet</li>
-      <li>📄 <strong>Loggning (anonym)</strong>: se när visning skett</li>
-      <li>📏 <strong>QR-kod till länk</strong>: för mobil/skrivare</li>
-      <li>🎨 <strong>Temastöd</strong>: Mörkt/ljust läge för UX</li>
-         <li>🎨 <strong>statistik</strong>: antal skapade</li>
-
+      <li>⏳ <strong>Livstid (TTL)</strong>: Användare kan välja giltighetstid</li>
+      <li>📂 <strong>Export som .txt</strong>: Möjlighet att ladda ned texten lokalt</li>
+      <li>📏 <strong>QR-kod</strong>: Generera QR för enklare delning</li>
+      <li>🔁 <strong>Delningshistoria</strong>: Lista över egna skapade länkar (lokalt)</li>
+      <li>🔒 <strong>PIN-skydd</strong>: Skydda länken med valfri kod</li>
+      <li>🌐 <strong>Språkstöd</strong>: Fler språkversioner av gränssnittet</li>
+      <li>📈 <strong>Avancerad adminpanel</strong>: Filter, export, fler vyer</li>
     </ul>
   </article>
 </main>
