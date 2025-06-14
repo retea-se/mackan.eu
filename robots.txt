@@ -1,4 +1,13 @@
+# robots.txt - v3
+# Blockera känsliga områden och förbättra SEO
+
 User-agent: *
 Disallow: /private/
 Disallow: /temp/
-Sitemap: https://mackan.eu/sitemap.xml
+Disallow: /admin/
+Disallow: /tools/skyddad/
+Disallow: /tools/**/admin.php
+Disallow: /*.log$
+Disallow: /*.txt$
+
+Sitemap: https://mackan.eu/sitemap.php

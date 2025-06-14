@@ -1,8 +1,6 @@
-<!-- dela-handler.php - v5 -->
 <?php
-error_log("📥 POST körs i dela-handler.php", 0);
-
-// git commit: Byt ut $db mot $pdo (fix för undefined variable)
+// dela-handler.php - v5
+// git commit: Byt till $pdo + loggning och fixad routing
 
 require_once __DIR__ . '/includes/bootstrap.php';
 
