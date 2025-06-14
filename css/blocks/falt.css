@@ -1,0 +1,79 @@
+/* ===================================================== */
+/* Fil: falt.css - v3                                     */
+/* Komponent: Fält (input/textarea/select/checkbox)      */
+/* Struktur: BEM (.falt__input, .falt__textarea, etc.)   */
+/* Syfte: Stil för formulärfält med etikett och status   */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Endast fält relaterade till inmatning               */
+/* - Design tokens från variables.css                    */
+/* - Stöd för mörkt tema, felstatus, fokus               */
+/* ❌ Får INTE innehålla:                                 */
+/* - Globala regler                                      */
+/* - Andra komponenters klasser                          */
+/* ===================================================== */
+
+/* === Etikett ovanför fält === */
+.falt__etikett {
+  font-weight: 500;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+/* === Inmatningsfält, textarea och dropdown/select === */
+.falt__input,
+.falt__textarea,
+.falt__dropdown {
+  width: 100%;
+  padding: var(--spacing-unit);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: border-color 0.2s ease;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+/* === Felmeddelande eller valideringsfel === */
+.falt--fel .falt__input,
+.falt--fel .falt__textarea,
+.falt--fel .falt__dropdown {
+  border-color: var(--error-color);
+  background-color: #ffeef0;
+}
+
+/* === Hjälptext under fältet === */
+.falt__hjälp {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.75;
+}
+
+/* === Fokusstil === */
+.falt__input:focus,
+.falt__textarea:focus,
+.falt__dropdown:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+/* === Checkbox-rad (label + checkbox) === */
+.falt__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+/* === Temastöd för fält === */
+[data-theme="dark"] .falt__input,
+[data-theme="dark"] .falt__textarea,
+[data-theme="dark"] .falt__dropdown {
+  background-color: #222;
+  color: #eee;
+  border-color: #444;
+}

@@ -1,0 +1,71 @@
+## Instruktion till AI
+- Gå igenom filens HTML och ersätt alla klassnamn enligt nedanstående tabell.
+- Skapa inte egna klasser.
+- Lägg inte till CSS.
+- Använd endast de definierade klasserna i `main.css`.
+- Arbeta endast i HTML/PHP-kod (inte CSS eller JS).
+- Behåll struktur och attribut (aria-*, placeholder, label, title).
+- Lägg gärna in `<!-- TODO: osäker konvertering -->` vid tveksamma ställen.
+- Vill du se hur en viss komponent fungerar? Fråga efter rätt CSS-fil.
+
+---
+
+### Klassöversättning – BEM för Mackan.eu (uppdaterad)
+
+| Ursprunglig klass       | Ny klass (BEM)         | CSS-block          | Kommentar                   |
+| ----------------------- | ---------------------- | ------------------ | --------------------------- |
+| `.button`               | `.knapp`               | `knapp.css`        | Standardknapp               |
+| `.button-small`         | `.knapp--liten`        | `knapp.css`        | Liten knapp                 |
+| `.button-large`         | `.knapp--stor`         | `knapp.css`        | Stor knapp                  |
+| `.danger-button`        | `.knapp--fara`         | `knapp.css`        | Röd knapp                   |
+| `.icon-button`          | `.knapp__ikon`         | `knapp.css`        | Ikon som knapp              |
+| `.form-group`           | `.form__grupp`         | `form.css`         | Fältgrupp                   |
+| `.form-center`          | `.form__centrerad`     | `form.css`         | Centrerat formulär          |
+| `.input`                | `.falt__input`         | `falt.css`         | Inmatningsfält              |
+| `.textarea`             | `.falt__textarea`      | `falt.css`         | Textarea                    |
+| `.dropdown`             | `.falt__select`        | `falt.css`         | Dropdown/select             |
+| `.checkbox`             | `.falt__checkbox`      | `falt.css`         | Checkbox med label          |
+| `.form-hint`            | `.form__hint`          | `form.css`         | Hjälptext                   |
+| `.table`                | `.tabell`              | `tabell.css`       | Tabell                      |
+| `.table-compact`        | `.tabell--kompakt`     | `tabell.css`       | Kompakt stil                |
+| `.table-responsive`     | `.tabell__wrapper`     | `tabell.css`       | Scroll-wrapper              |
+| `.card`                 | `.kort`                | `kort.css`         | Visuell box                 |
+| `.card--huvud`          | `.kort--huvud`         | `kort.css`         | Viktigt kort                |
+| `.card--smal`           | `.kort--smal`          | `kort.css`         | Smal kort                   |
+| `.terminal-output`      | `.kort__terminal`      | `kort.css`         | Terminalstil                |
+| `.lead`                 | `.text--lead`          | `typografi.css`    | Ingress                     |
+| `.preview-section`      | `.losenord__sektion`   | `losenord.css`     | Förhandslösenordsektion     |
+| `.preview-password-row` | `.losenord__rad`       | `losenord.css`     | Lösenordsrad                |
+| `.preview-actions`      | `.losenord__knappar`   | `losenord.css`     | Knappsektion                |
+| `.horizontal-tools`     | `.form__verktyg`       | `form.css`         | Verktygsrad i formulär      |
+| `.chart-container`      | `.diagram__container`  | `diagram.css`      | Wrapper för canvas/Chart.js |
+| `.hidden`               | `.utils--dold`         | `utilities.css`    | Döljs från visning          |
+| `.text-center`          | `.utils--text-center`  | `utilities.css`    | Centrerad text              |
+| `.mt-1`                 | `.utils--mt-1`         | `utilities.css`    | Margin-top                  |
+| `.mb-1`                 | `.utils--mb-1`         | `utilities.css`    | Margin-bottom               |
+| `.p-1`                  | `.utils--p-1`          | `utilities.css`    | Padding                     |
+| `.toast`                | `.toast`               | `toast.css`        | Meddelanderuta              |
+| `.toast.show`           | `.toast--synlig`       | `toast.css`        | Synlig toast                |
+| `.info-text`            | `.info__text`          | `verktygsinfo.css` | Text under resultat/tabell  |
+| `.menu-grid`            | `.menykort__grid`      | `menykort.css`     | Menyrad/kortgrid            |
+| `.menu-card`            | `.menykort__kort`      | `menykort.css`     | Enskilt menykort            |
+| `.info-link-floating`   | `.ikon--info-flytande` | `ikon.css`         | Flytande ikon               |
+| `.navbar`               | `.nav`                 | `layout.css`       | Navigationsfält             |
+| `.navbar-left`          | `.nav__vänster`        | `layout.css`       | Nav vänster                 |
+| `.navbar-right`         | `.nav__höger`          | `layout.css`       | Nav höger                   |
+| `.navbar-title`         | `.nav__titel`          | `layout.css`       | Titel                       |
+| `.footer`               | `.sidfot`              | `sidfot.css`       | Sidfot                      |
+| `.footer-home`          | `.sidfot__ikonlank`    | `sidfot.css`       | Ikonlänk till startsidan    |
+| `.footer-center`        | `.sidfot__center`      | `sidfot.css`       | Centrerad text i footer     |
+
+
+Noteringar
+Skapa inte egna klasser eller modifierare.
+
+Använd endast klasser som är definierade i main.css och ligger i blocks/.
+
+Behåll aria-*, placeholder, label, title, m.m.
+
+Lägg gärna in <!-- TODO: osäker konvertering --> vid tveksamma ställen.
+
+Vill du se hur en viss komponent fungerar? Fråga efter rätt CSS-fil.

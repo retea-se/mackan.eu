@@ -130,6 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           }
 
+          cell.setAttribute('data-label', f); // Lägg till denna rad
+
           row.appendChild(cell);
         });
 
@@ -142,4 +144,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('[v12] Klar!');
   });
+
+  function renderTable(columns, data) {
+    const table = document.getElementById('resultTable');
+    table.innerHTML = '';
+
+    // Skapa thead
+    const thead = document.createElement('thead');
+    const headRow = document.createElement('tr');
+    columns.forEach(col => {
+      const th = document.createElement('th');
+      th.textContent = col;
+      headRow.appendChild(th);
+    });
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+
+    // Skapa tbody
+    const tbody = document.createElement('tbody');
+    data.forEach(row => {
+      const tr = document.createElement('tr');
+      columns.forEach(col => {
+        const td = document.createElement('td');
+        td.textContent = row[col] ?? '';
+        td.setAttribute('data-label', col); // Viktigt för responsivitet!
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+  }
 });

@@ -1,0 +1,82 @@
+/* ===================================================== */
+/* Fil: menykort.css - v2                                */
+/* Komponenter: Menyraster & kort                        */
+/* Struktur: BEM (.meny, .meny__kort, .meny__ikon, etc.) */
+/* Syfte: Startsida med responsiv grid och ikonkort      */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Layout och stil för kort på startsidan              */
+/* - BEM-namnade komponenter kopplade till meny/kort     */
+/* ❌ Får INTE innehålla:                                 */
+/* - Allmänna kort (.kort), tabeller eller knappar       */
+/* - Globala grid- eller flex-regler                     */
+/* ===================================================== */
+
+/* === Wrapper för hela menyn i gridform === */
+.meny {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+/* === Enskilt meny-kort (klickbar länk) === */
+.meny__kort,
+.meny__kort:link,
+.meny__kort:visited {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--primary-color, #007acc);
+  border-radius: var(--border-radius, 6px);
+  background: var(--card-bg, #fff);
+  color: var(--text-color, #222);
+  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.03);
+  text-decoration: none;
+  text-align: center;
+  min-height: 180px; /* eller t.ex. 200px för större boxar */
+  height: 100%;
+}
+
+.meny__kort:hover,
+.meny__kort:focus {
+  border-color: var(--primary-color-hover, #005fa3);
+  background: var(--card-bg-hover, #f8fbff);
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
+  color: var(--text-color, #222);
+}
+
+/* === Ikon i toppen av kortet === */
+.meny__ikon {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+}
+
+/* === Text under ikon === */
+.meny__text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
+}
+
+/* === Beskrivning under texten === */
+.meny__beskrivning {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* === Responsiv justering för små skärmar === */
+@media (max-width: 600px) {
+  .meny {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}

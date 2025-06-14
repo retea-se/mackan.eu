@@ -1,0 +1,67 @@
+/* ===================================================== */
+/* Fil: kort.css - v2                                     */
+/* Komponent: Kort (Visuell box/layout)                   */
+/* Struktur: BEM (.kort, .kort__rubrik, .kort--huvud)     */
+/* Syfte: Visuell inramning av sektioner och innehåll     */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Endast .kort-relaterade BEM-klasser                 */
+/* - Element som .kort__rubrik, .kort__innehall          */
+/* - Modifierare som .kort--huvud, .kort--smal, .kort--fokus */
+/* - Design tokens från variables.css                    */
+/* ❌ Får INTE innehålla:                                 */
+/* - Globala regler (t.ex. .card)                         */
+/* - Andra komponenter (t.ex. .tabell, .toast)           */
+/* ===================================================== */
+
+.kort {
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+/* === Scrollbar för kort med overflow === */
+.kort::-webkit-scrollbar {
+  height: 8px;
+}
+.kort::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* === Modifierare: markerat fokus === */
+.kort--fokus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* === Rubriksektion i kort === */
+.kort__rubrik {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+/* === Innehållsdel i kort === */
+.kort__innehall {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+/* === Modifierare: huvudkort === */
+.kort--huvud {
+  padding: 2rem;
+  font-size: 1.1rem;
+  background-color: var(--background-color-alt);
+}
+
+/* === Modifierare: smalt kort === */
+.kort--smal {
+  max-width: 400px;
+  margin: 0 auto;
+}

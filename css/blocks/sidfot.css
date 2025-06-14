@@ -1,0 +1,72 @@
+/* ===================================================== */
+/* Fil: sidfot.css - v2                                  */
+/* Komponent: Sidfot                                     */
+/* Struktur: BEM (.footer, .footer__center, etc)         */
+/* Syfte: Sidfot med temastöd och responsivitet          */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Endast BEM-klasser relaterade till sidfoten         */
+/* - Element och modifierare enligt BEM                  */
+/* - Design tokens från variables.css                    */
+/* ❌ Får INTE innehålla:                                 */
+/* - Globala regler, HTML-taggar eller andra komponenter */
+/* - Variabeldefinitioner                                */
+/* ===================================================== */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  background-color: var(--primary-color) !important;
+  color: #fff;
+  padding: 0 20px;
+  font-size: 0.7rem;
+  border-top: 1px solid var(--border-color);
+  box-sizing: border-box;
+}
+
+.footer__hem {
+  font-size: 1rem;
+  color: #fff !important;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer__hem:hover {
+  color: var(--hover-color) !important;
+}
+
+.footer__center {
+  flex: 1;
+  text-align: center;
+  color: #fff;
+}
+
+.footer__varumarke {
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff !important;
+  text-decoration: none;
+  gap: 0.5rem;
+}
+
+.footer__varumarke:hover {
+  color: var(--hover-color) !important;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .footer__center {
+    text-align: center;
+  }
+}

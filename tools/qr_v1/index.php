@@ -1,23 +1,22 @@
 <?php $title = 'QR Code Generator'; ?>
 <?php include '../../includes/layout-start.php'; ?>
 
-<main class="container">
+<main class="layout__container">
 
-
-  <div class="horizontal-tools">
-    <button class="button" onclick="showQRCodeSection('felanmalning')">QR för felanmälan</button>
-    <button class="button" onclick="showQRCodeSection('lank')">QR för länkar</button>
+  <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+    <button class="knapp" onclick="showQRCodeSection('felanmalning')">QR för felanmälan</button>
+    <button class="knapp" onclick="showQRCodeSection('lank')">QR för länkar</button>
   </div>
 
-  <section id="qr-section" class="form-group hidden">
-    <textarea id="textbox" class="textarea" rows="10" placeholder="Ange text eller länkar per rad..."></textarea>
-    <button id="generate-button" class="button" onclick="generateQRCode()">Generera QR-koder</button>
+  <section id="qr-section" class="form__grupp utils--dold">
+    <textarea id="textbox" class="falt__textarea" rows="10" placeholder="Ange text eller länkar per rad..."></textarea>
+    <button id="generate-button" class="knapp" onclick="generateQRCode()">Generera QR-koder</button>
 
-    <div id="qrcode" class="qr-output"></div>
+    <div id="qrcode"><!-- TODO: osäker konvertering: qr-output --></div>
 
-    <div class="horizontal-tools">
-      <button id="download-button" class="button" onclick="downloadAllQRCodes()">Ladda ned alla QR-koder</button>
-      <button id="download-docx-button" class="button" onclick="downloadAllDocx()">Ladda ned som DOCX</button>
+    <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+      <button id="download-button" class="knapp" onclick="downloadAllQRCodes()">Ladda ned alla QR-koder</button>
+      <button id="download-docx-button" class="knapp" onclick="downloadAllDocx()">Ladda ned som DOCX</button>
     </div>
   </section>
 </main>

@@ -1,41 +1,26 @@
-<!-- layout-start.php - v4 -->
 <?php
-// layout-start.php - v4
+
+// layout-start.php - v5
+// git commit: Använd meta.php som gemensam <head>-sektion och säkerställ korrekt fallback
+
+// Content-Security-Policy (CSP) header för att öka säkerheten.
+// OBS! Om externa resurser (JS, CSS, typsnitt) slutar fungera i framtiden
+// kan det bero på att deras domäner inte är tillagda här.
+// Lägg till nya domäner i respektive direktiv vid behov.
+header("Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdn.sheetjs.com https://html2canvas.hertzen.com https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data:;");
+
 $title = $title ?? 'Mackan.eu';
 $metaDescription = $metaDescription ?? 'Onlineverktyg för nördar';
 ?>
 <!DOCTYPE html>
-<html lang="sv" data-theme="light">
+<html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><?= htmlspecialchars($title) ?></title>
-  <meta name="description" content="<?= htmlspecialchars($metaDescription) ?>" />
-
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
-  <link rel="manifest" href="/icon/site.webmanifest">
-  <link rel="shortcut icon" href="/icon/favicon.ico">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/variables.css">
-  <link rel="stylesheet" href="/css/utilities.css">
-  <link rel="stylesheet" href="/css/layout.css">
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/footer.css">
-  <link rel="stylesheet" href="/css/navbar.css">
-  <link rel="stylesheet" href="/css/tools.css">
-  <link rel="stylesheet" href="/css/theme.css">
-  <link rel="stylesheet" href="/css/typography.css">
-  <link rel="stylesheet" href="/css/google-fonts.css">
-  <link rel="stylesheet" href="/css/page.css">
-  <link rel="stylesheet" href="/css/readme.css">
-  <link rel="stylesheet" href="/css/index-cards.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+  <meta charset="utf-8">
+  <title><?= $title ?? 'Mackan.eu' ?></title>
+  <meta name="description" content="<?= $metaDescription ?? '' ?>">
+  <link rel="stylesheet" href="/css/main.css">
+  <!-- Lägg till övriga CSS-filer här -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-
 <?php include __DIR__ . '/header.php'; ?>

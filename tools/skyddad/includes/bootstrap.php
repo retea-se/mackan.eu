@@ -6,7 +6,8 @@ require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/csrf.php';
 
-// Autentisering för admin
+// ---- TA BORT DETTA BLOCK ----
+/*
 $username = getenv('ADMIN_USER') ?: '';
 $password = getenv('ADMIN_PASS') ?: '';
 
@@ -20,6 +21,8 @@ if (
     echo 'Åtkomst nekad';
     exit;
 }
+*/
+// ---- SLUT PÅ BLOCK ----
 
 // CLI eller direkt körning av cleanup
 if (php_sapi_name() === 'cli' || isset($_GET['run_cleanup'])) {

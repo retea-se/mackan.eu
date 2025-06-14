@@ -1,0 +1,99 @@
+/* ===================================================== */
+/* Fil: layout.css - v2                                   */
+/* Komponent: Layout och struktur                         */
+/* Struktur: BEM (.layout, .layout__*, .nav__*, etc.)     */
+/* Syfte: Grundstruktur för sidlayout och sektioner       */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Endast layout- och strukturklasser (BEM)            */
+/* - Grid/Flex-ramverk och containrar                    */
+/* ❌ Får INTE innehålla:                                 */
+/* - Visuell styling (färg, textstorlek etc.)            */
+/* - Komponentspecifik CSS (t.ex. knapp, tabell)         */
+/* ===================================================== */
+
+/* === Hel wrapper för layouten === */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* === Main-content, pressar ner footer === */
+.layout__main {
+  flex: 1 0 auto;
+  padding: 1rem;
+}
+
+/* === Enskild innehållssektion === */
+.layout__sektion {
+  margin-bottom: 2rem;
+}
+
+/* === Standardcontainer (centrerad, maxbredd) === */
+.layout__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 100%;
+}
+
+.layout__container--full {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* === Extra alternativ container (för start) === */
+.layout__huvud {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* === Griduppställning (t.ex. kort eller sektioner) === */
+.layout__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* === Centrering av innehåll === */
+.layout--centrerad {
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Mobiljustering === */
+@media (max-width: 600px) {
+  .layout__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Navigation (header) === */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav__vänster {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav__titel {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.nav__höger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

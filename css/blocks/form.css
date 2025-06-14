@@ -1,0 +1,49 @@
+/* ===================================================== */
+/* Fil: form.css - v2                                    */
+/* Komponent: Formulär                                   */
+/* Struktur: BEM (.form__grupp, .form__hint,             */
+/*   .form__centrerad, .form__verktyg)                   */
+/* Syfte: Standardformulärfält med responsiv layout      */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Endast BEM-klasser för formulärkomponenten          */
+/* - Temavariationer och typvalidering                   */
+/* ❌ Får INTE innehålla:                                 */
+/* - Globala input/select/textarea regler                */
+/* - Andra komponenter än formulär                       */
+/* ===================================================== */
+
+/* === Grundlayout för grupper === */
+.form__grupp {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* === Centrering för hela formuläret === */
+.form__centrerad {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* === Hjälptext under fält === */
+.form__hint {
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+/* === Horisontell layout för knappverktyg === */
+.form__verktyg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* === Temastöd === */
+[data-theme="dark"] .form__hint {
+  color: #aaa;
+}

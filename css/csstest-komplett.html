@@ -1,0 +1,145 @@
+<!-- csstest-komplett.html - v3 -->
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Komponenttest – Mackan.eu</title>
+  <link rel="stylesheet" href="main.css" />
+  <style>
+    body {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 1rem;
+      font-family: sans-serif;
+    }
+    section {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .beskrivning {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<a href="readme.html" class="knapp">← Till dokumentationen</a>
+<h1>🧪 Komponenttest för Mackan.eu</h1>
+<p class="beskrivning">Visar samtliga definierade CSS-komponenter i blocks/</p>
+
+<!-- === KNAPPAR === -->
+<section>
+  <h2>🔘 Knapp</h2>
+  <button class="knapp">Standard</button>
+  <button class="knapp knapp--liten">Liten</button>
+  <button class="knapp knapp--stor">Stor</button>
+  <button class="knapp knapp--fara">Fara</button>
+  <button class="knapp__ikon" aria-label="Ikonknapp"><i class="fa-solid fa-copy"></i></button>
+</section>
+
+<!-- === FORMULÄR === -->
+<section>
+  <h2>📄 Formulär</h2>
+  <form class="form__centrerad">
+    <div class="form__grupp">
+      <label class="falt__etikett" for="namn">Namn</label>
+      <input id="namn" type="text" class="falt__input" placeholder="Skriv ditt namn" />
+    </div>
+    <div class="form__grupp">
+      <label class="falt__etikett" for="meddelande">Meddelande</label>
+      <textarea id="meddelande" class="falt__textarea"></textarea>
+    </div>
+    <div class="form__grupp">
+      <label class="falt__etikett" for="val">Välj något</label>
+      <select id="val" class="falt__select">
+        <option>Alternativ 1</option>
+        <option>Alternativ 2</option>
+      </select>
+    </div>
+    <div class="form__verktyg">
+      <label class="falt__checkbox">
+        <input type="checkbox" /> Jag godkänner
+      </label>
+      <button class="knapp">Skicka</button>
+    </div>
+  </form>
+</section>
+
+<!-- === TABELL === -->
+<section>
+  <h2>📊 Tabell</h2>
+  <div class="tabell__wrapper">
+    <table class="tabell tabell--kompakt">
+      <thead>
+        <tr><th class="tabell__huvud">Namn</th><th class="tabell__huvud">Roll</th><th class="tabell__huvud">Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="tabell__cell">Anna</td><td class="tabell__cell">Admin</td><td class="tabell__cell">Aktiv</td></tr>
+        <tr><td class="tabell__cell">Björn</td><td class="tabell__cell">Redaktör</td><td class="tabell__cell">Inaktiv</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- === KORT === -->
+<section>
+  <h2>🧱 Kort</h2>
+  <div class="kort kort--huvud">
+    <h3 class="kort__rubrik">Rubrik i kort</h3>
+    <p class="kort__innehall">Detta är ett huvudkort med större padding och alternativ bakgrund.</p>
+  </div>
+</section>
+
+<!-- === TOAST === -->
+<section>
+  <h2>🔔 Toast</h2>
+  <div class="toast toast--synlig">Detta är ett meddelande som visas</div>
+</section>
+
+<!-- === DIAGRAM === -->
+<section>
+  <h2>📈 Diagram-container</h2>
+  <div class="diagram__container">
+    <canvas id="dummyChart" width="400" height="200" style="background:#f0f0f0; border: 1px dashed #ccc;"></canvas>
+  </div>
+</section>
+
+<!-- === LÖSENORD === -->
+<section>
+  <h2>🔑 Lösenordsgenerator</h2>
+  <section class="losenord__sektion">
+    <h3 class="losenord__rad">
+      <span id="previewText">ExempelLösenord123!</span>
+      <span class="losenord__knappar">
+        <button class="knapp__ikon" aria-label="Kopiera"><i class="fa-solid fa-copy"></i></button>
+        <button class="knapp__ikon" aria-label="Generera nytt"><i class="fa-solid fa-rotate"></i></button>
+      </span>
+    </h3>
+  </section>
+</section>
+
+<!-- === VERKTYGSINFO === -->
+<section>
+  <h2>ℹ️ Verktygsinfo</h2>
+  <p class="info__text">Totalt 3 poster. Sidan uppdaterades 12:30.</p>
+</section>
+
+<!-- === UTILITIES === -->
+<section>
+  <h2>🧰 Utility-klasser</h2>
+  <p class="utils--text-center utils--p-1" style="background: var(--hover-color)">Centrerad text med padding</p>
+</section>
+
+<!-- === SIDFOT === -->
+<footer class="sidfot">
+  <a href="/" class="sidfot__ikonlank"><i class="fa-solid fa-house"></i></a>
+  <div class="sidfot__center">© Mackan.eu – Test</div>
+  <a href="readme.html" class="sidfot__ikonlank">📄</a>
+</footer>
+
+</body>
+</html>

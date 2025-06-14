@@ -4,24 +4,29 @@ $metaDescription = 'Hämta företagsdata från Bolagsverkets API baserat på org
 ?>
 <?php include '../../includes/layout-start.php'; ?>
 
-
-
-  <form id="dataForm" class="form-group">
-    <label for="orgnr">Organisationsnummer</label>
-    <input type="text" id="orgnr" class="input" placeholder="Ex: 556475-6467" required>
-    <div class="horizontal-tools">
-      <button type="submit" class="button">Hämta företagsinfo</button>
-      <button type="button" class="button secondary hidden" id="exportBtn">Exportera</button>
+<main class="layout__container">
+  <form id="dataForm" class="form__grupp">
+    <div class="form__grupp">
+      <label for="orgnr" class="falt">Organisationsnummer</label>
+      <input type="text" id="orgnr" class="falt__input" placeholder="Ex: 556475-6467" required>
+    </div>
+    <div class="form__grupp">
+      <button type="submit" class="knapp">Hämta företagsinfo</button>
+      <button type="button" class="knapp utils--dold" id="exportBtn">Exportera</button>
     </div>
   </form>
   <!-- ********** Laddikon ********** -->
-<div id="loadingSpinner" class="spinner hidden" aria-hidden="true" style="margin: 1rem auto;"></div>
+  <div id="loadingSpinner" class="utils--dold utils--mt-1" aria-hidden="true" style="margin: 1rem auto;"></div>
 
-
-  <section id="tableSection" class="hidden mt-2">
-    <div class="table-wrapper">
-      <table class="table compact-table" id="orgTable">
-        <thead><tr><th>Fält</th><th>Värde</th></tr></thead>
+  <section id="tableSection" class="utils--dold utils--mt-2">
+    <div>
+      <table class="tabell tabell--kompakt" id="orgTable">
+        <thead>
+          <tr>
+            <th class="tabell__huvud">Fält</th>
+            <th class="tabell__huvud">Värde</th>
+          </tr>
+        </thead>
         <tbody></tbody>
       </table>
     </div>

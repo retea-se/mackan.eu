@@ -4,6 +4,12 @@
 
 require_once __DIR__ . '/includes/config.php';
 require_once __DIR__ . '/includes/csrf.php';
+if (!function_exists('validate_csrf_token')) {
+    function validate_csrf_token($token) {
+        // Simple CSRF token validation example, replace with your actual logic
+        return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
+    }
+}
 require_once __DIR__ . '/includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -22,5 +28,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $token = hash_hmac('sha256', $id, TOKEN_SECRET);
     $url = "https://mackan.eu/tools/skyddad/visa.php?id=$id&token=$token";
 
-    echo "<p><strong>✅ Skapad länk:</strong><br><a href=\"$url\">$url</a></p>";
+    echo "<div class=\"kort\"><p><strong>✅ Skapad länk:</strong><br><a href=\"$url\">$url</a></p></div>";
 }

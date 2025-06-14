@@ -1,0 +1,62 @@
+/* ===================================================== */
+/* Fil: ikon.css - v2                                     */
+/* Komponent: Ikoner (interaktiva & informationsikoner)  */
+/* Struktur: BEM (.knapp__ikon, .ikon--info-flytande)     */
+/* Syfte: Ikonknappar och flytande informationsikoner     */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Endast ikonrelaterade BEM-komponenter               */
+/* - Modifierare för stil och läge                       */
+/* ❌ Får INTE innehålla:                                 */
+/* - Globala .fa, .icon eller externa bibliotek          */
+/* - Navigationsikoner eller andra komponenter           */
+/* ===================================================== */
+
+/* === Ikon som knapp (ex: kopiera, växla tema) === */
+.knapp__ikon {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.knapp__ikon:hover {
+  color: var(--primary-color);
+}
+
+.knapp__ikon:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* === Flytande infoikon (ex: rubrikhjälp) === */
+.ikon--info-flytande {
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.ikon--info-flytande:hover {
+  background-color: var(--hover-color);
+}
+
+/* === Temastöd: mörkt läge === */
+[data-theme="dark"] .ikon--info-flytande {
+  background-color: #555;
+  color: #fff;
+}

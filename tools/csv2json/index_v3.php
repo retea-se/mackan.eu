@@ -1,33 +1,33 @@
 <?php $title = 'CSV 2 JSON v3'; ?>
 <?php include '../../includes/layout-start.php'; ?>
 
-<main class="container">
-
+<main class="layout__container">
 
   <!-- ********** START Sektion ********** -->
-  <section class="form-group">
+  <section class="form__grupp">
     <h2>1. Ladda upp din fil</h2>
     <p>Välj en CSV-, JSON- eller Excel-fil för att starta konverteringen.</p>
-    <input type="file" id="fileInput" class="input">
+    <input type="file" id="fileInput" class="falt__input">
   </section>
 
-  <section class="form-group">
+  <section class="form__grupp">
     <h2>2. Välj konverteringsformat</h2>
     <label for="outputFormat">Konvertera till:</label>
-    <select id="outputFormat" class="dropdown">
+    <select id="outputFormat" class="falt__select"><!-- TODO: osäker konvertering: dropdown -->
       <option value="csv">CSV</option>
       <option value="json">JSON</option>
       <option value="xlsx">Excel (xlsx)</option>
     </select>
-    <button class="button" onclick="konvertera()">Konvertera</button>
+    <button class="knapp" onclick="konvertera()">Konvertera</button>
   </section>
 
   <section>
     <h2>3. Förhandsgranskning</h2>
     <p>Granska datan nedan. Sortera och paginera enkelt i tabellen.</p>
     <div id="preview">
-      <table id="dataTable" class="table display" style="width:100%"></table>
-      <div id="chartContainer" class="chart-container">
+      <table id="dataTable" class="tabell tabell--display" style="width:100%"><!-- TODO: osäker konvertering: display -->
+      </table>
+      <div id="chartContainer" class="layout__diagram"><!-- TODO: osäker konvertering: chart-container -->
         <canvas id="myChart"></canvas>
       </div>
     </div>
@@ -35,12 +35,12 @@
 
   <section>
     <h2>4. Ladda ner den konverterade filen</h2>
-    <button id="exportButton" class="button hidden" onclick="exportera()">Exportera</button>
+    <button id="exportButton" class="knapp utils--dold" onclick="exportera()">Exportera</button>
   </section>
 
-  <section class="form-group">
+  <section class="form__grupp">
     <h3>Statistik för filen</h3>
-    <div id="statistik" class="card"></div>
+    <div id="statistik" class="kort"></div>
   </section>
   <!-- ********** SLUT Sektion ********** -->
 </main>

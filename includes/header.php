@@ -1,24 +1,24 @@
-<!-- ********** START Header ********** -->
-<header class="navbar">
-  <div class="navbar-left">
-    <a href="/index.php" class="footer-home" aria-label="Startsida">
+<?php
+// ********** START Header **********
+?>
+<header class="nav">
+  <div class="nav__vänster">
+    <a href="/index.php" class="sidfot__ikonlank" aria-label="Startsida">
       <i class="fa-solid fa-house"></i>
     </a>
   </div>
 
-  <div class="navbar-center">
-    <div class="navbar-title">
-      <?= $title ?? 'Mackan.eu' ?>
-    </div>
+  <div class="nav__titel">
+    <?= $title ?? 'Mackan.eu' ?>
   </div>
 
-  <div class="navbar-right">
-    <?php if (file_exists(__DIR__ . '/../tools/' . basename(dirname($_SERVER['PHP_SELF'])) . '/readme.php')): ?>
-      <?php include __DIR__ . '/readme-icon.php'; ?>
-    <?php endif; ?>
-    <button id="themeToggle" class="theme-toggle" aria-label="Byt tema">
+  <div class="nav__höger">
+    <button id="themeToggle" class="knapp__ikon" aria-label="Byt tema">
       <i class="fa-solid fa-moon"></i>
     </button>
   </div>
 </header>
-<!-- ********** SLUT Header ********** -->
+<script src="/js/theme-toggle.js"></script>
+<?php
+// ********** SLUT Header **********
+?>

@@ -9,10 +9,9 @@ include '../../includes/layout-start.php';
 require_once 'dela-handler.php';
 ?>
 
-<main class="container">
+<main class="layout__container">
 
-
-  <div class="card">
+  <div class="kort">
     <?php if (!empty($result)) echo $result; ?>
     <?php include 'mallar/dela-form.php'; ?>
   </div>

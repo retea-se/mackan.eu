@@ -52,26 +52,31 @@ include '../../includes/layout-start.php';
 
 <?php include '../../includes/layout-end.php'; ?>
 <script src="script.js" defer></script>
-
-// =================== AI VERKTYGSMALL – KORTA TIPS FÖR LLM ===================
+// =============================================================================
+// 🧠 AI VERKTYGSMALL – RIKTLINJER FÖR LLM & STRUKTUR I MACKAN.EU
+// =============================================================================
+//
+// ✅ ALLMÄNT
 // - Använd endast CSS från /css/, inga inline-stilar eller extra CSS.
-// - Struktur: Formulär överst, resultat under. Använd <main>, <form>, <table> m.m.
+// - Struktur: Formulär överst, resultat under. Använd <main>, <form>, <table> etc.
 // - Sätt $title och $metaDescription högst upp. Endast ett <h1> per sida.
 // - Lägg till länk till readme.php med ikon/text.
 // - All text på svenska om inget annat anges.
 // - Gör sidan responsiv – testa i mobilvy!
-// - Använd färdiga CSS-klasser för knappar, formulär, tabeller, mm.
+// - Använd färdiga CSS-klasser för knappar, formulär, tabeller m.m.
 // - Lägg till aria-labels för tillgänglighet.
 // - Skriv kort, tydligt, informativt. Undvik utfyllnad.
-// - Visa bara relevanta knappar/funktioner. Dölj t.ex. "Exportera" om ej aktuell.
+// - Visa endast relevanta knappar/funktioner. Dölj t.ex. "Exportera" om ej aktuell.
 // - Ladda JS-filer med defer. Undvik onödiga script/resurser.
 // - Kontrollera att länkar och scriptvägar är relativa och fungerar.
-// - Om sidan ej ska indexeras: rätt meta-taggar i meta.php.
+// - Om sidan ej ska indexeras: lägg till rätt meta-taggar i meta.php.
 // - Byt ut exempeltexter/titlar mot det som är relevant för verktyget.
-// - Lägg till TODO/FIXME-kommentarer där AI:n ska göra val/anpassning.
+// - Lägg till TODO/FIXME-kommentarer där AI:n ska göra val eller anpassning.
 // - Tabeller: Lägg till sortering (stigande/fallande) med ikon om möjligt.
 // - Dynamiskt innehåll: Använd CSS-stöd för laddningsindikator/spinner.
-// =================== VANLIGA KLASSER ATT ANVÄNDA ===================
+//
+// =================== VANLIGA (GAMLA) KLASSER SOM KAN FÖREKOMMA ===================
+// OBS! Dessa används inte längre i ny CSS-struktur men finns kvar i vissa äldre mallar.
 // Layout:        .container, .card, .menu-grid, .menu-card
 // Formulär:      .form-group, .input, .textarea, .dropdown
 // Knappar:       .button, .button-small, .button-large, .danger-button
@@ -80,53 +85,52 @@ include '../../includes/layout-start.php';
 // Hjälpklasser:  .hidden, .center, .mt-1, .mb-1, .p-1, .full-width
 // Special:       .info-link-floating, .terminal-output, .toast
 
-
-// =================== YTTERLIGARE TIPS FÖR LLM ===================
+// =================== TIPS TILL LLM ===================
 // - Använd alltid befintliga CSS-klasser – skapa inte egna utan behov.
-// - Testa alltid i mobilvy – många klasser och layouter är responsiva.
-// - Använd .card för avgränsade sektioner, särskilt på readme/info-sidor.
-// - För startsidor/översikter: använd .menu-grid och .menu-card för rutnätslayout.
-// - Lägg till .info-text för summeringar eller statusrader under tabeller.
+// - Testa alltid i mobilvy – många layouter är responsiva.
+// - Använd .kort för visuella boxar, särskilt på info-sidor.
+// - För startsidor/översikter: använd .menykort och .menykort__lank.
+// - Använd .info-text för summeringar eller statusrader under tabeller.
 // - Använd .toast för popup-meddelanden/feedback till användaren.
-// - Lägg till .terminal-output för kod- eller resultatblock med terminalstil.
+// - Använd .terminal-output för kod- eller resultatblock med terminalstil.
 // - Dölj element med .hidden istället för att ta bort dem från DOM.
-// - Använd .center för flexbox-centrering av innehåll.
+// - Använd .center för flex-centrering av innehåll.
 // - Använd .mt-1, .mb-1, .p-1 för snabb marginal/padding.
-// - För tabeller: använd .table-wrapper om tabellen kan bli bredare än skärmen.
-// - Lägg till aria-labels på knappar, länkar och formulärfält för tillgänglighet.
-// - Använd alltid <label> för inputfält och koppla ihop med id.
-// - Om du visar laddningsindikator/spinner, använd projektets CSS-stöd för detta.
-// - Undvik att lägga till extra script eller CSS – använd det som redan finns i projektet.
-// - Kontrollera att färgkontraster och textstorlekar är tillräckliga för tillgänglighet.
-// - Om du använder ikoner, använd Font Awesome-klasser som redan laddas in.
-// - Skriv alltid tydliga kommentarer där AI:n ska göra val eller anpassningar.
-// ================================================================
-?>
-?>
-// =================== INSTRUKTION FÖR TOOLTIP (Tippy.js) ===================
-// - Tippy.js laddas automatiskt in via layout-end.php för alla sidor.
-// - Alla element med attributet data-tippy-content får automatiskt en tooltip.
-// - Lägg alltid till tydliga, pedagogiska och informativa tooltips på knappar, ikoner och andra interaktiva element.
-//   Exempel: <button class="button" data-tippy-content="Kör verktyget och visa resultatet">Kör</button>
-// - Tooltip-texten ska vara kort, tydlig och hjälpa användaren att förstå funktionen.
-// - Skriv alltid tooltip-texten på svenska om inget annat anges.
-// - Undvik att upprepa knappens text – förklara istället vad som händer eller varför knappen finns.
-// - Kontrollera att alla knappar och viktiga ikoner har en relevant tooltip.
-// - Tooltip aktiveras automatiskt – ingen extra JavaScript behövs i verktygssidorna.
-// ===========================================================================
+// - För tabeller: använd .tabell__wrapper om tabellen kan bli bred.
+// - Använd <label> för alla formulärfält, kopplat via for/id.
+// - Undvik extra script/CSS – använd det som redan finns.
+// - Säkerställ tillgänglighet: färgkontrast, fontstorlek, aria-etiketter.
+// - Ikoner: använd Font Awesome-klasser som redan laddas in.
+// - Kommentera alltid där AI ska ta beslut eller göra val.
 
-Tips:
-Använd Tippy på alla interaktiva eller otydliga element där användaren kan behöva extra förklaring eller hjälp.
-Du kan använda Tippy.js på många typer av element, inte bara knappar. Några vanliga exempel där Tippy är lämpligt:
+// =================== TOOLTIP (Tippy.js) ===================
+// - Tippy.js laddas automatiskt via layout-end.php för alla sidor.
+// - Alla element med attributet data-tippy-content får automatiskt tooltip.
+// - Tooltip ska vara kort, informativ och på svenska.
+//   Ex: <button class="knapp" data-tippy-content="Kör verktyget och visa resultatet">Kör</button>
+// - Använd på: knappar, ikoner, länkar, tabellrubriker, statusikoner, inställningsreglage m.m.
+// - Tooltip aktiveras automatiskt – ingen extra JS behövs.
 
-Ikoner (t.ex. informations-, hjälp- eller varningsikoner)
-Länkar (för att förklara vart länken leder eller vad som händer)
-Formulärfält (inputs, textareas, dropdowns – för att ge tips eller instruktioner)
-Tabellrubriker (för att förklara kolumnens innehåll)
-Statusindikatorer (t.ex. färgade prickar, badges)
-Bilder (för att visa bildbeskrivning eller extra info)
-Listobjekt (för att ge mer kontext om ett alternativ)
-Inställningsreglage (switchar, sliders, radioknappar)
-Navigationsmenyer (för att förklara menyval)
-
-Lägg till data-label="Kolumnnamn" på varje <td> i tabeller för bästa mobilstöd.
+// =================== NY STRUKTUR – BEM & main.css ===================
+// Projektet använder nu strikt BEM-metodik. All CSS definieras i block under /css/,
+// och laddas centralt via main.css. Inga globala klassnamn används längre.
+//
+// ✅ Använd dessa komponenter (alla finns i /css/):
+// - Formulär:       .form, .form__grupp, .fält
+// - Knappar:        .knapp, .knapp--sekundär, .knapp--fara
+// - Tabeller:       .tabell, .tabell__wrapper, [data-label=""]
+// - Boxar/layout:   .kort, .kort__rubrik, .rubrik, .verktygsinfo
+// - Utilities:      .mt-1, .mb-1, .hidden, .center, .text-center etc.
+//
+// 🔒 Regler:
+// - Använd endast klasser från main.css – inga nya utan godkännande
+// - Skapa aldrig egna klassnamn eller lägg till inline-stil
+// - Vill du se en CSS-fil för en komponent? 🧑‍💻 Fråga mig så skickar jag den
+//
+// 📁 Referenser:
+// - Huvudfil:        /css/main.css
+// - Stilguide:       /css/readme.html
+// - Komponenttest:   /css/csstest-komplett.html
+//
+// ❗ Detta system är AI-vänligt men strikt. Avvikelser orsakar stilbrott och buggar.
+// ============================================================================

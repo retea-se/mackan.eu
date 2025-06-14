@@ -1,0 +1,71 @@
+/* ===================================================== */
+/* Fil: utilities.css - v2                               */
+/* Syfte: Globala hjälpklasser för layout och spacing    */
+/* Struktur: Utility-namn (ej BEM)                       */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Små, generella klasser för layoutjusteringar        */
+/* - Helpers för flex, marginaler, paddings, text        */
+/* ❌ Får INTE innehålla:                                 */
+/* - Visuella komponenter (.knapp, .kort, etc.)          */
+/* - Elementmålare eller temaregler                      */
+/* ===================================================== */
+
+/* === Dölja element === */
+.hidden {
+  display: none !important;
+}
+
+/* === Flexcentrering (samma som .center) === */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === Marginal & padding helpers (1 spacing-enhet) === */
+.mt-1 {
+  margin-top: var(--spacing-unit);
+}
+.mb-1 {
+  margin-bottom: var(--spacing-unit);
+}
+.p-1 {
+  padding: var(--spacing-unit);
+}
+
+/* === Fullbreddselement === */
+.full-width {
+  width: 100%;
+}
+
+/* === Textcentrering === */
+.text-center {
+  text-align: center;
+}
+
+/* === Layoutstyrning för formulärrad eller kolumn === */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-unit);
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-unit);
+}
+
+/* === Margin auto (t.ex. för centrerade knappar) === */
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === Responsiv justering === */
+@media (max-width: 600px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}

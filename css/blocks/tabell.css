@@ -1,0 +1,93 @@
+/* ===================================================== */
+/* Fil: tabell.css - v2                                  */
+/* Komponent: Tabell                                     */
+/* Struktur: BEM (.tabell, .tabell__cell, .tabell--xx)   */
+/* Syfte: Stilar för responsiva, tillgängliga tabeller   */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Endast BEM-klasser relaterade till tabellkomponent  */
+/* - Design tokens från variables.css                    */
+/* - Modifierare (.tabell--kompakt)                      */
+/* ❌ Får INTE innehålla:                                 */
+/* - HTML-element (table, td, etc.) direkt               */
+/* - Globala stilar eller layoutklasser                  */
+/* ===================================================== */
+
+/* === Wrapper för responsiv scroll === */
+.tabell__wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+}
+
+/* === Tabellstruktur === */
+.tabell {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--table-bg);
+  color: var(--table-fg);
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: background 0.2s, color 0.2s;
+}
+
+.tabell__huvud {
+  background-color: var(--table-header-bg);
+  color: var(--table-header-fg);
+  font-weight: 600;
+  padding: 12px 16px;
+  border: 1px solid var(--table-border);
+  text-align: left;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.tabell__cell {
+  padding: 12px 16px;
+  border: 1px solid var(--table-border);
+  white-space: normal;
+  word-break: break-word;
+  max-width: 320px;
+  background: var(--table-row-bg, transparent);
+  color: var(--table-fg);
+  transition: background 0.2s;
+}
+
+/* === Varannan rad alt-färg === */
+.tabell tr:nth-child(even) .tabell__cell {
+  background: var(--table-row-alt-bg);
+}
+
+/* === Kompakt variant === */
+.tabell--kompakt .tabell__huvud,
+.tabell--kompakt .tabell__cell {
+  padding: 6px 10px;
+  font-size: 0.95em;
+}
+
+/* === Fokus/markering === */
+.tabell tr:focus-within,
+.tabell tr.selected {
+  background: var(--table-row-focus-bg, #e0e7ff) !important;
+  outline: 2px solid #4f46e5;
+}
+
+/* === Mörkt tema === */
+[data-theme="dark"] .tabell {
+  background-color: #111;
+  color: #eee;
+}
+
+[data-theme="dark"] .tabell__huvud {
+  background-color: #222;
+  color: #ddd;
+  border-color: #444;
+}
+
+[data-theme="dark"] .tabell__cell {
+  background-color: #111;
+  border-color: #444;
+  color: #eee;
+}

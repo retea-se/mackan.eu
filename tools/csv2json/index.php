@@ -2,13 +2,13 @@
 <?php $title = 'CSV till JSON v1'; ?>
 <?php include '../../includes/layout-start.php'; ?>
 
-<main class="container">
+<main class="layout__container">
 
   <section>
     <h2>Ladda upp CSV-data</h2>
-    <input type="file" id="csvFileInput" class="input" accept=".csv">
-    <button class="button" onclick="handleFileUpload()">Läs in fil</button>
-    <textarea id="csvInput" class="textarea" placeholder="Klistra in din CSV-data här..."></textarea>
+    <input type="file" id="csvFileInput" class="falt__input" accept=".csv">
+    <button class="knapp" onclick="handleFileUpload()">Läs in fil</button>
+    <textarea id="csvInput" class="falt__textarea" placeholder="Klistra in din CSV-data här..."></textarea>
   </section>
 
   <section>
@@ -18,12 +18,12 @@
 
   <section>
     <h2>Verktyg</h2>
-    <div id="columnFilter" class="card"></div>
-    <div class="horizontal-tools">
-      <label class="checkbox">
+    <div id="columnFilter" class="kort"></div>
+    <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+      <label class="checkbox"><!-- TODO: osäker konvertering -->
         <input type="checkbox" id="minifyCheckbox"> Kompakt JSON
       </label>
-      <label class="checkbox">
+      <label class="checkbox"><!-- TODO: osäker konvertering -->
         <input type="checkbox" id="transposeCheckbox"> Transponera
       </label>
     </div>
@@ -31,15 +31,15 @@
 
   <section>
     <h2>Förhandsgranskning</h2>
-    <pre id="livePreview" class="terminal-output"></pre>
+    <pre id="livePreview" class="kort__terminal"></pre>
   </section>
 
   <section>
     <h2>Konverterad JSON</h2>
-    <div id="jsonOutput" class="card"></div>
-    <div class="horizontal-tools">
-      <button class="button" onclick="downloadJson()">Ladda ner JSON</button>
-      <button class="button" onclick="copyToClipboard()">Kopiera till urklipp</button>
+    <div id="jsonOutput" class="kort"></div>
+    <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+      <button class="knapp" onclick="downloadJson()">Ladda ner JSON</button>
+      <button class="knapp" onclick="copyToClipboard()">Kopiera till urklipp</button>
     </div>
   </section>
 </main>

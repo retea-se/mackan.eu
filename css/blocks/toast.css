@@ -1,0 +1,33 @@
+/* ===================================================== */
+/* Fil: toast.css - v2                                   */
+/* Komponent: Toast-meddelanden                          */
+/* Struktur: BEM (.toast, .toast--synlig)                */
+/* Syfte: Flytande feedback-popup                        */
+/* ===================================================== */
+/* ✅ Får innehålla:                                     */
+/* - Endast .toast-relaterade BEM-klasser                */
+/* ===================================================== */
+
+.toast {
+  visibility: hidden;
+  min-width: 160px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px 20px;
+  position: fixed;
+  z-index: 9999;
+  bottom: 30px;
+  right: 30px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.4s;
+  transform: translateY(20px);
+}
+
+.toast--synlig {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}

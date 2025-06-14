@@ -2,31 +2,30 @@
 <?php $title = 'AnonAddy Address Generator'; ?>
 <?php include '../../includes/layout-start.php'; ?>
 
-<main class="container">
-  <form id="addressForm" class="form-group">
-    <div class="form-group">
+<main class="layout__container">
+  <form id="addressForm" class="form__grupp">
+    <div class="form__grupp">
       <label for="fromAddress" id="fromLabel">Från</label>
-      <input type="text" id="fromAddress" class="input" placeholder="Ange avsändaradress...">
+      <input type="text" id="fromAddress" class="falt__input" placeholder="Ange avsändaradress...">
     </div>
 
-    <div class="form-group">
+    <div class="form__grupp">
       <label for="toAddress" id="toLabel">Till</label>
-      <input type="text" id="toAddress" class="input" placeholder="Ange mottagaradress...">
+      <input type="text" id="toAddress" class="falt__input" placeholder="Ange mottagaradress...">
     </div>
 
-    <button type="button" class="button" id="generateButton" onclick="generateAddress()">Generera Adress</button>
+    <button type="button" class="knapp" id="generateButton" onclick="generateAddress()">Generera Adress</button>
 
-    <div class="form-group">
+    <div class="form__grupp">
       <label for="generatedAddress" id="resultLabel">Resultat</label>
-      <input type="text" id="generatedAddress" class="input" readonly placeholder="Din genererade adress...">
+      <input type="text" id="generatedAddress" class="falt__input" readonly placeholder="Din genererade adress...">
     </div>
 
-    <button type="button" class="button hidden" id="copyButton" onclick="copyToClipboard()">Kopiera</button>
+    <button type="button" class="knapp utils--dold" id="copyButton" onclick="copyToClipboard()">Kopiera</button>
   </form>
 
-  <div class="horizontal-tools">
-
-    <button id="languageToggle" class="button">Sv/En</button>
+  <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+    <button id="languageToggle" class="knapp">Sv/En</button>
   </div>
 </main>
 

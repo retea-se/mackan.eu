@@ -4,28 +4,27 @@ $title = 'QR v2';
 include '../../includes/layout-start.php';
 ?>
 
-<main class="container">
+<main class="layout__container">
  
-
-  <div class="form-group">
+  <div class="form__grupp">
     <label>Välj typ av kod:</label>
-    <div id="typeButtons" class="button-group">
-      <button class="button type-button" data-type="text">Text</button>
-      <button class="button type-button" data-type="url">Länk</button>
-      <button class="button type-button" data-type="vcard">Kontakt</button>
-      <button class="button type-button" data-type="wifi">WiFi</button>
-      <button class="button type-button" data-type="email">E-post</button>
-      <button class="button type-button" data-type="sms">SMS</button>
-      <button class="button type-button" data-type="phone">Telefon</button>
-      <button class="button type-button" data-type="geo">Plats</button>
+    <div id="typeButtons" class="horizontal-tools"><!-- TODO: osäker konvertering: button-group -->
+      <button class="knapp type-button" data-type="text">Text</button>
+      <button class="knapp type-button" data-type="url">Länk</button>
+      <button class="knapp type-button" data-type="vcard">Kontakt</button>
+      <button class="knapp type-button" data-type="wifi">WiFi</button>
+      <button class="knapp type-button" data-type="email">E-post</button>
+      <button class="knapp type-button" data-type="sms">SMS</button>
+      <button class="knapp type-button" data-type="phone">Telefon</button>
+      <button class="knapp type-button" data-type="geo">Plats</button>
     </div>
   </div>
 
   <div id="formFields"></div>
 
-  <button id="generateBtn" class="button">Skapa QR-kod</button>
+  <button id="generateBtn" class="knapp">Skapa QR-kod</button>
 
-  <div id="qrPreview" class="preview mt-1"></div>
+  <div id="qrPreview" class="kort utils--mt-1"><!-- TODO: osäker konvertering: preview mt-1 --></div>
 </main>
 
 <?php include '../../includes/layout-end.php'; ?>

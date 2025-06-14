@@ -5,28 +5,28 @@ $subtitle = 'Skriv text och spela upp med vald röst';
 include '../../includes/layout-start.php';
 ?>
 
-<main class="container">
-  <h1 class="title">
+<main class="layout__container">
+  <h1 class="title"><!-- TODO: osäker konvertering: title -->
     <?= $title ?>
-    <a href="readme.php" class="info-link-floating" title="Om verktyget">ⓘ</a>
+    <a href="readme.php" class="ikon--info-flytande" title="Om verktyget">ⓘ</a>
   </h1>
   <?php if (!empty($subtitle)): ?>
-    <p class="subtitle"><?= $subtitle ?></p>
+    <p class="subtitle"><!-- TODO: osäker konvertering: subtitle --><?= $subtitle ?></p>
   <?php endif; ?>
 
-  <div class="form-group">
+  <div class="form__grupp">
     <label for="textInput">Klistra in text:</label>
-    <textarea id="textInput" class="textarea" rows="6"></textarea>
+    <textarea id="textInput" class="falt__textarea" rows="6"></textarea>
   </div>
 
-  <div class="form-group">
+  <div class="form__grupp">
     <label for="voiceSelect">Välj röst:</label>
-    <select id="voiceSelect" class="input"></select>
+    <select id="voiceSelect" class="falt__input"></select>
   </div>
 
-  <div class="form-group">
-    <button id="playBtn" class="button">Spela upp</button>
-    <button id="downloadBtn" class="button">Ladda ner</button>
+  <div class="form__grupp">
+    <button id="playBtn" class="knapp">Spela upp</button>
+    <button id="downloadBtn" class="knapp">Ladda ner</button>
   </div>
 </main>
 

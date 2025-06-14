@@ -109,5 +109,11 @@ return [
   'href'  => '/tools/skyddad/index.php',
   'icon'  => 'fa-shield-halved'
 ]
+,
+        [
+  'title' => 'CSS->JSON',
+  'href'  => '/tools/css2json/index.html',
+  'icon'  => 'fa-industry'
+]
   // Fler verktyg kan läggas till här
 ];

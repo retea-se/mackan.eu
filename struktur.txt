@@ -1,0 +1,1402 @@
+Folder PATH listing for volume Windows
+Volume serial number is 02E9-1D59
+C:.
+¦   .gitignore
+¦   .htaccess
+¦   .htaccess.bk
+¦   404.shtml
+¦   composer.json
+¦   composer.lock
+¦   css.zip
+¦   index.php
+¦   kontakt.php
+¦   old_index.htmlold
+¦   om.php
+¦   robots.txt
+¦   sitemap.php
+¦   struktur.txt
+¦   verktyg.zip
+¦   _arbetsmapp mackan_eu.code-workspace
+¦   
++---.vscode
+¦       .eslintrc.json
+¦       .stylelintrc.json
+¦       settings.json
+¦       sftp.json
+¦       
++---.well-known
+¦   +---acme-challenge
++---admin
+¦       dashboard-pro.js
+¦       dashboard.css
+¦       dashboard.js
+¦       dashboard.php
+¦       export.js
+¦       geo-country.php
+¦       insight.css
+¦       insight.js
+¦       insight.php
+¦       sort.js
+¦       visits-export.php
+¦       visits.php
+¦       
++---app1
+¦   ¦   .htaccess
+¦   ¦   index.js
+¦   ¦   package-lock.json
+¦   ¦   package.json
+¦   ¦   
+¦   +---node_modules
+¦       ¦   .package-lock.json
+¦       ¦   
+¦       +---.bin
+¦       ¦       mime
+¦       ¦       mime.cmd
+¦       ¦       mime.ps1
+¦       ¦       
+¦       +---accepts
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---array-flatten
+¦       ¦       array-flatten.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---body-parser
+¦       ¦   ¦   HISTORY.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   SECURITY.md
+¦       ¦   ¦   
+¦       ¦   +---lib
+¦       ¦       ¦   read.js
+¦       ¦       ¦   
+¦       ¦       +---types
+¦       ¦               json.js
+¦       ¦               raw.js
+¦       ¦               text.js
+¦       ¦               urlencoded.js
+¦       ¦               
+¦       +---bytes
+¦       ¦       History.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       Readme.md
+¦       ¦       
+¦       +---call-bind
+¦       ¦   ¦   .eslintignore
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .nycrc
+¦       ¦   ¦   callBound.js
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦   ¦       FUNDING.yml
+¦       ¦   ¦       
+¦       ¦   +---test
+¦       ¦           callBound.js
+¦       ¦           index.js
+¦       ¦           
+¦       +---content-disposition
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---content-type
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---cookie
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       SECURITY.md
+¦       ¦       
+¦       +---cookie-signature
+¦       ¦       .npmignore
+¦       ¦       History.md
+¦       ¦       index.js
+¦       ¦       package.json
+¦       ¦       Readme.md
+¦       ¦       
+¦       +---debug
+¦       ¦   ¦   .coveralls.yml
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .npmignore
+¦       ¦   ¦   .travis.yml
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   component.json
+¦       ¦   ¦   karma.conf.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   Makefile
+¦       ¦   ¦   node.js
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---src
+¦       ¦           browser.js
+¦       ¦           debug.js
+¦       ¦           index.js
+¦       ¦           inspector-log.js
+¦       ¦           node.js
+¦       ¦           
+¦       +---define-data-property
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .nycrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   index.d.ts
+¦       ¦   ¦   index.d.ts.map
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   tsconfig.json
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦   ¦       FUNDING.yml
+¦       ¦   ¦       
+¦       ¦   +---test
+¦       ¦           index.js
+¦       ¦           
+¦       +---depd
+¦       ¦   ¦   History.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   Readme.md
+¦       ¦   ¦   
+¦       ¦   +---lib
+¦       ¦       +---browser
+¦       ¦               index.js
+¦       ¦               
+¦       +---destroy
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---ee-first
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---encodeurl
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---escape-html
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       Readme.md
+¦       ¦       
+¦       +---etag
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---express
+¦       ¦   ¦   History.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   Readme.md
+¦       ¦   ¦   
+¦       ¦   +---lib
+¦       ¦       ¦   application.js
+¦       ¦       ¦   express.js
+¦       ¦       ¦   request.js
+¦       ¦       ¦   response.js
+¦       ¦       ¦   utils.js
+¦       ¦       ¦   view.js
+¦       ¦       ¦   
+¦       ¦       +---middleware
+¦       ¦       ¦       init.js
+¦       ¦       ¦       query.js
+¦       ¦       ¦       
+¦       ¦       +---router
+¦       ¦               index.js
+¦       ¦               layer.js
+¦       ¦               route.js
+¦       ¦               
+¦       +---finalhandler
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       SECURITY.md
+¦       ¦       
+¦       +---forwarded
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---fresh
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---function-bind
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .nycrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   implementation.js
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦   ¦       FUNDING.yml
+¦       ¦   ¦       SECURITY.md
+¦       ¦   ¦       
+¦       ¦   +---test
+¦       ¦           .eslintrc
+¦       ¦           index.js
+¦       ¦           
+¦       +---get-intrinsic
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .nycrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦   ¦       FUNDING.yml
+¦       ¦   ¦       
+¦       ¦   +---test
+¦       ¦           GetIntrinsic.js
+¦       ¦           
+¦       +---gopd
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦   ¦       FUNDING.yml
+¦       ¦   ¦       
+¦       ¦   +---test
+¦       ¦           index.js
+¦       ¦           
+¦       +---has-property-descriptors
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .nycrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦   ¦       FUNDING.yml
+¦       ¦   ¦       
+¦       ¦   +---test
+¦       ¦           index.js
+¦       ¦           
+¦       +---has-proto
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦   ¦       FUNDING.yml
+¦       ¦   ¦       
+¦       ¦   +---test
+¦       ¦           index.js
+¦       ¦           
+¦       +---has-symbols
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .nycrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   shams.js
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦   ¦       FUNDING.yml
+¦       ¦   ¦       
+¦       ¦   +---test
+¦       ¦       ¦   index.js
+¦       ¦       ¦   tests.js
+¦       ¦       ¦   
+¦       ¦       +---shams
+¦       ¦               core-js.js
+¦       ¦               get-own-property-symbols.js
+¦       ¦               
+¦       +---hasown
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .nycrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   index.d.ts
+¦       ¦   ¦   index.d.ts.map
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   tsconfig.json
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦           FUNDING.yml
+¦       ¦           
+¦       +---http-errors
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---iconv-lite
+¦       ¦   ¦   Changelog.md
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---encodings
+¦       ¦   ¦   ¦   dbcs-codec.js
+¦       ¦   ¦   ¦   dbcs-data.js
+¦       ¦   ¦   ¦   index.js
+¦       ¦   ¦   ¦   internal.js
+¦       ¦   ¦   ¦   sbcs-codec.js
+¦       ¦   ¦   ¦   sbcs-data-generated.js
+¦       ¦   ¦   ¦   sbcs-data.js
+¦       ¦   ¦   ¦   utf16.js
+¦       ¦   ¦   ¦   utf7.js
+¦       ¦   ¦   ¦   
+¦       ¦   ¦   +---tables
+¦       ¦   ¦           big5-added.json
+¦       ¦   ¦           cp936.json
+¦       ¦   ¦           cp949.json
+¦       ¦   ¦           cp950.json
+¦       ¦   ¦           eucjp.json
+¦       ¦   ¦           gb18030-ranges.json
+¦       ¦   ¦           gbk-added.json
+¦       ¦   ¦           shiftjis.json
+¦       ¦   ¦           
+¦       ¦   +---lib
+¦       ¦           bom-handling.js
+¦       ¦           extend-node.js
+¦       ¦           index.d.ts
+¦       ¦           index.js
+¦       ¦           streams.js
+¦       ¦           
+¦       +---inherits
+¦       ¦       inherits.js
+¦       ¦       inherits_browser.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---ipaddr.js
+¦       ¦   ¦   ipaddr.min.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---lib
+¦       ¦           ipaddr.js
+¦       ¦           ipaddr.js.d.ts
+¦       ¦           
+¦       +---media-typer
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---merge-descriptors
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---methods
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---mime
+¦       ¦   ¦   .npmignore
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   cli.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   mime.js
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   types.json
+¦       ¦   ¦   
+¦       ¦   +---src
+¦       ¦           build.js
+¦       ¦           test.js
+¦       ¦           
+¦       +---mime-db
+¦       ¦       db.json
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---mime-types
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---ms
+¦       ¦       index.js
+¦       ¦       license.md
+¦       ¦       package.json
+¦       ¦       readme.md
+¦       ¦       
+¦       +---negotiator
+¦       ¦   ¦   HISTORY.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---lib
+¦       ¦           charset.js
+¦       ¦           encoding.js
+¦       ¦           language.js
+¦       ¦           mediaType.js
+¦       ¦           
+¦       +---object-inspect
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .nycrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package-support.json
+¦       ¦   ¦   package.json
+¦       ¦   ¦   readme.markdown
+¦       ¦   ¦   test-core-js.js
+¦       ¦   ¦   util.inspect.js
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦   ¦       FUNDING.yml
+¦       ¦   ¦       
+¦       ¦   +---example
+¦       ¦   ¦       all.js
+¦       ¦   ¦       circular.js
+¦       ¦   ¦       fn.js
+¦       ¦   ¦       inspect.js
+¦       ¦   ¦       
+¦       ¦   +---test
+¦       ¦       ¦   bigint.js
+¦       ¦       ¦   circular.js
+¦       ¦       ¦   deep.js
+¦       ¦       ¦   element.js
+¦       ¦       ¦   err.js
+¦       ¦       ¦   fakes.js
+¦       ¦       ¦   fn.js
+¦       ¦       ¦   global.js
+¦       ¦       ¦   has.js
+¦       ¦       ¦   holes.js
+¦       ¦       ¦   indent-option.js
+¦       ¦       ¦   inspect.js
+¦       ¦       ¦   lowbyte.js
+¦       ¦       ¦   number.js
+¦       ¦       ¦   quoteStyle.js
+¦       ¦       ¦   toStringTag.js
+¦       ¦       ¦   undef.js
+¦       ¦       ¦   values.js
+¦       ¦       ¦   
+¦       ¦       +---browser
+¦       ¦               dom.js
+¦       ¦               
+¦       +---on-finished
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---parseurl
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---path-to-regexp
+¦       ¦       History.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       Readme.md
+¦       ¦       
+¦       +---proxy-addr
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---qs
+¦       ¦   ¦   .editorconfig
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .nycrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   LICENSE.md
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦   ¦       FUNDING.yml
+¦       ¦   ¦       
+¦       ¦   +---dist
+¦       ¦   ¦       qs.js
+¦       ¦   ¦       
+¦       ¦   +---lib
+¦       ¦   ¦       formats.js
+¦       ¦   ¦       index.js
+¦       ¦   ¦       parse.js
+¦       ¦   ¦       stringify.js
+¦       ¦   ¦       utils.js
+¦       ¦   ¦       
+¦       ¦   +---test
+¦       ¦           parse.js
+¦       ¦           stringify.js
+¦       ¦           utils.js
+¦       ¦           
+¦       +---range-parser
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---raw-body
+¦       ¦       HISTORY.md
+¦       ¦       index.d.ts
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       SECURITY.md
+¦       ¦       
+¦       +---safe-buffer
+¦       ¦       index.d.ts
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---safer-buffer
+¦       ¦       dangerous.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       Porting-Buffer.md
+¦       ¦       Readme.md
+¦       ¦       safer.js
+¦       ¦       tests.js
+¦       ¦       
+¦       +---send
+¦       ¦   ¦   HISTORY.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   SECURITY.md
+¦       ¦   ¦   
+¦       ¦   +---node_modules
+¦       ¦       +---ms
+¦       ¦               index.js
+¦       ¦               license.md
+¦       ¦               package.json
+¦       ¦               readme.md
+¦       ¦               
+¦       +---serve-static
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---set-function-length
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .nycrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   env.js
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦           FUNDING.yml
+¦       ¦           
+¦       +---setprototypeof
+¦       ¦   ¦   index.d.ts
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---test
+¦       ¦           index.js
+¦       ¦           
+¦       +---side-channel
+¦       ¦   ¦   .eslintignore
+¦       ¦   ¦   .eslintrc
+¦       ¦   ¦   .nycrc
+¦       ¦   ¦   CHANGELOG.md
+¦       ¦   ¦   index.js
+¦       ¦   ¦   LICENSE
+¦       ¦   ¦   package.json
+¦       ¦   ¦   README.md
+¦       ¦   ¦   
+¦       ¦   +---.github
+¦       ¦   ¦       FUNDING.yml
+¦       ¦   ¦       
+¦       ¦   +---test
+¦       ¦           index.js
+¦       ¦           
+¦       +---statuses
+¦       ¦       codes.json
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---toidentifier
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---type-is
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---unpipe
+¦       ¦       HISTORY.md
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---utils-merge
+¦       ¦       .npmignore
+¦       ¦       index.js
+¦       ¦       LICENSE
+¦       ¦       package.json
+¦       ¦       README.md
+¦       ¦       
+¦       +---vary
+¦               HISTORY.md
+¦               index.js
+¦               LICENSE
+¦               package.json
+¦               README.md
+¦               
++---assets
++---cgi-bin
++---config
+¦       readme.php
+¦       tools.php
+¦       visits_db.txt
+¦       
++---css
+¦       components.css
+¦       footer.css
+¦       google-fonts.css
+¦       index-cards.css
+¦       layout.css
+¦       navbar.css
+¦       page.css
+¦       readme.css
+¦       reset.css
+¦       tables.css
+¦       theme.css
+¦       tools.css
+¦       typography.css
+¦       utilities.css
+¦       variables.css
+¦       ver250613.css
+¦       
++---icon
+¦       android-chrome-192x192.png
+¦       android-chrome-512x512.png
+¦       apple-touch-icon.png
+¦       favicon-16x16.png
+¦       favicon-32x32.png
+¦       favicon.ico
+¦       site.webmanifest
+¦       
++---includes
+¦       back-link.php
+¦       footer.php
+¦       GeoLite2-Country.mmdb
+¦       header.php
+¦       layout-end.php
+¦       layout-start.php
+¦       logger.php
+¦       meta.php
+¦       nav.php
+¦       readme-icon.php
+¦       title.php
+¦       visitor-logger-js.php
+¦       
++---js
+¦       info-check.js
+¦       markdownExample.js
+¦       navbar.js
+¦       theme-toggle.js
+¦       theme.js
+¦       visit.js
+¦       
++---logo
+¦       logo.ico
+¦       logo.png
+¦       logo.svg
+¦       logo.webp
+¦       
++---retea
+¦   ¦   disqus.html
+¦   ¦   disqus_backup.html
+¦   ¦   hej.html
+¦   ¦   index.html
+¦   ¦   om.html
+¦   ¦   retea1.mp4
+¦   ¦   retea_logo.jpg
+¦   ¦   script.js
+¦   ¦   test.html
+¦   ¦   test2.html
+¦   ¦   video.html
+¦   ¦   
+¦   +---.well-known
+¦   ¦   +---acme-challenge
+¦   +---cgi-bin
+¦   +---icon
+¦           android-chrome-192x192.png
+¦           android-chrome-512x512.png
+¦           apple-touch-icon.png
+¦           favicon-16x16.png
+¦           favicon-32x32.png
+¦           favicon.ico
+¦           Icon-Megaphone.svg
+¦           site.webmanifest
+¦           
++---tools
+¦   ¦   mall_readme.php
+¦   ¦   mall_verktyg.php
+¦   ¦   
+¦   +---addy
+¦   ¦       index.php
+¦   ¦       old_index.html
+¦   ¦       script.js
+¦   ¦       
+¦   +---aptus
+¦   ¦       index.htmlold
+¦   ¦       index.php
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       script.js_old
+¦   ¦       
+¦   +---bolagsverket
+¦   ¦       arsredovisningar.js
+¦   ¦       config.env
+¦   ¦       exporter.js
+¦   ¦       getdata.js
+¦   ¦       get_data.php
+¦   ¦       get_dokument.php
+¦   ¦       get_dokumentlista.php
+¦   ¦       get_token.php
+¦   ¦       index.php
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       
+¦   +---converter
+¦   ¦       converter.js
+¦   ¦       csvtojson.js
+¦   ¦       fixer.js
+¦   ¦       formatter.js
+¦   ¦       index.php
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       upload.js
+¦   ¦       utilities.js
+¦   ¦       validator.js
+¦   ¦       
+¦   +---csv2json
+¦   ¦       avancerad.js
+¦   ¦       avancerad2.js
+¦   ¦       index.php
+¦   ¦       index_v2.php
+¦   ¦       index_v3.php
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       tools.js
+¦   ¦       
+¦   +---koordinat
+¦   ¦   ¦   .htaccess
+¦   ¦   ¦   README.md
+¦   ¦   ¦   
+¦   ¦   +---api
+¦   ¦   ¦       convert.php
+¦   ¦   ¦       elevation.php
+¦   ¦   ¦       export.php
+¦   ¦   ¦       parse_google.php
+¦   ¦   ¦       
+¦   ¦   +---config
+¦   ¦   +---public
+¦   ¦   ¦   ¦   export.js
+¦   ¦   ¦   ¦   export_advanced.js
+¦   ¦   ¦   ¦   geocoding.js
+¦   ¦   ¦   ¦   help1.php
+¦   ¦   ¦   ¦   impex.js
+¦   ¦   ¦   ¦   impex.php
+¦   ¦   ¦   ¦   impex_map.js
+¦   ¦   ¦   ¦   impex_map.php
+¦   ¦   ¦   ¦   impex_map_help.php
+¦   ¦   ¦   ¦   impex_plot.js
+¦   ¦   ¦   ¦   index.php
+¦   ¦   ¦   ¦   map.js
+¦   ¦   ¦   ¦   script.js
+¦   ¦   ¦   ¦   styles.css
+¦   ¦   ¦   ¦   test.html
+¦   ¦   ¦   ¦   test.js
+¦   ¦   ¦   ¦   tom.txt
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---img
+¦   ¦   ¦   +---_old
+¦   ¦   ¦           basic_funkar v4.js
+¦   ¦   ¦           help2 copy.php
+¦   ¦   ¦           help2.php
+¦   ¦   ¦           impex copy 2.js
+¦   ¦   ¦           impex copy 2.php
+¦   ¦   ¦           impex copy 3.js
+¦   ¦   ¦           impex copy funkar med klistra in.js
+¦   ¦   ¦           impex copy tabell funkar 2.js
+¦   ¦   ¦           impex copy.js
+¦   ¦   ¦           impex copy.php
+¦   ¦   ¦           impex_old.js
+¦   ¦   ¦           impex_old.php
+¦   ¦   ¦           old.js
+¦   ¦   ¦           script copy 3.js
+¦   ¦   ¦           
+¦   ¦   +---src
+¦   ¦           config.php
+¦   ¦           constants.php
+¦   ¦           CoordinateConverter.php
+¦   ¦           
+¦   +---passwordgenerator
+¦   ¦       export.js
+¦   ¦       fras.txt
+¦   ¦       index.php
+¦   ¦       passphrase.js
+¦   ¦       preview.js
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       
+¦   +---pts
+¦   ¦       cloud.js
+¦   ¦       export.js
+¦   ¦       index.php
+¦   ¦       proxy.php
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       
+¦   +---qr_v1
+¦   ¦       docx.js
+¦   ¦       docx.min.js
+¦   ¦       index.php
+¦   ¦       qrcode.js
+¦   ¦       qrcode.min.js
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       
+¦   +---qr_v2
+¦   ¦       index.php
+¦   ¦       jquery.min.js
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       styles.css
+¦   ¦       
+¦   +---skyddad
+¦   ¦   ¦   .env
+¦   ¦   ¦   admin.php
+¦   ¦   ¦   dela-handler.php
+¦   ¦   ¦   dela.php
+¦   ¦   ¦   index.php
+¦   ¦   ¦   plan.txt
+¦   ¦   ¦   readme.php
+¦   ¦   ¦   skapa.php
+¦   ¦   ¦   todo.php
+¦   ¦   ¦   visa-handler.php
+¦   ¦   ¦   visa.php
+¦   ¦   ¦   
+¦   ¦   +---includes
+¦   ¦   ¦       bootstrap.php
+¦   ¦   ¦       cleanup.php
+¦   ¦   ¦       config.php
+¦   ¦   ¦       csrf.php
+¦   ¦   ¦       db.php
+¦   ¦   ¦       
+¦   ¦   +---mallar
+¦   ¦           dela-form.php
+¦   ¦           
+¦   +---stotta
+¦   ¦       index.php
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       
+¦   +---testdata
+¦   ¦       db.php
+¦   ¦       export.js
+¦   ¦       generate.php
+¦   ¦       generatePerson.php
+¦   ¦       index.php
+¦   ¦       pnr-utils.js
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       
+¦   +---testid
+¦   ¦       export.js
+¦   ¦       index.php
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       
+¦   +---tfngen
+¦   ¦       index.php
+¦   ¦       readme.php
+¦   ¦       script.js
+¦   ¦       
+¦   +---tts
+¦           app.js
+¦           index.html
+¦           index.php
+¦           script.js
+¦           
++---vendor
+¦   ¦   autoload.php
+¦   ¦   
+¦   +---composer
+¦   ¦   ¦   autoload_classmap.php
+¦   ¦   ¦   autoload_namespaces.php
+¦   ¦   ¦   autoload_psr4.php
+¦   ¦   ¦   autoload_real.php
+¦   ¦   ¦   autoload_static.php
+¦   ¦   ¦   ClassLoader.php
+¦   ¦   ¦   installed.json
+¦   ¦   ¦   installed.php
+¦   ¦   ¦   InstalledVersions.php
+¦   ¦   ¦   LICENSE
+¦   ¦   ¦   platform_check.php
+¦   ¦   ¦   
+¦   ¦   +---ca-bundle
+¦   ¦       ¦   composer.json
+¦   ¦       ¦   LICENSE
+¦   ¦       ¦   README.md
+¦   ¦       ¦   
+¦   ¦       +---res
+¦   ¦       ¦       cacert.pem
+¦   ¦       ¦       
+¦   ¦       +---src
+¦   ¦               CaBundle.php
+¦   ¦               
+¦   +---geoip2
+¦   ¦   +---geoip2
+¦   ¦       ¦   CHANGELOG.md
+¦   ¦       ¦   composer.json
+¦   ¦       ¦   LICENSE
+¦   ¦       ¦   README.md
+¦   ¦       ¦   
+¦   ¦       +---examples
+¦   ¦       ¦       benchmark.php
+¦   ¦       ¦       
+¦   ¦       +---src
+¦   ¦           ¦   ProviderInterface.php
+¦   ¦           ¦   Util.php
+¦   ¦           ¦   
+¦   ¦           +---Database
+¦   ¦           ¦       Reader.php
+¦   ¦           ¦       
+¦   ¦           +---Exception
+¦   ¦           ¦       AddressNotFoundException.php
+¦   ¦           ¦       AuthenticationException.php
+¦   ¦           ¦       GeoIp2Exception.php
+¦   ¦           ¦       HttpException.php
+¦   ¦           ¦       InvalidRequestException.php
+¦   ¦           ¦       OutOfQueriesException.php
+¦   ¦           ¦       
+¦   ¦           +---Model
+¦   ¦           ¦       AnonymousIp.php
+¦   ¦           ¦       AnonymousPlus.php
+¦   ¦           ¦       Asn.php
+¦   ¦           ¦       City.php
+¦   ¦           ¦       ConnectionType.php
+¦   ¦           ¦       Country.php
+¦   ¦           ¦       Domain.php
+¦   ¦           ¦       Enterprise.php
+¦   ¦           ¦       Insights.php
+¦   ¦           ¦       Isp.php
+¦   ¦           ¦       
+¦   ¦           +---Record
+¦   ¦           ¦       AbstractNamedRecord.php
+¦   ¦           ¦       AbstractPlaceRecord.php
+¦   ¦           ¦       City.php
+¦   ¦           ¦       Continent.php
+¦   ¦           ¦       Country.php
+¦   ¦           ¦       Location.php
+¦   ¦           ¦       MaxMind.php
+¦   ¦           ¦       Postal.php
+¦   ¦           ¦       RepresentedCountry.php
+¦   ¦           ¦       Subdivision.php
+¦   ¦           ¦       Traits.php
+¦   ¦           ¦       
+¦   ¦           +---WebService
+¦   ¦                   Client.php
+¦   ¦                   
+¦   +---maxmind
+¦   ¦   +---web-service-common
+¦   ¦       ¦   CHANGELOG.md
+¦   ¦       ¦   composer.json
+¦   ¦       ¦   LICENSE
+¦   ¦       ¦   phpstan.neon
+¦   ¦       ¦   README.md
+¦   ¦       ¦   
+¦   ¦       +---dev-bin
+¦   ¦       ¦       release.sh
+¦   ¦       ¦       
+¦   ¦       +---src
+¦   ¦           +---Exception
+¦   ¦           ¦       AuthenticationException.php
+¦   ¦           ¦       HttpException.php
+¦   ¦           ¦       InsufficientFundsException.php
+¦   ¦           ¦       InvalidInputException.php
+¦   ¦           ¦       InvalidRequestException.php
+¦   ¦           ¦       IpAddressNotFoundException.php
+¦   ¦           ¦       PermissionRequiredException.php
+¦   ¦           ¦       WebServiceException.php
+¦   ¦           ¦       
+¦   ¦           +---WebService
+¦   ¦               ¦   Client.php
+¦   ¦               ¦   
+¦   ¦               +---Http
+¦   ¦                       CurlRequest.php
+¦   ¦                       Request.php
+¦   ¦                       RequestFactory.php
+¦   ¦                       
+¦   +---maxmind-db
+¦       +---reader
+¦           ¦   autoload.php
+¦           ¦   CHANGELOG.md
+¦           ¦   composer.json
+¦           ¦   LICENSE
+¦           ¦   package.xml
+¦           ¦   README.md
+¦           ¦   
+¦           +---ext
+¦           ¦   ¦   config.m4
+¦           ¦   ¦   config.w32
+¦           ¦   ¦   maxminddb.c
+¦           ¦   ¦   php_maxminddb.h
+¦           ¦   ¦   
+¦           ¦   +---tests
+¦           ¦           001-load.phpt
+¦           ¦           002-final.phpt
+¦           ¦           003-open-basedir.phpt
+¦           ¦           
+¦           +---src
+¦               +---MaxMind
+¦                   +---Db
+¦                       ¦   Reader.php
+¦                       ¦   
+¦                       +---Reader
+¦                               Decoder.php
+¦                               InvalidDatabaseException.php
+¦                               Metadata.php
+¦                               Util.php
+¦                               
++---verktyg
+    ¦   form
+    ¦   index copy.html
+    ¦   index.html
+    ¦   mall.html
+    ¦   navbar.html
+    ¦   ny_mall.html
+    ¦   tabort.html
+    ¦   
+    +---assets
+    ¦   ¦   backup.htaccess
+    ¦   ¦   
+    ¦   +---css
+    ¦   ¦       components.css
+    ¦   ¦       google-fonts.css
+    ¦   ¦       layout.css
+    ¦   ¦       navbar.css
+    ¦   ¦       reset.css
+    ¦   ¦       theme.css
+    ¦   ¦       typography.css
+    ¦   ¦       utilities.css
+    ¦   ¦       variables.css
+    ¦   ¦       
+    ¦   +---img
+    ¦   +---js
+    ¦           navbar.js
+    ¦           theme.js
+    ¦           
+    +---bpmn
+    ¦   +---assets
+    ¦   +---scripts
+    ¦   +---styles
+    ¦   +---vendor
+    +---flow
+    ¦       autosave.js
+    ¦       export.js
+    ¦       import.js
+    ¦       index.php
+    ¦       nodeactions.js
+    ¦       nodtyp.js
+    ¦       script.js
+    ¦       stats.js
+    ¦       style.css
+    ¦       test-flow-shapes.html
+    ¦       theme.css
+    ¦       theme.js
+    ¦       
+    +---icon
+    ¦       about.txt
+    ¦       android-chrome-192x192.png
+    ¦       android-chrome-512x512.png
+    ¦       apple-touch-icon.png
+    ¦       favicon-16x16.png
+    ¦       favicon-32x32.png
+    ¦       favicon.ico
+    ¦       site.webmanifest
+    ¦       
+    +---koordinat
+    ¦   ¦   .htaccess
+    ¦   ¦   README.md
+    ¦   ¦   
+    ¦   +---api
+    ¦   ¦       convert.php
+    ¦   ¦       elevation.php
+    ¦   ¦       export.php
+    ¦   ¦       parse_google.php
+    ¦   ¦       
+    ¦   +---config
+    ¦   +---public
+    ¦   ¦   ¦   export.js
+    ¦   ¦   ¦   export_advanced.js
+    ¦   ¦   ¦   geocoding.js
+    ¦   ¦   ¦   help1.php
+    ¦   ¦   ¦   impex.js
+    ¦   ¦   ¦   impex.php
+    ¦   ¦   ¦   impex_map.js
+    ¦   ¦   ¦   impex_map.php
+    ¦   ¦   ¦   impex_map_help.php
+    ¦   ¦   ¦   impex_plot.js
+    ¦   ¦   ¦   index.php
+    ¦   ¦   ¦   map.js
+    ¦   ¦   ¦   script.js
+    ¦   ¦   ¦   styles.css
+    ¦   ¦   ¦   test.html
+    ¦   ¦   ¦   test.js
+    ¦   ¦   ¦   tom.txt
+    ¦   ¦   ¦   
+    ¦   ¦   +---img
+    ¦   ¦   +---_old
+    ¦   ¦           basic_funkar v4.js
+    ¦   ¦           help2 copy.php
+    ¦   ¦           help2.php
+    ¦   ¦           impex copy 2.js
+    ¦   ¦           impex copy 2.php
+    ¦   ¦           impex copy 3.js
+    ¦   ¦           impex copy funkar med klistra in.js
+    ¦   ¦           impex copy tabell funkar 2.js
+    ¦   ¦           impex copy.js
+    ¦   ¦           impex copy.php
+    ¦   ¦           impex_old.js
+    ¦   ¦           impex_old.php
+    ¦   ¦           old.js
+    ¦   ¦           script copy 3.js
+    ¦   ¦           
+    ¦   +---src
+    ¦           config.php
+    ¦           constants.php
+    ¦           CoordinateConverter.php
+    ¦           
+    +---mall
+    ¦       index.html
+    ¦       script.js
+    ¦       
+    +---mejl
+    ¦   ¦   epost.php
+    ¦   ¦   error_log
+    ¦   ¦   index.html
+    ¦   ¦   
+    ¦   +---phpmailer
+    ¦   ¦   ¦   .editorconfig
+    ¦   ¦   ¦   COMMITMENT
+    ¦   ¦   ¦   composer.json
+    ¦   ¦   ¦   get_oauth_token.php
+    ¦   ¦   ¦   LICENSE
+    ¦   ¦   ¦   README.md
+    ¦   ¦   ¦   SECURITY.md
+    ¦   ¦   ¦   VERSION
+    ¦   ¦   ¦   
+    ¦   ¦   +---language
+    ¦   ¦   ¦       phpmailer.lang-af.php
+    ¦   ¦   ¦       phpmailer.lang-ar.php
+    ¦   ¦   ¦       phpmailer.lang-as.php
+    ¦   ¦   ¦       phpmailer.lang-az.php
+    ¦   ¦   ¦       phpmailer.lang-ba.php
+    ¦   ¦   ¦       phpmailer.lang-be.php
+    ¦   ¦   ¦       phpmailer.lang-bg.php
+    ¦   ¦   ¦       phpmailer.lang-bn.php
+    ¦   ¦   ¦       phpmailer.lang-ca.php
+    ¦   ¦   ¦       phpmailer.lang-cs.php
+    ¦   ¦   ¦       phpmailer.lang-da.php
+    ¦   ¦   ¦       phpmailer.lang-de.php
+    ¦   ¦   ¦       phpmailer.lang-el.php
+    ¦   ¦   ¦       phpmailer.lang-eo.php
+    ¦   ¦   ¦       phpmailer.lang-es.php
+    ¦   ¦   ¦       phpmailer.lang-et.php
+    ¦   ¦   ¦       phpmailer.lang-fa.php
+    ¦   ¦   ¦       phpmailer.lang-fi.php
+    ¦   ¦   ¦       phpmailer.lang-fo.php
+    ¦   ¦   ¦       phpmailer.lang-fr.php
+    ¦   ¦   ¦       phpmailer.lang-gl.php
+    ¦   ¦   ¦       phpmailer.lang-he.php
+    ¦   ¦   ¦       phpmailer.lang-hi.php
+    ¦   ¦   ¦       phpmailer.lang-hr.php
+    ¦   ¦   ¦       phpmailer.lang-hu.php
+    ¦   ¦   ¦       phpmailer.lang-hy.php
+    ¦   ¦   ¦       phpmailer.lang-id.php
+    ¦   ¦   ¦       phpmailer.lang-it.php
+    ¦   ¦   ¦       phpmailer.lang-ja.php
+    ¦   ¦   ¦       phpmailer.lang-ka.php
+    ¦   ¦   ¦       phpmailer.lang-ko.php
+    ¦   ¦   ¦       phpmailer.lang-lt.php
+    ¦   ¦   ¦       phpmailer.lang-lv.php
+    ¦   ¦   ¦       phpmailer.lang-mg.php
+    ¦   ¦   ¦       phpmailer.lang-mn.php
+    ¦   ¦   ¦       phpmailer.lang-ms.php
+    ¦   ¦   ¦       phpmailer.lang-nb.php
+    ¦   ¦   ¦       phpmailer.lang-nl.php
+    ¦   ¦   ¦       phpmailer.lang-pl.php
+    ¦   ¦   ¦       phpmailer.lang-pt.php
+    ¦   ¦   ¦       phpmailer.lang-pt_br.php
+    ¦   ¦   ¦       phpmailer.lang-ro.php
+    ¦   ¦   ¦       phpmailer.lang-ru.php
+    ¦   ¦   ¦       phpmailer.lang-si.php
+    ¦   ¦   ¦       phpmailer.lang-sk.php
+    ¦   ¦   ¦       phpmailer.lang-sl.php
+    ¦   ¦   ¦       phpmailer.lang-sr.php
+    ¦   ¦   ¦       phpmailer.lang-sr_latn.php
+    ¦   ¦   ¦       phpmailer.lang-sv.php
+    ¦   ¦   ¦       phpmailer.lang-tl.php
+    ¦   ¦   ¦       phpmailer.lang-tr.php
+    ¦   ¦   ¦       phpmailer.lang-uk.php
+    ¦   ¦   ¦       phpmailer.lang-vi.php
+    ¦   ¦   ¦       phpmailer.lang-zh.php
+    ¦   ¦   ¦       phpmailer.lang-zh_cn.php
+    ¦   ¦   ¦       
+    ¦   ¦   +---src
+    ¦   ¦           DSNConfigurator.php
+    ¦   ¦           Exception.php
+    ¦   ¦           OAuth.php
+    ¦   ¦           OAuthTokenProvider.php
+    ¦   ¦           PHPMailer.php
+    ¦   ¦           POP3.php
+    ¦   ¦           SMTP.php
+    ¦   ¦           
+    ¦   +---web2pdf
+    ¦           index.html
+    ¦           script.js
+    ¦           
+    +---ocr
+    ¦       index.html
+    ¦       script.js
+    ¦       
+    +---PNR
+    ¦       data.csv
+    ¦       db_larm.php
+    ¦       index.html
+    ¦       larm.html
+    ¦       larm.js
+    ¦       mail.pgp
+    ¦       mail.php
+    ¦       PHPMailer-master.zip
+    ¦       pnr.csv
+    ¦       release_notes.html
+    ¦       script.js
+    ¦       site.html
+    ¦       site.js
+    ¦       
+    +---reactflow
+    ¦       index.html
+    ¦       main.js
+    ¦       nodes.js
+    ¦       style.css
+    ¦       
+    +---stotta
+    ¦       index.html
+    ¦       script.js
+    ¦       
+    +---tfngen
+    ¦       script.js
+    ¦       tfngen.html
+    ¦       
+    +---tts
+    ¦       app.js
+    ¦       index.html
+    ¦       script.js
+    ¦       
+    +---web2pdf
+            index.html
+            script.js
+            

@@ -6,10 +6,9 @@ include '../../includes/layout-start.php';
 require_once 'visa-handler.php';
 ?>
 
-<main class="container">
+<main class="layout__container">
 
-
-  <div class="card">
+  <div class="kort">
     <?= $result ?? '❌ Inget resultat tillgängligt.' ?>
   </div>
 </main>

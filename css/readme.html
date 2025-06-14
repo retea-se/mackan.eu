@@ -1,0 +1,146 @@
+<!-- readme.html - v3 -->
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>README – CSS-struktur för Mackan.eu</title>
+  <link rel="stylesheet" href="main.css" />
+  <style>
+    body {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      font-family: sans-serif;
+      line-height: 1.6;
+      background-color: #fff;
+      color: #222;
+    }
+    .knapp {
+      display: inline-block;
+      background: var(--primary-color);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      transition: background 0.2s;
+    }
+    .knapp:hover {
+      background: var(--hover-color);
+    }
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: #004080;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 1rem;
+      border-left: 4px solid #007acc;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Styleguide och README – Mackan.eu</h1>
+  <p>Denna struktur följer en komponentbaserad uppdelning med <strong>BEM-namnstandard</strong> och en samlad importfil: <code>main.css</code>.</p>
+
+  <h2>📦 Mappstruktur</h2>
+  <pre><code>css/
+├── main.css
+├── reset.css
+├── variables.css
+├── readme.html
+└── blocks/
+    ├── knapp.css
+    ├── kort.css
+    ├── tabell.css
+    ├── toast.css
+    ├── ikon.css
+    ├── menykort.css
+    ├── layout.css
+    ├── form.css
+    ├── falt.css
+    ├── rubrik.css
+    ├── sidfot.css
+    ├── tema.css
+    ├── utilities.css
+    ├── verktygsinfo.css
+    ├── diagram.css
+    ├── losenord.css
+</code></pre>
+
+  <h2>📐 BEM-principer</h2>
+  <ul>
+    <li><strong>Block:</strong> komponentens namn, t.ex. <code>.knapp</code>, <code>.kort</code></li>
+    <li><strong>Element:</strong> skrivs som <code>__element</code>, t.ex. <code>.kort__rubrik</code></li>
+    <li><strong>Modifierare:</strong> skrivs som <code>--modifierare</code>, t.ex. <code>.knapp--fara</code></li>
+  </ul>
+
+  <h2>💡 Kodexempel</h2>
+  <pre><code>&lt;button class="knapp knapp--stor"&gt;Skicka&lt;/button&gt;
+
+&lt;section class="kort kort--huvud"&gt;
+  &lt;h2 class="kort__rubrik"&gt;Resultat&lt;/h2&gt;
+  &lt;p class="kort__innehall"&gt;Här är ett resultat.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;table class="tabell tabell--kompakt"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th class="tabell__huvud"&gt;Rubrik&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td class="tabell__cell"&gt;Innehåll&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+  <h2>🧪 Test och demo</h2>
+  <p>Vill du se alla komponenter i användning? Besök testfilen:
+    <a href="csstest-komplett.html" class="knapp">csstest-komplett.html</a>
+  </p>
+
+  <h2>📌 Översättningstabell</h2>
+  <p>Om du ska konvertera äldre HTML till ny struktur med BEM, använd översättningstabellen:
+    <a href="översättning.txt" class="knapp knapp--liten">Visa översättning</a>
+  </p>
+
+  <h2>🛠️ Lägg till ny komponent</h2>
+  <ol>
+    <li>Skapa <code>blocks/namn.css</code></li>
+    <li>Använd endast BEM-klasser relaterade till komponenten</li>
+    <li>Lägg till filen i rätt sektion i <code>main.css</code></li>
+    <li>Kommentera syfte och struktur i filens topp</li>
+  </ol>
+
+  <h2>⚠️ Vanliga misstag</h2>
+  <ul>
+    <li>❌ Använd inte globala taggar som <code>button</code>, <code>input</code></li>
+    <li>❌ Återanvänd inte klasser i flera komponenter (t.ex. .knapp i .tabell.css)</li>
+    <li>✅ Håll komponenter isolerade</li>
+    <li>✅ Använd <code>variables.css</code> för färger, marginaler, fonter</li>
+  </ul>
+
+  <h2>📎 Utilities (helpers)</h2>
+  <p>Hjälpklasser som kan användas utanför komponenter:</p>
+  <ul>
+    <li><code>.utils--dold</code>, <code>.utils--text-center</code></li>
+    <li><code>.utils--mt-1</code>, <code>.utils--mb-1</code>, <code>.utils--p-1</code></li>
+    <li><code>.tagg--svag</code>, <code>.tagg--medel</code>, <code>.tagg--stark</code></li>
+  </ul>
+
+  <h2>📂 Nyare komponenter att känna till</h2>
+  <ul>
+    <li><code>.losenord__sektion</code>, <code>.losenord__knappar</code> – Lösenordsgenerator</li>
+    <li><code>.diagram__container</code> – Wrapper för Chart.js eller canvas</li>
+    <li><code>.falt__select</code>, <code>.falt__checkbox</code> – Dropdowns och kryssrutor</li>
+    <li><code>.sidfot</code>, <code>.sidfot__center</code> – Responsiv footer</li>
+  </ul>
+
+  <footer style="margin-top: 4rem; font-size: 0.9rem; text-align: center; color: #888;">
+    <p>© Mackan.eu – Dokumentation uppdaterad 2025-06-14</p>
+  </footer>
+
+</body>
+</html>

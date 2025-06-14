@@ -1,0 +1,78 @@
+/* ===================================================== */
+/* Fil: tema.css - v2                                    */
+/* Komponent: Temahantering                              */
+/* Struktur: Temaregler via [data-theme]                 */
+/* Syfte: Använd visuella tokens beroende på valt tema  */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Regler kopplade till [data-theme="dark"]            */
+/* - Färg- och kontrastjusteringar                       */
+/* - Övergångseffekter                                   */
+/* ❌ Får INTE innehålla:                                 */
+/* - Variabeldefinitioner (:root)                        */
+/* - Komponentlogik (.kort, .knapp, etc.)                */
+/* ===================================================== */
+
+/* === Basövergångar vid temaväxling === */
+body,
+.nav,
+.footer,
+.layout__container {
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* === Bakgrund och text i mörkt tema === */
+[data-theme="dark"] body,
+[data-theme="dark"] main,
+[data-theme="dark"] .layout__container {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* === Nav i mörkt tema === */
+[data-theme="dark"] .nav {
+  background-color: #1a1a1a;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* === Footer i mörkt tema === */
+[data-theme="dark"] .footer {
+  background-color: #111;
+  color: #999;
+}
+
+/* === Temaknapp i mörkt tema === */
+[data-theme="dark"] .theme-toggle {
+  color: var(--text-color);
+}
+
+/* === Nav i ljust tema === */
+[data-theme="light"] .nav {
+  background-color: var(--primary-color);
+}
+[data-theme="light"] .nav__titel,
+[data-theme="light"] .nav i {
+  color: #fff;
+}
+
+/* === Footer i ljust tema === */
+[data-theme="light"] .footer {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+[data-theme="light"] .footer__center,
+[data-theme="light"] .footer__hem,
+[data-theme="light"] .footer__varumarke,
+[data-theme="light"] .footer i {
+  color: #fff;
+}
+[data-theme="light"] .sidfot {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+[data-theme="light"] .sidfot__center,
+[data-theme="light"] .sidfot__ikonlank,
+[data-theme="light"] .sidfot i {
+  color: #fff;
+}

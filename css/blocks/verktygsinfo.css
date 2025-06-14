@@ -1,0 +1,20 @@
+/* ===================================================== */
+/* Fil: verktygsinfo.css - v2                            */
+/* Komponent: Informationsfält under tabeller/resultat   */
+/* Struktur: BEM (.info__text)                           */
+/* Syfte: Visa summerande statisk information            */
+/* ===================================================== */
+/* ✅ Endast .info__text med typografi/utseende          */
+/* ===================================================== */
+
+.info__text {
+  padding: 0.75rem 1rem;
+  font-family: monospace;
+  font-size: 1rem;
+  text-align: right;
+  font-weight: bold;
+  border-top: 1px solid var(--border-color);
+  background-color: #fafafa;
+  color: #333;
+  margin: 0;
+}

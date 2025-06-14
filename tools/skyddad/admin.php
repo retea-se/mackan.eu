@@ -1,6 +1,20 @@
 <?php
 // admin.php - v7
-// git commit: Lägg till cronloggning via logEvent-funktion och fixa stapeldiagram korrekt
+
+// Autentisering för admin
+$username = getenv('ADMIN_USER') ?: '';
+$password = getenv('ADMIN_PASS') ?: '';
+
+if (
+    !isset($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) ||
+    $_SERVER['PHP_AUTH_USER'] !== $username ||
+    $_SERVER['PHP_AUTH_PW'] !== $password
+) {
+    header('WWW-Authenticate: Basic realm="Skyddad Adminpanel"');
+    header('HTTP/1.0 401 Unauthorized');
+    echo 'Åtkomst nekad';
+    exit;
+}
 
 require_once __DIR__ . '/includes/bootstrap.php';
 

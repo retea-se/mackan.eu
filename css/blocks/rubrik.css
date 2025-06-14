@@ -1,0 +1,53 @@
+/* ===================================================== */
+/* Fil: rubrik.css - v2                                  */
+/* Komponent: Rubrik                                     */
+/* Struktur: BEM (.rubrik, .rubrik--sektion, etc.)       */
+/* Syfte: Hantera alla rubriker (sidtitel, sektion, etc.)*/
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - BEM-klasser kopplade till rubrikstruktur            */
+/* - Användning av design tokens                         */
+/* - Temastöd via variabler                              */
+/* ❌ Får INTE innehålla:                                 */
+/* - HTML-element (t.ex. h1 direkt)                      */
+/* - Typografiska basregler (finns i typografi.css)      */
+/* ===================================================== */
+
+/* === Huvudrubrik (ofta H1, ex. sidtitel) === */
+.rubrik {
+  text-align: center;
+  font-size: clamp(1.1rem, 2.5vw, 1.7rem); /* Mindre och responsiv */
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: var(--rubrik-color, #22223b);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 8px rgba(34,34,59,0.06); /* Subtil effekt */
+  transition: color 0.2s;
+}
+
+/* === Sektionstitel (ofta H2) === */
+.rubrik--sektion {
+  font-weight: 700;
+  color: var(--primary-color, #004080);
+  letter-spacing: 0.03em;
+  margin-bottom: 1.5rem;
+}
+
+/* === Underrubrik (ofta H3) === */
+.rubrik--underrubrik {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+/* === Mörkt tema stöd === */
+[data-theme="dark"] .rubrik--sektion {
+  border-color: #444;
+}
+
+/* Exempel på variabel i variables.css:
+:root {
+  --rubrik-color: #22223b;
+  --primary-color: #007acc;
+}
+*/

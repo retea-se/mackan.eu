@@ -1,0 +1,87 @@
+/* ===================================================== */
+/* Fil: knapp.css - v2                                   */
+/* Komponent: Knapp (button)                             */
+/* Struktur: BEM (.knapp, .knapp--liten, .knapp--fara)   */
+/* Syfte: Standardiserade knappar med tillståndsstöd     */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Endast BEM-klasser relaterade till knappar          */
+/* - Tillståndsmodifierare (hover, active, disabled)     */
+/* - Design tokens från variables.css                    */
+/* ❌ Får INTE innehålla:                                 */
+/* - Rena HTML-element (button)                          */
+/* - Globala stilar eller andra komponenter              */
+/* ===================================================== */
+
+.knapp {
+  font-family: var(--font-family-button, var(--font-family, 'Poppins', sans-serif));
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  margin: var(--spacing-unit) auto;
+}
+
+.knapp:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+}
+
+.knapp:active {
+  transform: translateY(0);
+}
+
+.knapp[disabled] {
+  background-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* === Modifierare: storlek === */
+.knapp--liten {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+}
+
+.knapp--stor {
+  font-size: 1.2rem;
+  padding: 12px 24px;
+}
+
+/* === Modifierare: färgvariant === */
+.knapp--fara {
+  background-color: #e74c3c;
+}
+
+.knapp--fara:hover {
+  background-color: #c0392b;
+}
+
+/* === Element: ikonknapp === */
+.knapp__ikon {
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  padding: 0.4em;
+  margin: 0 0.2em;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.knapp__ikon:hover {
+  color: var(--hover-color);
+}
+
+.knapp__ikon:focus,
+.knapp__ikon:focus-visible,
+.knapp__ikon:active {
+  outline: none !important;
+  box-shadow: none !important;
+}

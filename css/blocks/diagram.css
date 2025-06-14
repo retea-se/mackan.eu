@@ -1,0 +1,22 @@
+/* ===================================================== */
+/* Fil: diagram.css - v1                                 */
+/* Komponent: Diagram/Chart-wrapper                      */
+/* Struktur: BEM (.diagram__container)                   */
+/* Syfte: Wrapper för t.ex. Chart.js eller canvas-grafik */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Endast BEM-klasser relaterade till .diagram         */
+/* ❌ Får INTE innehålla:                                 */
+/* - Canvas-regler direkt, endast layout                 */
+/* ===================================================== */
+
+.diagram__container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}

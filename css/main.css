@@ -1,0 +1,45 @@
+/* ===================================================== */
+/* Fil: main.css - v1                                    */
+/* Syfte: Samlad CSS-import för hela projektet           */
+/* Struktur: Endast @import-satser, ingen egen CSS       */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Endast @import                                      */
+/* ❌ Får INTE innehålla:                                 */
+/* - Klassregler, elementstilar eller media queries      */
+/* ===================================================== */
+
+/* === 1. Återställning & variabler === */
+@import url('reset.css');
+@import url('variables.css');
+
+/* === 2. Temahantering & layout === */
+@import url('blocks/tema.css');
+@import url('blocks/layout.css');
+@import url('blocks/sidfot.css');
+
+
+/* === 3. Typografi & rubriker === */
+@import url('blocks/typografi.css');
+@import url('blocks/rubrik.css');
+
+/* === 4. Formulär & fält === */
+@import url('blocks/form.css');
+@import url('blocks/falt.css');
+
+/* === 5. Komponenter === */
+@import url('blocks/knapp.css');
+@import url('blocks/kort.css');
+@import url('blocks/menykort.css');
+@import url('blocks/tabell.css');
+@import url('blocks/toast.css');
+@import url('blocks/ikon.css');
+
+/* === 6. Verktygsinformation & dokumentation === */
+@import url('blocks/verktygsinfo.css');
+
+/* === 7. Hjälpklasser (utilities) === */
+@import url('blocks/utilities.css');
+@import url('blocks/dropdown.css');
+@import url('blocks/diagram.css');
+@import url('blocks/losenord.css');

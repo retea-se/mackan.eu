@@ -29,7 +29,8 @@ include __DIR__ . '/visitor-logger-js.php';
     });
   }
 </script>
-<script src="/js/theme.js" defer></script>
+<!-- Ta bort eller kommentera denna rad i din HTML/PHP -->
+<!-- <script src="/js/theme.js"></script> -->
 
 
 </body>

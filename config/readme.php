@@ -1,97 +1,74 @@
-<!-- config/readme.php - v2 -->
+<!-- config/readme.php - v3 -->
 <!--
 📘 Dokumentation: Struktur & utvecklingsprinciper för mackan.eu
 
 📁 MAPPSTRUKTUR
 
 /                 → Webbplatsens rot (innehåller index.php)
-/css/             → Alla globala stilmallar (theme, layout, tools etc.)
-/js/              → Globala skript (temaväxling, navbar)
+/css/             → Alla stilmallar i blocks-format (importeras via main.css)
+/js/              → Globala skript (temaväxling, export, import, tippy)
 /config/          → Delade datafiler (t.ex. tools.php) och denna dokumentation
 /includes/        → PHP-moduler: header, footer, layout-start/end m.m.
-/tools/           → Varje verktyg har en egen undermapp (ex: /tools/addy/)
+/tools/           → Varje verktyg har en egen undermapp (ex: /tools/testid/)
+/blocks/          → En CSS-fil per komponent (BEM-struktur), importeras i main.css
 
-🎨 CSS
-- Alla stilar utgår från CSS-variabler i variables.css
-- theme.css hanterar light/dark via [data-theme]
-- layout.css och components.css hanterar tabeller, kort, formulär m.m.
-- tools.css används för formulär- och verktygskomponenter
-- utilities.css för små layout-helpers (t.ex. .text-center)
-- reset.css sätter nollställning av stilar
-- typography.css definierar rubriker, textstorlek etc.
-- navbar.css och footer.css sköter navigation och sidfot
+🎨 CSS-struktur
+- Alla komponenter följer BEM-konvention (block__element--modifier)
+- CSS delas upp i separata filer under `/blocks/`:
+  - En fil per komponent (kort, knapp, toast, osv.)
+  - Importeras samlat via `main.css`
+- Alla färger, mått och typsnitt styrs via `variables.css`
+- `theme.css` hanterar mörkt/ljust tema via `[data-theme]`
 
-/css/
+📂 /css/
 |
-|├─ reset.css        → Nollställer browserstilar (margin, padding, font)
-|├─ variables.css    → Centrala CSS-variabler: färger, typsnitt, spacing
-|├─ theme.css        → Temaväxling (dark/light) via [data-theme="dark"]
-|├─ layout.css       → Containers, tabeller, formulär, struktur
-|├─ typography.css   → Textstilar: rubriker, brödtext, länkar
-|├─ components.css   → Kort, knappar, inputs, tabeller, toast
-|├─ utilities.css    → Hjälpklasser: .mb-1, .text-center, .hidden
-|├─ navbar.css       → Navigation, hamburgermeny, temaknapp
-|└─ footer.css       → Sidfotens layout och stil
+|├─ main.css         → Samlad importfil (endast @import)
+|├─ reset.css        → Återställer browserstandard
+|├─ variables.css    → CSS-variabler för färger, typsnitt, spacing
+|├─ theme.css        → Temastöd (dark/light)
+|├─ layout.css       → Sido- och gridstruktur
+|└─ blocks/          → Alla komponentbaserade CSS-filer (nedan)
 
-🛠️ CSS-hierarki
+📂 /css/blocks/
+|
+|├─ falt.css         → Inputs, textarea, select
+|├─ form.css         → Formulärgrupper, verktygsrader
+|├─ ikon.css         → Ikonknappar, hjälpikoner
+|├─ knapp.css        → Knappar, ikonknappar, tillstånd
+|├─ kort.css         → Kortlayout och innehåll
+|├─ layout.css       → Layoutcontainrar, sektioner
+|├─ menykort.css     → Menykort för startsida
+|├─ rubrik.css       → Rubrikkomponenter
+|├─ sidfot.css       → Sidfotsdesign
+|├─ tabell.css       → Tabellutseende, wrapper, mobil
+|├─ tema.css         → Temaväxlingseffekter
+|├─ toast.css        → Meddelandefält
+|├─ utilities.css    → .utils--*, spacing, textcenter, dolda
+|├─ verktygsinfo.css → Infofält under resultat
+|├─ losenord.css     → Layout för lösenordsgenerering
+|├─ diagram.css      → Canvas-container för t.ex. charts
 
-1. **Reset** → nollställer allt
-2. **Variables** → definierar bas (färger, typsnitt)
-3. **Theme** → skriver över `:root` via [data-theme="dark"]
-4. **Layout** → struktur, tabeller, container
-5. **Typography** → textutseende
-6. **Components + Utilities** → byggblock
-7. **Specifika CSS** → navbar, footer, tools etc.
+🧪 CSS-hierarki
 
-🧪 Exempel på användning
+1. **reset.css** → återställ stil
+2. **variables.css** → definierar alla tokens
+3. **theme.css** → mörkt/ljust tema
+4. **layout.css** → struktur för sidhuvud, sektion, container
+5. **blocks/** → en fil per komponent (knapp, tabell, toast, osv.)
+6. **utilities.css** → små hjälpregler
+7. **verktygsspecifik CSS** → endast vid behov
 
-<form class="form-group">
-  <input type="text" class="input" placeholder="...">
-  <textarea class="textarea"></textarea>
-  <div class="horizontal-tools">
-    <button class="button">OK</button>
-    <button class="button secondary">Avbryt</button>
+🧪 Exempel på BEM
+
+```html
+<form class="form__centrerad">
+  <div class="form__grupp">
+    <label class="falt__etikett">Namn</label>
+    <input class="falt__input" />
+    <p class="form__hint">Fyll i ditt fullständiga namn</p>
+  </div>
+  <div class="form__verktyg">
+    <button class="knapp knapp--fara">Avbryt</button>
+    <button class="knapp">OK</button>
   </div>
 </form>
-<table class="table">...</table>
-
----
-
-## 📆 Includes (PHP-komponenter)
-
-/includes/
-|
-|├─ meta.php         → <head> med CSS/JS och titlar
-|├─ header.php       → Logotyp och ev. sidtitel
-|├─ nav.php          → Meny med hamburgare
-|├─ footer.php       → Copyright, länk, ikon
-|├─ title.php        → Automatisk <h1> via $title
-|├─ layout-start.php → Inkluderar: meta, header, nav, title
-|└─ layout-end.php   → Inkluderar: footer och avslutande </body></html>
-
-## 🛠️ JavaScript
-
-/js/
-|
-|├─ theme-toggle.js  → Hanterar temaväxling med localStorage
-|├─ navbar.js        → Menyinteraktion för mobil/hamburgare
-|└─ theme.js         → (valfri utökning för t.ex. systemteman)
-
-## 🛠️ Verktygsstruktur
-
-/tools/verktygsnamn/
-|
-|├─ index.php     → Formulär / resultatvy
-|├─ script.js     → Verktygsspecifik JS
-|└─ readme.php    → Info om verktygets funktion
-
-Definieras centralt i `config/tools.php` som:
-```php
-return [
-  ['title' => 'Addy', 'href' => '/tools/addy/index.php', 'icon' => 'fa-envelope'],
-  ['title' => 'Aptus', 'href' => '/tools/aptus/index.php', 'icon' => 'fa-key']
-];
-```
-
-Senast uppdaterad: 2025-06-08
--->
