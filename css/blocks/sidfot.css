@@ -1,7 +1,7 @@
 /* ===================================================== */
-/* Fil: sidfot.css - v2                                  */
+/* Fil: sidfot.css - v3                                  */
 /* Komponent: Sidfot                                     */
-/* Struktur: BEM (.footer, .footer__center, etc)         */
+/* Struktur: BEM (.sidfot, .sidfot__center, etc)         */
 /* Syfte: Sidfot med temastöd och responsivitet          */
 /* ===================================================== */
 /* ✅ Får innehålla:                                      */
@@ -13,12 +13,12 @@
 /* - Variabeldefinitioner                                */
 /* ===================================================== */
 
-.footer {
+.sidfot {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 48px;
-  background-color: var(--primary-color) !important;
+  background-color: var(--primary-color);
   color: #fff;
   padding: 0 20px;
   font-size: 0.7rem;
@@ -26,47 +26,47 @@
   box-sizing: border-box;
 }
 
-.footer__hem {
+.sidfot__hem {
   font-size: 1rem;
-  color: #fff !important;
+  color: #fff;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
 }
 
-.footer__hem:hover {
-  color: var(--hover-color) !important;
+.sidfot__hem:hover {
+  color: var(--hover-color);
 }
 
-.footer__center {
+.sidfot__center {
   flex: 1;
   text-align: center;
   color: #fff;
 }
 
-.footer__varumarke {
+.sidfot__varumarke {
   display: inline-flex;
   align-items: center;
   font-weight: bold;
   font-size: 1.2rem;
-  color: #fff !important;
+  color: #fff;
   text-decoration: none;
   gap: 0.5rem;
 }
 
-.footer__varumarke:hover {
-  color: var(--hover-color) !important;
+.sidfot__varumarke:hover {
+  color: var(--hover-color);
 }
 
 @media (max-width: 600px) {
-  .footer {
+  .sidfot {
     flex-direction: column;
     height: auto;
     padding: 10px;
     gap: 6px;
   }
 
-  .footer__center {
+  .sidfot__center {
     text-align: center;
   }
 }
