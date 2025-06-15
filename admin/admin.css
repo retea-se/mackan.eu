@@ -1,0 +1,217 @@
+/* Grundläggande layout */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f8f8f8;
+    margin: 2em;
+    color: #222;
+}
+
+.dash-container {
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px #eee;
+    padding: 2em 2em 3em 2em;
+}
+
+header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+h1 {
+    margin: 0 1em 0 0;
+    font-size: 2em;
+    flex: 1 1 auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5em 1.2em;
+    background: #0074d9;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 0.5em;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+.btn:hover {
+    background: #005fa3;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    margin-bottom: 1em;
+}
+li .btn {
+    width: 100%;
+    text-align: left;
+    font-size: 1.1em;
+}
+
+.stats, .stat-card {
+    margin-bottom: 1em;
+}
+.stat-card {
+    background: #fff;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #eee;
+    display: inline-block;
+    margin-right: 1em;
+}
+
+form[method="get"] {
+    background: #fafbfc;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #f0f0f0;
+    padding: 1.5em 2em 1em 2em;
+    margin: 0 auto 2em auto;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em 1.5em;
+    align-items: center;
+    justify-content: center;
+}
+form[method="get"] label {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    white-space: nowrap;
+}
+form[method="get"] input[type="number"],
+form[method="get"] input[type="text"] {
+    width: 60px;
+    padding: 0.3em 0.5em;
+    margin: 0 0.2em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+form[method="get"] input[type="text"] {
+    width: 180px;
+}
+form[method="get"] .btn {
+    margin-left: 1em;
+    margin-bottom: 0;
+}
+
+.stat-card[style*="background:#e0ffe0;"],
+.stat-card[style*="background:#ffe0e0;"] {
+    margin: 0 auto 1.5em auto;
+    display: block;
+    max-width: 400px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #cfc;
+}
+
+#selectedCount {
+    font-weight: bold;
+    color: #0074d9;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 2em;
+    box-shadow: 0 2px 8px #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    table-layout: fixed;
+    word-break: break-word;
+}
+th, td {
+    border: 1px solid #eaeaea;
+    padding: 0.6em 0.5em;
+    text-align: left;
+    vertical-align: middle;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    max-width: 220px;
+}
+th {
+    background: #f0f4f8;
+    font-weight: 600;
+}
+tr:nth-child(even) td {
+    background: #fafbfc;
+}
+tr:hover td {
+    background: #f5faff;
+}
+td a {
+    word-break: break-all;
+    display: inline-block;
+    max-width: 200px;
+    white-space: normal;
+    vertical-align: top;
+}
+th span {
+    font-size: 0.9em;
+    margin-left: 2px;
+}
+
+/* Kompakt och proffsig filterruta */
+.filter-form {
+    background: #fafbfc;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #f0f0f0;
+    padding: 1em 1.5em;
+    margin: 0 auto 2em auto;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em 1.5em;
+    align-items: center;
+    justify-content: flex-start;
+}
+.filter-form label {
+    font-size: 1em;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+.filter-form input[type="number"],
+.filter-form input[type="text"] {
+    width: 60px;
+    padding: 0.3em 0.5em;
+    margin-left: 0.2em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.filter-form input[type="text"] {
+    width: 180px;
+}
+.filter-form .btn {
+    margin-left: 1em;
+    margin-bottom: 0;
+    padding: 0.4em 1.2em;
+}
+
+@media (max-width: 900px) {
+    .dash-container { padding: 1em; }
+    form[method="get"] { padding: 1em; }
+}
+@media (max-width: 600px) {
+    .dash-container { padding: 0.5em; }
+    header { flex-direction: column; gap: 1em; }
+    form[method="get"] { flex-direction: column; gap: 0.5em; }
+    table, th, td { font-size: 0.95em; }
+    .filter-row { flex-direction: column; align-items: stretch; gap: 0.5em; }
+    .filter-form { padding: 0.7em; }
+}

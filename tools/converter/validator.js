@@ -10,7 +10,7 @@ export function init() {
       <label for="validatorInput">Klistra in JSON att validera:</label>
       <textarea id="validatorInput" class="textarea" rows="10" placeholder='{"exempel": 123}'></textarea>
       <div class="form__verktyg">
-        <button type="button" class="button" id="validateBtn">Validera</button>
+        <button type="button" class="knapp knapp--liten" id="validateBtn">Validera</button>
       </div>
     </form>
 

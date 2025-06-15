@@ -5,12 +5,22 @@ $metaDescription = 'Information om detta verktyg, dess syfte och funktion. Lär 
 ?>
 <?php include '../../includes/layout-start.php'; ?>
 
+<?php
+
+/*
+  OBS! Använd INTE nedanstående stycke:
+  Titeln ($title) inkluderas redan automatiskt via header/layout-start.php.
+  Om du lägger till detta manuellt riskerar du dubbla <h1>-element på sidan,
+  vilket försämrar både SEO och tillgänglighet.
+  Kommentera därför bort eller ta bort hela blocket nedan.
+*/
+/*
 <main class="container">
   <h1 class="title">
     <?= $title ?>
-    <?php include '../../includes/back-link.php'; ?>
+      <!--nedan kan strula och generera dubbla titlar på sidan. undersöks närmare-->
+    <?php include '../../includes/readme-icon.php'; ?>
   </h1>
-
   <article class="card readme">
     <h2>Syfte</h2>
     <p>Detta verktyg är skapat för att demonstrera mallstruktur och gemensam designstandard i projektet.</p>

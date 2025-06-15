@@ -112,8 +112,14 @@ return [
 ,
         [
   'title' => 'CSS->JSON',
-  'href'  => '/tools/css2json/index.html',
-  'icon'  => 'fa-industry'
+  'href'  => '/tools/css2json/index.php',
+  'icon'  => 'fa-right-left'
+]
+,
+        [
+  'title' => 'Kortlänk',
+  'href'  => '/tools/kortlank/skapa-lank.php',
+  'icon'  => 'fa-link'
 ]
   // Fler verktyg kan läggas till här
 ];

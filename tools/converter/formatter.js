@@ -10,10 +10,10 @@ export function init() {
   section.innerHTML = `
     <div id="jsoneditor" style="height: 400px;"></div>
 
-    <div class="form__verktyg">
-      <button class="button tiny" id="btnBeautify">Beautify</button>
-      <button class="button tiny" id="btnMinify">Minify</button>
-      <button class="button secondary tiny" id="btnCopy">Kopiera</button>
+    <div class="form__verktyg knapp__grupp">
+      <button class="knapp knapp--liten" id="btnBeautify">Beautify</button>
+      <button class="knapp knapp--liten" id="btnMinify">Minify</button>
+      <button class="knapp knapp--liten knapp--sekundar" id="btnCopy">Kopiera</button>
     </div>
   `;
 

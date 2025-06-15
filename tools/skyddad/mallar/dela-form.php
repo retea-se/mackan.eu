@@ -11,6 +11,9 @@ $csrf_token = generateCsrfToken();
   <label for="secret">Hemlig text:</label><br>
   <textarea id="secret" name="secret" rows="6" cols="50" required class="falt__input"></textarea><br><br>
 
+  <label for="pin">PIN-kod (valfri):</label><br>
+  <input type="text" id="pin" name="pin" maxlength="8" pattern="\d*" class="falt__input" autocomplete="off" placeholder="Lämna tomt för inget PIN"><br><br>
+
   <button type="submit" class="knapp" data-tippy-content="Skapa en unik engångslänk till texten ovan">
     Skapa delningslänk
   </button>

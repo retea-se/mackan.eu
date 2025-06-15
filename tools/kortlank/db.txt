@@ -1,0 +1,43 @@
+kortlank_db
+
+kortlank_user
+=,5dL*iIGh<SoG{oki+[
+
+Databasen kortlank_db – Dokumentation
+
+Syfte:
+Databasen används för att lagra och hantera kortlänkar i verktyget Kortlänk. Den är utformad för att stödja modern statistik, metadata, säkerhet och flexibilitet.
+
+Tabell: shortlinks
+
+Fält	Typ	Beskrivning
+id	VARCHAR(16)	Primärnyckel. Unikt kort ID för varje länk.
+target_url	TEXT	Den ursprungliga (långa) länken som kortlänken pekar på.
+created_at	DATETIME	Datum och tid då kortlänken skapades.
+created_by	VARCHAR(64)	Skapare (t.ex. användarnamn, e-post eller IP-adress).
+hits	INT UNSIGNED	Antal gånger länken har använts (klickats på).
+last_hit	DATETIME	Datum och tid för senaste klick.
+last_ip	VARCHAR(45)	IP-adress för senaste besökare (stöd för IPv6).
+user_agent	TEXT	User agent-sträng för senaste besökare.
+expires_at	DATETIME	Giltighetstid/slutdatum för länken (valfritt).
+is_active	TINYINT(1)	Om länken är aktiv (1) eller spärrad (0).
+custom_alias	VARCHAR(32)	Egenvald alias, t.ex. kortlank.se/minlank (valfritt).
+description	VARCHAR(255)	Beskrivning eller etikett för länken (valfritt).
+password_hash	VARCHAR(255)	Hash för lösenordsskydd (valfritt).
+qr_code_url	VARCHAR(255)	URL till förgenererad QR-kod (valfritt).
+Index:
+
+Primärnyckel på id
+Index på custom_alias, created_by, och target_url(255)
+Kommentarer:
+
+Tabellen är utformad för att enkelt kunna utökas med fler statistikfält eller metadata.
+Fält för säkerhet (lösenord, utgångsdatum, spärrning) finns för moderna behov.
+Index gör att uppslag och statistik är snabba även vid många länkar.
+Exempel på användning:
+
+Skapa, slå upp och spåra kortlänkar.
+Möjlighet till egna alias, lösenordsskydd och utgångsdatum.
+Statistik på klick, senaste användare och användaragent.
+QR-kod kan genereras och lagras för varje länk.
+Databasen är optimerad för både prestanda och flexibilitet i ett modernt URL-förkortarverktyg.

@@ -10,12 +10,12 @@ export function init() {
       <label for="converterInput">Input (JSON eller CSV):</label>
       <textarea id="converterInput" class="textarea" rows="10"></textarea>
 
-      <div class="form__verktyg">
+      <div class="form__verktyg knapp__grupp">
         <select id="converterDirection" class="dropdown">
           <option value="json2csv">JSON → CSV</option>
           <option value="csv2json">CSV → JSON</option>
         </select>
-        <button type="button" class="button tiny" id="convertGeneric">Konvertera</button>
+        <button type="button" class="knapp knapp--liten" id="convertGeneric">Konvertera</button>
       </div>
     </form>
 

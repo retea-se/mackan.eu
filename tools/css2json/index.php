@@ -1,38 +1,19 @@
-<!DOCTYPE html>
-<html lang="sv">
-<head>
-  <meta charset="UTF-8">
-  <title>CSS till JSON</title>
-</head>
-<body>
-  <h1>Ladda upp CSS-filer och få JSON</h1>
-  <input type="file" id="cssFiles" multiple accept=".css">
-  <button id="convertBtn">Konvertera</button>
-  <button id="downloadBtn" disabled>Ladda ner JSON</button>
-  <pre id="output"></pre>
-  <script src="script.js"></script>
-</body>
-</html>
 <?php
-// tools/css2json/index.php
+
+// tools/css2json/index.php - v4
 $title = 'CSS till JSON';
 $metaDescription = 'Konvertera en eller flera CSS-filer till JSON-format direkt i webbläsaren.';
 include '../../includes/layout-start.php';
 ?>
 
-<main class="layout__container">
-  <h1 class="title">
-    <?= $title ?>
-    <?php include '../../includes/readme-icon.php'; ?>
-  </h1>
 
   <!-- ********** START Sektion: Formulär ********** -->
-  <form class="form__grupp" aria-label="CSS till JSON-formulär">
+  <form class="form" aria-label="CSS till JSON-formulär">
     <div class="form__grupp">
-      <label for="cssFiles">Välj CSS-fil(er)</label>
+      <label for="cssFiles" class="falt__etikett">Välj CSS-fil(er)</label>
       <input type="file" id="cssFiles" class="falt__input" multiple accept=".css" aria-label="Ladda upp en eller flera CSS-filer" data-tippy-content="Välj en eller flera CSS-filer att konvertera till JSON">
     </div>
-    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
+    <div class="form__verktyg">
       <button type="button" class="knapp" id="convertBtn" data-tippy-content="Konvertera valda CSS-filer till JSON och visa resultatet" aria-label="Konvertera">Konvertera</button>
       <button type="button" class="knapp utils--dold" id="downloadBtn" data-tippy-content="Ladda ner resultatet som JSON-fil" aria-label="Ladda ner JSON" disabled>Ladda ner JSON</button>
       <button type="button" class="knapp utils--dold" id="resetBtn" data-tippy-content="Rensa uppladdade filer och resultat" aria-label="Rensa">Rensa</button>

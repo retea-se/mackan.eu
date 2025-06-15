@@ -7,10 +7,7 @@ require_once 'visa-handler.php';
 ?>
 
 <main class="layout__container">
-
-  <div class="kort">
-    <?= $result ?? '❌ Inget resultat tillgängligt.' ?>
-  </div>
+  <!-- Allt innehåll skrivs ut av visa-handler.php -->
 </main>
 
 <?php include '../../includes/layout-end.php'; ?>

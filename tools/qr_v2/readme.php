@@ -1,57 +1,69 @@
 <?php
-// tools/qr_v2/readme.php - v1
+// tools/qr_v2/readme.php - v3
 $title = 'Dokumentation – QR v2';
+$metaDescription = 'Lär dig om QR v2-verktyget: generera QR-koder för text, URL, kontakt, WiFi m.m. Läs om QR-teknikens historia, användning och funktioner.';
 include '../../includes/layout-start.php';
 ?>
 
 <main class="container">
 
-
   <article class="card">
-    <h2>Syfte</h2>
+    <h2>Vad är en QR-kod?</h2>
     <p>
-      QR v2 är ett avancerat verktyg för att generera QR-koder för flera typer av data, t.ex. text, URL, kontaktinformation, WiFi-inställningar och plats. Verktyget riktar sig till användare som behöver dynamisk formgenerering och förhandsgranskning direkt i webbläsaren.
+      <strong>QR-kod</strong> står för <em>Quick Response-kod</em>. Det är en tvådimensionell streckkod som snabbt kan läsas av med en smartphone eller QR-läsare. QR-koder kan lagra mycket mer information än vanliga streckkoder, till exempel webbadresser, kontaktuppgifter, WiFi-inställningar och mycket mer.
+    </p>
+    <p>
+      QR-tekniken utvecklades i Japan 1994 av företaget Denso Wave, ursprungligen för att spåra bildelar i industrin. Idag används QR-koder över hela världen – på affischer, biljetter, för digitala menyer och betalningar.
+    </p>
+    <p>
+      När du skannar en QR-kod med din mobilkamera tolkas informationen direkt och du kan snabbt öppna en länk, spara en kontakt eller ansluta till ett WiFi-nätverk utan att skriva in något manuellt.
     </p>
   </article>
 
   <article class="card">
-    <h2>Funktioner</h2>
+    <h2>Användningsområden för olika QR-typer</h2>
     <ul>
-      <li>Stöd för 8 QR-typer: Text, URL, Kontakt (vCard), WiFi, E-post, SMS, Telefon, Plats</li>
-      <li>Dynamisk formulärvisning beroende på val</li>
-      <li>Automatisk temaväxling (ljus/mörk)</li>
-      <li>Förhandsvisning av QR-kod</li>
-      <li>Fallback till lokal <code>qrcode.min.js</code> vid behov</li>
+      <li>
+        <strong>Text:</strong> Dela ett meddelande, instruktioner eller kodsnuttar. Perfekt för snabb informationsöverföring utan internetlänk.
+      </li>
+      <li>
+        <strong>URL:</strong> Länka direkt till en webbsida, t.ex. kampanjsidor, produktinformation, bokningssystem eller digitala menyer.
+      </li>
+      <li>
+        <strong>Kontakt (vCard):</strong> Låt användare spara dina kontaktuppgifter direkt i sin adressbok – smidigt på visitkort, mässor eller events.
+      </li>
+      <li>
+        <strong>WiFi:</strong> Dela WiFi-namn och lösenord så att gäster kan ansluta utan att skriva in något – perfekt på caféer, kontor eller hemma.
+      </li>
+      <li>
+        <strong>E-post:</strong> Skapa ett färdigt e-postutkast med mottagare, ämne och meddelande. Användbart för support, feedback eller bokningar.
+      </li>
+      <li>
+        <strong>SMS:</strong> Skapa ett färdigt SMS-meddelande till ett specifikt nummer. Bra för tävlingar, kampanjer eller snabb kundkontakt.
+      </li>
+      <li>
+        <strong>Telefon:</strong> Låt användaren ringa upp ett nummer direkt genom att skanna koden – praktiskt på skyltar, annonser eller kundservice.
+      </li>
+      <li>
+        <strong>Plats:</strong> Dela en exakt plats (latitud/longitud) som öppnas i kartappen – användbart för eventplatser, mötespunkter eller sevärdheter.
+      </li>
     </ul>
   </article>
 
   <article class="card">
-    <h2>Användning</h2>
-    <ol>
-      <li>Välj en typ av QR-kod genom att klicka på motsvarande knapp</li>
-      <li>Fyll i de visade fälten beroende på QR-typ</li>
-      <li>Klicka på <strong>Skapa QR-kod</strong></li>
-      <li>Resultatet visas i <code>#qrPreview</code></li>
-    </ol>
+    <h2>Exempel på QR-kod</h2>
+    <pre class="terminal-output">
+Text: https://mackan.eu
+
+Resultat:
+[QR-kod genereras och visas i verktyget]
+    </pre>
   </article>
 
-  <article class="card">
-    <h2>Teknik</h2>
-    <ul>
-      <li><code>qrcode.min.js</code> från CDN (eller lokal fallback)</li>
-      <li><code>script.js</code> ansvarar för typval, formulärgenerering och QR-generering</li>
-      <li>Temastöd via JS och <code>data-theme</code>-attribut</li>
-    </ul>
-  </article>
+  <section style="margin-top:2rem;">
+    <a href="index.php" class="button" data-tippy-content="Tillbaka till QR-verktyget">Tillbaka till QR-verktyget</a>
+  </section>
 
-  <article class="card">
-    <h2>Stil & design</h2>
-    <ul>
-      <li>Följer centrala CSS-regler från Mackan.eu: <code>reset.css</code>, <code>layout.css</code>, <code>components.css</code>, <code>typography.css</code></li>
-      <li>Anpassade stilar för .info-circle och .theme-toggle är nu integrerade i komponenttemat</li>
-      <li>Responsiv layout, anpassad för både desktop och mobil</li>
-    </ul>
-  </article>
 </main>
 
 <?php include '../../includes/layout-end.php'; ?>

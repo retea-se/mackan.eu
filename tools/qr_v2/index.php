@@ -8,23 +8,23 @@ include '../../includes/layout-start.php';
 
   <div class="form__grupp">
     <label data-tippy-content="Välj QR-kodtyp">Välj typ av kod:</label>
-    <div id="typeButtons" class="form__verktyg"><!-- TODO: osäker konvertering: button-group -->
-      <button class="knapp type-button" data-type="text" data-tippy-content="Skapar QR för text">Text</button>
-      <button class="knapp type-button" data-type="url" data-tippy-content="Skapar QR för länk">Länk</button>
-      <button class="knapp type-button" data-type="vcard" data-tippy-content="Skapar QR för kontakt">Kontakt</button>
-      <button class="knapp type-button" data-type="wifi" data-tippy-content="Skapar QR för WiFi">WiFi</button>
-      <button class="knapp type-button" data-type="email" data-tippy-content="Skapar QR för e-post">E-post</button>
-      <button class="knapp type-button" data-type="sms" data-tippy-content="Skapar QR för SMS">SMS</button>
-      <button class="knapp type-button" data-type="phone" data-tippy-content="Skapar QR för telefon">Telefon</button>
-      <button class="knapp type-button" data-type="geo" data-tippy-content="Skapar QR för plats">Plats</button>
+    <div id="typeButtons" class="form__verktyg">
+      <button class="knapp" data-type="text" data-tippy-content="Skapar QR för text">Text</button>
+      <button class="knapp" data-type="url" data-tippy-content="Skapar QR för länk">Länk</button>
+      <button class="knapp" data-type="vcard" data-tippy-content="Skapar QR för kontakt">Kontakt</button>
+      <button class="knapp" data-type="wifi" data-tippy-content="Skapar QR för WiFi">WiFi</button>
+      <button class="knapp" data-type="email" data-tippy-content="Skapar QR för e-post">E-post</button>
+      <button class="knapp" data-type="sms" data-tippy-content="Skapar QR för SMS">SMS</button>
+      <button class="knapp" data-type="phone" data-tippy-content="Skapar QR för telefon">Telefon</button>
+      <button class="knapp" data-type="geo" data-tippy-content="Skapar QR för plats">Plats</button>
     </div>
   </div>
 
-  <div id="formFields"></div>
+  <div id="formFields" data-tippy-content="Fyll i information för vald QR-typ"></div>
 
-  <button id="generateBtn" class="knapp" data-tippy-content="Genererar QR-kod">Skapa QR-kod</button>
+  <button id="generateBtn" class="knapp" data-tippy-content="Generera QR-kod utifrån dina val">Skapa QR-kod</button>
 
-  <div id="qrPreview" class="kort utils--mt-1"><!-- TODO: osäker konvertering: preview mt-1 --></div>
+  <div id="qrPreview" class="kort utils--mt-1" data-tippy-content="Förhandsvisning av QR-kod">
 </main>
 
 <?php include '../../includes/layout-end.php'; ?>

@@ -11,11 +11,11 @@ export function init() {
       <textarea id="utilityInput" class="textarea" rows="6" placeholder='{"nyckel":"värde"}'></textarea>
 
       <div class="form__verktyg">
-        <button type="button" class="button tiny" data-func="encode">URL Encode</button>
-        <button type="button" class="button tiny" data-func="decode">URL Decode</button>
-        <button type="button" class="button tiny" data-func="escape">Escape</button>
-        <button type="button" class="button tiny" data-func="unescape">Unescape</button>
-        <button type="button" class="button tiny" data-func="stringify">JSON.stringify</button>
+        <button type="button" class="knapp knapp--liten" data-func="encode">URL Encode</button>
+        <button type="button" class="knapp knapp--liten" data-func="decode">URL Decode</button>
+        <button type="button" class="knapp knapp--liten" data-func="escape">Escape</button>
+        <button type="button" class="knapp knapp--liten" data-func="unescape">Unescape</button>
+        <button type="button" class="knapp knapp--liten" data-func="stringify">JSON.stringify</button>
       </div>
     </form>
 

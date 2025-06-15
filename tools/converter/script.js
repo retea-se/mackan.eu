@@ -4,7 +4,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log("script.js v5 laddad");
 
-  const buttons = document.querySelectorAll('.button[data-tab]');
+  const buttons = document.querySelectorAll('.knapp[data-tab]');
   const sections = document.querySelectorAll('.tab-section');
   let uploadModuleLoaded = false;
 
