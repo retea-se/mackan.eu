@@ -1,5 +1,5 @@
 /* ===================================================== */
-/* Fil: readme.css - v1                                  */
+/* Fil: readme.css - v2                                  */
 /* Komponent: Readme/Dokumentation                       */
 /* Struktur: BEM (.readme__, .readme--*)                 */
 /* Syfte: Luftig, responsiv och temakompatibel styling   */
@@ -20,6 +20,7 @@
   line-height: 1.7;
   font-size: 1.08rem;
   position: relative;
+  letter-spacing: 0.01em; /* NYTT: Lite luftigare bokstäver */
 }
 
 /* === Sticky tillbaka-knapp === */
@@ -63,31 +64,35 @@
 .readme__title {
   font-size: 2.1rem;
   font-weight: bold;
-  margin-bottom: 1.6rem;
+  margin-bottom: 2.3rem;   /* ÄNDRAT: mer luft under titel */
   text-align: center;
   color: var(--primary-color);
   letter-spacing: 0.02em;
 }
 .readme__subtitle {
   font-size: 1.25rem;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.6rem;   /* ÄNDRAT: större luft under h2 */
+  margin-top: 2rem;        /* NYTT: luft ovan varje h2 */
   color: var(--accent-color);
 }
 .readme__section {
-  margin-bottom: 2.2rem;
+  margin-bottom: 3rem;     /* ÄNDRAT: större sektion-luft */
+  padding-bottom: 0.5rem;  /* NYTT: mjuk bottenluft */
+  border-bottom: 1px solid #eee; /* NYTT: diskret bottenlinje */
 }
 
 /* === Brödtext och layout === */
-.readme__text {
-  margin-bottom: 1.3rem;
+.readme__text,
+.readme__list {
+  margin-bottom: 1.7rem;    /* ÄNDRAT: större avstånd mellan block */
+  line-height: 1.8;         /* ÄNDRAT: lite luftigare text */
 }
 .readme__list {
-  margin-bottom: 1.2rem;
   padding-left: 1.4em;
 }
 .readme__list li {
-  margin-bottom: 0.7em;
-  line-height: 1.5;
+  margin-bottom: 1em;       /* ÄNDRAT: mer luft mellan listpunkter */
+  line-height: 1.7;         /* ÄNDRAT: luftigare */
 }
 
 /* === Citat/Quote med kul accent === */
@@ -128,7 +133,7 @@
   gap: 0.6em;
   border-radius: var(--border-radius);
   padding: 1em 1.1em;
-  margin: 1.5em 0;
+  margin: 2rem 0 2.3rem 0; /* ÄNDRAT: mer luft före och efter info/warning */
   font-size: 1em;
   background: var(--secondary-color);
   color: var(--text-color);
@@ -191,7 +196,8 @@
 /* === Kodblock och kopiera-knapp === */
 .readme__codeblock {
   max-width: 600px;
-  margin: 1em 0;
+  margin-top: 2rem;       /* ÄNDRAT: extra luft ovan kodblock */
+  margin-bottom: 2.3rem;  /* ÄNDRAT: extra luft under kodblock */
   padding: 1em 1.5em 1em 1em;
   border-radius: 8px;
   background: var(--readme-code-bg, #f6f8fa);
@@ -230,7 +236,8 @@
 .readme__table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1.8em 0;
+  margin-top: 2rem;       /* ÄNDRAT: extra luft ovan tabell */
+  margin-bottom: 2.3rem;  /* ÄNDRAT: extra luft under tabell */
   font-size: 0.97em;
   box-shadow: 0 1px 8px 0 rgba(0,0,0,0.03);
   overflow-x: auto;
@@ -283,7 +290,7 @@
   color: #bbb;
   opacity: 0.8;
   letter-spacing: 0.04em;
-  margin: 2.3em 0 2.3em 0;
+  margin: 3em 0 3em 0;   /* ÄNDRAT: mer luft ovan/under divider */
   user-select: none;
 }
 
@@ -327,3 +334,24 @@
     font-size: 1.08em;
   }
 }
+
+/* ===================================================== */
+/* Förklaring/kommentar:
+   CSS/STYLING:
+
+
+
+   SÅ SKRIVER DU EN BRA README FÖR MACKAN.EU:
+   1. Kort och tydlig H1-rubrik högst upp.
+   2. Inled alltid med syftet eller vad verktyget gör, gärna i en sammanfattande mening.
+   3. Dela in dokumentationen i tydliga sektioner med H2-rubriker (ex: Syfte, Hur det fungerar, Exempel, Status, Tips).
+   4. Lyft ut nyckelinfo i info/warning-boxar, kodblock eller tabeller – dessa sticker ut visuellt.
+   5. Använd alltid konsekvent format för listor, kod och tabeller (blanda inte <ul>/<ol> om det inte är motiverat).
+   6. Ge mycket luft mellan block – bättre för ögat och gör texten lättare att skumma.
+   7. Använd sparsamt med färg och ikoner för att förtydliga, men inte dominera.
+   8. Testa alltid läsbarheten på mobil och i mörkt/ljust läge.
+   9. Skriv alltid versions- och ändringsinfo överst i filen och kommentera syftet i början.
+   10. Uppdatera gärna med ascii-dividers, roliga citat eller extra exempel om det ger mer personlighet!
+*/
+/* ===================================================== */
+

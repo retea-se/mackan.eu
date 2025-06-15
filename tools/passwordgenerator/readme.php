@@ -1,122 +1,146 @@
 <?php
-$title = 'Om Lösenordsgeneratorn';
-$metaDescription = 'Skapa säkra och starka lösenord snabbt med full kontroll på längd och teckentyper. Lär dig hur det fungerar och vad som gör ett lösenord säkert.';
+// tools/passwordgenerator/readme.php - v7
+// Syfte: README för lösenordsgeneratorn, nu med readme.css-klasser och förbättrad struktur
+
+include 'lang.php';
+$lang = $_GET['lang'] ?? 'sv';
+if (!isset($langs[$lang])) $lang = 'sv';
+$t = $langs[$lang];
+
+$title = $t['readme_title'];
+$metaDescription = $t['purpose_text'];
 include '../../includes/layout-start.php';
 ?>
 
-<main class="container">
-  <h1 class="title">
+<main class="readme">
+  <div style="text-align:right;">
+    <a href="?lang=sv">Svenska</a> | <a href="?lang=en">English</a>
+  </div>
+  <h1 class="readme__title">
     <?= $title ?>
     <?php include '../../includes/back-link.php'; ?>
   </h1>
 
-  <article class="card readme">
-    <h2>Syfte</h2>
-    <p>
-      Detta verktyg är skapat för att snabbt generera starka lösenord direkt i webbläsaren, utan att data skickas någonstans. All generering sker lokalt – inget skickas till någon server. Du har full kontroll över vilka teckentyper som ska användas och hur långt lösenordet ska vara. Perfekt för utvecklare, administratörer och alla som vill öka sin säkerhet.
-    </p>
+  <article class="readme__section">
+    <div class="readme__info">
+      <i class="fa-solid fa-key"></i>
+      <?= $t['readme_intro'] ?>
+    </div>
+  </article>
 
-    <h2>Så fungerar det</h2>
-    <ul>
-      <li>Ställ in önskad <strong>lösenordslängd</strong> (mellan 4 och 128 tecken)</li>
-      <li>Välj vilka <strong>teckentyper</strong> som ska användas:
-        <ul>
-          <li>Små bokstäver (a–z)</li>
-          <li>Stora bokstäver (A–Z)</li>
-          <li>Siffror (0–9)</li>
-          <li>Specialtecken (!@#$%^...)</li>
-        </ul>
-      </li>
-      <li>Välj hur många lösenord du vill generera</li>
-      <li>Du kan även välja att generera minnesvänliga <strong>ordfraser</strong> istället för klassiska lösenord.</li>
-      <li>Klicka på <strong>Generera</strong></li>
-    </ul>
-
-    <h2>Förhandslösenord</h2>
-    <p>
-      Ovanför inställningarna visas alltid ett färskt <strong>förhandslösenord</strong> baserat på nuvarande inställningar. Du kan kopiera det direkt eller generera om det med ett klick. Förhandslösenordet uppdateras automatiskt när du ändrar inställningar – perfekt för snabb testning!
+  <article class="readme__section">
+    <h2 class="readme__subtitle"><?= $t['purpose_title'] ?></h2>
+    <p class="readme__text">
+      <?= $t['purpose_text'] ?>
     </p>
+  </article>
 
-    <h2>Export</h2>
-    <p>
-      När lösenord har genererats kan du exportera dem som <strong>JSON</strong>, <strong>CSV</strong> eller <strong>TXT</strong>. Exportknappen visas automatiskt efter första genereringen. Exporten är praktisk för t.ex. testdata eller import till andra system.
-    </p>
-
-    <h2>Styrkeindikator</h2>
-    <p>
-      Varje lösenord bedöms med en <strong>styrketagg</strong> som syns till höger om lösenordet i tabellen. Bedömningen baseras på två faktorer:
-    </p>
-    <ol>
-      <li><strong>Längd:</strong> Ju längre lösenord, desto bättre skydd mot brute-force-angrepp.</li>
-      <li><strong>Variation:</strong> Kombination av små/stora bokstäver, siffror och symboler gör det exponentiellt svårare att gissa.</li>
+  <article class="readme__section">
+    <h2 class="readme__subtitle"><?= $t['how_title'] ?></h2>
+    <ol class="readme__list">
+      <?php foreach ($t['how_list'] as $item): ?>
+        <li><?= $item ?></li>
+      <?php endforeach; ?>
     </ol>
-    <p>
-      Ju fler möjliga tecken och ju längre lösenord, desto högre entropi – det vill säga, desto svårare för en angripare att gissa eller brute-forca ditt lösenord.
-    </p>
-    <p>Styrkan visas med färgade etiketter:</p>
-    <ul>
-      <li><span class="tag-svag">Svag</span>
-        – kortare än 10 tecken <em>eller</em> innehåller bara 1–2 typer av tecken.
-        <br><em>Exempel:</em> <code>abcd1234</code>, <code>Password</code>
-      </li>
-      <li><span class="tag-medel">Bra</span>
-        – minst 10 tecken och minst 3 teckentyper.
-        <br><em>Exempel:</em> <code>Abc123!xyz</code>
-      </li>
-      <li><span class="tag-stark">Stark</span>
-        – minst 14 tecken och innehåller <u>alla</u> fyra teckentyper.
-        <br><em>Exempel:</em> <code>9fL!vGd@T6$WbZp1rU2x</code>
-      </li>
-    </ul>
-    <p>
-      Lösenordsstyrkan påverkas <em>inte</em> av ordlistor, men du bör ändå undvika verkliga ord och personliga data.
-    </p>
-    <p>Obs! Inget system är perfekt – undvik riktiga ord eller återanvändning av lösenord.</p>
+  </article>
 
-    <h2>Tips för bättre lösenord</h2>
-    <ul>
-      <li>Använd minst 12 tecken – gärna fler</li>
-      <li>Inkludera alla fyra teckentyper</li>
-      <li>Skapa olika lösenord för olika tjänster</li>
-      <li>Använd en lösenordshanterare för att spara säkert</li>
-      <li>En lång ordfras (t.ex. tre eller fler slumpmässiga ord) är ofta både stark och lätt att minnas</li>
-    </ul>
-
-    <h2>Exempel</h2>
-    <pre class="terminal-output">
-Längd: 24
-Tecken: Små + Stora + Siffror + Symboler
-
-Resultat:
-Lösenord                 | Styrka
--------------------------|---------
-KD4@n>acqZ0UYxtW7^!igfH[ | Stark
-Mjukplast-Brusa          | Bra (ordfras)
-    </pre>
-
-    <h2>Om ordfraser</h2>
-    <p>
-      Om du väljer <strong>Använd ordfras</strong> genereras lösenord som består av slumpmässigt valda svenska ord, ibland hopslagna med bindestreck. Verktyget försöker alltid skapa en fras med minst två ord, så länge det får plats inom den längd du valt. Om det inte går att få in två ord (t.ex. om längden är låg eller orden är långa) används ett ord istället.
+  <article class="readme__section">
+    <h2 class="readme__subtitle"><?= $t['preview_title'] ?></h2>
+    <p class="readme__text">
+      <?= $t['preview_text'] ?>
     </p>
-    <p>
-      Maxlängden gäller för hela frasen inklusive bindestreck. Om längden är för kort för att ens ett ord ska få plats, visas ett felmeddelande. Ordfraser är lättare att komma ihåg än slumpmässiga tecken, men kan vara mindre säkra om de är för korta eller bygger på vanliga ord.
-    </p>
-    <ul>
-      <li>Ord väljs slumpmässigt från en svensk ordlista.</li>
-      <li>Bindestreck används mellan orden om fler än ett ord får plats.</li>
-      <li>Försök alltid använda så lång fras som möjligt för bättre säkerhet.</li>
-    </ul>
-    <p>
-      <strong>Tips:</strong> Öka längden för att få fler ord i frasen och därmed högre säkerhet!
-    </p>
+  </article>
 
-    <h2>Visste du att?</h2>
-    <ul>
-      <li>En brute-force-attack mot ett 16-tecken långt lösenord med alla teckentyper skulle ta längre tid än universums ålder – om du använder rätt generator!</li>
-      <li>Ordfraser blev populära efter XKCD:s klassiska serie om "correct horse battery staple".</li>
-      <li>Alla lösenord genereras med JavaScript direkt i din webbläsare – ingen risk för dataläckor.</li>
+  <article class="readme__section">
+    <h2 class="readme__subtitle"><?= $t['export_title'] ?></h2>
+    <p class="readme__text">
+      <?= $t['export_text'] ?>
+    </p>
+  </article>
+
+  <article class="readme__section">
+    <h2 class="readme__subtitle"><?= $t['strength_title'] ?></h2>
+    <p class="readme__text">
+      <?= $t['strength_text'] ?>
+    </p>
+    <ol class="readme__list">
+      <?php foreach ($t['strength_list'] as $item): ?>
+        <li><?= $item ?></li>
+      <?php endforeach; ?>
+    </ol>
+    <div class="readme__info">
+      <i class="fa-solid fa-shield-halved"></i>
+      <?= $t['strength_info'] ?>
+    </div>
+    <table class="readme__table">
+      <thead>
+        <tr>
+          <th><?= $t['strength_headers'][0] ?></th>
+          <th><?= $t['strength_headers'][1] ?></th>
+          <th><?= $t['strength_headers'][2] ?></th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($t['strength_table'] as $i => $row): ?>
+        <tr>
+          <td><span class="tag tag--<?= strtolower($t['strength_tags'][$i]) ?>"><?= $t['strength_tags'][$i] ?></span></td>
+          <td><?= $row[1] ?></td>
+          <td><?= $row[2] ?></td>
+        </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+    <div class="readme__warning">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <?= $t['strength_warning'] ?>
+    </div>
+  </article>
+
+  <article class="readme__section">
+    <h2 class="readme__subtitle"><?= $t['tips_title'] ?></h2>
+    <ul class="readme__list">
+      <?php foreach ($t['tips_list'] as $tip): ?>
+        <li><?= $tip ?></li>
+      <?php endforeach; ?>
     </ul>
   </article>
+
+  <article class="readme__section">
+    <h2 class="readme__subtitle"><?= $t['example_title'] ?></h2>
+    <div class="readme__codeblock">
+      <button class="readme__codecopy" title="<?= $t['copy_code'] ?>">
+        <i class="fa-solid fa-copy"></i>
+      </button>
+      <pre><code><?= $t['example_code'] ?></code></pre>
+    </div>
+  </article>
+
+  <article class="readme__section">
+    <h2 class="readme__subtitle"><?= $t['passphrase_title'] ?></h2>
+    <p class="readme__text">
+      <?= $t['passphrase_text'] ?>
+    </p>
+    <ul class="readme__list">
+      <?php foreach ($t['passphrase_list'] as $item): ?>
+        <li><?= $item ?></li>
+      <?php endforeach; ?>
+    </ul>
+    <div class="readme__info">
+      <i class="fa-solid fa-lightbulb"></i>
+      <?= $t['passphrase_info'] ?>
+    </div>
+  </article>
+
+  <article class="readme__section">
+    <h2 class="readme__subtitle"><?= $t['didyouknow_title'] ?></h2>
+    <ul class="readme__list">
+      <?php foreach ($t['didyouknow_list'] as $item): ?>
+        <li><?= $item ?></li>
+      <?php endforeach; ?>
+    </ul>
+  </article>
+
+  <footer class="readme__meta"><?= $t['footer'] ?></footer>
 </main>
 
 <?php include '../../includes/layout-end.php'; ?>

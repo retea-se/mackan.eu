@@ -1,23 +1,11 @@
-// script.js - v9
-// commit: Åtgärdat ordfrashantering, korrekt längd, preview-funktion och knappikoner
-
-console.log("🔐 script.js v9 laddad");
-
 // ********** START Sektion: Hjälpfunktioner **********
 
+// Helper: Hämta ett slumpmässigt tecken ur sträng
 function slumpaTecken(sträng) {
   return sträng[Math.floor(Math.random() * sträng.length)];
 }
 
-function beräknaStyrka(lösenord) {
-  const längd = lösenord.length;
-  const variation = [...new Set(lösenord)].length;
-
-  if (längd >= 14 && variation > 10) return 'stark';
-  if (längd >= 10) return 'medel';
-  return 'svag';
-}
-
+// Password generator
 function genereraLösenord(längd, inställningar) {
   const typer = {
     lower: 'abcdefghijklmnopqrstuvwxyz',
@@ -35,15 +23,23 @@ function genereraLösenord(längd, inställningar) {
       garanterade.push(slumpaTecken(typer[typ]));
     }
   }
-
   if (!teckenpool || längd < garanterade.length) return null;
 
   let lösenord = garanterade.join('');
   for (let i = lösenord.length; i < längd; i++) {
     lösenord += slumpaTecken(teckenpool);
   }
-
+  // Shuffle tecknen (för att garanterade tecken inte alltid hamnar först)
   return lösenord.split('').sort(() => 0.5 - Math.random()).join('');
+}
+
+// Styrkoberäkning
+function beräknaStyrka(lösenord) {
+  const längd = lösenord.length;
+  const variation = [...new Set(lösenord)].length;
+  if (längd >= 14 && variation > 10) return 'stark';
+  if (längd >= 10) return 'medel';
+  return 'svag';
 }
 
 // ********** SLUT Sektion: Hjälpfunktioner **********
@@ -60,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const genererade = [];
 
-  // Toggla andra boxar om "Använd ordfras" är vald
+  // Toggla bokstav/nummer-symbol-boxar om "Använd ordfras" är vald
   passphraseBox.addEventListener("change", () => {
     optionBoxes.forEach(el => el.disabled = passphraseBox.checked);
   });
@@ -73,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const längd = parseInt(document.getElementById("length").value, 10);
     const antal = parseInt(document.getElementById("amount").value, 10);
-
     const användOrdfras = passphraseBox.checked;
 
     const inställningar = {
@@ -88,8 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ? window.generatePassphrase(längd)
         : genereraLösenord(längd, inställningar);
 
-      console.log("Genererat lösenord:", JSON.stringify(lösenord));
-
       if (!lösenord) continue;
 
       const styrka = beräknaStyrka(lösenord);
@@ -98,25 +91,30 @@ document.addEventListener("DOMContentLoaded", () => {
       const tdPw = document.createElement("td");
       tdPw.className = "pw-cell";
 
-      // Skapa lösenordstext
+      // Skriv ut lösenord + tag för styrka
       const pwText = document.createTextNode(lösenord + " ");
 
-      // Skapa färgad styrka-tag inom parentes
       const tag = document.createElement("span");
-      tag.className = `tag-${styrka}`;
-      tag.textContent = `(${styrka})`;
+      tag.className = `tag tag--${styrka}`; // t.ex. tag--stark
+      tag.textContent = styrka.charAt(0).toUpperCase() + styrka.slice(1);
 
       tdPw.appendChild(pwText);
       tdPw.appendChild(tag);
 
       const tdActions = document.createElement("td");
       const copyBtn = document.createElement("button");
-      copyBtn.className = "icon-button copy-btn";
+      copyBtn.type = "button";
+      copyBtn.className = "copy-btn knapp__ikon knapp__ikon--liten";
       copyBtn.setAttribute("aria-label", "Kopiera lösenord");
-      copyBtn.setAttribute("data-tippy-content", "Kopiera lösenord");
       copyBtn.innerHTML = '<i class="fa-solid fa-copy"></i>';
-      copyBtn.addEventListener("click", () => {
-        navigator.clipboard.writeText(lösenord);
+
+      // Lägg till event listeners:
+      copyBtn.addEventListener("mousedown", e => e.stopPropagation());
+      copyBtn.addEventListener("mouseup", e => e.stopPropagation());
+      copyBtn.addEventListener("click", e => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(lösenord); // losenord = lösenordet för raden
+        showToast("Lösenord kopierat!");
       });
 
       tdActions.appendChild(copyBtn);
@@ -127,10 +125,20 @@ document.addEventListener("DOMContentLoaded", () => {
       genererade.push({ lösenord, styrka });
     }
 
+    // Hämta knappgruppen
+    const knappGrupp = document.getElementById("resultButtons");
+
+    // Visa knappgruppen när det finns resultat
     if (genererade.length) {
+      knappGrupp.classList.remove("utils--dold");
       exportBtn.classList.remove("hidden");
       resetBtn.classList.remove("hidden");
       exportBtn.dataset.hasResults = "true";
+    } else {
+      knappGrupp.classList.add("utils--dold");
+      exportBtn.classList.add("hidden");
+      resetBtn.classList.add("hidden");
+      exportBtn.dataset.hasResults = "";
     }
 
     visaResultatTabell();
@@ -138,6 +146,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   resetBtn.addEventListener("click", () => {
     table.innerHTML = '';
+    // Dölj knappgruppen
+    const knappGrupp = document.getElementById("resultButtons");
+    knappGrupp.classList.add("utils--dold");
     exportBtn.classList.add("hidden");
     resetBtn.classList.add("hidden");
     genererade.length = 0;
@@ -145,68 +156,31 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("🧹 Resultat rensat");
   });
 
-  // Event delegation för kopiera-knappar i resultattabellen
-  document.getElementById('resultTable').addEventListener('click', function(e) {
-    // Hitta närmaste knapp med klassen 'copy-btn'
+  // Event delegation för kopiera-knappar (om du vill stödja dynamiska knappar)
+  table.addEventListener('click', function(e) {
     const copyBtn = e.target.closest('.copy-btn');
     if (copyBtn) {
-      const row = copyBtn.closest('tr');
-      const passwordCell = row.querySelector('.password-cell');
-      if (passwordCell) {
-        const password = passwordCell.textContent;
-        navigator.clipboard.writeText(password).then(() => {
-          copyBtn.classList.add('copied');
-          setTimeout(() => copyBtn.classList.remove('copied'), 1000);
-        });
+      const pwCell = copyBtn.closest('tr').querySelector('.pw-cell');
+      if (pwCell) {
+        // Ta bara lösenordet (utan taggen)
+        const password = pwCell.childNodes[0].textContent.trim();
+        navigator.clipboard.writeText(password);
+        showToast("Lösenord kopierat!");
       }
     }
   });
 
-  // Kopiera lösenord från tabellen
-  document.addEventListener('click', function(e) {
-    const btn = e.target.closest('.copy-btn');
-    if (btn) {
-      const passwordCell = btn.closest('tr').querySelector('.password-cell');
-      if (passwordCell) {
-        const password = passwordCell.textContent.trim();
-        // Felsökning: visa vad som ska kopieras
-        // alert('Kopierar: ' + password);
-        if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(password)
-            .then(() => {
-              btn.classList.add('kopierad');
-              setTimeout(() => btn.classList.remove('kopierad'), 1000);
-            })
-            .catch(err => {
-              alert('Kunde inte kopiera: ' + err);
-            });
-        } else {
-          // Fallback för äldre webbläsare
-          const textarea = document.createElement('textarea');
-          textarea.value = password;
-          document.body.appendChild(textarea);
-          textarea.select();
-          try {
-            document.execCommand('copy');
-            btn.classList.add('kopierad');
-            setTimeout(() => btn.classList.remove('kopierad'), 1000);
-          } catch (err) {
-            alert('Kunde inte kopiera: ' + err);
-          }
-          document.body.removeChild(textarea);
-        }
-      }
+  // Enklare toast
+  function showToast(msg) {
+    let toast = document.querySelector('.toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.className = 'toast';
+      document.body.appendChild(toast);
     }
-  });
-
-  function visaResultatKnappar() {
-    document.getElementById('exportBtn').classList.remove('utils--dold');
-    document.getElementById('resetBtn').classList.remove('utils--dold');
-  }
-
-  function doldResultatKnappar() {
-    document.getElementById('exportBtn').classList.add('utils--dold');
-    document.getElementById('resetBtn').classList.add('utils--dold');
+    toast.textContent = msg;
+    toast.classList.add('toast--synlig');
+    setTimeout(() => toast.classList.remove('toast--synlig'), 1500);
   }
 
   function visaResultatTabell() {
@@ -216,7 +190,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('.tabell__wrapper').classList.add('utils--dold');
   }
 
+  // Gör exporten tillgänglig för export.js
   window.genereradeLösenord = () => genererade;
   window.genereraLösenord = genereraLösenord;
+  window.beräknaStyrka = beräknaStyrka;
 });
 // ********** SLUT Sektion: DOM-hantering **********
