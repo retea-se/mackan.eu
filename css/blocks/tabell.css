@@ -74,6 +74,12 @@
   outline: 2px solid #4f46e5;
 }
 
+/* === Aktiv rad === */
+.tabell tr:active,
+.tabell tr:focus-within {
+  background: none;
+}
+
 /* === Mörkt tema === */
 [data-theme="dark"] .tabell {
   background-color: #111;

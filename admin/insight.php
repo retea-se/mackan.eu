@@ -45,7 +45,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
     </section>
 
     <!-- ********** START Exportknappar ********** -->
-    <div id="exportTools" class="horizontal-tools mt-1">
+    <div id="exportTools" class="form__verktyg mt-1">
       <!-- Knappar skapas i insight.js via initExportButtons() -->
     </div>
     <!-- ********** SLUT Exportknappar ********** -->
@@ -54,7 +54,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
     <section id="visitorAccordion" class="mt-2">
       <!-- Accordion laddas av JS -->
     </section>
-<div id="exportTools" class="horizontal-tools mt-1"></div>
+<div id="exportTools" class="form__verktyg mt-1"></div>
 
     <!-- ********** START Fulltabell ********** -->
     <section id="fullTableSection" class="mt-2">

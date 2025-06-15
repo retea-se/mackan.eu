@@ -11,8 +11,8 @@ $metaDescription = 'Hämta företagsdata från Bolagsverkets API baserat på org
       <input type="text" id="orgnr" class="falt__input" placeholder="Ex: 556475-6467" required>
     </div>
     <div class="form__grupp">
-      <button type="submit" class="knapp">Hämta företagsinfo</button>
-      <button type="button" class="knapp utils--dold" id="exportBtn">Exportera</button>
+      <button type="submit" class="knapp" data-tippy-content="Hämta företagsinfo">Hämta företagsinfo</button>
+      <button type="button" class="knapp utils--dold" id="exportBtn" data-tippy-content="Exportera resultat">Exportera</button>
     </div>
   </form>
   <!-- ********** Laddikon ********** -->

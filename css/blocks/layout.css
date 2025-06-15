@@ -12,6 +12,22 @@
 /* - Komponentspecifik CSS (t.ex. knapp, tabell)         */
 /* ===================================================== */
 
+/* === Grundstruktur för sticky footer === */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Gör att body alltid fyller hela höjden */
+  margin: 0;
+}
+
+.layout__main {
+  flex: 1 0 auto; /* Tar upp all tillgänglig höjd före footer */
+}
+
+.footer, .sidfot {
+  flex-shrink: 0; /* Footer krymper inte bort */
+}
+
 /* === Hel wrapper för layouten === */
 .layout {
   display: flex;

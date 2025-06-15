@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="success">
   ✅ Länk skapad! <br>
   <pre id="secretLink">$url</pre>
-  <button onclick="copyLink()" class="button tiny" data-tippy-content="Kopiera länken">Kopiera</button>
+  <button onclick="copyLink()" class="knapp knapp--liten" data-tippy-content="Kopiera länken">Kopiera</button>
 </div>
 HTML;
 }

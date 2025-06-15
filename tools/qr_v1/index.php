@@ -3,20 +3,20 @@
 
 <main class="layout__container">
 
-  <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
-    <button class="knapp" onclick="showQRCodeSection('felanmalning')">QR för felanmälan</button>
-    <button class="knapp" onclick="showQRCodeSection('lank')">QR för länkar</button>
+  <div class="form__verktyg"><!-- TODO: osäker konvertering -->
+    <button class="knapp" onclick="showQRCodeSection('felanmalning')" data-tippy-content="Visar QR för felanmälan">QR för felanmälan</button>
+    <button class="knapp" onclick="showQRCodeSection('lank')" data-tippy-content="Visar QR för länkar">QR för länkar</button>
   </div>
 
   <section id="qr-section" class="form__grupp utils--dold">
-    <textarea id="textbox" class="falt__textarea" rows="10" placeholder="Ange text eller länkar per rad..."></textarea>
-    <button id="generate-button" class="knapp" onclick="generateQRCode()">Generera QR-koder</button>
+    <textarea id="textbox" class="falt__textarea" rows="10" placeholder="Ange text eller länkar per rad..." data-tippy-content="Skriv text eller länkar här"></textarea>
+    <button id="generate-button" class="knapp" onclick="generateQRCode()" data-tippy-content="Skapar QR-koder">Generera QR-koder</button>
 
     <div id="qrcode"><!-- TODO: osäker konvertering: qr-output --></div>
 
-    <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
-      <button id="download-button" class="knapp" onclick="downloadAllQRCodes()">Ladda ned alla QR-koder</button>
-      <button id="download-docx-button" class="knapp" onclick="downloadAllDocx()">Ladda ned som DOCX</button>
+    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
+      <button id="download-button" class="knapp" onclick="downloadAllQRCodes()" data-tippy-content="Laddar ner alla QR-koder">Ladda ned alla QR-koder</button>
+      <button id="download-docx-button" class="knapp" onclick="downloadAllDocx()" data-tippy-content="Laddar ner QR som DOCX">Ladda ned som DOCX</button>
     </div>
   </section>
 </main>

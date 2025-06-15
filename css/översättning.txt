@@ -37,7 +37,7 @@
 | `.preview-section`      | `.losenord__sektion`   | `losenord.css`     | Förhandslösenordsektion     |
 | `.preview-password-row` | `.losenord__rad`       | `losenord.css`     | Lösenordsrad                |
 | `.preview-actions`      | `.losenord__knappar`   | `losenord.css`     | Knappsektion                |
-| `.horizontal-tools`     | `.form__verktyg`       | `form.css`         | Verktygsrad i formulär      |
+| `.form__verktyg`     | `.form__verktyg`       | `form.css`         | Verktygsrad i formulär      |
 | `.chart-container`      | `.diagram__container`  | `diagram.css`      | Wrapper för canvas/Chart.js |
 | `.hidden`               | `.utils--dold`         | `utilities.css`    | Döljs från visning          |
 | `.text-center`          | `.utils--text-center`  | `utilities.css`    | Centrerad text              |

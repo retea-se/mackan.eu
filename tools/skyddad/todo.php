@@ -16,9 +16,9 @@ $metaDescription = 'Prioriterad lista över förbättringar och säkerhetsåtgä
   <article class="card readme">
     <h2>🟢 Snabbfixar (1–10 min)</h2>
     <ul>
-      <li>1. ✅ <strong>Escapa all utdata med htmlspecialchars()</strong> – t.ex. i <code>visa-handler.php</code>.</li>
-      <li>2. ✅ <strong>Lägg till <code>session_regenerate_id()</code> vid inloggning</strong>.</li>
-      <li>3. ✅ <strong>Visa ett enklare felmeddelande vid exception</strong>, och logga tekniskt fel separat.</li>
+      <li>1. <s>✅ <strong>Escapa all utdata med htmlspecialchars()</strong> – t.ex. i <code>visa-handler.php</code>.</s></li>
+      <li>2. <s>✅ <strong>Lägg till <code>session_regenerate_id()</code> vid inloggning</strong>.</s></li>
+      <li>3. <s>✅ <strong>Visa ett enklare felmeddelande vid exception</strong>, och logga tekniskt fel separat.</s></li>
       <li>4. 🟢 <strong>Lägg till Open Graph-data och Twitter Cards i <code>layout-start.php</code>.</strong></li>
       <li>5. 🟢 <strong>Ställ in <code>robots.txt</code> och <code>sitemap.xml</code>.</strong></li>
     </ul>
@@ -44,10 +44,10 @@ $metaDescription = 'Prioriterad lista över förbättringar och säkerhetsåtgä
 
     <h2>📈 Redan gjort</h2>
     <ul>
-      <li>✔ Engångslänkar med AES-256 och HMAC-token</li>
-      <li>✔ Adminpanel med händelseloggar och statistik</li>
-      <li>✔ Automatisk radering av visade hemligheter</li>
-      <li>✔ Integritetstext under delningsformuläret</li>
+      <li><s>✔ Engångslänkar med AES-256 och HMAC-token</s></li>
+      <li><s>✔ Adminpanel med händelseloggar och statistik</s></li>
+      <li><s>✔ Automatisk radering av visade hemligheter</s></li>
+      <li><s>✔ Integritetstext under delningsformuläret</s></li>
     </ul>
   </article>
 </main>

@@ -11,14 +11,14 @@ $metaDescription = 'Konvertera hexadecimala Aptus-värden till decimalform. Klis
   <form id="converter-form" class="form__grupp">
     <textarea id="hexInput" class="falt__input" placeholder="Klistra in hexadecimala värden här, ett per rad"></textarea>
 
-    <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
       <button type="button" class="knapp" id="convertButton" onclick="convertHex()">Konvertera</button>
       <button type="button" class="knapp utils--dold" id="exportButton" onclick="exportToCSV()">Exportera till CSV</button>
       <button type="button" class="knapp utils--dold" id="clearButton" onclick="clearResults()">Rensa</button>
     </div>
   </form>
 
-<div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+<div class="form__verktyg"><!-- TODO: osäker konvertering -->
   <a href="readme.php" class="ikon--info-flytande" title="Om verktyget">
     <i class="fa-solid fa-circle-info"></i>
   </a>

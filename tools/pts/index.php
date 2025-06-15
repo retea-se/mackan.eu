@@ -24,7 +24,7 @@ $metaDescription = 'Sök, filtrera och exportera ärenden från PTS diarium. Kli
       <input type="text" id="search" class="falt__input" placeholder="Sök...">
     </div>
 
-    <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
       <button type="submit" class="knapp">Kör</button>
       <button type="button" class="knapp" id="exportJson" disabled>Exportera JSON</button>
       <button type="button" class="knapp" id="exportCsv" disabled>Exportera CSV</button>
@@ -73,3 +73,18 @@ $metaDescription = 'Sök, filtrera och exportera ärenden från PTS diarium. Kli
   const btn = document.getElementById('showWordcloud');
   btn.addEventListener('click', () => initWordcloud(window.ärenden || []));
 </script>
+<script>
+  // Visa modalen
+  document.getElementById('wordcloudModal').classList.remove('utils--dold');
+  document.body.classList.add('modal-open');
+
+  // Dölj modalen
+  document.getElementById('wordcloudModal').classList.add('utils--dold');
+  document.body.classList.remove('modal-open');
+</script>
+<style>
+/* Lägg i din CSS */
+body.modal-open {
+  overflow: hidden;
+}
+</style>

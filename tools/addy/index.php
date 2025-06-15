@@ -24,7 +24,7 @@
     <button type="button" class="knapp utils--dold" id="copyButton" onclick="copyToClipboard()">Kopiera</button>
   </form>
 
-  <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+  <div class="form__verktyg"><!-- TODO: osäker konvertering -->
     <button id="languageToggle" class="knapp">Sv/En</button>
   </div>
 </main>

@@ -9,7 +9,7 @@ export function init() {
     <form class="form-group">
       <label for="fixerInput">Klistra in JSON med fel:</label>
       <textarea id="fixerInput" class="textarea" rows="10" placeholder='{name: "Anna", age: 25,} // trailing comma'></textarea>
-      <div class="horizontal-tools">
+      <div class="form__verktyg">
         <button type="button" class="button" id="fixBtn">Försök reparera</button>
       </div>
     </form>

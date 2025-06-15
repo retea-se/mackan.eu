@@ -42,16 +42,27 @@ $metaDescription = 'Generera säkra lösenord och ordfraser direkt i webbläsare
   <!-- ********** SLUT Sektion: Formulär ********** -->
 
   <!-- ********** START Sektion: Resultattabell ********** -->
-  <div class="tabell__wrapper">
+  <div class="tabell__wrapper utils--dold">
     <table class="tabell" id="resultTable">
       <thead>
         <tr><th>Lösenord</th><th>Åtgärd</th></tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        <tr>
+          <td class="password-cell">abc123DEF!</td>
+          <td>
+            <button type="button" class="copy-btn knapp__ikon knapp__ikon--liten" aria-label="Kopiera lösenord">
+              <i class="fa-solid fa-copy"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
-  <button id="exportBtn" class="knapp utils--dold" data-tippy-content="Exportera till fil">Exportera</button>
-  <button id="resetBtn" class="knapp utils--dold" data-tippy-content="Rensa resultat">Rensa</button>
+  <div class="knapp__grupp">
+    <button id="exportBtn" class="knapp utils--dold" data-tippy-content="Exportera till fil">Exportera</button>
+    <button id="resetBtn" class="knapp utils--dold" data-tippy-content="Rensa resultat">Rensa</button>
+  </div>
   <!-- ********** SLUT Sektion: Resultattabell ********** -->
 </main>
 

@@ -24,7 +24,7 @@ include '../../includes/layout-start.php';
       <textarea id="input2" class="textarea" placeholder="Kommentarer..."></textarea>
     </div>
 
-    <div class="horizontal-tools">
+    <div class="form__verktyg">
       <button type="button" class="button" data-tippy-content="Kör verktyget och visa resultatet">Kör</button>
       <button type="button" class="button hidden">Exportera</button>
       <button type="button" class="button hidden">Rensa</button>

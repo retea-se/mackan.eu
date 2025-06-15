@@ -21,7 +21,7 @@
       <input type="number" id="endYear" class="falt__input" value="2020" min="1930" max="2025">
     </div>
 
-    <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
       <button type="button" class="knapp" id="generateBtn">Hämta</button>
       <div id="loader" class="spinner utils--dold" aria-label="Laddar"></div>
     </div>

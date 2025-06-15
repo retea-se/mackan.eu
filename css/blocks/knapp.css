@@ -1,5 +1,5 @@
 /* ===================================================== */
-/* Fil: knapp.css - v2                                   */
+/* Fil: knapp.css - v3                                   */
 /* Komponent: Knapp (button)                             */
 /* Struktur: BEM (.knapp, .knapp--liten, .knapp--fara)   */
 /* Syfte: Standardiserade knappar med tillståndsstöd     */
@@ -18,7 +18,7 @@
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
-  background-color: var(--primary-color);
+  background-color: var(--primary-color); /* t.ex. #1976d2 */
   border: none;
   border-radius: var(--border-radius);
   padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
@@ -29,8 +29,10 @@
 }
 
 .knapp:hover {
-  background-color: var(--hover-color);
+  background-color: var(--primary-color-dark, #1565c0); /* lite mörkare blå */
   transform: translateY(-2px);
+  /* eller: filter: brightness(0.92); */
+  /* eller: box-shadow: 0 2px 8px rgba(0,0,0,0.08); */
 }
 
 .knapp:active {
@@ -41,6 +43,30 @@
   background-color: #ccc;
   color: #888;
   cursor: not-allowed;
+}
+
+/* Centrera alla knappar i sin container */
+.knapp,
+.knapp__ikon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Om knappar ligger i en rad, centrera raden */
+.knapp__grupp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-unit, 0.5rem);
+  width: 100%;
+}
+
+/* Om du vill centrera enskilda knappar även när de är ensamma */
+.knapp {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 /* === Modifierare: storlek === */
@@ -65,18 +91,22 @@
 
 /* === Element: ikonknapp === */
 .knapp__ikon {
-  background: transparent;
+  background: none;
   border: none;
   color: var(--primary-color);
-  font-size: 1.2rem;
-  padding: 0.4em;
-  margin: 0 0.2em;
+  padding: 0.4em 0.6em;
+  border-radius: 50%;
   cursor: pointer;
-  transition: color 0.2s;
+  font-size: 1.1em;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.knapp__ikon:hover {
-  color: var(--hover-color);
+.knapp__ikon:hover,
+.knapp__ikon:focus {
+  background: var(--hover-color, #e6f2fa);
 }
 
 .knapp__ikon:focus,
@@ -84,4 +114,15 @@
 .knapp__ikon:active {
   outline: none !important;
   box-shadow: none !important;
+}
+
+/* === Modifierare: ikonstorlek === */
+.knapp__ikon--liten {
+  font-size: 0.9em;
+  padding: 0.3em 0.5em;
+  line-height: 1;
+}
+
+.knapp__ikon--liten i {
+  font-size: 1em;
 }

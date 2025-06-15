@@ -47,6 +47,18 @@ body,
   color: var(--text-color);
 }
 
+/* === Sidfot i mörkt tema === */
+[data-theme="dark"] .sidfot {
+  background-color: #1a1a1a;
+  color: var(--text-color);
+  border-top: 1px solid var(--border-color);
+}
+[data-theme="dark"] .sidfot__center,
+[data-theme="dark"] .sidfot__ikonlank,
+[data-theme="dark"] .sidfot i {
+  color: var(--text-color);
+}
+
 /* === Nav i ljust tema === */
 [data-theme="light"] .nav {
   background-color: var(--primary-color);

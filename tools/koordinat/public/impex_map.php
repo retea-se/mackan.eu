@@ -31,7 +31,7 @@ include '../../includes/layout-start.php';
     <label for="import-file">Importera fil:</label>
     <input type="file" id="import-file" class="input">
 
-    <div class="horizontal-tools">
+    <div class="form__verktyg">
       <button type="button" id="convert-textarea" class="button">🔄 Konvertera text</button>
       <button type="button" id="fetch-addresses" class="button">📍 Hämta adresser</button>
       <button type="button" id="load-markers" class="button">🗺️ Ladda koordinater</button>

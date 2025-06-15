@@ -35,6 +35,11 @@
   gap: 0.5rem;
 }
 
+.preview-password-row {
+  text-align: center;
+  justify-content: center;
+}
+
 @media (max-width: 600px) {
   .losenord__rad {
     flex-direction: column;

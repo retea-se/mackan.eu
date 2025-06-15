@@ -47,7 +47,7 @@
 
         <form id="converter-form" class="form-group">
             <textarea id="hexInput" class="input" placeholder="Klistra in hexadecimala värden här, ett per rad"></textarea>
-            <div class="horizontal-tools">
+            <div class="form__verktyg">
                 <button type="button" class="button" id="convertButton" onclick="convertHex()">Konvertera</button>
                 <button type="button" class="button hidden" id="exportButton" onclick="exportToCSV()">Exportera till CSV</button>
                 <button type="button" class="button hidden" id="clearButton" onclick="clearResults()">Rensa</button>

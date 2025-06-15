@@ -9,7 +9,7 @@ export function init() {
     <form class="form-group">
       <label for="csvInput">Klistra in CSV-data (t.ex. från Excel):</label>
       <textarea id="csvInput" class="textarea" rows="6" placeholder="Kolumn1\tKolumn2\nVärde1\tVärde2"></textarea>
-      <div class="horizontal-tools">
+      <div class="form__verktyg">
         <button type="button" class="button" id="convertBtn">Konvertera</button>
         <button type="button" class="button secondary" id="copyBtn">Kopiera JSON</button>
       </div>

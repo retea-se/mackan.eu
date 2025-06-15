@@ -48,4 +48,4 @@ $result  = "<h2>Skyddad delning:</h2>";
 $result .= "<pre style=\"white-space: pre-wrap; word-break: break-word;\">";
 $result .= htmlspecialchars($decrypted, ENT_QUOTES, 'UTF-8');
 $result .= "</pre>";
-$result .= '<div class="mt-1"><a href="dela.php" class="button tiny" data-tippy-content="Skapa en ny hemlighet">Skapa ny</a></div>';
+$result .= '<div class="mt-1"><a href="dela.php" class="button tiny" data-tippy-content="Skapa en ny hemlighet">Skapa ny</a>';

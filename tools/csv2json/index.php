@@ -19,7 +19,7 @@
   <section>
     <h2>Verktyg</h2>
     <div id="columnFilter" class="kort"></div>
-    <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
       <label class="checkbox"><!-- TODO: osäker konvertering -->
         <input type="checkbox" id="minifyCheckbox"> Kompakt JSON
       </label>
@@ -37,7 +37,7 @@
   <section>
     <h2>Konverterad JSON</h2>
     <div id="jsonOutput" class="kort"></div>
-    <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
       <button class="knapp" onclick="downloadJson()">Ladda ner JSON</button>
       <button class="knapp" onclick="copyToClipboard()">Kopiera till urklipp</button>
     </div>

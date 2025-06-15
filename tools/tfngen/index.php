@@ -34,7 +34,7 @@ $metaDescription = 'Skapa testnummer inom mobil- och fastnät. Välj serier, for
         </select>
       </div>
 
-      <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+      <div class="form__verktyg"><!-- TODO: osäker konvertering -->
         <button type="submit" class="knapp">Generera</button>
         <button type="button" class="knapp utils--dold" id="rensaknapp">Rensa</button>
       </div>

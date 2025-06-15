@@ -10,8 +10,8 @@ $metaDescription = 'Generera svenska testpersoner med namn, företag, telefonnum
 
   <!-- ********** START Sektion: Fältval ********** -->
   <div class="form__grupp">
-    <label>Vilka fält ska genereras?</label>
-    <div class="horizontal-tools" id="fältval" style="flex-wrap: wrap; gap: 0.5rem;">
+    <label data-tippy-content="Välj vilka fält som ska genereras">Vilka fält ska genereras?</label>
+    <div class="form__verktyg" id="fältval" style="flex-wrap: wrap; gap: 0.5rem;">
       <?php
       $fält = [
         'fornamn' => 'Förnamn',
@@ -24,7 +24,7 @@ $metaDescription = 'Generera svenska testpersoner med namn, företag, telefonnum
         'personnummer' => 'Personnummer'
       ];
       foreach ($fält as $value => $label) {
-        echo "<label class='checkbox' style='margin-right: 1rem; margin-bottom: 0.5rem; cursor: pointer;'><input type='checkbox' class='field-toggle' value='$value' checked> $label</label>";
+        echo "<label class='checkbox' style='margin-right: 1rem; margin-bottom: 0.5rem; cursor: pointer;' data-tippy-content=\"Växlar $label\"><input type='checkbox' class='field-toggle' value='$value' checked> $label</label>";
       }
       ?>
     </div>
@@ -34,29 +34,29 @@ $metaDescription = 'Generera svenska testpersoner med namn, företag, telefonnum
   <!-- ********** START Sektion: Formulär ********** -->
   <form class="form__grupp">
     <div class="form__grupp">
-      <label for="antal">Antal personer att generera</label>
-      <input type="number" id="antal" class="falt__input" value="1" min="1" max="100">
+      <label for="antal" data-tippy-content="Ange antal personer">Antal personer att generera</label>
+      <input type="number" id="antal" class="falt__input" value="1" min="1" max="100" data-tippy-content="Skriv antal personer">
     </div>
 
     <div id="exportControls" class="utils--dold">
-      <label for="exportFormat" style="white-space: nowrap;">Välj exportformat:</label>
-      <select id="exportFormat" class="falt__select">
+      <label for="exportFormat" style="white-space: nowrap;" data-tippy-content="Välj format för export">Välj exportformat:</label>
+      <select id="exportFormat" class="falt__select" data-tippy-content="Välj exportformat">
         <option value="json">JSON (visa)</option>
         <option value="csv">CSV (visa)</option>
         <option value="txt">TXT (visa)</option>
         <option value="xlsx">Excel (ladda ner)</option>
       </select>
-      <button type="button" id="downloadBtn" class="knapp">Visa / Ladda ner</button>
+      <button type="button" id="downloadBtn" class="knapp" data-tippy-content="Visar eller laddar ner data">Visa / Ladda ner</button>
     </div>
 
-    <div class="horizontal-tools" style="flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
-      <button type="button" id="generateBtn" class="knapp">Generera testperson</button>
-      <button type="button" class="knapp utils--dold">Rensa</button>
+    <div class="form__verktyg" style="flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+      <button type="button" id="generateBtn" class="knapp" data-tippy-content="Genererar testpersoner">Generera testperson</button>
+      <button type="button" class="knapp utils--dold" data-tippy-content="Rensar resultat">Rensa</button>
     </div>
   </form>
 
   <div class="form__grupp">
-    <button type="button" id="formatBtn" class="knapp utils--dold">Standardisera personnummer</button>
+    <button type="button" id="formatBtn" class="knapp utils--dold" data-tippy-content="Standardiserar personnummer">Standardisera personnummer</button>
   </div>
   <!-- ********** SLUT Sektion: Formulär ********** -->
 

@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const tdActions = document.createElement("td");
       const copyBtn = document.createElement("button");
-      copyBtn.className = "icon-button";
+      copyBtn.className = "icon-button copy-btn";
       copyBtn.setAttribute("aria-label", "Kopiera lösenord");
       copyBtn.setAttribute("data-tippy-content", "Kopiera lösenord");
       copyBtn.innerHTML = '<i class="fa-solid fa-copy"></i>';
@@ -132,6 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
       resetBtn.classList.remove("hidden");
       exportBtn.dataset.hasResults = "true";
     }
+
+    visaResultatTabell();
   });
 
   resetBtn.addEventListener("click", () => {
@@ -139,8 +141,80 @@ document.addEventListener("DOMContentLoaded", () => {
     exportBtn.classList.add("hidden");
     resetBtn.classList.add("hidden");
     genererade.length = 0;
+    doldResultatTabell();
     console.log("🧹 Resultat rensat");
   });
+
+  // Event delegation för kopiera-knappar i resultattabellen
+  document.getElementById('resultTable').addEventListener('click', function(e) {
+    // Hitta närmaste knapp med klassen 'copy-btn'
+    const copyBtn = e.target.closest('.copy-btn');
+    if (copyBtn) {
+      const row = copyBtn.closest('tr');
+      const passwordCell = row.querySelector('.password-cell');
+      if (passwordCell) {
+        const password = passwordCell.textContent;
+        navigator.clipboard.writeText(password).then(() => {
+          copyBtn.classList.add('copied');
+          setTimeout(() => copyBtn.classList.remove('copied'), 1000);
+        });
+      }
+    }
+  });
+
+  // Kopiera lösenord från tabellen
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.copy-btn');
+    if (btn) {
+      const passwordCell = btn.closest('tr').querySelector('.password-cell');
+      if (passwordCell) {
+        const password = passwordCell.textContent.trim();
+        // Felsökning: visa vad som ska kopieras
+        // alert('Kopierar: ' + password);
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(password)
+            .then(() => {
+              btn.classList.add('kopierad');
+              setTimeout(() => btn.classList.remove('kopierad'), 1000);
+            })
+            .catch(err => {
+              alert('Kunde inte kopiera: ' + err);
+            });
+        } else {
+          // Fallback för äldre webbläsare
+          const textarea = document.createElement('textarea');
+          textarea.value = password;
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            document.execCommand('copy');
+            btn.classList.add('kopierad');
+            setTimeout(() => btn.classList.remove('kopierad'), 1000);
+          } catch (err) {
+            alert('Kunde inte kopiera: ' + err);
+          }
+          document.body.removeChild(textarea);
+        }
+      }
+    }
+  });
+
+  function visaResultatKnappar() {
+    document.getElementById('exportBtn').classList.remove('utils--dold');
+    document.getElementById('resetBtn').classList.remove('utils--dold');
+  }
+
+  function doldResultatKnappar() {
+    document.getElementById('exportBtn').classList.add('utils--dold');
+    document.getElementById('resetBtn').classList.add('utils--dold');
+  }
+
+  function visaResultatTabell() {
+    document.querySelector('.tabell__wrapper').classList.remove('utils--dold');
+  }
+  function doldResultatTabell() {
+    document.querySelector('.tabell__wrapper').classList.add('utils--dold');
+  }
 
   window.genereradeLösenord = () => genererade;
   window.genereraLösenord = genereraLösenord;

@@ -11,8 +11,8 @@ include '../../includes/layout-start.php';
     <p class="subtitle"><!-- TODO: osäker konvertering: subtitle --><?= $subtitle ?></p>
   <?php endif; ?>
 
-  <textarea id="personnummerList" class="falt__textarea" rows="10" placeholder="Klistra in personnummer här..."></textarea>
-  <button class="knapp" onclick="processPersonnummer()">Bearbeta</button>
+  <textarea id="personnummerList" class="falt__textarea" rows="10" placeholder="Klistra in personnummer här..." data-tippy-content="Klistra in personnummer här"></textarea>
+  <button class="knapp" onclick="processPersonnummer()" data-tippy-content="Bearbetar personnummer">Bearbeta</button>
 
   <h2 id="resultsHeader" class="utils--dold">Resultat:</h2>
   <div id="summary" class="utils--dold">
@@ -38,7 +38,7 @@ include '../../includes/layout-start.php';
     </table>
   </div>
 
-  <button id="exportButton" class="knapp utils--dold">Exportera</button>
+  <button id="exportButton" class="knapp utils--dold" data-tippy-content="Exporterar resultat">Exportera</button>
 </main>
 
 <?php include '../../includes/layout-end.php'; ?>

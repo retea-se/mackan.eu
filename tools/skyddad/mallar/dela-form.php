@@ -9,9 +9,9 @@ $csrf_token = generateCsrfToken();
   <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token) ?>">
 
   <label for="secret">Hemlig text:</label><br>
-  <textarea id="secret" name="secret" rows="6" cols="50" required></textarea><br><br>
+  <textarea id="secret" name="secret" rows="6" cols="50" required class="falt__input"></textarea><br><br>
 
-  <button type="submit" class="button" data-tippy-content="Skapa en unik engångslänk till texten ovan">
+  <button type="submit" class="knapp" data-tippy-content="Skapa en unik engångslänk till texten ovan">
     Skapa delningslänk
   </button>
 </form>

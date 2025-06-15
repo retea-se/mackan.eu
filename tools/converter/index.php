@@ -4,7 +4,7 @@
 
 <!-- ********** START: Verktygsmeny ********** -->
 <div class="layout__container">
-  <div class="horizontal-tools"><!-- TODO: osäker konvertering -->
+  <div class="form__verktyg"><!-- TODO: osäker konvertering -->
     <button class="knapp knapp--liten" data-tab="csvtojson">CSV → JSON</button>
     <button class="knapp knapp--liten" data-tab="formatter">Formatter</button>
     <button class="knapp knapp--liten" data-tab="validator">Validera</button>

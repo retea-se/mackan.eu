@@ -13,6 +13,14 @@
   </div>
 
   <div class="nav__höger">
+        <?php
+    // Visa readme-ikon om dokumentation finns
+    $verktygMapp = basename(dirname($_SERVER['PHP_SELF']));
+    $readmeSökväg = __DIR__ . '/../tools/' . $verktygMapp . '/readme.php';
+    if (file_exists($readmeSökväg)) {
+      include __DIR__ . '/readme-icon.php';
+    }
+    ?>
     <button id="themeToggle" class="knapp__ikon" aria-label="Byt tema">
       <i class="fa-solid fa-moon"></i>
     </button>

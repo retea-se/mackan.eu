@@ -25,7 +25,7 @@ $metaDescription = 'Konvertera hexadecimala RFID/EM-nummer till Aptus-kompatibel
       Verktyget sparar ingen data och fungerar direkt i webbläsaren.
     </p>
 
-    <div class="horizontal-tools">
+    <div class="form__verktyg">
       <a href="./index.php" class="button secondary" title="Tillbaka">
         <i class="fa-solid fa-arrow-left"></i> Tillbaka till verktyget
       </a>
