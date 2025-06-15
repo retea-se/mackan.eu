@@ -1,4 +1,4 @@
-<!-- csstest-komplett.html - v3 -->
+<!-- csstest-komplett.html - v4 -->
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Komponenttest – Mackan.eu</title>
   <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="blocks/readme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       max-width: 960px;
@@ -140,6 +142,87 @@
   <div class="sidfot__center">© Mackan.eu – Test</div>
   <a href="readme.html" class="sidfot__ikonlank">📄</a>
 </footer>
+
+<!-- === README-EXEMPEL – ISOLERAD TEST === -->
+<section>
+  <h2 style="margin-top:4rem;">📘 Readme-komponenter (isolerad test)</h2>
+  <main class="readme">
+
+    <nav class="readme__back">
+      <a href="readme.html" class="readme__backlink">
+        <i class="fa-solid fa-arrow-left"></i> Tillbaka
+      </a>
+    </nav>
+
+    <h1 class="readme__title">README – Exempel</h1>
+    <section class="readme__section">
+
+      <blockquote class="readme__quote">
+        <i class="fa-solid fa-quote-left"></i>
+        Detta är ett inspirerande citat från dokumentationen!
+      </blockquote>
+
+      <div class="readme__info">
+        <i class="fa-solid fa-info-circle"></i>
+        Detta är ett tips eller extra information till användaren.
+      </div>
+
+      <div class="readme__warning">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        Observera! Detta är en varning.
+      </div>
+
+      <ul class="readme__history">
+        <li>2025-06-14: README skapad</li>
+        <li>2025-06-15: Lagt till kodblock</li>
+      </ul>
+
+      <div class="readme__codeblock">
+        <button class="readme__codecopy" title="Kopiera kod">
+          <i class="fa-solid fa-copy"></i>
+        </button>
+        <pre><code>npm install mackan</code></pre>
+      </div>
+
+      <table class="readme__table">
+        <thead>
+          <tr>
+            <th><i class="fa-solid fa-key readme__thicon"></i>Fält</th>
+            <th><i class="fa-solid fa-circle-info readme__thicon"></i>Beskrivning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>foo</td><td>Exempeltext med <br> radbrytning</td></tr>
+          <tr><td>bar</td><td>Mer data</td></tr>
+        </tbody>
+      </table>
+
+      <div class="readme__divider">
+        ───────────── ascii divider ─────────────
+      </div>
+
+    </section>
+    <footer class="readme__meta">© Mackan.eu 2025</footer>
+  </main>
+</section>
+
+<script>
+// Kopiera kod-block för .readme__codecopy
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.readme__codecopy').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const pre = btn.nextElementSibling;
+      if (pre && pre.tagName === 'PRE') {
+        const code = pre.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.title = 'Kopierat!';
+          setTimeout(() => btn.title = 'Kopiera kod', 1200);
+        });
+      }
+    });
+  });
+});
+</script>
 
 </body>
 </html>

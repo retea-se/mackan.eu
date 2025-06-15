@@ -1,4 +1,5 @@
-<!-- tools/mall/readme.php - v4 -->
+<?php
+<!-- tools/mall/readme.php - v5 -->
 <?php
 $title = 'Om Mitt Verktyg';
 $metaDescription = 'Information om detta verktyg, dess syfte och funktion. Lär dig hur du använder det med exempel och tydlig förklaring.';
@@ -6,61 +7,88 @@ $metaDescription = 'Information om detta verktyg, dess syfte och funktion. Lär 
 <?php include '../../includes/layout-start.php'; ?>
 
 <?php
-
 /*
-  OBS! Använd INTE nedanstående stycke:
-  Titeln ($title) inkluderas redan automatiskt via header/layout-start.php.
-  Om du lägger till detta manuellt riskerar du dubbla <h1>-element på sidan,
-  vilket försämrar både SEO och tillgänglighet.
-  Kommentera därför bort eller ta bort hela blocket nedan.
+================================================================================
+README-MALL – RIKTLINJER & KOMMENTARER
+================================================================================
+
+1. Grundläggande struktur och metadata
+   - Sätt alltid variablerna $title och $metaDescription högst upp i filen.
+   - Använd endast ett <h1> per sida, och låt det spegla $title.
+   - Om includes/layout-start.php används, undvik att lägga till ytterligare <h1>.
+   - Lägg till versionskommentar i toppen av filen.
+   - Skriv all text på svenska om inte annat anges.
+
+2. Semantik och markup
+   - Använd semantiska HTML5-element: <main>, <nav>, <section>, <article>, <footer>.
+   - Hela huvudinnehållet ska wrappas i <main class="readme">.
+   - Varje innehållsdel ska ligga i <article class="readme__section"> eller <section class="readme__section">.
+   - Rubriker ska följa hierarkin: <h1> (endast en), därefter <h2> för sektioner, <h3> för eventuella underavsnitt.
+   - Lägg till en länk tillbaka till verktyget (t.ex. index.php) med tydlig ankartext.
+
+3. Komponentklasser och styling
+   - All styling för README görs genom /css/blocks/readme.css. Ingen inline- eller global CSS för readme.
+   - Använd endast readme-specifika klasser för komponenter:
+     .readme__title, .readme__subtitle, .readme__text, .readme__list, .readme__codeblock, .readme__info, .readme__warning, .readme__quote, .readme__history, .readme__divider, .readme__meta, .readme__back, .readme__backlink, .readme__table
+   - Inga globala klasser (t.ex. .container, .button, .card) får användas i readme – endast readme-namn.
+   - Läsbarhet: Max 700px bredd på readme-container, gott om padding, luft mellan sektioner, extra radavstånd.
+   - Dark mode och light mode måste alltid fungera och testas! (Se till att readme.css har [data-theme="dark"]-regler.)
+   - Responsivitet: Alla readme-komponenter ska skala till mobil utan horisontell scroll. Kodblock får scroll om de är väldigt långa.
+
+4. Kodexempel och kopiering
+   - Kodexempel och svarsexempel ska alltid ligga i .readme__codeblock, även för enradiga snuttar.
+   - Använd kopieringsknapp med klassen .readme__codecopy och ikon (t.ex. <i class="fa-solid fa-copy"></i>).
+   - Kodkopiering ska aktiveras via JS för .readme__codecopy-knapp – se exempel i readme.html.
+   - Om kodexempel ska visas, inkludera sektionen markdownExampleSection och visa ett relevant kodblock.
+   - Om kodexempel inte används, ta bort sektionen för markdownexempel för att hålla sidan ren.
+   - Om du visar kodexempel, se till att kodblockets språk (t.ex. ```json) är korrekt för syntaxhighlighting.
+
+5. Tips/info, varningar och citat
+   - Tips/info och varning ska använda .readme__info respektive .readme__warning – och alltid ha en ikon först!
+   - Citat ska använda .readme__quote och gärna ikon.
+   - Historiklistor ska använda .readme__history.
+   - Dividera gärna med .readme__divider.
+   - Alla tabeller i README ska använda .readme__table och får gärna ha ikoner i <th> (se styleguide).
+
+6. Tillgänglighet och SEO
+   - Lägg alltid till tydliga, pedagogiska och informativa tooltips på knappar, ikoner och andra interaktiva element med data-tippy-content.
+   - Tooltip-texten ska vara kort, tydlig och hjälpa användaren att förstå funktionen.
+   - Kontrollera att alla knappar och viktiga ikoner har en relevant tooltip.
+   - Tooltip aktiveras automatiskt via Tippy.js – ingen extra JS behövs.
+   - Om sidan inte ska indexeras av sökmotorer, säkerställ att rätt meta-taggar finns i meta.php.
+
+7. Anpassning och underhåll
+   - Byt ut exempeltexter, titlar och beskrivningar mot det som är relevant för det aktuella verktyget.
+   - Lägg till eller ta bort sektioner efter behov.
+   - Skriv korta, informativa texter – undvik utfyllnad.
+   - Skriv kommentarer i koden där AI:n behöver göra val eller anpassningar.
+   - Lägg till tydliga TODO- eller FIXME-kommentarer där AI:n behöver göra val eller anpassningar.
+   - Undvik att lägga till onödiga script eller CSS om de inte används på sidan.
+   - Kontrollera att alla länkar och scriptvägar är relativa och fungerar i projektets struktur.
+
+8. Teknisk och innehållsmässig kvalitet
+   - Beskriv syfte, funktioner och användning tydligt i separata sektioner med <h2>.
+   - Ge exempel på typiska användningsfall och visa input → output med konkreta exempel.
+   - Lista eventuella externa bibliotek, API:er eller algoritmer som används. men röj ingen känslig information om hur webbsidan eller funktionen är uppbyggd
+   - Ange källor eller inspiration om det är relevant (t.ex. Wikipedia, RFC, MDN).
+   - Lägg gärna till fun facts, prestandadata, edge cases eller historik om tekniken.
+   - Om verktyget har unika egenskaper, lyft fram dem.
+   - Kontrollera att rubriknivåerna är logiska och inte hoppar (t.ex. <h2> direkt efter <h1>).
+
+Syftet med dessa riktlinjer är att säkerställa maximal läsbarhet, robust semantik, tillgänglighet och att alla readme-filer alltid är isolerade från övriga sidors styling.
+
+================================================================================
+Tippy.js-tips:
+- Alla element med attributet data-tippy-content får automatiskt en tooltip.
+- Lägg alltid till tydliga, pedagogiska och informativa tooltips på knappar, ikoner och andra interaktiva element.
+- Tooltip-texten ska vara kort, tydlig och hjälpa användaren att förstå funktionen.
+- Skriv alltid tooltip-texten på svenska om inget annat anges.
+- Undvik att upprepa knappens text – förklara istället vad som händer eller varför knappen finns.
+- Tooltip aktiveras automatiskt – ingen extra JavaScript behövs i verktygssidorna.
+- Exempel: <button class="button" data-tippy-content="Kör verktyget och visa resultatet">Kör</button>
+================================================================================
 */
-/*
-<main class="container">
-  <h1 class="title">
-    <?= $title ?>
-      <!--nedan kan strula och generera dubbla titlar på sidan. undersöks närmare-->
-    <?php include '../../includes/readme-icon.php'; ?>
-  </h1>
-  <article class="card readme">
-    <h2>Syfte</h2>
-    <p>Detta verktyg är skapat för att demonstrera mallstruktur och gemensam designstandard i projektet.</p>
-
-    <h2>Funktioner</h2>
-    <ul>
-      <li>Inputfält för att skriva in data</li>
-      <li>Knappar för att köra, exportera och rensa</li>
-      <li>Responsiv tabell som visar resultat</li>
-    </ul>
-
-    <h2>Användning</h2>
-    <p>Fyll i fälten och klicka på <strong>Kör</strong> för att se resultatet nedan. Knappen <strong>Exportera</strong> visar sig vid behov.</p>
-
-    <h2>Exempel</h2>
-    <pre class="terminal-output">
-Input1: Test
-Input2: Kommentar
-
-Resultat:
-Kolumn 1 | Kolumn 2
----------|---------
-Test     | Rad
-    </pre>
-
-    <!--
-      START: Markdown-exempel med kopieringsfunktion.
-      Denna sektion visar snyggt formaterade kodexempel i markdownformat
-      och kan kopieras till urklipp med en knapp.
-
-      OBS! Om verktyget inte använder kodexempel i readme kan denna sektion
-      tas bort eller kommenteras ut för att undvika onödig kod och laddning.
-    -->
-    <section id="markdownExampleSection" class="markdown-example-section">
-      <h2>Kodexempel</h2>
-      <div id="markdownExampleContainer"></div>
-    </section>
-
-  </article>
-</main>
+?>
 
 <?php include '../../includes/layout-end.php'; ?>
 
@@ -69,120 +97,25 @@ Test     | Rad
 OBS: Denna readme-mall laddar ett separat JavaScript
 för att rendera markdown-exempel med kopieringsknapp.
 
+js\readme-codecopy.js
+
+
+
 Detta script ska bara aktiveras i verktyg som visar kodexempel.
 
-För att aktivera, inkludera i din verktygs-HTML (readme.php) t.ex.:
+För att aktivera, inkludera i din verktygs-HTML (readme.php), se koden// readme-codecopy.js
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.readme__codecopy').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const pre = btn.nextElementSibling;
+      if (pre && pre.tagName === 'PRE') {
+        const code = pre.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.title = 'Kopierat!';
+          setTimeout(() => btn.title = 'Kopiera kod', 1200);
+        });
+      }
+    });
+  });
+});
 
-<script type="module">
-  import { renderMarkdownExample } from '/js/markdownExample.js';
-
-  const exampleCode = `
-\`\`\`json
-{
-  "nyckel": "värde"
-}
-\`\`\`
-  `;
-
-  renderMarkdownExample('markdownExampleContainer', exampleCode);
-</script>
-
-<!--
-AI README-GENERERING – TIPS FÖR LLM:
-
-- Sätt alltid variablerna `$title` och `$metaDescription` högst upp i filen.
-- Använd endast ETT `<h1>`-element per sida, och låt det spegla `$title`.
-- Om `includes/layout-start.php` används, undvik att lägga till ytterligare `<h1>` i innehållet.
-- Beskriv syfte, funktioner och användning tydligt i separata sektioner med `<h2>`.
-- Lägg till ett konkret exempel på användning/resultat i en `<pre>`-tagg.
-- Om kodexempel ska visas, inkludera sektionen `markdownExampleSection` och visa ett relevant kodblock.
-- Ta bort eller kommentera ut kodexempelsektionen om den inte behövs för verktyget.
-- Skriv korta, informativa texter – undvik utfyllnad.
-- Följ SEO-checklistan i slutet av mallen.
-- Använd semantiska HTML-element: `<main>`, `<article>`, `<section>`, `<h2>`, osv.
-- Lägg till en länk tillbaka till verktyget (t.ex. index.php) med tydlig ankartext.
-- Skriv all text på svenska om inte annat anges.
-- Lägg till versionskommentar i toppen av filen.
-- Skriv kommentarer i koden där AI:n behöver göra val eller anpassningar.
-- Om sektionen "Kodexempel" används:
-  Se till att `js/markdownExample.js` finns i projektets `js`-mapp och importeras enligt instruktionen i mallen.
-
-Ytterligare tips för bättre resultat:
-
-- Byt ut exempeltexter, titlar och beskrivningar mot det som är relevant för det aktuella verktyget.
-- Kontrollera att rubriknivåerna är logiska och inte hoppar (t.ex. <h2> direkt efter <h1>).
-- Om du inte vill visa titeln via includes/title.php, sätt `$hideTitle = true;` innan du inkluderar layout-start.php.
-- Om sidan inte ska indexeras av sökmotorer, säkerställ att rätt meta-taggar finns i meta.php.
-- Om du visar kodexempel, se till att kodblockets språk (t.ex. ```json) är korrekt för syntaxhighlighting.
-- Lägg till tydliga TODO- eller FIXME-kommentarer där AI:n behöver göra val eller anpassningar.
-- Undvik att lägga till onödiga script eller CSS om de inte används på sidan.
-- Kontrollera att alla länkar och scriptvägar är relativa och fungerar i projektets struktur.
-
-<?php
-// =================== INSTRUKTION FÖR TOOLTIP (Tippy.js) ===================
-// - Tippy.js laddas automatiskt in via layout-end.php för alla sidor.
-// - Alla element med attributet data-tippy-content får automatiskt en tooltip.
-// - Lägg alltid till tydliga, pedagogiska och informativa tooltips på knappar, ikoner och andra interaktiva element.
-//   Exempel: <button class="button" data-tippy-content="Kör verktyget och visa resultatet">Kör</button>
-// - Tooltip-texten ska vara kort, tydlig och hjälpa användaren att förstå funktionen.
-// - Skriv alltid tooltip-texten på svenska om inget annat anges.
-// - Undvik att upprepa knappens text – förklara istället vad som händer eller varför knappen finns.
-// - Kontrollera att alla knappar och viktiga ikoner har en relevant tooltip.
-// - Tooltip aktiveras automatiskt – ingen extra JavaScript behövs i verktygssidorna.
-// ===========================================================================
-
-Tips:
-Använd Tippy på alla interaktiva eller otydliga element där användaren kan behöva extra förklaring eller hjälp.
-Du kan använda Tippy.js på många typer av element, inte bara knappar. Några vanliga exempel där Tippy är lämpligt:
-
-Ikoner (t.ex. informations-, hjälp- eller varningsikoner)
-Länkar (för att förklara vart länken leder eller vad som händer)
-Formulärfält (inputs, textareas, dropdowns – för att ge tips eller instruktioner)
-Tabellrubriker (för att förklara kolumnens innehåll)
-Statusindikatorer (t.ex. färgade prickar, badges)
-Bilder (för att visa bildbeskrivning eller extra info)
-Listobjekt (för att ge mer kontext om ett alternativ)
-Inställningsreglage (switchar, sliders, radioknappar)
-Navigationsmenyer (för att förklara menyval)
--->
-<?php
-<!--
-======================
-AI README-INSTRUKTION
-======================
-
-När du genererar eller uppdaterar denna README, tänk på följande:
-
-1. **Syfte och mål**
-   - Beskriv kortfattat varför verktyget finns och vilket problem det löser.
-   - Ange målgruppen (t.ex. utvecklare, tekniker, nybörjare).
-
-2. **Hur verktyget fungerar**
-   - Förklara huvudfunktionerna och arbetsflödet steg för steg.
-   - Ge exempel på typiska användningsfall.
-   - Om relevant: visa input → output med konkreta exempel.
-
-3. **Teknisk information och källor**
-   - Lista eventuella externa bibliotek, API:er eller algoritmer som används.
-   - Ange källor eller inspiration om det är relevant (t.ex. Wikipedia, RFC, MDN).
-
-4. **Nördiga detaljer och extra data**
-   - Lägg gärna till fun facts, prestandadata, edge cases eller historik om tekniken.
-   - Om verktyget har unika egenskaper, lyft fram dem.
-
-5. **Struktur och stil**
-   - Använd semantiska HTML-element och tydliga rubriker.
-   - Håll texten kort, informativ och på svenska.
-   - Lägg till kodexempel där det är relevant.
-   - Lägg till tips eller varningar om det finns fallgropar.
-
-6. **SEO och tillgänglighet**
-   - Sätt alltid `$title` och `$metaDescription` högst upp.
-   - Använd bara ett `<h1>` per sida.
-   - Lägg till tooltips på knappar och ikoner.
-
-7. **Anpassning**
-   - Byt ut exempel och texter mot det som är relevant för just detta verktyg.
-   - Lägg till eller ta bort sektioner efter behov.
-
--->

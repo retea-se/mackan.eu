@@ -1,4 +1,4 @@
-<!-- readme.html - v3 -->
+<!-- readme.html - v4 -->
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -6,53 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>README – CSS-struktur för Mackan.eu</title>
   <link rel="stylesheet" href="main.css" />
-  <style>
-    body {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-      font-family: sans-serif;
-      line-height: 1.6;
-      background-color: #fff;
-      color: #222;
-    }
-    .knapp {
-      display: inline-block;
-      background: var(--primary-color);
-      color: #fff;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      border-radius: var(--border-radius);
-      transition: background 0.2s;
-    }
-    .knapp:hover {
-      background: var(--hover-color);
-    }
-    code {
-      background: #eee;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-    }
-    h2 {
-      margin-top: 2rem;
-      color: #004080;
-    }
-    pre {
-      background: #f5f5f5;
-      padding: 1rem;
-      border-left: 4px solid #007acc;
-      overflow-x: auto;
-    }
-  </style>
+  <link rel="stylesheet" href="blocks/readme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-  <h1>Styleguide och README – Mackan.eu</h1>
-  <p>Denna struktur följer en komponentbaserad uppdelning med <strong>BEM-namnstandard</strong> och en samlad importfil: <code>main.css</code>.</p>
+  <main class="readme">
+    <nav class="readme__back">
+      <a href="csstest-komplett.html" class="readme__backlink">
+        <i class="fa-solid fa-arrow-left"></i> Tillbaka till test
+      </a>
+    </nav>
 
-  <h2>📦 Mappstruktur</h2>
-  <pre><code>css/
+    <h1 class="readme__title">Styleguide och README – Mackan.eu</h1>
+    <section class="readme__section readme__text">
+      Denna struktur följer en komponentbaserad uppdelning med <strong>BEM-namnstandard</strong> och en samlad importfil: <code>main.css</code>.
+    </section>
+
+    <section class="readme__section">
+      <h2 class="readme__subtitle">📦 Mappstruktur</h2>
+      <div class="readme__codeblock" style="margin-bottom:0;">
+        <button class="readme__codecopy" title="Kopiera kod">
+          <i class="fa-solid fa-copy"></i>
+        </button>
+        <pre><code>css/
 ├── main.css
 ├── reset.css
 ├── variables.css
@@ -73,18 +50,26 @@
     ├── utilities.css
     ├── verktygsinfo.css
     ├── diagram.css
-    ├── losenord.css
-</code></pre>
+    ├── losenord.css</code></pre>
+      </div>
+    </section>
 
-  <h2>📐 BEM-principer</h2>
-  <ul>
-    <li><strong>Block:</strong> komponentens namn, t.ex. <code>.knapp</code>, <code>.kort</code></li>
-    <li><strong>Element:</strong> skrivs som <code>__element</code>, t.ex. <code>.kort__rubrik</code></li>
-    <li><strong>Modifierare:</strong> skrivs som <code>--modifierare</code>, t.ex. <code>.knapp--fara</code></li>
-  </ul>
+    <section class="readme__section">
+      <h2 class="readme__subtitle">📐 BEM-principer</h2>
+      <ul class="readme__list">
+        <li><strong>Block:</strong> komponentens namn, t.ex. <code>.knapp</code>, <code>.kort</code></li>
+        <li><strong>Element:</strong> skrivs som <code>__element</code>, t.ex. <code>.kort__rubrik</code></li>
+        <li><strong>Modifierare:</strong> skrivs som <code>--modifierare</code>, t.ex. <code>.knapp--fara</code></li>
+      </ul>
+    </section>
 
-  <h2>💡 Kodexempel</h2>
-  <pre><code>&lt;button class="knapp knapp--stor"&gt;Skicka&lt;/button&gt;
+    <section class="readme__section">
+      <h2 class="readme__subtitle">💡 Kodexempel</h2>
+      <div class="readme__codeblock">
+        <button class="readme__codecopy" title="Kopiera kod">
+          <i class="fa-solid fa-copy"></i>
+        </button>
+        <pre><code>&lt;button class="knapp knapp--stor"&gt;Skicka&lt;/button&gt;
 
 &lt;section class="kort kort--huvud"&gt;
   &lt;h2 class="kort__rubrik"&gt;Resultat&lt;/h2&gt;
@@ -95,52 +80,132 @@
   &lt;thead&gt;&lt;tr&gt;&lt;th class="tabell__huvud"&gt;Rubrik&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
   &lt;tbody&gt;&lt;tr&gt;&lt;td class="tabell__cell"&gt;Innehåll&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
+      </div>
+    </section>
 
-  <h2>🧪 Test och demo</h2>
-  <p>Vill du se alla komponenter i användning? Besök testfilen:
-    <a href="csstest-komplett.html" class="knapp">csstest-komplett.html</a>
-  </p>
+    <section class="readme__section">
+      <h2 class="readme__subtitle">🧪 Test och demo</h2>
+      <p class="readme__text">Vill du se alla komponenter i användning? Besök testfilen:
+        <a href="csstest-komplett.html" class="knapp">csstest-komplett.html</a>
+      </p>
+    </section>
 
-  <h2>📌 Översättningstabell</h2>
-  <p>Om du ska konvertera äldre HTML till ny struktur med BEM, använd översättningstabellen:
-    <a href="översättning.txt" class="knapp knapp--liten">Visa översättning</a>
-  </p>
+    <section class="readme__section">
+      <h2 class="readme__subtitle">📌 Översättningstabell</h2>
+      <p class="readme__text">Om du ska konvertera äldre HTML till ny struktur med BEM, använd översättningstabellen:
+        <a href="översättning.txt" class="knapp knapp--liten">Visa översättning</a>
+      </p>
+    </section>
 
-  <h2>🛠️ Lägg till ny komponent</h2>
-  <ol>
-    <li>Skapa <code>blocks/namn.css</code></li>
-    <li>Använd endast BEM-klasser relaterade till komponenten</li>
-    <li>Lägg till filen i rätt sektion i <code>main.css</code></li>
-    <li>Kommentera syfte och struktur i filens topp</li>
-  </ol>
+    <section class="readme__section">
+      <h2 class="readme__subtitle">🛠️ Lägg till ny komponent</h2>
+      <ol class="readme__list">
+        <li>Skapa <code>blocks/namn.css</code></li>
+        <li>Använd endast BEM-klasser relaterade till komponenten</li>
+        <li>Lägg till filen i rätt sektion i <code>main.css</code></li>
+        <li>Kommentera syfte och struktur i filens topp</li>
+      </ol>
+    </section>
 
-  <h2>⚠️ Vanliga misstag</h2>
-  <ul>
-    <li>❌ Använd inte globala taggar som <code>button</code>, <code>input</code></li>
-    <li>❌ Återanvänd inte klasser i flera komponenter (t.ex. .knapp i .tabell.css)</li>
-    <li>✅ Håll komponenter isolerade</li>
-    <li>✅ Använd <code>variables.css</code> för färger, marginaler, fonter</li>
-  </ul>
+    <section class="readme__section">
+      <h2 class="readme__subtitle">⚠️ Vanliga misstag</h2>
+      <ul class="readme__list">
+        <li>❌ Använd inte globala taggar som <code>button</code>, <code>input</code></li>
+        <li>❌ Återanvänd inte klasser i flera komponenter (t.ex. .knapp i .tabell.css)</li>
+        <li>✅ Håll komponenter isolerade</li>
+        <li>✅ Använd <code>variables.css</code> för färger, marginaler, fonter</li>
+      </ul>
+    </section>
 
-  <h2>📎 Utilities (helpers)</h2>
-  <p>Hjälpklasser som kan användas utanför komponenter:</p>
-  <ul>
-    <li><code>.utils--dold</code>, <code>.utils--text-center</code></li>
-    <li><code>.utils--mt-1</code>, <code>.utils--mb-1</code>, <code>.utils--p-1</code></li>
-    <li><code>.tagg--svag</code>, <code>.tagg--medel</code>, <code>.tagg--stark</code></li>
-  </ul>
+    <section class="readme__section">
+      <h2 class="readme__subtitle">📎 Utilities (helpers)</h2>
+      <p class="readme__text">Hjälpklasser som kan användas utanför komponenter:</p>
+      <ul class="readme__list">
+        <li><code>.utils--dold</code>, <code>.utils--text-center</code></li>
+        <li><code>.utils--mt-1</code>, <code>.utils--mb-1</code>, <code>.utils--p-1</code></li>
+        <li><code>.tagg--svag</code>, <code>.tagg--medel</code>, <code>.tagg--stark</code></li>
+      </ul>
+    </section>
 
-  <h2>📂 Nyare komponenter att känna till</h2>
-  <ul>
-    <li><code>.losenord__sektion</code>, <code>.losenord__knappar</code> – Lösenordsgenerator</li>
-    <li><code>.diagram__container</code> – Wrapper för Chart.js eller canvas</li>
-    <li><code>.falt__select</code>, <code>.falt__checkbox</code> – Dropdowns och kryssrutor</li>
-    <li><code>.sidfot</code>, <code>.sidfot__center</code> – Responsiv footer</li>
-  </ul>
+    <section class="readme__section">
+      <h2 class="readme__subtitle">📂 Nyare komponenter att känna till</h2>
+      <ul class="readme__list">
+        <li><code>.losenord__sektion</code>, <code>.losenord__knappar</code> – Lösenordsgenerator</li>
+        <li><code>.diagram__container</code> – Wrapper för Chart.js eller canvas</li>
+        <li><code>.falt__select</code>, <code>.falt__checkbox</code> – Dropdowns och kryssrutor</li>
+        <li><code>.sidfot</code>, <code>.sidfot__center</code> – Responsiv footer</li>
+      </ul>
+    </section>
 
-  <footer style="margin-top: 4rem; font-size: 0.9rem; text-align: center; color: #888;">
-    <p>© Mackan.eu – Dokumentation uppdaterad 2025-06-14</p>
-  </footer>
+    <!-- ====== NY README-DEMOSEKTION ====== -->
+    <section class="readme__section">
+      <h2 class="readme__subtitle" style="margin-top:2.5rem;">📘 Readme-komponenter – exempel och test</h2>
 
+      <blockquote class="readme__quote">
+        <i class="fa-solid fa-quote-left"></i>
+        Detta är ett inspirerande citat från dokumentationen!
+      </blockquote>
+
+      <div class="readme__info">
+        <i class="fa-solid fa-info-circle"></i>
+        Detta är ett tips eller extra information till användaren.
+      </div>
+
+      <div class="readme__warning">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        Observera! Detta är en varning.
+      </div>
+
+      <ul class="readme__history">
+        <li>2025-06-14: README skapad</li>
+        <li>2025-06-15: Lagt till kodblock</li>
+      </ul>
+
+      <div class="readme__codeblock">
+        <button class="readme__codecopy" title="Kopiera kod">
+          <i class="fa-solid fa-copy"></i>
+        </button>
+        <pre><code>npm install mackan</code></pre>
+      </div>
+
+      <table class="readme__table">
+        <thead>
+          <tr>
+            <th><i class="fa-solid fa-key readme__thicon"></i>Fält</th>
+            <th><i class="fa-solid fa-circle-info readme__thicon"></i>Beskrivning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>foo</td><td>Exempeltext med <br> radbrytning</td></tr>
+          <tr><td>bar</td><td>Mer data</td></tr>
+        </tbody>
+      </table>
+
+      <div class="readme__divider">
+        ───────────── ascii divider ─────────────
+      </div>
+
+    </section>
+
+    <footer class="readme__meta">© Mackan.eu – Dokumentation uppdaterad 2025-06-15</footer>
+  </main>
+
+  <script>
+    // Kopiera kod-block för .readme__codecopy
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.readme__codecopy').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const pre = btn.nextElementSibling;
+          if (pre && pre.tagName === 'PRE') {
+            const code = pre.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+              btn.title = 'Kopierat!';
+              setTimeout(() => btn.title = 'Kopiera kod', 1200);
+            });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

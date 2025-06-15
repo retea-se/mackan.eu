@@ -1,4 +1,28 @@
 <?php
+// Rate limiting – max 200 kortlänkar per IP-adress och dygn
+$rateLimit = 200;
+$window = 86400; // 24 timmar (dygn)
+$rateFile = sys_get_temp_dir() . '/kortlank_rate_' . md5($_SERVER['REMOTE_ADDR']) . '.txt';
+$now = time();
+
+$times = [];
+if (file_exists($rateFile)) {
+    $times = array_filter(
+        explode("\n", file_get_contents($rateFile)),
+        fn($t) => ($now - (int)$t) < $window
+    );
+}
+if (count($times) >= $rateLimit) {
+    http_response_code(429);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Rate limit: För många skapade kortlänkar från denna IP-adress det senaste dygnet. Försök igen senare.'
+    ]);
+    exit;
+}
+$times[] = $now;
+file_put_contents($rateFile, implode("\n", $times));
+
 // Kortlänk API – Skapa kortlänk
 header('Content-Type: application/json');
 

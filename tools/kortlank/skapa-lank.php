@@ -9,7 +9,7 @@ include '../../includes/layout-start.php';
     <h1 class="kort__rubrik"><?= $title ?></h1>
     <form id="form-skapalank" class="form kort__innehall" autocomplete="off">
       <div class="falt falt--rad">
-        <label for="url" class="falt__etikett">Länk att förkorta</label>
+
         <input type="url" id="url" name="url" class="falt__input" required placeholder="Klistra in din länk här">
       </div>
       <button type="submit" class="knapp knapp--stor utils--mt-1">Skapa</button>
@@ -19,9 +19,17 @@ include '../../includes/layout-start.php';
         <div class="kort__rubrik">Din länk:</div>
         <div class="kort__innehall">
           <span id="kortLank" class="utils--text-center"></span>
-          <button id="copyBtn" class="knapp knapp--ikon utils--ml-1" data-tippy-content="Kopiera länk" aria-label="Kopiera länk">
-            <i class="fa-solid fa-copy"></i>
-          </button>
+          <div class="knapp__grupp">
+            <button id="copyBtn" class="knapp knapp__ikon" data-tippy-content="Kopiera länk" aria-label="Kopiera länk">
+              <i class="fa-solid fa-copy"></i>
+            </button>
+            <button id="qrBtn" class="knapp knapp__ikon"
+              data-tippy-content=""
+              data-tippy-allowHTML="true"
+              aria-label="Visa QR-kod">
+              <i class="fa-solid fa-qrcode"></i>
+            </button>
+          </div>
         </div>
         <div id="toast" class="toast utils--mt-1" style="display:none;">Kopierat!</div>
       </div>
@@ -35,7 +43,14 @@ const urlInput = document.getElementById('url');
 const resultat = document.getElementById('resultat');
 const kortLank = document.getElementById('kortLank');
 const copyBtn = document.getElementById('copyBtn');
-const toast = document.getElementById('toast');
+const qrBtn = document.getElementById('qrBtn');
+function setQrTippy(shortlink) {
+  if (!qrBtn) return;
+  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(shortlink);
+  qrBtn.setAttribute('data-tippy-content', `<img src="${qrUrl}" alt="QR-kod" width="120">`);
+}
+
+// Anropa setQrTippy(data.shortlink) när du fått kortlänken!
 
 form.addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -60,15 +75,18 @@ form.addEventListener('submit', async function(e) {
       kortLank.setAttribute('data-url', data.shortlink);
       resultat.style.display = '';
       copyBtn.style.display = '';
+      setQrTippy(data.shortlink);
     } else {
       kortLank.textContent = data && data.error ? data.error : 'Något gick fel. Försök igen!';
       resultat.style.display = '';
       copyBtn.style.display = 'none';
+      qrBtn.setAttribute('data-tippy-content', '');
     }
   } catch (err) {
     kortLank.textContent = 'Fel vid anslutning till servern.';
     resultat.style.display = '';
     copyBtn.style.display = 'none';
+    qrBtn.setAttribute('data-tippy-content', '');
   }
 });
 
@@ -109,15 +127,18 @@ async function skapaKortlank(url) {
       kortLank.setAttribute('data-url', data.shortlink);
       resultat.style.display = '';
       copyBtn.style.display = '';
+      setQrTippy(data.shortlink);
     } else {
       kortLank.textContent = data && data.error ? data.error : 'Något gick fel. Försök igen!';
       resultat.style.display = '';
       copyBtn.style.display = 'none';
+      qrBtn.setAttribute('data-tippy-content', '');
     }
   } catch (err) {
     kortLank.textContent = 'Fel vid anslutning till servern.';
     resultat.style.display = '';
     copyBtn.style.display = 'none';
+    qrBtn.setAttribute('data-tippy-content', '');
   }
 }
 </script>

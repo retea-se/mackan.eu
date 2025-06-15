@@ -1,0 +1,329 @@
+/* ===================================================== */
+/* Fil: readme.css - v1                                  */
+/* Komponent: Readme/Dokumentation                       */
+/* Struktur: BEM (.readme__, .readme--*)                 */
+/* Syfte: Luftig, responsiv och temakompatibel styling   */
+/* ===================================================== */
+/* ✅ Endast readme-klasser, inga globala elementstilar   */
+/* ===================================================== */
+
+/* === Wrapper och grundinställningar === */
+.readme {
+  font-family: var(--font-family, 'Poppins', sans-serif);
+  color: var(--text-color);
+  background: var(--background-color);
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2.5rem 1rem 3rem 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.05);
+  line-height: 1.7;
+  font-size: 1.08rem;
+  position: relative;
+}
+
+/* === Sticky tillbaka-knapp === */
+.readme__back {
+  position: sticky;
+  top: 1rem;
+  z-index: 10;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: flex-start;
+  background: none;
+}
+.readme__backlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: rgba(240,240,240,0.9);
+  color: var(--primary-color);
+  font-weight: 600;
+  border-radius: 2em;
+  padding: 0.5em 1em;
+  box-shadow: 0 1px 6px 0 rgba(0,0,0,0.05);
+  border: none;
+  font-size: 1rem;
+  transition: background 0.15s, color 0.2s;
+  text-decoration: none;
+  cursor: pointer;
+}
+.readme__backlink:hover,
+.readme__backlink:focus {
+  background: var(--hover-color);
+  color: var(--primary-color-hover);
+}
+
+[data-theme="dark"] .readme__backlink {
+  background: #232a3a;
+  color: var(--primary-color);
+}
+
+/* === Rubriker === */
+.readme__title {
+  font-size: 2.1rem;
+  font-weight: bold;
+  margin-bottom: 1.6rem;
+  text-align: center;
+  color: var(--primary-color);
+  letter-spacing: 0.02em;
+}
+.readme__subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 1.1rem;
+  color: var(--accent-color);
+}
+.readme__section {
+  margin-bottom: 2.2rem;
+}
+
+/* === Brödtext och layout === */
+.readme__text {
+  margin-bottom: 1.3rem;
+}
+.readme__list {
+  margin-bottom: 1.2rem;
+  padding-left: 1.4em;
+}
+.readme__list li {
+  margin-bottom: 0.7em;
+  line-height: 1.5;
+}
+
+/* === Citat/Quote med kul accent === */
+.readme__quote {
+  display: flex;
+  align-items: flex-start;
+  background: linear-gradient(90deg, var(--accent-color) 4px, transparent 4px);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 0 12px 12px 0;
+  padding: 1.2em 1.5em 1.2em 1.2em;
+  margin: 2rem 0;
+  font-size: 1.1em;
+  color: var(--text-color);
+  position: relative;
+  min-height: 48px;
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,0.06);
+}
+.readme__quote i {
+  color: var(--accent-color);
+  font-size: 2.2em;
+  margin-right: 0.5em;
+  opacity: 0.6;
+  flex-shrink: 0;
+  margin-top: -0.15em;
+}
+
+[data-theme="dark"] .readme__quote {
+  background: linear-gradient(90deg, var(--accent-color) 4px, transparent 4px);
+  border-left: 4px solid var(--accent-color);
+  color: var(--text-color);
+}
+
+/* === Tips/info och varning === */
+.readme__info,
+.readme__warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
+  border-radius: var(--border-radius);
+  padding: 1em 1.1em;
+  margin: 1.5em 0;
+  font-size: 1em;
+  background: var(--secondary-color);
+  color: var(--text-color);
+  border-left: 4px solid var(--primary-color);
+  box-shadow: 0 1px 6px 0 rgba(0,0,0,0.04);
+}
+.readme__info i {
+  color: var(--primary-color);
+  margin-right: 0.3em;
+  font-size: 1.4em;
+}
+.readme__warning {
+  border-left: 4px solid var(--error-color);
+  background: #fff3f3;
+  color: var(--error-color);
+}
+.readme__warning i {
+  color: var(--error-color);
+}
+[data-theme="dark"] .readme__info {
+  background: #222e37;
+  color: var(--text-color);
+}
+[data-theme="dark"] .readme__warning {
+  background: #2e181a;
+  color: var(--error-color);
+}
+
+/* === Historik med prickar === */
+.readme__history {
+  margin: 2em 0 2em 0.5em;
+  padding: 0;
+  list-style: none;
+  border-left: 3px dotted var(--primary-color);
+}
+.readme__history li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0.7em;
+  min-height: 1.6em;
+}
+.readme__history li::before {
+  content: '';
+  position: absolute;
+  left: -0.7em;
+  top: 0.5em;
+  width: 0.65em;
+  height: 0.65em;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: block;
+  box-shadow: 0 0 0 2px var(--secondary-color);
+  border: 1.5px solid #fff;
+}
+[data-theme="dark"] .readme__history li::before {
+  box-shadow: 0 0 0 2px #222e37;
+  border-color: #232a3a;
+}
+
+/* === Kodblock och kopiera-knapp === */
+.readme__codeblock {
+  max-width: 600px;
+  margin: 1em 0;
+  padding: 1em 1.5em 1em 1em;
+  border-radius: 8px;
+  background: var(--readme-code-bg, #f6f8fa);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  position: relative;
+}
+.readme__codeblock pre, .readme__codeblock code {
+  background: none !important;
+  color: inherit !important;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.readme__codecopy {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-size: 1.1em;
+}
+.readme__codecopy:hover,
+.readme__codecopy:focus {
+  color: #222;
+  outline: none;
+  box-shadow: none;
+}
+
+/* === Tabell – enklare, responsiv, med ikonetiketter === */
+.readme__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.8em 0;
+  font-size: 0.97em;
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,0.03);
+  overflow-x: auto;
+  background: var(--table-bg, #fff);
+  border-radius: var(--border-radius);
+}
+.readme__table th, .readme__table td {
+  padding: 0.85em 1.1em;
+  border: 1px solid var(--table-border, #ccc);
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word;
+  white-space: pre-line;
+}
+.readme__table th {
+  background: var(--table-header-bg, #f5f5f5);
+  color: var(--table-header-fg, #222);
+  font-weight: 600;
+  font-size: 1.06em;
+  position: relative;
+}
+.readme__table th .readme__thicon {
+  margin-right: 0.4em;
+  color: var(--primary-color);
+  font-size: 1em;
+  vertical-align: middle;
+}
+.readme__table tr:nth-child(even) td {
+  background: var(--table-row-alt-bg, #fafafa);
+}
+[data-theme="dark"] .readme__table {
+  background: #222;
+}
+[data-theme="dark"] .readme__table th {
+  background: #181a1b;
+  color: #eee;
+  border-color: #444;
+}
+[data-theme="dark"] .readme__table td {
+  background: #222;
+  color: #eee;
+  border-color: #444;
+}
+
+/* === Divider (ascii) === */
+.readme__divider {
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  font-size: 1.1em;
+  text-align: center;
+  color: #bbb;
+  opacity: 0.8;
+  letter-spacing: 0.04em;
+  margin: 2.3em 0 2.3em 0;
+  user-select: none;
+}
+
+/* === Sidfot/meta === */
+.readme__meta {
+  margin-top: 3em;
+  font-size: 0.95em;
+  color: #888;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* === Responsivitet === */
+@media (max-width: 800px) {
+  .readme {
+    max-width: 98vw;
+    padding: 1.2rem 0.4rem 2.5rem 0.4rem;
+  }
+  .readme__title {
+    font-size: 1.4rem;
+  }
+  .readme__back {
+    top: 0.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .readme {
+    padding: 0.7rem 0.1rem 1.7rem 0.1rem;
+  }
+  .readme__title {
+    font-size: 1.05rem;
+  }
+  .readme__backlink {
+    font-size: 0.95rem;
+    padding: 0.4em 0.8em;
+  }
+  .readme__codecopy {
+    top: 0.25em;
+    right: 0.4em;
+    font-size: 1.08em;
+  }
+}

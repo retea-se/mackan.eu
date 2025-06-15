@@ -1,0 +1,251 @@
+<!-- styleguide.html - v3 Sammanslagen & utökad -->
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Styleguide för Mackan.eu</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/blocks/readme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: #fff;
+      color: #222;
+    }
+    h1, h2, h3 {
+      color: #004080;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 1rem;
+      border-left: 4px solid #007acc;
+      overflow-x: auto;
+    }
+    code {
+      font-family: monospace;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    .kort {
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius, 6px);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .kort--fokus {
+      border-color: var(--primary-color, #007acc);
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+    }
+    .info-box {
+      background: #eaf6ff;
+      border-left: 4px solid #007acc;
+      padding: 1em 1.2em;
+      border-radius: 6px;
+      margin: 1em 0;
+    }
+  </style>
+</head>
+<body>
+<h1>🧭 Styleguide för Mackan.eu</h1>
+
+<section>
+  <h2>1. Klassnamn och struktur (BEM)</h2>
+  <ul>
+    <li><strong>Block:</strong> komponentens namn, t.ex. <code>.knapp</code>, <code>.kort</code>, <code>.tabell</code></li>
+    <li><strong>Element:</strong> skrivs som <code>__element</code>, t.ex. <code>.kort__rubrik</code></li>
+    <li><strong>Modifierare:</strong> skrivs som <code>--modifierare</code>, t.ex. <code>.knapp--fara</code></li>
+  </ul>
+  <div class="info-box">
+    <b>Tips:</b> Återanvänd aldrig blockklass i olika komponentfiler. Varje <code>block</code> ska endast förekomma i sin egen .css.
+  </div>
+</section>
+
+<section>
+  <h2>2. Kodexempel – Grund</h2>
+  <pre><code>&lt;button class="knapp knapp--stor"&gt;Spara&lt;/button&gt;
+
+&lt;article class="kort kort--fokus"&gt;
+  &lt;div class="kort__rubrik"&gt;Rubrik&lt;/div&gt;
+  &lt;div class="kort__innehall"&gt;Beskrivning eller innehåll.&lt;/div&gt;
+&lt;/article&gt;
+
+&lt;table class="tabell tabell--kompakt"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Rubrik&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td data-label="Rubrik"&gt;Innehåll&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;button class="knapp__ikon" aria-label="Kopiera"&gt;
+  &lt;i class="fa-solid fa-copy"&gt;&lt;/i&gt;
+&lt;/button&gt;</code></pre>
+</section>
+
+<section>
+  <h2>3. Komponent: Kort</h2>
+  <p>Visuell layoutbehållare med rubrik och innehåll. Används i readme, resultatpaneler och startsidor.</p>
+  <div class="kort kort--fokus">
+    <div class="kort__rubrik">Rubrik i kort</div>
+    <div class="kort__innehall">
+      Detta är innehållet i ett kort. Använd <code>.kort__rubrik</code> och <code>.kort__innehall</code>.
+    </div>
+  </div>
+  <ul>
+    <li><code>.kort</code> – huvudblocket</li>
+    <li><code>.kort--fokus</code> – visuell förstärkning</li>
+    <li><code>.kort__rubrik</code> – rubriktext</li>
+    <li><code>.kort__innehall</code> – brödtext eller innehåll</li>
+  </ul>
+</section>
+
+<section>
+  <h2>4. Färg och design tokens</h2>
+  <p>Använd <strong>alltid</strong> CSS-variabler från <code>variables.css</code>:</p>
+  <pre><code>:root {
+  --primary-color: #007acc;
+  --border-radius: 6px;
+}</code></pre>
+</section>
+
+<section>
+  <h2>5. Versionshantering</h2>
+  <ul>
+    <li>Varje CSS-fil ska ha en versionskommentar högst upp: <code>/* knapp.css - v2 */</code></li>
+    <li>Vid ändring: öka versionsnummer och notera ändringen i kommentar.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>6. AI-regler & kvalitetskrav</h2>
+  <ul>
+    <li>Använd <strong>endast</strong> definierade klassnamn från <code>/css/blocks</code></li>
+    <li>Skapa <strong>inga egna</strong> klasser utan instruktion</li>
+    <li>Följ <strong>BEM-struktur</strong> i hela projektet</li>
+    <li>Skriv aldrig globala regler som påverkar <code>button</code>, <code>div</code> etc. – endast komponentbaserat.</li>
+    <li>Följ <code>main.css</code> och <strong>översättningstabellen</strong> när du bygger nytt</li>
+    <li>Dokumentera alltid nya block och element högst upp i CSS-filen</li>
+    <li><b>Respektera temaväxling och responsivitet</b> – testa alltid både ljust/mörkt läge och mobilvyer.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>7. Exempel på nya komponenter</h2>
+  <h3>Lösenordsgenerator</h3>
+  <pre><code>&lt;section class="losenord__sektion"&gt;
+  &lt;h2 class="losenord__rad"&gt;
+    &lt;span id="previewText"&gt;Förhandslösenord&lt;/span&gt;
+    &lt;span class="losenord__knappar"&gt;
+      &lt;button class="knapp__ikon"&gt;&lt;i class="fa-solid fa-rotate"&gt;&lt;/i&gt;&lt;/button&gt;
+      &lt;button class="knapp__ikon"&gt;&lt;i class="fa-solid fa-copy"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;/span&gt;
+  &lt;/h2&gt;
+&lt;/section&gt;</code></pre>
+
+  <h3>Diagram</h3>
+  <pre><code>&lt;div class="diagram__container"&gt;
+  &lt;canvas id="myChart"&gt;&lt;/canvas&gt;
+&lt;/div&gt;</code></pre>
+</section>
+
+<!-- NYTT: README-DEMOSEKTION -->
+<section>
+  <h2>8. Readme-komponenter och readme.css</h2>
+  <p>För README-filer och dokumentationssidor används en egen isolerad CSS-modul: <code>blocks/readme.css</code>.
+  Den innehåller luftiga, indexeringsvänliga, BEM-baserade klasser. Temastöd, responsivitet och sticky tillbaka-knapp ingår.</p>
+
+  <h3>Exempel på readme-komponenter:</h3>
+  <main class="readme" style="margin:2.5em 0;">
+    <nav class="readme__back">
+      <a href="csstest-komplett.html" class="readme__backlink">
+        <i class="fa-solid fa-arrow-left"></i> Tillbaka till test
+      </a>
+    </nav>
+    <h1 class="readme__title">README – Exempel</h1>
+    <section class="readme__section">
+
+      <blockquote class="readme__quote">
+        <i class="fa-solid fa-quote-left"></i>
+        Detta är ett inspirerande citat från dokumentationen!
+      </blockquote>
+      <div class="readme__info">
+        <i class="fa-solid fa-info-circle"></i>
+        Detta är ett tips eller extra information till användaren.
+      </div>
+      <div class="readme__warning">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        Observera! Detta är en varning.
+      </div>
+      <ul class="readme__history">
+        <li>2025-06-14: README skapad</li>
+        <li>2025-06-15: Lagt till kodblock</li>
+      </ul>
+      <div class="readme__codeblock">
+        <button class="readme__codecopy" title="Kopiera kod">
+          <i class="fa-solid fa-copy"></i>
+        </button>
+        <pre><code>npm install mackan</code></pre>
+      </div>
+      <table class="readme__table">
+        <thead>
+          <tr>
+            <th><i class="fa-solid fa-key readme__thicon"></i>Fält</th>
+            <th><i class="fa-solid fa-circle-info readme__thicon"></i>Beskrivning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>foo</td><td>Exempeltext med <br> radbrytning</td></tr>
+          <tr><td>bar</td><td>Mer data</td></tr>
+        </tbody>
+      </table>
+      <div class="readme__divider">
+        ───────────── ascii divider ─────────────
+      </div>
+    </section>
+    <footer class="readme__meta">© Mackan.eu – Dokumentation uppdaterad 2025-06-15</footer>
+  </main>
+  <div class="info-box">
+    <b>Kom ihåg:</b> All <b>readme-styling</b> är isolerad till <code>.readme</code> och underklasser.
+    Använd alltid BEM-prefix för nya element: <code>.readme__element</code>.
+    Kodblock har kopieringsfunktion via JS (se readme.html).
+  </div>
+</section>
+
+<section>
+  <h2>9. Komponent: Dropdown (exempel)</h2>
+  <div class="kort" id="dropdown">
+    <h3>Dropdown</h3>
+    <p>Standardiserad rullgardinsmeny med etikett. Bygger på BEM: <code>.dropdown</code>, <code>.dropdown__label</code>, <code>.dropdown__select</code>.</p>
+    <div class="dropdown">
+      <label class="dropdown__label" for="dropdown1">Välj ett alternativ</label>
+      <select class="dropdown__select" id="dropdown1">
+        <option>Alternativ 1</option>
+        <option>Alternativ 2</option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>10. Att tänka på för robust och framtidssäker CSS</h2>
+  <ul>
+    <li>Dokumentera <b>alltid</b> ändringar i toppen av varje CSS-fil (versionskommentarer).</li>
+    <li>Importera alltid nya block i <code>main.css</code> i rätt sektion.</li>
+    <li>Använd <b>utilities</b> endast för helpers, aldrig som bas för komponenter.</li>
+    <li><b>Testa</b> alltid i båda teman (ljust/mörkt) och olika browsers.</li>
+    <li>Skriv <b>responsivt först</b> och använd design tokens för spacing, färger och fonter.</li>
+    <li>Bygg alltid utifrån <b>BEM</b> och komponentbaserad filosofi – INGA globala overrides.</li>
+    <li>Se till att readme-komponenter alltid är semantiskt korrekt och enkla att indexera (HTML5-element, tydliga rubriker, <code>section</code> och <code>main</code> där det passar).</li>
+    <li><b>Kopieringsknapp</b> för kodblock ska alltid ha tydlig tillgänglighetslabel och feedback.</li>
+  </ul>
+</section>
+
+<footer style="margin-top: 4rem; font-size: 0.9rem; text-align: center; color: #888;">
+  <p>© Mackan.eu – Styleguide uppdaterad 2025-06-15</p>
+</footer>
+</body>
+</html>
