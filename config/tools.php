@@ -121,5 +121,11 @@ return [
   'href'  => '/tools/kortlank/skapa-lank.php',
   'icon'  => 'fa-link'
 ]
+,
+        [
+  'title' => 'RKA-kalkylator',
+  'href'  => '/tools/rka/index.php',
+  'icon'  => 'fa-gears'
+]
   // Fler verktyg kan läggas till här
 ];

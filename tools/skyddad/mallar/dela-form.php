@@ -8,7 +8,7 @@ $csrf_token = generateCsrfToken();
 <form method="POST" action="dela.php">
   <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token) ?>">
 
-  <label for="secret">Hemlig text:</label><br>
+  <label for="secret">Skyddad text:</label><br>
   <textarea id="secret" name="secret" rows="6" cols="50" required class="falt__input"></textarea><br><br>
 
   <label for="pin">PIN-kod (valfri):</label><br>
