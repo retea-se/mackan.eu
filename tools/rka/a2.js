@@ -112,4 +112,122 @@ form.addEventListener('submit', () => {
   calcBtn.disabled = true;
 });
 
+// Hämta hela rapporten (du kan justera selector om du vill ha mer/mindre)
+function getReportHtml() {
+  // Exportera både resultat och inmatade värden
+  const output = document.querySelector('#output');
+  let html = '';
+  if (output) html += output.innerHTML;
+  // Hämta ALLA tabeller med klass "tabell"
+  document.querySelectorAll('.tabell__wrapper').forEach(wrapper => {
+    html += '<h2>Inmatade värden</h2>' + wrapper.innerHTML;
+  });
+  return html;
+}
+
+// Excel-export med unika arknamn
+document.getElementById('exportExcel').addEventListener('click', function() {
+  console.log("Startar Excel-export...");
+  import('https://cdn.sheetjs.com/xlsx-0.20.3/package/xlsx.mjs').then(XLSX => {
+    try {
+      const html = getReportHtml();
+      const temp = document.createElement('div');
+      temp.innerHTML = html;
+
+      let aoa = [];
+      // Rubrik
+      const mainTitle = temp.querySelector('h1, h2, .rubrik');
+      if (mainTitle) aoa.push([mainTitle.textContent]);
+      aoa.push([]);
+
+      // Hämta ALLA tabeller och deras rubriker
+      temp.querySelectorAll('.tabell').forEach(table => {
+        // Hitta närmaste föregående rubrik (h2 eller h3)
+        let heading = table;
+        while (heading && heading.previousSibling) {
+          heading = heading.previousSibling;
+          if (heading.nodeType === 1 && /H[2-3]/.test(heading.tagName)) break;
+        }
+        if (heading && heading.textContent) aoa.push([heading.textContent]);
+        Array.from(table.rows).forEach(row => {
+          aoa.push(Array.from(row.cells).map(cell => cell.textContent.trim()));
+        });
+        aoa.push([]);
+      });
+
+      // Skapa arbetsbok och ark
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.aoa_to_sheet(aoa);
+      XLSX.utils.book_append_sheet(wb, ws, "Rapport");
+
+      // Unikt filnamn
+      const now = new Date();
+      const pad = n => n.toString().padStart(2, '0');
+      const fname = `RKA-rapport_${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}.xlsx`;
+      console.log("Sparar Excel-fil:", fname);
+      XLSX.writeFile(wb, fname);
+      console.log("Excel-export klar!");
+    } catch (err) {
+      console.error("Excel-export FEL:", err);
+      alert("Kunde inte skapa Excel-fil. Se konsolen för mer info.");
+    }
+  }).catch(err => {
+    console.error("Kunde inte ladda SheetJS:", err);
+    alert("Kunde inte ladda SheetJS för Excel-export.");
+  });
 });
+
+// PDF-export med rätt jsPDF-anrop
+document.getElementById('exportPDF').addEventListener('click', async function() {
+  console.log("Startar PDF-export...");
+  import('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js').then(async jsPDFModule => {
+    const jsPDF = jsPDFModule.jsPDF || window.jspdf?.jsPDF || window.jsPDF;
+    const doc = new jsPDF('p', 'mm', 'a4');
+    // Skapa en temporär wrapper för rapporten
+    const report = document.createElement('div');
+    report.className = "pdf-export";
+    // Lägg till CSS som tvingar fontstorlek
+    const pdfCss = `
+      <style>
+        .pdf-export, .pdf-export * {
+          font-size: 10pt !important;
+          font-family: Arial, sans-serif !important;
+          line-height: 1.2 !important;
+        }
+        .pdf-export h1, .pdf-export h2, .pdf-export h3, .pdf-export h4, .pdf-export h5, .pdf-export h6 {
+          font-size: 11pt !important;
+        }
+        .pdf-export table { width: 100% !important; }
+        .pagebreak { page-break-before: always; }
+      </style>
+    `;
+    report.innerHTML = pdfCss + getReportHtml();
+    document.body.appendChild(report);
+
+    // Ladda html2canvas om det inte redan finns
+    if (!window.html2canvas) {
+      await import('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
+    }
+
+    doc.html(report, {
+      callback: function (doc) {
+        const now = new Date();
+        const pad = n => n.toString().padStart(2, '0');
+        const fname = `RKA-rapport_${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}.pdf`;
+        doc.save(fname);
+        document.body.removeChild(report);
+        console.log("PDF-export klar!");
+      },
+      margin: [10, 10, 10, 10],
+      autoPaging: 'text',
+      x: 0,
+      y: 0,
+      width: 190 // mm, ungefär A4 minus marginal
+    });
+  }).catch(err => {
+    console.error("Kunde inte ladda jsPDF:", err);
+    alert("Kunde inte ladda jsPDF för PDF-export.");
+  });
+}); // PDF-export slut
+
+}); // <-- Avslutar hela DOMContentLoaded-funktionen
