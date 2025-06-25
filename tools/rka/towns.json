@@ -1,0 +1,12 @@
+[
+  {"name":"Stockholm","temp":6,"alt":44},
+  {"name":"Göteborg","temp":8,"alt":12},
+  {"name":"Malmö","temp":8,"alt":14},
+  {"name":"Umeå","temp":3,"alt":14},
+  {"name":"Kiruna","temp":-1,"alt":450},
+  {"name":"Sundsvall","temp":5,"alt":15},
+  {"name":"Östersund","temp":3,"alt":376},
+  {"name":"Visby","temp":7,"alt":47},
+  {"name":"Karlstad","temp":6,"alt":64},
+  {"name":"Luleå","temp":2,"alt":11}
+]

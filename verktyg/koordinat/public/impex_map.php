@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>GeoParser & Plotter</title>
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGYPYWZ1L1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PGYPYWZ1L1');
+  </script>
 
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="https://mackan.eu/icon/apple-touch-icon.png">
@@ -53,7 +61,6 @@
   <header class="header">
     <div class="container">
     <h1 class="page-title">GeoParser & Plotter</h1>
-
     </div>
   </header>
 
@@ -69,7 +76,7 @@
       <li><a href="https://mackan.eu/verktyg/koordinat/public/help1.php">Information</a></li>
       <li><a href="https://mackan.eu/verktyg/koordinat/public/impex.php">Avancerad/Batch</a></li>
       <li><a href="https://mackan.eu/verktyg/koordinat/public/impex_map.php">Plot/Adress</a></li>
-          <li><a href="https://mackan.eu/verktyg/koordinat/public/impex_map_help.php">Information om Plot/Adress</a></li>
+      <li><a href="https://mackan.eu/verktyg/koordinat/public/impex_map_help.php">Information om Plot/Adress</a></li>
     </ul>
   </nav>
 

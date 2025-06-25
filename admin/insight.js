@@ -21,6 +21,12 @@ function getTimeLimit(value) {
   }
 }
 
+async function fetchVisits() {
+  const res = await fetch('visits-data.php');
+  if (!res.ok) throw new Error('Kunde inte hämta data');
+  return await res.json();
+}
+
 async function loadAndRenderData() {
   console.clear();
   console.log("📥 Laddar besöksdata...");
@@ -50,6 +56,20 @@ async function loadAndRenderData() {
     console.error("❌ Fel vid hämtning/parsing av data:", err);
   }
 }
+
+async function updateStatsAndList() {
+  try {
+    const data = await fetchVisits();
+    renderStats(data);
+    renderVisitList(data);
+    // Lägg till fler render-funktioner här om du vill
+  } catch (err) {
+    document.getElementById('visitList').innerHTML = '<li>Kunde inte ladda statistik.</li>';
+  }
+}
+
+// Kör när sidan laddas
+updateStatsAndList();
 
 function renderStats(data) {
   const statBox = document.getElementById("statSummary");

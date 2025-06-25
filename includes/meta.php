@@ -51,8 +51,4 @@ $canonical = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsoneditor@latest/dist/jsoneditor.min.css">
 
-<!-- JS -->
-<script src="https://cdn.jsdelivr.net/npm/jsoneditor@latest/dist/jsoneditor.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-<script src="/js/theme-toggle.js" defer></script>
-<script src="/js/visit.js"></script>
+

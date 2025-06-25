@@ -1,0 +1,47 @@
+<!-- index.html - v2 (optimerad) -->
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flowverktyg</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGYPYWZ1L1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PGYPYWZ1L1');
+    </script>
+
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- React Flow CSS & JS (UMD) -->
+    <link href="https://cdn.jsdelivr.net/npm/reactflow@11.11.4/dist/style.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/reactflow@11.11.4/dist/umd/index.min.js"></script>
+
+    <!-- html2canvas och jsPDF för export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Egen CSS -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Egen JavaScript -->
+    <script src="script.js"></script>
+    <script src="export.js"></script>
+    <script src="theme.js"></script>
+    <script src="import.js"></script>
+    <script src="autosave.js"></script>
+    <script src="stats.js"></script>
+    <script src="nodtyp.js"></script>
+    <script src="nodeactions.js"></script>
+  </body>
+</html>

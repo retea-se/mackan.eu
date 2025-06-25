@@ -5,6 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hjälp - Kartplot och terminalutskrift</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGYPYWZ1L1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PGYPYWZ1L1');
+  </script>
   <link rel="stylesheet" href="https://mackan.eu/verktyg/assets/css/reset.css">
   <link rel="stylesheet" href="https://mackan.eu/verktyg/assets/css/variables.css">
   <link rel="stylesheet" href="https://mackan.eu/verktyg/assets/css/typography.css">

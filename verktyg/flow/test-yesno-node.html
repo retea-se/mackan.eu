@@ -1,0 +1,124 @@
+<!-- test-yesno-node.html -->
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test Ja/Nej-nod React Flow</title>
+
+  <!-- React och ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- React Flow CSS & UMD -->
+  <link href="https://cdn.jsdelivr.net/npm/reactflow@11.11.4/dist/style.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/reactflow@11.11.4/dist/umd/index.min.js"></script>
+
+  <style>
+    body, html, #root {
+      width: 100%; height: 100%; margin: 0; padding: 0; 
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    const { createElement, StrictMode, useState, useCallback } = React;
+    const { createRoot } = ReactDOM;
+    const {
+      ReactFlow,
+      Background,
+      Controls,
+      MiniMap,
+      useNodesState,
+      useEdgesState,
+      ReactFlowProvider
+    } = window.ReactFlow;
+
+    // Custom nodkomponent: Ja/Nej med radio buttons
+    function YesNoNode({ data }) {
+      const [value, setValue] = useState(data.value || "");
+
+      const onChange = (e) => {
+        setValue(e.target.value);
+        if (data.onChange) data.onChange(e.target.value);
+      };
+
+      return createElement("div", {
+        style: {
+          padding: 10,
+          border: "1px solid #2196f3",
+          borderRadius: 4,
+          backgroundColor: "#e3f2fd",
+          minWidth: 150,
+          userSelect: "none",
+        }
+      },
+        createElement("div", { style: { marginBottom: 6, fontWeight: "bold" } }, data.label),
+        createElement("label", { style: { marginRight: 10 } },
+          createElement("input", {
+            type: "radio",
+            name: `yesno-${data.id}`,
+            value: "yes",
+            checked: value === "yes",
+            onChange: onChange,
+          }),
+          " Yes"
+        ),
+        createElement("label", null,
+          createElement("input", {
+            type: "radio",
+            name: `yesno-${data.id}`,
+            value: "no",
+            checked: value === "no",
+            onChange: onChange,
+          }),
+          " No"
+        )
+      );
+    }
+
+    function FlowApp() {
+      const initialNodes = [
+        { id: "1", position: { x: 100, y: 100 }, data: { label: "Startnod" }, type: "default" },
+        {
+          id: "2", position: { x: 300, y: 100 }, data: {
+            label: "Vill du fortsätta?", id: "2", onChange: (val) => console.log("Valt:", val)
+          }, type: "yesno"
+        }
+      ];
+
+      const initialEdges = [{ id: "e1-2", source: "1", target: "2" }];
+
+      const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+      const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+      return createElement(
+        "div",
+        { style: { width: "100vw", height: "100vh" } },
+        createElement(ReactFlow, {
+          nodes,
+          edges,
+          onNodesChange,
+          onEdgesChange,
+          fitView: true,
+          nodeTypes: { yesno: YesNoNode }
+        },
+          createElement(Background),
+          createElement(MiniMap),
+          createElement(Controls)
+        )
+      );
+    }
+
+    const root = createRoot(document.getElementById("root"));
+    root.render(createElement(StrictMode, null,
+      createElement(ReactFlowProvider, null,
+        createElement(FlowApp)
+      )
+    ));
+  </script>
+</body>
+</html>

@@ -2,7 +2,16 @@
 // layout-start.php - v7
 // git commit: Infört sticky-footer-stöd via .layout och .layout__main
 
-header("Content-Security-Policy: default-src 'self'; connect-src 'self' https://skatteverket.entryscape.net; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdn.sheetjs.com https://html2canvas.hertzen.com https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https://api.qrserver.com;");
+header(
+  "Content-Security-Policy: " .
+  "default-src 'self'; " .
+  "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com https://cdn.sheetjs.com https://html2canvas.hertzen.com https://www.googletagmanager.com https://www.google-analytics.com; " .
+  "connect-src 'self' https://skatteverket.entryscape.net https://www.google-analytics.com https://stats.g.doubleclick.net; " .
+  "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://fonts.googleapis.com; " .
+  "img-src 'self' data: https://api.qrserver.com https://www.google-analytics.com https://stats.g.doubleclick.net; " .
+  "font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;"
+);
+
 
 $title = $title ?? 'Mackan.eu';
 $metaDescription = $metaDescription ?? 'Onlineverktyg för nördar';
@@ -32,6 +41,7 @@ $metaDescription = $metaDescription ?? 'Onlineverktyg för nördar';
       flex: 1 0 auto;
     }
   </style>
+  <?php include_once __DIR__ . '/analyticstracking.php'; ?>
 </head>
 <body>
   <div class="layout">
