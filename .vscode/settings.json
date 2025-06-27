@@ -67,5 +67,6 @@
     "snmp", "soap", "sockets", "sodium", "SPL", "sqlite3", "standard", "superglobals",
     "sybase", "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer", "wddx", "xml",
     "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib"
-  ]
+  ],
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true
 }
