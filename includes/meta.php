@@ -1,23 +1,31 @@
 <?php
-// includes/meta.php – v4
-// git commit: Byt till main.css enligt ny BEM-struktur, ta bort gamla komponentlänkar
+// includes/meta.php – v5
+// git commit: Förbättrade SEO meta-taggar och preconnect-optimering
 
 $title = $title ?? 'Mackan.eu';
 $metaDescription = $metaDescription ?? 'Onlineverktyg för nördar';
 $metaImage = $metaImage ?? '/icon/android-chrome-512x512.png';
-$canonical = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$canonical = isset($canonical) ? $canonical : "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 ?>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?= htmlspecialchars($title) ?></title>
 <meta name="description" content="<?= htmlspecialchars($metaDescription) ?>">
+
+<!-- Förbättrade SEO meta-taggar -->
+<?php if (isset($keywords)): ?>
+<meta name="keywords" content="<?= htmlspecialchars($keywords) ?>">
+<?php endif; ?>
 <meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="author" content="Mackan.eu">
 <meta name="theme-color" content="#0066cc">
 <link rel="canonical" href="<?= $canonical ?>">
 
-<!-- Open Graph -->
+<!-- Open Graph förbättringar -->
 <meta property="og:type" content="website">
+<meta property="og:locale" content="sv_SE">
 <meta property="og:site_name" content="Mackan.eu">
 <meta property="og:title" content="<?= htmlspecialchars($title) ?>">
 <meta property="og:description" content="<?= htmlspecialchars($metaDescription) ?>">
@@ -37,11 +45,12 @@ $canonical = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 <link rel="manifest" href="/icon/site.webmanifest">
 <link rel="shortcut icon" href="/icon/favicon.ico">
 
-<!-- Preconnect -->
+<!-- Preconnect för snabbare laddning -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="//unpkg.com">
 
 <!-- Fonts + CSS -->
 <link rel="stylesheet" href="/css/google-fonts.css">

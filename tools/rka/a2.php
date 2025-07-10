@@ -98,11 +98,42 @@ $alert_level_L = round($Ltank * ($netto_pct/100) * ($alert_pct/100), 0); // Larm
 
 $title = 'Avancerad kalkylator för dimensionering av tankvolym till reservkraftverk';
 $metaDescription = 'Använd denna avancerade kalkylator för att enkelt dimensionera tankvolym till elverk och reservkraftverk. Beräkna snabbt rätt bränslemängd för säker och driftsäker reservkraft. Gratis onlineverktyg med tydliga resultat.';
+
+// SEO-förbättringar
+$keywords = 'tankvolym kalkylator, reservkraftverk dimensionering, bränsleberäkning generator, elverk tankstorlek, diesel tank kalkylator, HVO100 förbrukning, provkörning beräkning';
+$canonical = 'https://mackan.eu/tools/rka/a2.php';
+
 include '../../includes/layout-start.php';
 ?>
 
 <div class="layout__container">
+  <!-- Breadcrumbs för bättre SEO och navigation -->
+  <nav class="breadcrumbs" aria-label="Du är här" style="margin-bottom: 1rem; font-size: 0.9rem;">
+    <a href="/" style="color: #007bff; text-decoration: none;">Hem</a> › 
+    <a href="/tools/" style="color: #007bff; text-decoration: none;">Verktyg</a> › 
+    <a href="/tools/rka/" style="color: #007bff; text-decoration: none;">RKA-kalkylatorer</a> › 
+    <span style="color: #6c757d;">Avancerad 2</span>
+  </nav>
+
   <h1 class="rubrik"><?= $title ?></h1>
+  
+  <!-- Förbättrad introduktion för SEO -->
+  <div class="intro-text" style="margin-bottom: 2rem; padding: 1rem; background: #f8f9fa; border-left: 4px solid #007bff; border-radius: 4px;">
+    <p><strong>Professionell tankdimensionering för reservkraftverk</strong></p>
+    <p>Denna avancerade kalkylator hjälper dig beräkna exakt tankvolym för reservkraftverk baserat på provkörning, buffertdagar och planerad drift. Verktyget tar hänsyn till klimatjustering, olika bränsletyper och ger detaljerade ekonomi- och miljöanalyser.</p>
+    
+    <details style="margin-top: 1rem;">
+      <summary style="cursor: pointer; font-weight: 600; color: #007bff;">💡 Vad kan denna kalkylator beräkna?</summary>
+      <ul style="margin-top: 0.5rem; margin-bottom: 0;">
+        <li>✅ Exakt tankvolym baserat på driftkrav</li>
+        <li>✅ Provkörningskostnader per år</li>
+        <li>✅ Klimatjustering för temperatur och höjd</li>
+        <li>✅ Jämförelse mellan diesel, HVO100 och Ecopar</li>
+        <li>✅ CO₂-påverkan och miljöanalys</li>
+        <li>✅ Ekonomisk analys med kostnad per kWh</li>
+      </ul>
+    </details>
+  </div>
 
   <!-- Länksamling till verktygssidor -->
   <nav class="menykort menykort--center mt-2 mb-2" aria-label="Verktygsnavigering">
@@ -486,6 +517,139 @@ include '../../includes/layout-start.php';
       <button id="exportTXT" type="button" class="knapp">Exportera TXT</button>
     </div>
   <?php } ?>
+
+  <!-- Strukturerad data för sökmotorer -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Avancerad tankvolym-kalkylator för reservkraftverk",
+    "description": "<?= htmlspecialchars($metaDescription) ?>",
+    "url": "<?= isset($canonical) ? $canonical : '' ?>",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "SEK"
+    },
+    "featureList": [
+      "Tankvolymberäkning",
+      "Provkörningsanalys", 
+      "Klimatjustering",
+      "Bränslejämförelse",
+      "CO₂-analys",
+      "Ekonomisk kalkyl"
+    ],
+    "softwareRequirements": "Webbläsare",
+    "author": {
+      "@type": "Organization",
+      "name": "Mackan.eu"
+    }
+  }
+  </script>
+
+  <!-- FAQ för bättre SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Hur beräknas tankvolym för reservkraftverk?",
+        "acceptedAnswer": {
+          "@type": "Answer", 
+          "text": "Tankvolymen beräknas baserat på provkörning, buffertdagar, planerad drift och säkerhetsmarginaler. Kalkylatorn tar hänsyn till ullage (10%) och sump (5%) för att ge korrekt bruttovolym."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vilka bränsletyper stöds i kalkylatorn?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Kalkylatorn stöder Diesel (1.0 faktor), HVO100 (1.04 faktor) och Ecopar (0.93 faktor). Olika bränslen har olika energidensitet och påverkar förbrukningsberäkningen."
+        }
+      },
+      {
+        "@type": "Question", 
+        "name": "Vad är derating och hur påverkar det beräkningen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Derating justerar motoreffekten baserat på omgivningstemperatur och höjd över havet. Varje 5°C över 25°C eller 300m över 1000m ökar bränsleförbrukningen med cirka 1%."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Relaterade verktyg för bättre intern länkning -->
+  <aside class="related-content" style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #28a745;">
+    <h3 style="margin-top: 0; color: #28a745;">🔗 Relaterade verktyg och resurser</h3>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+      <div>
+        <h4 style="margin-bottom: 0.5rem; color: #495057;">📊 Andra RKA-kalkylatorer</h4>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="margin-bottom: 0.3rem;">→ <a href="index.php" style="color: #007bff; text-decoration: none;">Snabbkalkyl för bränsle och tank</a></li>
+          <li style="margin-bottom: 0.3rem;">→ <a href="avancerad.php" style="color: #007bff; text-decoration: none;">Avancerad kalkyl med miljöanalys</a></li>
+          <li>→ <a href="provkorning.php" style="color: #007bff; text-decoration: none;">Provkörning & tankprognos</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 style="margin-bottom: 0.5rem; color: #495057;">🛠️ Andra verktyg</h4>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="margin-bottom: 0.3rem;">→ <a href="../koordinat/" style="color: #007bff; text-decoration: none;">Koordinatverktyg</a></li>
+          <li style="margin-bottom: 0.3rem;">→ <a href="../qr_v2/" style="color: #007bff; text-decoration: none;">QR-kodgenerator</a></li>
+          <li>→ <a href="../../" style="color: #007bff; text-decoration: none;">Alla verktyg</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div style="margin-top: 1.5rem; padding: 1rem; background: white; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+      <h4 style="margin-top: 0; color: #495057;">📖 Teknisk dokumentation</h4>
+      <p style="margin-bottom: 0.5rem;">För djupare förståelse av beräkningsmetoder och tekniska specifikationer:</p>
+      <a href="a2_readme.php" style="color: #007bff; font-weight: 600; text-decoration: none;">→ Läs fullständig dokumentation och README</a>
+    </div>
+  </aside>
+
+  <!-- SEO-vänlig sammanfattning -->
+  <section class="seo-summary" style="margin-top: 2rem; padding: 1.5rem; border: 1px solid #dee2e6; border-radius: 8px; background: #ffffff;">
+    <h3 style="margin-top: 0; color: #495057;">Sammanfattning: Avancerad tankdimensionering</h3>
+    <p>Denna kalkylator är speciellt utvecklad för professionell dimensionering av bränsletankar till reservkraftverk. Verktyget beräknar exakt tankvolym baserat på:</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0;">
+      <div>
+        <strong style="color: #6f42c1;">🔧 Tekniska faktorer:</strong>
+        <ul style="margin: 0.5rem 0;">
+          <li>Märkeffekt och cos φ</li>
+          <li>Klimatjustering (derating)</li>
+          <li>Bränsletype och förbrukningsfaktor</li>
+        </ul>
+      </div>
+      
+      <div>
+        <strong style="color: #17a2b8;">⏱️ Driftparametrar:</strong>
+        <ul style="margin: 0.5rem 0;">
+          <li>Provkörningsschema</li>
+          <li>Planerade drifttimmar</li>
+          <li>Buffertdagar</li>
+        </ul>
+      </div>
+      
+      <div>
+        <strong style="color: #28a745;">💰 Ekonomi & miljö:</strong>
+        <ul style="margin: 0.5rem 0;">
+          <li>Årskostnad per bränsle</li>
+          <li>CO₂-utsläpp och miljöpåverkan</li>
+          <li>Kostnad per kWh</li>
+        </ul>
+      </div>
+    </div>
+    
+    <p style="margin-bottom: 0;"><em>Resultatet ger dig bruttovolym inklusive ullage och sump, samt detaljerad analys av driftsekonomi och miljöpåverkan.</em></p>
+  </section>
 </div>
 
 <style>
