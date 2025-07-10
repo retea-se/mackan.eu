@@ -20,24 +20,24 @@ function addUrlToSitemap($url, $lastmod, $priority = '0.8', $changefreq = 'weekl
 
 function scanDirectoryRecursive($dir, $baseUrl, $rootDir) {
     $urls = [];
-    
+
     try {
         $iterator = new RecursiveIteratorIterator(
             new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS)
         );
-        
+
         foreach ($iterator as $file) {
             if ($file->isFile() && $file->getExtension() === 'php') {
                 $relativePath = str_replace($rootDir . DIRECTORY_SEPARATOR, '', $file->getPathname());
                 $relativePath = str_replace('\\', '/', $relativePath); // Windows-kompatibilitet
-                
+
                 // Skippa admin, includes, privata filer och vendor
                 if (preg_match('/^(admin|includes|vendor|backups|cgi-bin)\//', $relativePath) ||
                     strpos($relativePath, '_old') !== false ||
                     strpos($relativePath, 'config/') === 0) {
                     continue;
                 }
-                
+
                 // Inkludera endast publika PHP-filer
                 if (preg_match('/\.(php)$/', $relativePath)) {
                     $urls[] = [
@@ -52,7 +52,7 @@ function scanDirectoryRecursive($dir, $baseUrl, $rootDir) {
         // Fallback till enkel skanning om rekursiv iterering misslyckas
         error_log("Sitemap: Fel vid rekursiv skanning: " . $e->getMessage());
     }
-    
+
     return $urls;
 }
 

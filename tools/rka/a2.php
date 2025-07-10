@@ -109,19 +109,19 @@ include '../../includes/layout-start.php';
 <div class="layout__container">
   <!-- Breadcrumbs för bättre SEO och navigation -->
   <nav class="breadcrumbs" aria-label="Du är här" style="margin-bottom: 1rem; font-size: 0.9rem;">
-    <a href="/" style="color: #007bff; text-decoration: none;">Hem</a> › 
-    <a href="/tools/" style="color: #007bff; text-decoration: none;">Verktyg</a> › 
-    <a href="/tools/rka/" style="color: #007bff; text-decoration: none;">RKA-kalkylatorer</a> › 
+    <a href="/" style="color: #007bff; text-decoration: none;">Hem</a> ›
+    <a href="/tools/" style="color: #007bff; text-decoration: none;">Verktyg</a> ›
+    <a href="/tools/rka/" style="color: #007bff; text-decoration: none;">RKA-kalkylatorer</a> ›
     <span style="color: #6c757d;">Avancerad 2</span>
   </nav>
 
   <h1 class="rubrik"><?= $title ?></h1>
-  
+
   <!-- Förbättrad introduktion för SEO -->
   <div class="intro-text" style="margin-bottom: 2rem; padding: 1rem; background: #f8f9fa; border-left: 4px solid #007bff; border-radius: 4px;">
     <p><strong>Professionell tankdimensionering för reservkraftverk</strong></p>
     <p>Denna avancerade kalkylator hjälper dig beräkna exakt tankvolym för reservkraftverk baserat på provkörning, buffertdagar och planerad drift. Verktyget tar hänsyn till klimatjustering, olika bränsletyper och ger detaljerade ekonomi- och miljöanalyser.</p>
-    
+
     <details style="margin-top: 1rem;">
       <summary style="cursor: pointer; font-weight: 600; color: #007bff;">💡 Vad kan denna kalkylator beräkna?</summary>
       <ul style="margin-top: 0.5rem; margin-bottom: 0;">
@@ -535,7 +535,7 @@ include '../../includes/layout-start.php';
     },
     "featureList": [
       "Tankvolymberäkning",
-      "Provkörningsanalys", 
+      "Provkörningsanalys",
       "Klimatjustering",
       "Bränslejämförelse",
       "CO₂-analys",
@@ -559,7 +559,7 @@ include '../../includes/layout-start.php';
         "@type": "Question",
         "name": "Hur beräknas tankvolym för reservkraftverk?",
         "acceptedAnswer": {
-          "@type": "Answer", 
+          "@type": "Answer",
           "text": "Tankvolymen beräknas baserat på provkörning, buffertdagar, planerad drift och säkerhetsmarginaler. Kalkylatorn tar hänsyn till ullage (10%) och sump (5%) för att ge korrekt bruttovolym."
         }
       },
@@ -572,7 +572,7 @@ include '../../includes/layout-start.php';
         }
       },
       {
-        "@type": "Question", 
+        "@type": "Question",
         "name": "Vad är derating och hur påverkar det beräkningen?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -586,7 +586,7 @@ include '../../includes/layout-start.php';
   <!-- Relaterade verktyg för bättre intern länkning -->
   <aside class="related-content" style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #28a745;">
     <h3 style="margin-top: 0; color: #28a745;">🔗 Relaterade verktyg och resurser</h3>
-    
+
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
       <div>
         <h4 style="margin-bottom: 0.5rem; color: #495057;">📊 Andra RKA-kalkylatorer</h4>
@@ -596,7 +596,7 @@ include '../../includes/layout-start.php';
           <li>→ <a href="provkorning.php" style="color: #007bff; text-decoration: none;">Provkörning & tankprognos</a></li>
         </ul>
       </div>
-      
+
       <div>
         <h4 style="margin-bottom: 0.5rem; color: #495057;">🛠️ Andra verktyg</h4>
         <ul style="list-style: none; padding: 0; margin: 0;">
@@ -606,7 +606,7 @@ include '../../includes/layout-start.php';
         </ul>
       </div>
     </div>
-    
+
     <div style="margin-top: 1.5rem; padding: 1rem; background: white; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
       <h4 style="margin-top: 0; color: #495057;">📖 Teknisk dokumentation</h4>
       <p style="margin-bottom: 0.5rem;">För djupare förståelse av beräkningsmetoder och tekniska specifikationer:</p>
@@ -618,7 +618,7 @@ include '../../includes/layout-start.php';
   <section class="seo-summary" style="margin-top: 2rem; padding: 1.5rem; border: 1px solid #dee2e6; border-radius: 8px; background: #ffffff;">
     <h3 style="margin-top: 0; color: #495057;">Sammanfattning: Avancerad tankdimensionering</h3>
     <p>Denna kalkylator är speciellt utvecklad för professionell dimensionering av bränsletankar till reservkraftverk. Verktyget beräknar exakt tankvolym baserat på:</p>
-    
+
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0;">
       <div>
         <strong style="color: #6f42c1;">🔧 Tekniska faktorer:</strong>
@@ -628,7 +628,7 @@ include '../../includes/layout-start.php';
           <li>Bränsletype och förbrukningsfaktor</li>
         </ul>
       </div>
-      
+
       <div>
         <strong style="color: #17a2b8;">⏱️ Driftparametrar:</strong>
         <ul style="margin: 0.5rem 0;">
@@ -637,7 +637,7 @@ include '../../includes/layout-start.php';
           <li>Buffertdagar</li>
         </ul>
       </div>
-      
+
       <div>
         <strong style="color: #28a745;">💰 Ekonomi & miljö:</strong>
         <ul style="margin: 0.5rem 0;">
@@ -647,7 +647,7 @@ include '../../includes/layout-start.php';
         </ul>
       </div>
     </div>
-    
+
     <p style="margin-bottom: 0;"><em>Resultatet ger dig bruttovolym inklusive ullage och sump, samt detaljerad analys av driftsekonomi och miljöpåverkan.</em></p>
   </section>
 </div>

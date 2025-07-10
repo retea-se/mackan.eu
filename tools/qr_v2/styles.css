@@ -1,4 +1,4 @@
-/* styles.css - v11 */
+/* styles.css - v12 */
 
 /* ********** START Grundinställningar ********** */
 body {
@@ -132,3 +132,128 @@ label {
     color: #777;
 }
 /* ********** SLUT Footer och Versionsinfo ********** */
+
+/* ********** START Förbättringar för knapp-synlighet ********** */
+#generateBtn {
+    display: none; /* Dölj tills typ är vald */
+}
+
+#generateBtn.show {
+    display: block !important;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Förbättra typ-knappar */
+.type-button {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.type-button:not(.active):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Förbättra preview-området */
+.preview {
+    min-height: 150px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.preview:empty::before {
+    content: "QR-koden visas här när du genererat en";
+    color: #999;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Relaterade verktyg hover-effekt */
+aside a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Responsive förbättringar */
+@media (max-width: 768px) {
+    .type-button {
+        flex: 1 1 100%;
+        margin-bottom: 0.5rem;
+        min-height: 50px;
+    }
+    
+    .container {
+        padding: 1rem;
+        margin: 0 1rem;
+    }
+    
+    body {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .button-group {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
+/* ********** SLUT Förbättringar ********** */
+
+/* ********** START Laddningsindikatorer ********** */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 0.75rem;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 0.75rem;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin: 1rem 0;
+    text-align: center;
+}
+/* ********** SLUT Laddningsindikatorer ********** */

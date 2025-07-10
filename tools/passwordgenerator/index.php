@@ -1,4 +1,4 @@
-<!-- index.php - v10 -->
+<!-- index.php - v11 med SEO-förbättringar -->
 <?php
 include 'lang.php';
 $lang = $_GET['lang'] ?? 'sv';
@@ -6,10 +6,18 @@ if (!isset($langs[$lang])) $lang = 'sv';
 $t = $langs[$lang];
 $title = $t['title'];
 $metaDescription = $t['metaDescription'];
+$keywords = 'lösenordsgenerator, säkra lösenord, password generator, säkerhet, GDPR, offline lösenord';
+$canonical = 'https://mackan.eu/tools/passwordgenerator/';
 ?>
 <?php include '../../includes/layout-start.php'; ?>
 
 <main class="layout__container">
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Du är här" style="margin-bottom: 1rem; font-size: 0.9rem; color: #6c757d;">
+    <a href="/" style="color: #007bff; text-decoration: none;">🏠 Hem</a> ›
+    <a href="/tools/" style="color: #007bff; text-decoration: none;">🔧 Verktyg</a> ›
+    <span>🔐 Lösenordsgenerator</span>
+  </nav>
 
   <!-- ********** Språkval ********** -->
   <div style="text-align:right;">

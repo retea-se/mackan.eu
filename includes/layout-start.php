@@ -26,6 +26,9 @@ $metaDescription = $metaDescription ?? 'Onlineverktyg för nördar';
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <!-- Schema markup för organisation -->
+  <?php include __DIR__ . '/schema-organization.php'; ?>
+
   <style>
     /* === Sticky footer-stöd === */
     html, body {

@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedType = button.getAttribute('data-type');
             renderFields(selectedType);
 
+            // Visa generate-knappen när typ är vald
+            generateBtn.style.display = 'block';
+            generateBtn.classList.add('show');
+
             qrPreview.innerHTML = "";
             const buttonsContainer = document.getElementById('extraButtons');
             if (buttonsContainer) {

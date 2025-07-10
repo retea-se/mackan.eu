@@ -6,7 +6,7 @@ header('Content-Type: application/xml; charset=utf-8');
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 echo "\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">";
 
-$baseUrl = "https://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/";
+$baseUrl = "https://" . ($_SERVER['HTTP_HOST'] ?? 'mackan.eu') . dirname($_SERVER['PHP_SELF'] ?? '') . "/";
 $rootDir = __DIR__;
 
 function addUrlToSitemap($url, $lastmod, $priority = '0.8', $changefreq = 'weekly') {
@@ -20,24 +20,24 @@ function addUrlToSitemap($url, $lastmod, $priority = '0.8', $changefreq = 'weekl
 
 function scanDirectoryRecursive($dir, $baseUrl, $rootDir) {
     $urls = [];
-    
+
     try {
         $iterator = new RecursiveIteratorIterator(
             new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS)
         );
-        
+
         foreach ($iterator as $file) {
             if ($file->isFile() && $file->getExtension() === 'php') {
                 $relativePath = str_replace($rootDir . DIRECTORY_SEPARATOR, '', $file->getPathname());
                 $relativePath = str_replace('\\', '/', $relativePath); // Windows-kompatibilitet
-                
+
                 // Skippa admin, includes, privata filer och vendor
                 if (preg_match('/^(admin|includes|vendor|backups|cgi-bin)\//', $relativePath) ||
                     strpos($relativePath, '_old') !== false ||
                     strpos($relativePath, 'config/') === 0) {
                     continue;
                 }
-                
+
                 // Inkludera endast publika PHP-filer
                 if (preg_match('/\.(php)$/', $relativePath)) {
                     $urls[] = [
@@ -52,7 +52,7 @@ function scanDirectoryRecursive($dir, $baseUrl, $rootDir) {
         // Fallback till enkel skanning om rekursiv iterering misslyckas
         error_log("Sitemap: Fel vid rekursiv skanning: " . $e->getMessage());
     }
-    
+
     return $urls;
 }
 
@@ -60,9 +60,12 @@ function getPriority($path) {
     // Prioritera viktiga sidor högre
     if ($path === 'index.php') return '1.0';
     if (preg_match('/^(om|verktyg)\.php$/', basename($path))) return '0.9';
-    if (strpos($path, 'tools/') === 0) return '0.8';
-    if (strpos($path, 'readme') !== false) return '0.6';
-    return '0.7';
+    if (preg_match('/^(tools|verktyg)\//', $path)) return '0.9';
+    if (strpos($path, 'koordinat') !== false) return '0.8';
+    if (strpos($path, 'rka') !== false) return '0.8';
+    if (strpos($path, 'readme') !== false) return '0.7';
+    if (preg_match('/^(todo)\.php$/', basename($path))) return '0.8';
+    return '0.6';
 }
 
 // Lägg till root-filer först

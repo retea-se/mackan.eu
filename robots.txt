@@ -1,13 +1,35 @@
-# robots.txt - v3
-# Blockera känsliga områden och förbättra SEO
+# robots.txt - v4 - Optimerad för SEO
+# Förbättrad blockering och tillåtelser för bättre indexering
 
 User-agent: *
+Allow: /
+
+# Blockera privata och admin-områden
+Disallow: /admin/
+Disallow: /config/
+Disallow: /includes/
+Disallow: /vendor/
+Disallow: /backups/
+Disallow: /_old/
 Disallow: /private/
 Disallow: /temp/
-Disallow: /admin/
 Disallow: /tools/skyddad/
 Disallow: /tools/**/admin.php
 Disallow: /*.log$
 Disallow: /*.txt$
+Disallow: /debug.php
+Disallow: /*_test.php
 
+# Explicit tillåt viktiga verktygsområden
+Allow: /tools/
+Allow: /verktyg/
+Allow: /tools/koordinat/
+Allow: /tools/rka/
+Allow: /tools/qr_v2/
+Allow: /tools/passwordgenerator/
+
+# Sitemap
 Sitemap: https://mackan.eu/sitemap.php
+
+# Crawl-delay för respektfull indexering
+Crawl-delay: 1
