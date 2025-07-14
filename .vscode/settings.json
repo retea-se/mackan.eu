@@ -68,5 +68,30 @@
     "sybase", "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer", "wddx", "xml",
     "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib"
   ],
-  "github.copilot.chat.codeGeneration.useInstructionFiles": true
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  // ********** TERMINAL AUTO APPROVAL (EXPERIMENTAL) **********
+  "github.copilot.chat.agent.terminal.allowList": {
+    "echo": true,
+    "cd": true,
+    "ls": true,
+    "cat": true,
+    "pwd": true,
+    "Write-Host": true,
+    "Set-Location": true,
+    "Get-ChildItem": true,
+    "Get-Content": true,
+    "Get-Location": true
+  },
+  "github.copilot.chat.agent.terminal.denyList": {
+    "rm": true,
+    "rmdir": true,
+    "del": true,
+    "kill": true,
+    "curl": true,
+    "wget": true,
+    "eval": true,
+    "chmod": true,
+    "chown": true,
+    "Remove-Item": true
+  }
 }

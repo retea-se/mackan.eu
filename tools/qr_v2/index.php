@@ -88,7 +88,7 @@ include '../../includes/layout-start.php';
   },
   "featureList": [
     "Text QR-koder",
-    "URL QR-koder", 
+    "URL QR-koder",
     "WiFi QR-koder",
     "Kontakt QR-koder",
     "E-post QR-koder",

@@ -1,0 +1,42 @@
+/* Permanent fix: reset for custom marker icon */
+.my-leaflet-marker {
+  content: normal !important;
+  background: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  display: inline !important;
+  font-family: initial !important;
+  font-size: initial !important;
+  color: initial !important;
+  text-align: initial !important;
+  text-indent: initial !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  border: none !important;
+}
+.my-leaflet-marker::before,
+.my-leaflet-marker::after {
+  content: none !important;
+  display: none !important;
+}
+/* Säkra Leaflet-markörikoner mot globala overrides (endast custom marker) */
+.my-leaflet-marker {
+  content: normal !important;
+  background: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+  display: inline !important;
+  font-family: initial !important;
+  font-size: initial !important;
+  color: initial !important;
+  text-align: initial !important;
+  text-indent: initial !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  border: none !important;
+}
+.my-leaflet-marker::before,
+.my-leaflet-marker::after {
+  content: none !important;
+  display: none !important;
+}

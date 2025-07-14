@@ -35,10 +35,10 @@ $toolDescriptions = [
     Professionella verktyg för utvecklare och tekniker
   </h1>
   <p class="lead" style="font-size: 1.1rem; color: #6c757d; margin-bottom: 2rem; line-height: 1.6;">
-    Här hittar du användbara (nördiga) onlineverktyg för konvertering, datagenerering och testning. 
+    Här hittar du användbara (nördiga) onlineverktyg för konvertering, datagenerering och testning.
     Snabbt, säkert och gratis. Alla verktyg kräver ingen registrering och dina data lagras aldrig.
   </p>
-  
+
   <div class="meny">
     <?php foreach ($tools as $tool): ?>
       <a href="<?= htmlspecialchars($tool['href']) ?>" class="meny__kort">
@@ -86,14 +86,14 @@ $toolDescriptions = [
   <section style="margin-bottom: 2rem;">
     <h2 style="color: #495057; margin-bottom: 1.5rem;">Mest populära verktyg</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-      
+
       <div style="border: 1px solid #dee2e6; border-radius: 8px; padding: 1.5rem; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
         <h3 style="margin: 0 0 1rem 0; color: #007bff;">
           <i class="fa-solid fa-compass" style="margin-right: 0.5rem;"></i>
           <a href="/tools/koordinat/" style="color: inherit; text-decoration: none;">Koordinatkonverterare</a>
         </h3>
         <p style="color: #6c757d; margin-bottom: 1rem; line-height: 1.5;">
-          Konvertera mellan WGS84, SWEREF99 och RT90. Stöder batch-import, kartvisning och CSV-export. 
+          Konvertera mellan WGS84, SWEREF99 och RT90. Stöder batch-import, kartvisning och CSV-export.
           Perfekt för GIS-arbete och lantmäteri.
         </p>
         <a href="/tools/koordinat/" style="color: #007bff; text-decoration: none; font-weight: 600;">→ Använd verktyg</a>
@@ -105,7 +105,7 @@ $toolDescriptions = [
           <a href="/tools/qr_v2/" style="color: inherit; text-decoration: none;">QR-kodgenerator</a>
         </h3>
         <p style="color: #6c757d; margin-bottom: 1rem; line-height: 1.5;">
-          Skapa anpassade QR-koder med logo, färger och olika format. 
+          Skapa anpassade QR-koder med logo, färger och olika format.
           Perfekt för marknadsföring och informationsdelning.
         </p>
         <a href="/tools/qr_v2/" style="color: #007bff; text-decoration: none; font-weight: 600;">→ Använd verktyg</a>
@@ -117,7 +117,7 @@ $toolDescriptions = [
           <a href="/tools/passwordgenerator/" style="color: inherit; text-decoration: none;">Lösenordsgenerator</a>
         </h3>
         <p style="color: #6c757d; margin-bottom: 1rem; line-height: 1.5;">
-          Generera säkra lösenord med anpassningsbara kriterier. 
+          Generera säkra lösenord med anpassningsbara kriterier.
           Inkluderar styrkeanalys och inga data lagras.
         </p>
         <a href="/tools/passwordgenerator/" style="color: #007bff; text-decoration: none; font-weight: 600;">→ Använd verktyg</a>
@@ -130,13 +130,13 @@ $toolDescriptions = [
   <section style="margin-bottom: 2rem;">
     <h2 style="color: #495057; margin-bottom: 1.5rem;">Vanliga frågor</h2>
     <div style="max-width: 800px;">
-      
+
       <details style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #dee2e6; border-radius: 6px; background: white;">
         <summary style="cursor: pointer; font-weight: 600; color: #007bff; outline: none;">
           Kostar det något att använda verktygen?
         </summary>
         <p style="margin-top: 1rem; margin-bottom: 0; color: #495057; line-height: 1.5;">
-          Nej, alla verktyg på Mackan.eu är helt gratis att använda och kräver ingen registrering eller betalning. 
+          Nej, alla verktyg på Mackan.eu är helt gratis att använda och kräver ingen registrering eller betalning.
           Vi finansieras inte genom reklam eller dataförsäljning.
         </p>
       </details>
@@ -146,7 +146,7 @@ $toolDescriptions = [
           Sparas mina data någonstans?
         </summary>
         <p style="margin-top: 1rem; margin-bottom: 0; color: #495057; line-height: 1.5;">
-          Nej, alla beräkningar och konverteringar sker lokalt i din webbläsare. Inga personuppgifter eller 
+          Nej, alla beräkningar och konverteringar sker lokalt i din webbläsare. Inga personuppgifter eller
           känsliga data skickas till våra servrar. Vi är GDPR-kompatibla genom design.
         </p>
       </details>
@@ -156,7 +156,7 @@ $toolDescriptions = [
           Vilka koordinatsystem stöds i koordinatverktyget?
         </summary>
         <p style="margin-top: 1rem; margin-bottom: 0; color: #495057; line-height: 1.5;">
-          Verktyget stöder WGS84 (GPS), SWEREF99 (svenska referenssystemet) och RT90 (äldre svenska systemet) 
+          Verktyget stöder WGS84 (GPS), SWEREF99 (svenska referenssystemet) och RT90 (äldre svenska systemet)
           med alla vanliga zoner. Perfekt för GIS-arbete och lantmäteri.
         </p>
       </details>
@@ -166,7 +166,7 @@ $toolDescriptions = [
           Kan jag använda verktygen offline?
         </summary>
         <p style="margin-top: 1rem; margin-bottom: 0; color: #495057; line-height: 1.5;">
-          De flesta verktyg fungerar offline efter första laddningen, förutom de som behöver externa data 
+          De flesta verktyg fungerar offline efter första laddningen, förutom de som behöver externa data
           som kartunderlag eller API-anrop. Perfekt för fältarbete.
         </p>
       </details>
@@ -176,7 +176,7 @@ $toolDescriptions = [
           Stöds batch-import i verktygen?
         </summary>
         <p style="margin-top: 1rem; margin-bottom: 0; color: #495057; line-height: 1.5;">
-          Ja, flera verktyg som koordinatkonverteraren stöder batch-import via CSV eller text. 
+          Ja, flera verktyg som koordinatkonverteraren stöder batch-import via CSV eller text.
           Du kan bearbeta stora datamängder effektivt.
         </p>
       </details>

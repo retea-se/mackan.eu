@@ -69,7 +69,7 @@ include '../includes/layout-start.php';
 <main class="layout__container">
   <!-- Breadcrumbs -->
   <nav class="breadcrumbs" aria-label="Du är här" style="margin-bottom: 1rem; font-size: 0.9rem; color: #6c757d;">
-    <a href="/" style="color: #007bff; text-decoration: none;">🏠 Hem</a> › 
+    <a href="/" style="color: #007bff; text-decoration: none;">🏠 Hem</a> ›
     <span>🔧 Verktyg</span>
   </nav>
 
@@ -77,7 +77,7 @@ include '../includes/layout-start.php';
   <p class="rubrik rubrik--sektion mb-2">
     Professionella verktyg för tekniska beräkningar, koordinathantering och produktivitet. Specialiserade för ingenjörer, GIS-experter och konsulter. Alla verktyg är gratis, säkra och GDPR-kompatibla.
   </p>
-  
+
   <div class="meny">
     <?php foreach ($toolsData as $tool): ?>
       <a href="<?= htmlspecialchars($tool['href']) ?>" class="meny__kort">
@@ -95,7 +95,7 @@ include '../includes/layout-start.php';
   <!-- SEO-optimerad informationssektion -->
   <section style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 8px;">
     <h2 style="margin-top: 0; color: #495057; font-size: 1.5rem;">Tekniska verktyg för professionella</h2>
-    
+
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
       <div>
         <h3 style="color: #007bff; margin-bottom: 0.5rem;">🎯 Koordinatsystem & GIS</h3>
@@ -106,7 +106,7 @@ include '../includes/layout-start.php';
           <li><strong>Batch-import:</strong> CSV, Excel och textfiler</li>
         </ul>
       </div>
-      
+
       <div>
         <h3 style="color: #28a745; margin-bottom: 0.5rem;">⚡ Elkraft & energi</h3>
         <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.6;">
@@ -116,7 +116,7 @@ include '../includes/layout-start.php';
           <li><strong>Miljöanalys:</strong> CO₂-utsläpp och kostnadskalkyl</li>
         </ul>
       </div>
-      
+
       <div>
         <h3 style="color: #17a2b8; margin-bottom: 0.5rem;">🔒 Säkerhet & kvalitet</h3>
         <ul style="margin: 0; padding-left: 1.2rem; line-height: 1.6;">
@@ -132,32 +132,32 @@ include '../includes/layout-start.php';
   <!-- FAQ för maximal SEO -->
   <section style="margin-top: 2rem;">
     <h2 style="color: #495057; font-size: 1.5rem;">Vanliga frågor om våra tekniska verktyg</h2>
-    
+
     <details style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #dee2e6; border-radius: 4px; background: white;">
       <summary style="cursor: pointer; font-weight: 600; color: #007bff;">Vilka koordinatsystem stöds för professionell GIS-arbete?</summary>
       <p style="margin-top: 1rem; margin-bottom: 0;">Vårt koordinatverktyg stöder WGS84 (GPS-koordinater), SWEREF99 (svenska referenssystemet med alla zoner) och RT90 (äldre svenska systemet). Verktyget klarar batch-import av tusentals koordinater och exporterar till CSV, Excel och GeoJSON-format.</p>
     </details>
-    
+
     <details style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #dee2e6; border-radius: 4px; background: white;">
       <summary style="cursor: pointer; font-weight: 600; color: #007bff;">Hur beräknas tankvolym för reservkraftverk enligt branschstandard?</summary>
       <p style="margin-top: 1rem; margin-bottom: 0;">RKA-kalkylatorn följer NFPA 110 och svenska standards. Beräkningen inkluderar ullage (10%), sump (5%), provkörning, buffertdagar och klimatjustering (derating). Verktyget stöder diesel, HVO100 och EcoPar med korrekta energidensiteter.</p>
     </details>
-    
+
     <details style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #dee2e6; border-radius: 4px; background: white;">
       <summary style="cursor: pointer; font-weight: 600; color: #007bff;">Är verktygen säkra för känslig företagsinformation?</summary>
       <p style="margin-top: 1rem; margin-bottom: 0;">Ja, alla beräkningar sker lokalt i din webbläsare enligt "Privacy by Design". Inga data skickas till våra servrar, vilket garanterar fullständig GDPR-efterlevnad och företagssäkerhet. Verktygen fungerar även offline efter första laddningen.</p>
     </details>
-    
+
     <details style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #dee2e6; border-radius: 4px; background: white;">
       <summary style="cursor: pointer; font-weight: 600; color: #007bff;">Vilka filformat stöds för import och export?</summary>
       <p style="margin-top: 1rem; margin-bottom: 0;">Koordinatverktyget: CSV, Excel, textfiler, GeoJSON. QR-generator: PNG, SVG, PDF med anpassad upplösning. RKA-verktyg: Excel-export med detaljerade beräkningar. Lösenordsgenerator: Textfil för batch-generering av lösenord.</p>
     </details>
-    
+
     <details style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #dee2e6; border-radius: 4px; background: white;">
       <summary style="cursor: pointer; font-weight: 600; color: #007bff;">Kan verktygen användas för kommersiella konsultuppdrag?</summary>
       <p style="margin-top: 1rem; margin-bottom: 0;">Ja, alla verktyg är fria att använda för kommersiella ändamål utan licensavgifter. Vi rekommenderar att kritiska beräkningar verifieras mot branschstandarder och att backup-beräkningar görs för viktiga projekt.</p>
     </details>
-    
+
     <details style="margin-bottom: 1rem; padding: 1rem; border: 1px solid #dee2e6; border-radius: 4px; background: white;">
       <summary style="cursor: pointer; font-weight: 600; color: #007bff;">Hur noggranna är koordinatkonverteringar för lantmäteriarbete?</summary>
       <p style="margin-top: 1rem; margin-bottom: 0;">Koordinatkonverteringar använder officiella transformationsparametrar från Lantmäteriet med submeter-noggrannhet. För högprecisionsarbete rekommenderar vi kontroll mot Lantmäteriets egna tjänster eller RTK-mätningar.</p>
