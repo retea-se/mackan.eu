@@ -33,3 +33,17 @@ tools/skyddad/.env
 .mcp.json
 DEVTOOLS_MCP_SETUP.md
 PHP_preview_in_VSCode.md
+
+# Ignore local admin/dev folders
+admin/api/
+admin/assets/
+devtools/
+elliot/
+ob-janne/
+scripts/
+timer/
+tools/dsu/
+tools/flow/
+tools/qr_v3/
+tools/koordinat/
+xob-janne/
