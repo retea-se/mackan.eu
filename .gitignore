@@ -47,3 +47,7 @@ tools/flow/
 tools/qr_v3/
 tools/koordinat/
 xob-janne/
+
+# Ignore optional admin pages
+admin/pro-analytics.php
+admin/security-monitor.php
