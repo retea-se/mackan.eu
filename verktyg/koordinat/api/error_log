@@ -1,6 +1,0 @@
-[31-May-2025 15:53:51 Europe/Stockholm] PHP Warning:  file_get_contents(https://api.opentopodata.org/v1/eudem25m?locations=59.226907,18.175049): Failed to open stream: HTTP request failed! HTTP/1.1 429 Too Many Requests
- in /home/mackaneu/public_html/verktyg/koordinat/api/elevation.php on line 14
-[31-May-2025 15:53:51 Europe/Stockholm] PHP Warning:  file_get_contents(https://api.opentopodata.org/v1/eudem25m?locations=59.261757,18.073425): Failed to open stream: HTTP request failed! HTTP/1.1 429 Too Many Requests
- in /home/mackaneu/public_html/verktyg/koordinat/api/elevation.php on line 14
-[31-May-2025 15:53:51 Europe/Stockholm] PHP Warning:  file_get_contents(https://api.opentopodata.org/v1/eudem25m?locations=59.304196,18.146210): Failed to open stream: HTTP request failed! HTTP/1.1 429 Too Many Requests
- in /home/mackaneu/public_html/verktyg/koordinat/api/elevation.php on line 14
