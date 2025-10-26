@@ -15,27 +15,22 @@ return [
 
 
 
-      [
-    'title' => 'Flow',
-    'href'  => '/verktyg/flow/index.html',
-    'icon'  => 'fa-diagram-project'
-      ],
         [
     'title' => 'GeoParser & Plotter',
-    'href'  => '/verktyg/koordinat/public/impex_map.php',
+    'href'  => '/tools/koordinat/impex_map.php',
     'icon'  => 'fa-map-marker-alt'
   ]
   ,
         [
     'title' => 'Koordinater',
-    'href'  => '/verktyg/koordinat/public/impex.php',
+    'href'  => '/tools/koordinat/impex.php',
     'icon'  => 'fa-map'
   ]
 
    ,
         [
     'title' => 'Koordinater Impex',
-    'href'  => '/verktyg/koordinat/public/index.php',
+    'href'  => '/tools/koordinat/index.php',
     'icon'  => 'fa-compass'
   ]
     ,
@@ -46,15 +41,10 @@ return [
   ]
       ,
         [
-    'title' => 'Generera QR F.A. och URL',
-    'href'  => '/tools/qr_v1/index.php',
-    'icon'  => 'fa-qrcode'
-  ]
-    ,
-        [
-    'title' => 'Generera QR övrigt',
-    'href'  => '/tools/qr_v2/index.php',
-    'icon'  => 'fa-qrcode'
+    'title' => 'Generera QR',
+    'href'  => '/tools/qr_v3/index.php',
+    'icon'  => 'fa-qrcode',
+    'desc'  => 'Skapa QR-koder för text, länkar, WiFi, kontakter och felanmälningar'
   ]
       ,
         [
@@ -126,6 +116,12 @@ return [
   'title' => 'RKA-kalkylator',
   'href'  => '/tools/rka/index.php',
   'icon'  => 'fa-gears'
+],
+        [
+  'title' => 'Timer',
+  'href'  => 'https://mackan.eu/timer',
+  'icon'  => 'fa-clock',
+  'desc'  => 'Digital klocka med timer-funktioner'
 ]
   // Fler verktyg kan läggas till här
 ];

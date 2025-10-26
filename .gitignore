@@ -26,3 +26,10 @@ sftp.json
 *.code-workspace
 
 tools/skyddad/.env
+
+# Local dev tooling
+.claude/
+.playwright-mcp/
+.mcp.json
+DEVTOOLS_MCP_SETUP.md
+PHP_preview_in_VSCode.md

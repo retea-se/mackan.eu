@@ -90,14 +90,36 @@ try {
         ul { list-style: none; padding: 0; }
         li { margin-bottom: 1em; }
         li .btn { width: 100%; text-align: left; font-size: 1.1em; }
-        .stats-row { display: flex; gap: 2em; margin: 2em 0 0 0; flex-wrap: wrap; }
-        .stat-card { background: #f0f7ff; border-radius: 8px; padding: 1em 1.5em; min-width: 180px; flex: 1 1 180px; box-shadow: 0 1px 4px #e0e7ef; }
+        .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2em; margin: 2em 0; }
+        .nav-section h4 { margin: 0 0 1em 0; font-size: 1.1em; color: #0074d9; border-bottom: 2px solid #e0e7ef; padding-bottom: 0.5em; }
+        .nav-section ul { list-style: none; padding: 0; margin: 0; }
+        .nav-section li { margin-bottom: 0.5em; }
+        .nav-section .btn { width: 100%; text-align: left; }
+        .btn.nerd { background: #9b59b6; }
+        .btn.security { background: #e74c3c; }
+        .stats-row { display: flex; gap: 1.5em; margin: 2em 0; flex-wrap: wrap; }
+        .stat-card { background: #f0f7ff; border-radius: 8px; padding: 1em 1.5em; min-width: 180px; flex: 1 1 180px; box-shadow: 0 1px 4px #e0e7ef; position: relative; }
         .stat-card h3 { margin: 0 0 0.3em 0; font-size: 1.1em; color: #0074d9; }
         .stat-card .big { font-size: 2em; font-weight: bold; }
         .stat-card small { color: #888; }
-        @media (max-width: 600px) {
+        .stat-card.realtime { background: #ffe6e6; animation: pulse 2s infinite; }
+        .stat-card.realtime h3 { color: #e74c3c; }
+        .stat-card.trend { background: #e8f5e8; }
+        .stat-card.trend h3 { color: #27ae60; }
+        .stat-card.security { background: #fff3cd; }
+        .stat-card.security h3 { color: #856404; }
+        .stat-card.performance { background: #e1f5fe; }
+        .stat-card.performance h3 { color: #0277bd; }
+        .trend-data, .security-data, .performance-data { display: flex; flex-direction: column; gap: 0.5em; }
+        .trend-item, .security-item, .performance-item { display: flex; justify-content: space-between; font-size: 0.9em; }
+        .trend-change { font-weight: bold; }
+        .trend-change.positive { color: #27ae60; }
+        .trend-change.negative { color: #e74c3c; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+        @media (max-width: 768px) {
             .dash-container { padding: 1em; }
             header { flex-direction: column; gap: 1em; }
+            .nav-grid { grid-template-columns: 1fr; gap: 1em; }
             .stats-row { flex-direction: column; gap: 1em; }
         }
     </style>
@@ -108,19 +130,46 @@ try {
         <h1>Adminpanel</h1>
         <a href="?logout=1" class="btn">🚪 Logga ut</a>
     </header>
-    <ul>
-        <li><a href="dashboard.php" class="btn">📊 Dashboard</a></li>
-        <li><a href="insight.php" class="btn">🔍 Insight</a></li>
-        <li><a href="kortlank-stats.php" class="btn">🔗 Kortlänk-statistik</a></li>
-        <li><a href="hantera-kortlankar.php" class="btn">🗑️ Hantera kortlänkar</a></li>
-        <li><a href="visits.php" class="btn">📈 Besöksstatistik</a></li>
-        <li><a href="skyddad-stats.php" class="btn">🛡️ Skyddad-statistik</a></li>
-        <li><a href="hantera-skyddad.php" class="btn">🗑️ Hantera Skyddad-meddelanden</a></li>
-        <!-- Lägg till fler länkar här om du vill -->
-    </ul>
+    <div class="nav-grid">
+        <div class="nav-section">
+            <h4>📊 Analyser</h4>
+            <ul>
+                <li><a href="dashboard.php" class="btn">📊 Dashboard</a></li>
+                <li><a href="insight.php" class="btn">🔍 Insight</a></li>
+                <li><a href="pro-analytics.php" class="btn nerd">🤓 Pro Analytics</a></li>
+                <li><a href="security-monitor.php" class="btn security">🛡️ Säkerhet</a></li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <h4>🔗 Kortlänkar</h4>
+            <ul>
+                <li><a href="kortlank-stats.php" class="btn">📈 Statistik</a></li>
+                <li><a href="hantera-kortlankar.php" class="btn">🗑️ Hantera</a></li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <h4>🛡️ Skyddad</h4>
+            <ul>
+                <li><a href="skyddad-stats.php" class="btn">📊 Statistik</a></li>
+                <li><a href="hantera-skyddad.php" class="btn">🗑️ Hantera</a></li>
+            </ul>
+        </div>
+        <div class="nav-section">
+            <h4>👥 Besökare</h4>
+            <ul>
+                <li><a href="visits.php" class="btn">📈 Besöksstatistik</a></li>
+                <li><a href="geo-country.php" class="btn">🌍 Geolokalisering</a></li>
+            </ul>
+        </div>
+    </div>
 
-    <!-- Nyckelvärden/statistik -->
+    <!-- Real-time statistik -->
     <div class="stats-row">
+        <div class="stat-card realtime" id="realtime-visitors">
+            <h3>🔴 Live Besökare</h3>
+            <div class="big" id="live-count">-</div>
+            <small>Online nu (senaste 5 min)</small>
+        </div>
         <div class="stat-card">
             <h3>🔗 Kortlänkar</h3>
             <div class="big"><?= isset($kortlank['antal']) ? $kortlank['antal'] : '?' ?></div>
@@ -137,6 +186,88 @@ try {
             <small>Totalt antal besök</small>
         </div>
     </div>
+
+    <!-- Trendanalys -->
+    <div class="stats-row">
+        <div class="stat-card trend">
+            <h3>📊 Idag vs Igår</h3>
+            <div class="trend-data" id="today-vs-yesterday">
+                <div class="trend-item">
+                    <span class="trend-label">Besök:</span>
+                    <span class="trend-value" id="visits-trend">-</span>
+                    <span class="trend-change" id="visits-change">-</span>
+                </div>
+                <div class="trend-item">
+                    <span class="trend-label">Unika:</span>
+                    <span class="trend-value" id="unique-trend">-</span>
+                    <span class="trend-change" id="unique-change">-</span>
+                </div>
+            </div>
+        </div>
+        <div class="stat-card security">
+            <h3>🛡️ Säkerhet</h3>
+            <div class="security-data" id="security-stats">
+                <div class="security-item">
+                    <span class="security-label">Botar:</span>
+                    <span class="security-value" id="bot-count">-</span>
+                </div>
+                <div class="security-item">
+                    <span class="security-label">Misstänkt:</span>
+                    <span class="security-value" id="suspicious-count">-</span>
+                </div>
+            </div>
+        </div>
+        <div class="stat-card performance">
+            <h3>⚡ Prestanda</h3>
+            <div class="performance-data" id="performance-stats">
+                <div class="performance-item">
+                    <span class="performance-label">Snitttid:</span>
+                    <span class="performance-value" id="avg-time">-</span>
+                </div>
+                <div class="performance-item">
+                    <span class="performance-label">Bounce:</span>
+                    <span class="performance-value" id="bounce-rate">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+// Real-time updates
+function updateRealTimeStats() {
+    fetch('api/stats.php?action=realtime')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('live-count').textContent = data.live_visitors || 0;
+            document.getElementById('visits-trend').textContent = data.today_visits || 0;
+            document.getElementById('visits-change').textContent = data.visits_change || '0%';
+            document.getElementById('visits-change').className = 'trend-change ' + (data.visits_change_type || 'neutral');
+            document.getElementById('unique-trend').textContent = data.today_unique || 0;
+            document.getElementById('unique-change').textContent = data.unique_change || '0%';
+            document.getElementById('unique-change').className = 'trend-change ' + (data.unique_change_type || 'neutral');
+            document.getElementById('bot-count').textContent = data.bot_count || 0;
+            document.getElementById('suspicious-count').textContent = data.suspicious_count || 0;
+            document.getElementById('avg-time').textContent = data.avg_time || '0s';
+            document.getElementById('bounce-rate').textContent = data.bounce_rate || '0%';
+        })
+        .catch(error => console.error('Error updating stats:', error));
+}
+
+// Update stats on page load and every 30 seconds
+updateRealTimeStats();
+setInterval(updateRealTimeStats, 30000);
+
+// Refresh indicator
+function showRefreshIndicator() {
+    const indicator = document.createElement('div');
+    indicator.style.cssText = 'position:fixed;top:10px;right:10px;background:#27ae60;color:white;padding:0.5em 1em;border-radius:4px;z-index:1000;';
+    indicator.textContent = 'Uppdaterar...';
+    document.body.appendChild(indicator);
+    setTimeout(() => document.body.removeChild(indicator), 1000);
+}
+
+setInterval(showRefreshIndicator, 30000);
+</script>
 </body>
 </html>

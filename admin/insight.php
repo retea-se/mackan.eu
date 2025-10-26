@@ -169,6 +169,16 @@ if (!isset($_SESSION['admin_logged_in'])) {
     <h2>Senaste besök</h2>
     <ul class="visit-list" id="visitList"></ul>
 
+    <!-- User Journey Analysis -->
+    <h2>🛣️ Användarresor</h2>
+    <section id="userJourneySection" class="mt-2">
+        <div class="journey-filters" style="margin-bottom: 1em;">
+            <label>Minimum sidvisningar: <input type="number" id="minPageViews" value="2" min="1" max="50" style="width: 4em;"></label>
+            <button class="btn" onclick="updateJourneyAnalysis()">Uppdatera</button>
+        </div>
+        <div id="journeyResults"></div>
+    </section>
+
     <!-- Accordion för sessioner -->
     <h2>Sessioner</h2>
     <section id="visitorAccordion" class="mt-2"></section>
@@ -234,6 +244,87 @@ if (!isset($_SESSION['admin_logged_in'])) {
         </li>
       `).join('');
     }
+
+    function updateJourneyAnalysis() {
+      const minPageViews = document.getElementById('minPageViews').value;
+      fetch(`api/stats.php?action=user_journey&min_pages=${minPageViews}`)
+        .then(response => response.json())
+        .then(data => renderUserJourneys(data))
+        .catch(error => console.error('Error loading journey data:', error));
+    }
+
+    function renderUserJourneys(journeys) {
+      const container = document.getElementById('journeyResults');
+      
+      if (!journeys || journeys.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: #888;">Inga användarresor hittades med de angivna kriterierna.</p>';
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="journey-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 1.5em;">
+          ${journeys.map(journey => `
+            <div class="journey-card" style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 1.5em;">
+              <div class="journey-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em; padding-bottom: 0.5em; border-bottom: 1px solid #e9ecef;">
+                <div class="journey-ip" style="font-family: monospace; font-weight: bold; color: #1976d2;">${journey.ip}</div>
+                <div class="journey-stats" style="text-align: right; color: #666; font-size: 0.9em;">
+                  <div>${journey.page_views} sidvisningar</div>
+                  <div>${journey.unique_pages} unika sidor</div>
+                  <div>${Math.round(journey.session_duration / 60)} min session</div>
+                </div>
+              </div>
+              <div class="journey-path" style="margin-bottom: 1em;">
+                <div class="journey-timeline" style="position: relative; padding-left: 2em;">
+                  ${journey.path.map((step, index) => `
+                    <div class="journey-step" style="position: relative; margin-bottom: 0.8em; padding-bottom: 0.8em; ${index < journey.path.length - 1 ? 'border-left: 2px solid #1976d2;' : ''} margin-left: -2em; padding-left: 2em;">
+                      <div class="step-marker" style="position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: #1976d2; border-radius: 50%; border: 2px solid #fff;"></div>
+                      <div class="step-content">
+                        <div class="step-page" style="font-weight: bold; color: #333; margin-bottom: 0.2em;">${step.page}</div>
+                        <div class="step-meta" style="color: #666; font-size: 0.85em;">
+                          <span class="step-time">${step.time}</span>
+                          ${step.time_on_page ? `<span style="margin-left: 1em;">⏱️ ${step.time_on_page}s</span>` : ''}
+                          ${step.referer && step.referer !== step.page ? `<span style="margin-left: 1em;">← ${step.referer}</span>` : ''}
+                        </div>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+              <div class="journey-summary" style="background: #e3f2fd; padding: 0.8em; border-radius: 4px; font-size: 0.9em; color: #1976d2;">
+                <strong>Sammanfattning:</strong> 
+                ${journey.avg_time_per_page ? `⌀ ${Math.round(journey.avg_time_per_page)}s per sida` : 'Ingen tidsdata'} • 
+                ${journey.bounce ? 'Studsade' : 'Utforskade webbplatsen'} • 
+                ${journey.device_type || 'Okänd enhet'}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="margin-top: 2em; text-align: center;">
+          <button class="btn" onclick="exportJourneyData()">📊 Exportera resedata</button>
+        </div>
+      `;
+    }
+
+    function exportJourneyData() {
+      const minPageViews = document.getElementById('minPageViews').value;
+      fetch(`api/stats.php?action=user_journey&min_pages=${minPageViews}`)
+        .then(response => response.json())
+        .then(data => {
+          const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `user-journeys-${new Date().toISOString().split('T')[0]}.json`;
+          a.click();
+          URL.revokeObjectURL(url);
+        })
+        .catch(error => console.error('Error exporting journey data:', error));
+    }
+
+    // Auto-load journey analysis on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateJourneyAnalysis();
+    });
   </script>
 </body>
 </html>

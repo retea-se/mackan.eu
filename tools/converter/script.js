@@ -2,15 +2,20 @@
 
 /* ********** START: Tabbväxling ********** */
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("script.js v5 laddad");
+  console.log("script.js v6 laddad");
 
-  const buttons = document.querySelectorAll('.knapp[data-tab]');
+  const buttons = document.querySelectorAll('.converter-tab[data-tab]');
   const sections = document.querySelectorAll('.tab-section');
   let uploadModuleLoaded = false;
 
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       const targetId = `tab-${button.dataset.tab}`;
+
+      // Remove active class from all tabs
+      buttons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked tab
+      button.classList.add('active');
 
       sections.forEach(section => {
         section.classList.toggle('hidden', section.id !== targetId);
