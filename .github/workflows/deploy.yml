@@ -22,18 +22,27 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd ${{ secrets.DEPLOY_PATH }}
+          set -e  # Exit on error
+          DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+          echo "📁 Deploy path: $DEPLOY_PATH"
+          cd "$DEPLOY_PATH" || {
+            echo "❌ Failed to cd to $DEPLOY_PATH"
+            exit 1
+          }
+          echo "📂 Current directory: $(pwd)"
           echo "📦 Fetching latest changes from main..."
           git fetch origin main
           
           echo "📥 Pulling latest changes from main..."
           # Try to pull, if it fails due to conflicts, use reset --hard
-          git pull origin main 2>&1 || {
+          if ! git pull origin main 2>&1; then
             echo "⚠️  Git pull failed. Using hard reset to match remote..."
             git reset --hard origin/main
-          }
+          fi
           
           echo "✅ Deployment complete!"
+          echo "📊 Current commit: $(git rev-parse --short HEAD)"
+          echo "📊 Current branch: $(git branch --show-current)"
 
           # Eventuellt: Rensa cache, restart services, etc.
           # php artisan cache:clear  # Om du använder Laravel
