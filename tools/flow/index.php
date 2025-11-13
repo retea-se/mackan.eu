@@ -35,11 +35,9 @@ $extraHead = '
   }
 }
 </script>
-<link rel="stylesheet" href="flow.css">
-';
+<link rel="stylesheet" href="flow.css">';
 
 include '../../includes/layout-start.php';
-?>
 
 <main class="layout__container">
   <header class="layout__sektion text--center">
