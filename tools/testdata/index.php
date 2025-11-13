@@ -38,7 +38,7 @@ $metaDescription = 'Generera svenska testpersoner med namn, företag, telefonnum
       <input type="number" id="antal" class="falt__input" value="1" min="1" max="100" data-tippy-content="Skriv antal personer">
     </div>
 
-    <div id="exportControls" class="utils--dold">
+    <div id="exportControls" class="hidden">
       <label for="exportFormat" style="white-space: nowrap;" data-tippy-content="Välj format för export">Välj exportformat:</label>
       <select id="exportFormat" class="falt__select" data-tippy-content="Välj exportformat">
         <option value="json">JSON (visa)</option>
@@ -51,18 +51,18 @@ $metaDescription = 'Generera svenska testpersoner med namn, företag, telefonnum
 
     <div class="form__verktyg" style="flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
       <button type="button" id="generateBtn" class="knapp" data-tippy-content="Genererar testpersoner">Generera testperson</button>
-      <button type="button" class="knapp utils--dold" data-tippy-content="Rensar resultat">Rensa</button>
+      <button type="button" class="knapp hidden" data-tippy-content="Rensar resultat">Rensa</button>
     </div>
   </form>
 
   <div class="form__grupp">
-    <button type="button" id="formatBtn" class="knapp utils--dold" data-tippy-content="Standardiserar personnummer">Standardisera personnummer</button>
+    <button type="button" id="formatBtn" class="knapp hidden" data-tippy-content="Standardiserar personnummer">Standardisera personnummer</button>
   </div>
   <!-- ********** SLUT Sektion: Formulär ********** -->
 
   <!-- ********** START Sektion: Resultat ********** -->
   <div class="tabell__wrapper">
-    <div class="tabell__wrapper"><!-- TODO: osäker konvertering: table-responsive -->
+    <div class="tabell__wrapper">
       <table class="tabell" id="resultTable" style="table-layout: auto;">
         <thead>
           <tr>

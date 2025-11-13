@@ -5,21 +5,37 @@ $metaDescription = 'Hämta företagsdata från Bolagsverkets API baserat på org
 <?php include '../../includes/layout-start.php'; ?>
 
 <main class="layout__container">
-  <form id="dataForm" class="form__grupp">
-    <div class="form__grupp">
-      <label for="orgnr" class="falt">Organisationsnummer</label>
-      <input type="text" id="orgnr" class="falt__input" placeholder="Ex: 556475-6467" required>
-    </div>
-    <div class="form__grupp">
-      <button type="submit" class="knapp" data-tippy-content="Hämta företagsinfo">Hämta företagsinfo</button>
-      <button type="button" class="knapp utils--dold" id="exportBtn" data-tippy-content="Exportera resultat">Exportera</button>
-    </div>
-  </form>
-  <!-- ********** Laddikon ********** -->
-  <div id="loadingSpinner" class="utils--dold utils--mt-1" aria-hidden="true" style="margin: 1rem auto;"></div>
+  <header class="layout__sektion text--center">
+    <h1 class="rubrik rubrik--sektion">
+      <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
+    </h1>
+    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
+    <p class="text--lead">
+      Slå upp företag direkt mot Bolagsverkets API. Ange ett organisationsnummer så presenteras
+      struktur­erad data som du kan exportera.
+    </p>
+  </header>
 
-  <section id="tableSection" class="utils--dold utils--mt-2">
-    <div>
+  <section class="layout__sektion">
+    <form id="dataForm" class="form" novalidate>
+      <div class="form__grupp">
+        <label for="orgnr" class="falt__etikett">Organisationsnummer</label>
+        <input type="text" id="orgnr" class="falt__input" placeholder="Ex: 556475-6467" required inputmode="numeric" autocomplete="off">
+        <p class="falt__hjälp">Både formatet 5564756467 och 556475-6467 fungerar.</p>
+      </div>
+      <div class="form__verktyg">
+        <button type="submit" class="knapp" data-tippy-content="Hämta uppgifter från Bolagsverket">Hämta företagsinfo</button>
+        <button type="button" class="knapp knapp--liten hidden" id="exportBtn" data-tippy-content="Exportera resultatet som text">Exportera</button>
+      </div>
+    </form>
+  </section>
+
+  <div id="loadingSpinner" class="hidden text--muted text--center" aria-live="polite">
+    <span aria-hidden="true">🔄</span> Hämtar uppgifter ...
+  </div>
+
+  <section id="tableSection" class="layout__sektion hidden">
+    <div class="tabell__wrapper">
       <table class="tabell tabell--kompakt" id="orgTable">
         <thead>
           <tr>

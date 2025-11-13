@@ -12,16 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (versionInfo) {
         const today = new Date();
         const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
-        versionInfo.innerHTML = `TL QR 25 | HTML ${HTML_VERSION} | CSS ${CSS_VERSION} | JS ${JS_VERSION} | ${formattedDate}`;
+        versionInfo.textContent = `TL QR 25 · HTML ${HTML_VERSION} · CSS ${CSS_VERSION} · JS ${JS_VERSION} · ${formattedDate}`;
         console.log('Log: Version info updated');
     }
     // ********** SLUT Version Info **********
 
     // ********** START Variabler **********
-    const typeButtons = document.querySelectorAll('.type-button');
+    const typeButtons = document.querySelectorAll('.qr__type-btn');
     const formFields = document.getElementById('formFields');
     const generateBtn = document.getElementById('generateBtn');
     const qrPreview = document.getElementById('qrPreview');
+    const extraButtons = document.getElementById('extraButtons');
     let selectedType = '';
 
     console.log('Log: Element status:', {
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         qrPreviewFound: qrPreview !== null
     });
 
-    if (!formFields || !generateBtn || !qrPreview || typeButtons.length === 0) {
+    if (!formFields || !generateBtn || !qrPreview || !extraButtons || typeButtons.length === 0) {
         console.error('Error: Required elements missing!');
         return;
     }
@@ -41,20 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
     typeButtons.forEach(button => {
         button.addEventListener('click', () => {
             console.log('Log: Form type selected:', button.getAttribute('data-type'));
-            typeButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+            typeButtons.forEach(btn => btn.classList.remove('qr__type-btn--active'));
+            button.classList.add('qr__type-btn--active');
             selectedType = button.getAttribute('data-type');
             renderFields(selectedType);
 
-            // Visa generate-knappen när typ är vald
-            generateBtn.style.display = 'block';
-            generateBtn.classList.add('show');
-
+            generateBtn.classList.remove('hidden');
             qrPreview.innerHTML = "";
-            const buttonsContainer = document.getElementById('extraButtons');
-            if (buttonsContainer) {
-                buttonsContainer.remove();
-            }
+            extraButtons.classList.add('hidden');
+            extraButtons.innerHTML = '';
+            extraButtons.setAttribute('aria-hidden', 'true');
         });
     });
 
@@ -80,31 +77,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ********** START Funktioner **********
     function createExtraButtons() {
-        const oldButtons = document.getElementById('extraButtons');
-        if (oldButtons) {
-            oldButtons.remove();
-        }
-
-        const buttonsContainer = document.createElement('div');
-        buttonsContainer.id = "extraButtons";
-        buttonsContainer.style.marginTop = "1rem";
-        buttonsContainer.style.display = "flex";
-        buttonsContainer.style.gap = "1rem";
-        buttonsContainer.style.justifyContent = "center";
+        extraButtons.innerHTML = '';
 
         const downloadBtn = document.createElement('button');
-        downloadBtn.className = "button";
-        downloadBtn.textContent = "Ladda ner bild";
+        downloadBtn.className = 'knapp knapp--liten';
+        downloadBtn.textContent = 'Ladda ner bild';
         downloadBtn.addEventListener('click', downloadQRCode);
-        buttonsContainer.appendChild(downloadBtn);
+        extraButtons.appendChild(downloadBtn);
 
         const copyBtn = document.createElement('button');
-        copyBtn.className = "button";
-        copyBtn.textContent = "Kopiera bild";
+        copyBtn.className = 'knapp knapp--liten';
+        copyBtn.textContent = 'Kopiera bild';
         copyBtn.addEventListener('click', copyQRCodeToClipboard);
-        buttonsContainer.appendChild(copyBtn);
+        extraButtons.appendChild(copyBtn);
 
-        qrPreview.parentNode.appendChild(buttonsContainer);
+        extraButtons.classList.remove('hidden');
+        extraButtons.setAttribute('aria-hidden', 'false');
     }
 
     function downloadQRCode() {
@@ -147,37 +135,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (type === 'text') {
             formFields.innerHTML = `
-                <div class="form-group">
-                    <label for="textInput">Text:</label>
-                    <input type="text" id="textInput" class="input" placeholder="Skriv text här">
+                <div class="form__grupp">
+                    <label for="textInput" class="falt__etikett">Text</label>
+                    <input type="text" id="textInput" class="falt__input" placeholder="Skriv text här">
                 </div>
             `;
         } else if (type === 'url') {
             formFields.innerHTML = `
-                <div class="form-group">
-                    <label for="urlInput">URL:</label>
-                    <input type="url" id="urlInput" class="input" placeholder="https://exempel.se">
+                <div class="form__grupp">
+                    <label for="urlInput" class="falt__etikett">URL</label>
+                    <input type="url" id="urlInput" class="falt__input" placeholder="https://exempel.se">
                 </div>
             `;
         } else if (type === 'vcard') {
             formFields.innerHTML = `
-                <div class="form-group"><label for="firstName">Förnamn:</label><input type="text" id="firstName" class="input"></div>
-                <div class="form-group"><label for="lastName">Efternamn:</label><input type="text" id="lastName" class="input"></div>
-                <div class="form-group"><label for="email">E-post:</label><input type="email" id="email" class="input"></div>
-                <div class="form-group"><label for="phone">Telefonnummer:</label><input type="tel" id="phone" class="input"></div>
-                <div class="form-group"><label for="company">Företag:</label><input type="text" id="company" class="input"></div>
-                <div class="form-group"><label for="job">Jobbtitel:</label><input type="text" id="job" class="input"></div>
-                <div class="form-group"><label for="street">Gatuadress:</label><input type="text" id="street" class="input"></div>
-                <div class="form-group"><label for="city">Stad:</label><input type="text" id="city" class="input"></div>
-                <div class="form-group"><label for="zip">Postnummer:</label><input type="text" id="zip" class="input"></div>
-                <div class="form-group"><label for="country">Land:</label><input type="text" id="country" class="input"></div>
+                <div class="form__grupp"><label for="firstName" class="falt__etikett">Förnamn</label><input type="text" id="firstName" class="falt__input"></div>
+                <div class="form__grupp"><label for="lastName" class="falt__etikett">Efternamn</label><input type="text" id="lastName" class="falt__input"></div>
+                <div class="form__grupp"><label for="email" class="falt__etikett">E-post</label><input type="email" id="email" class="falt__input"></div>
+                <div class="form__grupp"><label for="phone" class="falt__etikett">Telefonnummer</label><input type="tel" id="phone" class="falt__input"></div>
+                <div class="form__grupp"><label for="company" class="falt__etikett">Företag</label><input type="text" id="company" class="falt__input"></div>
+                <div class="form__grupp"><label for="job" class="falt__etikett">Jobbtitel</label><input type="text" id="job" class="falt__input"></div>
+                <div class="form__grupp"><label for="street" class="falt__etikett">Gatuadress</label><input type="text" id="street" class="falt__input"></div>
+                <div class="form__grupp"><label for="city" class="falt__etikett">Stad</label><input type="text" id="city" class="falt__input"></div>
+                <div class="form__grupp"><label for="zip" class="falt__etikett">Postnummer</label><input type="text" id="zip" class="falt__input"></div>
+                <div class="form__grupp"><label for="country" class="falt__etikett">Land</label><input type="text" id="country" class="falt__input"></div>
             `;
         } else if (type === 'wifi') {
             formFields.innerHTML = `
-                <div class="form-group"><label for="ssid">SSID:</label><input type="text" id="ssid" class="input"></div>
-                <div class="form-group"><label for="password">Lösenord:</label><input type="text" id="password" class="input"></div>
-                <div class="form-group"><label for="encryption">Kryptering:</label>
-                    <select id="encryption" class="input">
+                <div class="form__grupp"><label for="ssid" class="falt__etikett">SSID</label><input type="text" id="ssid" class="falt__input"></div>
+                <div class="form__grupp"><label for="password" class="falt__etikett">Lösenord</label><input type="text" id="password" class="falt__input"></div>
+                <div class="form__grupp"><label for="encryption" class="falt__etikett">Kryptering</label>
+                    <select id="encryption" class="falt__input">
                         <option value="WPA">WPA/WPA2</option>
                         <option value="WEP">WEP</option>
                         <option value="nopass">Ingen kryptering</option>
@@ -186,87 +174,57 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         } else if (type === 'email') {
             formFields.innerHTML = `
-                <div class="form-group"><label for="emailAddress">E-postadress:</label><input type="email" id="emailAddress" class="input"></div>
-                <div class="form-group"><label for="emailSubject">Ämne:</label><input type="text" id="emailSubject" class="input"></div>
-                <div class="form-group"><label for="emailBody">Meddelande:</label><textarea id="emailBody" class="input" rows="4"></textarea></div>
+                <div class="form__grupp"><label for="emailAddress" class="falt__etikett">E-postadress</label><input type="email" id="emailAddress" class="falt__input"></div>
+                <div class="form__grupp"><label for="emailSubject" class="falt__etikett">Ämne</label><input type="text" id="emailSubject" class="falt__input"></div>
+                <div class="form__grupp"><label for="emailBody" class="falt__etikett">Meddelande</label><textarea id="emailBody" class="falt__textarea" rows="4"></textarea></div>
             `;
         } else if (type === 'sms') {
             formFields.innerHTML = `
-                <div class="form-group"><label for="smsNumber">Mobilnummer:</label><input type="tel" id="smsNumber" class="input"></div>
-                <div class="form-group"><label for="smsMessage">Meddelande:</label><textarea id="smsMessage" class="input" rows="3"></textarea></div>
+                <div class="form__grupp"><label for="smsNumber" class="falt__etikett">Mobilnummer</label><input type="tel" id="smsNumber" class="falt__input"></div>
+                <div class="form__grupp"><label for="smsMessage" class="falt__etikett">Meddelande</label><textarea id="smsMessage" class="falt__textarea" rows="3"></textarea></div>
             `;
         } else if (type === 'phone') {
             formFields.innerHTML = `
-                <div class="form-group"><label for="phoneNumber">Telefonnummer:</label><input type="tel" id="phoneNumber" class="input"></div>
+                <div class="form__grupp"><label for="phoneNumber" class="falt__etikett">Telefonnummer</label><input type="tel" id="phoneNumber" class="falt__input"></div>
             `;
         } else if (type === 'geo') {
             formFields.innerHTML = `
-                <div class="form-group"><label for="latitude">Latitude:</label><input type="text" id="latitude" class="input" placeholder="59.3293"></div>
-                <div class="form-group"><label for="longitude">Longitude:</label><input type="text" id="longitude" class="input" placeholder="18.0686"></div>
+                <div class="form__grupp"><label for="latitude" class="falt__etikett">Latitud</label><input type="text" id="latitude" class="falt__input" placeholder="59.3293"></div>
+                <div class="form__grupp"><label for="longitude" class="falt__etikett">Longitud</label><input type="text" id="longitude" class="falt__input" placeholder="18.0686"></div>
             `;
         }
     }
 
     function collectFormData(type) {
         const data = {};
-
-        if (type === 'text') {
-            data.text = document.getElementById('textInput')?.value || '';
-        } else if (type === 'url') {
-            data.url = document.getElementById('urlInput')?.value || '';
-        } else if (type === 'vcard') {
-            data.firstName = document.getElementById('firstName')?.value || '';
-            data.lastName = document.getElementById('lastName')?.value || '';
-            data.email = document.getElementById('email')?.value || '';
-            data.phone = document.getElementById('phone')?.value || '';
-            data.company = document.getElementById('company')?.value || '';
-            data.job = document.getElementById('job')?.value || '';
-            data.street = document.getElementById('street')?.value || '';
-            data.city = document.getElementById('city')?.value || '';
-            data.zip = document.getElementById('zip')?.value || '';
-            data.country = document.getElementById('country')?.value || '';
-        } else if (type === 'wifi') {
-            data.ssid = document.getElementById('ssid')?.value || '';
-            data.password = document.getElementById('password')?.value || '';
-            data.encryption = document.getElementById('encryption')?.value || 'WPA';
-        } else if (type === 'email') {
-            data.to = document.getElementById('emailAddress')?.value || '';
-            data.subject = document.getElementById('emailSubject')?.value || '';
-            data.body = document.getElementById('emailBody')?.value || '';
-        } else if (type === 'sms') {
-            data.number = document.getElementById('smsNumber')?.value || '';
-            data.message = document.getElementById('smsMessage')?.value || '';
-        } else if (type === 'phone') {
-            data.number = document.getElementById('phoneNumber')?.value || '';
-        } else if (type === 'geo') {
-            data.latitude = document.getElementById('latitude')?.value || '';
-            data.longitude = document.getElementById('longitude')?.value || '';
-        }
-
+        const inputs = formFields.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            data[input.id] = input.value;
+        });
         return data;
     }
 
     function formatData(type, data) {
-        if (type === 'text') {
-            return data.text;
-        } else if (type === 'url') {
-            return data.url;
-        } else if (type === 'vcard') {
-            return `BEGIN:VCARD\nVERSION:3.0\nN:${data.lastName};${data.firstName}\nFN:${data.firstName} ${data.lastName}\nORG:${data.company}\nTITLE:${data.job}\nTEL:${data.phone}\nEMAIL:${data.email}\nADR:;;${data.street};${data.city};;${data.zip};${data.country}\nEND:VCARD`;
-        } else if (type === 'wifi') {
-            return `WIFI:T:${data.encryption};S:${data.ssid};P:${data.password};;`;
-        } else if (type === 'email') {
-            return `mailto:${data.to}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(data.body)}`;
-        } else if (type === 'sms') {
-            return `SMSTO:${data.number}:${data.message}`;
-        } else if (type === 'phone') {
-            return `tel:${data.number}`;
-        } else if (type === 'geo') {
-            return `geo:${data.latitude},${data.longitude}`;
-        } else {
-            return '';
+        switch (type) {
+            case 'text':
+                return data.textInput || '';
+            case 'url':
+                return data.urlInput || '';
+            case 'vcard':
+                return `BEGIN:VCARD\nVERSION:3.0\nFN:${data.firstName || ''} ${data.lastName || ''}\nEMAIL:${data.email || ''}\nTEL:${data.phone || ''}\nORG:${data.company || ''}\nTITLE:${data.job || ''}\nADR:;;${data.street || ''};${data.city || ''};;${data.zip || ''};${data.country || ''}\nEND:VCARD`;
+            case 'wifi':
+                return `WIFI:T:${data.encryption || 'WPA'};S:${data.ssid || ''};P:${data.password || ''};;`;
+            case 'email':
+                return `mailto:${data.emailAddress || ''}?subject=${encodeURIComponent(data.emailSubject || '')}&body=${encodeURIComponent(data.emailBody || '')}`;
+            case 'sms':
+                return `SMSTO:${data.smsNumber || ''}:${data.smsMessage || ''}`;
+            case 'phone':
+                return `TEL:${data.phoneNumber || ''}`;
+            case 'geo':
+                return `geo:${data.latitude || ''},${data.longitude || ''}`;
+            default:
+                return '';
         }
     }
-
-    console.log('Log: JS v13 ready');
+    // ********** SLUT Funktioner **********
 });

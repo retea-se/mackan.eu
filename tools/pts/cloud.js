@@ -51,24 +51,33 @@ export function initWordcloud(ärenden) {
     });
 
     listContainer.innerHTML = `
-      <h3 style="margin-top:2rem;">Vanligaste orden i rubriker</h3>
-      <table class="table compact-table" style="width:100%; max-width:500px;">
-        <thead><tr><th>Ord</th><th>Frekvens</th></tr></thead>
-        <tbody>
-          ${lista.slice(0, 10).map(([word, freq]) =>
-            `<tr><td>${word}</td><td>${freq}</td></tr>`
-          ).join('')}
-        </tbody>
-      </table>
+      <h3 class="rubrik rubrik--underrubrik text--center">Vanligaste orden i rubriker</h3>
+      <div class="tabell__wrapper">
+        <table class="tabell tabell--kompakt">
+          <thead>
+            <tr><th>Ord</th><th>Frekvens</th></tr>
+          </thead>
+          <tbody>
+            ${lista.slice(0, 10).map(([word, freq]) =>
+              `<tr><td>${word}</td><td>${freq}</td></tr>`
+            ).join('')}
+          </tbody>
+        </table>
+      </div>
     `;
 
     modal.classList.remove('hidden');
+    document.body.classList.add('modal-open');
     console.log(`[cloud.js] ☁️ Ordmoln + tabell genererad (${lista.length} ord)`);
   } catch (err) {
     console.error('[cloud.js] ❌ Wordcloud-krasch:', err);
-    listContainer.innerHTML = `<p style="color:red; font-weight:bold;">⚠️ Kunde inte generera ordmoln (minnesfel eller för många ord).</p>`;
+    listContainer.innerHTML = `<p class="text--muted">⚠️ Kunde inte generera ordmoln (minnesfel eller för många ord).</p>`;
     modal.classList.remove('hidden');
+    document.body.classList.add('modal-open');
   }
 
-  closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    document.body.classList.remove('modal-open');
+  });
 }

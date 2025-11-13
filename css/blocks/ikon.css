@@ -60,3 +60,33 @@
   background-color: #555;
   color: #fff;
 }
+
+/* === Standardiserad readme-länk === */
+.info-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.08);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.info-link:hover,
+.info-link:focus {
+  background: rgba(37, 99, 235, 0.15);
+  transform: translateY(-1px);
+}
+
+.info-link__icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.info-link__text {
+  font-size: 0.9rem;
+}

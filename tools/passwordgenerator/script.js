@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetBtn = document.getElementById("resetBtn");
   const passphraseBox = document.getElementById("usePassphrase");
   const optionBoxes = ["useLower", "useUpper", "useNumbers", "useSymbols"].map(id => document.getElementById(id));
+  const resultWrapper = document.getElementById("resultWrapper");
 
   const genererade = [];
 
@@ -125,17 +126,12 @@ document.addEventListener("DOMContentLoaded", () => {
       genererade.push({ lösenord, styrka });
     }
 
-    // Hämta knappgruppen
-    const knappGrupp = document.getElementById("resultButtons");
-
-    // Visa knappgruppen när det finns resultat
+    // Visa knapparna när det finns resultat
     if (genererade.length) {
-      knappGrupp.classList.remove("utils--dold");
       exportBtn.classList.remove("hidden");
       resetBtn.classList.remove("hidden");
       exportBtn.dataset.hasResults = "true";
     } else {
-      knappGrupp.classList.add("utils--dold");
       exportBtn.classList.add("hidden");
       resetBtn.classList.add("hidden");
       exportBtn.dataset.hasResults = "";
@@ -146,9 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   resetBtn.addEventListener("click", () => {
     table.innerHTML = '';
-    // Dölj knappgruppen
-    const knappGrupp = document.getElementById("resultButtons");
-    knappGrupp.classList.add("utils--dold");
+    // Dölj knapparna
     exportBtn.classList.add("hidden");
     resetBtn.classList.add("hidden");
     genererade.length = 0;
@@ -184,10 +178,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function visaResultatTabell() {
-    document.querySelector('.tabell__wrapper').classList.remove('utils--dold');
+    resultWrapper?.classList.remove('hidden');
   }
   function doldResultatTabell() {
-    document.querySelector('.tabell__wrapper').classList.add('utils--dold');
+    resultWrapper?.classList.add('hidden');
   }
 
   // Gör exporten tillgänglig för export.js

@@ -1,20 +1,33 @@
 let lastJson = null;
 
-document.getElementById('convertBtn').addEventListener('click', async () => {
-  const files = document.getElementById('cssFiles').files;
-  if (!files.length) return;
+const convertButton = document.getElementById('convertBtn');
+const downloadButton = document.getElementById('downloadBtn');
+const resetButton = document.getElementById('resetBtn');
+const output = document.getElementById('output');
+const resultSection = document.getElementById('resultSection');
+const fileInput = document.getElementById('cssFiles');
+
+convertButton?.addEventListener('click', async () => {
+  if (!fileInput?.files?.length) {
+    return;
+  }
 
   const result = {};
-  for (const file of files) {
+  for (const file of fileInput.files) {
     const text = await file.text();
     result[file.name] = cssToJson(text);
   }
+
   lastJson = JSON.stringify(result, null, 2);
-  document.getElementById('output').textContent = lastJson;
-  document.getElementById('downloadBtn').disabled = false;
+  output.textContent = lastJson;
+
+  downloadButton?.classList.remove('hidden');
+  downloadButton?.removeAttribute('disabled');
+  resetButton?.classList.remove('hidden');
+  resultSection?.classList.remove('hidden');
 });
 
-document.getElementById('downloadBtn').addEventListener('click', () => {
+downloadButton?.addEventListener('click', () => {
   if (!lastJson) return;
   const blob = new Blob([lastJson], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -26,6 +39,18 @@ document.getElementById('downloadBtn').addEventListener('click', () => {
   a.download = filename;
   a.click();
   URL.revokeObjectURL(url);
+});
+
+resetButton?.addEventListener('click', () => {
+  if (fileInput) {
+    fileInput.value = '';
+  }
+  lastJson = null;
+  output.textContent = '';
+  downloadButton?.classList.add('hidden');
+  downloadButton?.setAttribute('disabled', 'disabled');
+  resetButton?.classList.add('hidden');
+  resultSection?.classList.add('hidden');
 });
 
 // Enkel CSS till JSON-konverterare (väldigt grundläggande)

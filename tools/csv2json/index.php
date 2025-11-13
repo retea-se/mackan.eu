@@ -4,42 +4,59 @@
 
 <main class="layout__container">
 
-  <section>
-    <h2>Ladda upp CSV-data</h2>
-    <input type="file" id="csvFileInput" class="falt__input" accept=".csv">
-    <button class="knapp" onclick="handleFileUpload()">Läs in fil</button>
-    <textarea id="csvInput" class="falt__textarea" placeholder="Klistra in din CSV-data här..."></textarea>
+  <header class="layout__sektion text--center">
+    <h1 class="rubrik rubrik--sektion">
+      <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
+    </h1>
+    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
+  </header>
+
+  <section class="layout__sektion">
+    <h2 class="rubrik rubrik--underrubrik">Ladda upp eller klistra in CSV-data</h2>
+    <form id="csvForm" class="form" autocomplete="off">
+      <div class="form__grupp">
+        <label for="csvFileInput" class="falt__etikett">Välj CSV-fil</label>
+        <input type="file" id="csvFileInput" class="falt__input" accept=".csv">
+      </div>
+      <div class="form__verktyg">
+        <button type="button" class="knapp" id="readFileBtn">Läs in fil</button>
+      </div>
+      <div class="form__grupp">
+        <label for="csvInput" class="falt__etikett">Eller klistra in CSV-data</label>
+        <textarea id="csvInput" class="falt__textarea" rows="10" placeholder="Klistra in din CSV-data här..."></textarea>
+      </div>
+    </form>
   </section>
 
-  <section>
-    <h2>Statistik</h2>
+  <section class="layout__sektion">
+    <h2 class="rubrik rubrik--underrubrik">Statistik</h2>
     <p id="csvStats">Statistik för din CSV-fil kommer att visas här.</p>
   </section>
 
-  <section>
-    <h2>Verktyg</h2>
+  <section class="layout__sektion">
+    <h2 class="rubrik rubrik--underrubrik">Verktyg</h2>
     <div id="columnFilter" class="kort"></div>
-    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
-      <label class="checkbox"><!-- TODO: osäker konvertering -->
+    <div class="form__verktyg">
+      <label class="falt__checkbox">
         <input type="checkbox" id="minifyCheckbox"> Kompakt JSON
       </label>
-      <label class="checkbox"><!-- TODO: osäker konvertering -->
+      <label class="falt__checkbox">
         <input type="checkbox" id="transposeCheckbox"> Transponera
       </label>
     </div>
   </section>
 
-  <section>
-    <h2>Förhandsgranskning</h2>
+  <section class="layout__sektion">
+    <h2 class="rubrik rubrik--underrubrik">Förhandsgranskning</h2>
     <pre id="livePreview" class="kort__terminal"></pre>
   </section>
 
-  <section>
-    <h2>Konverterad JSON</h2>
+  <section class="layout__sektion">
+    <h2 class="rubrik rubrik--underrubrik">Konverterad JSON</h2>
     <div id="jsonOutput" class="kort"></div>
-    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
-      <button class="knapp" onclick="downloadJson()">Ladda ner JSON</button>
-      <button class="knapp" onclick="copyToClipboard()">Kopiera till urklipp</button>
+    <div class="form__verktyg">
+      <button class="knapp" id="downloadJsonBtn">Ladda ner JSON</button>
+      <button class="knapp" id="copyJsonBtn">Kopiera till urklipp</button>
     </div>
   </section>
 </main>

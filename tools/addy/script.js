@@ -5,23 +5,37 @@
 function generateAddress() {
   const from = document.getElementById('fromAddress').value.trim();
   const to = document.getElementById('toAddress').value.trim();
+  const output = document.getElementById('generatedAddress');
+  const copyButton = document.getElementById('copyButton');
 
-  if (!from || !to || !to.includes('@') || !from.includes('@')) return;
+  output.value = '';
+  copyButton.classList.add('hidden');
+
+  if (!from || !to || !to.includes('@') || !from.includes('@')) {
+    return;
+  }
 
   const [fromUser, fromDomain] = from.split('@');
   const [toUser, toDomain] = to.split('@');
 
   const result = `${fromUser}+${toUser}=${toDomain}@${fromDomain}`;
-  const output = document.getElementById('generatedAddress');
 
   output.value = result;
-  document.getElementById('copyButton').classList.remove('hidden');
+  copyButton.classList.remove('hidden');
 }
 // ********** SLUT Adressgenerator **********
 
 // ********** START Kopiera **********
 function copyToClipboard() {
   const input = document.getElementById('generatedAddress');
+  const value = input.value.trim();
+  if (!value) return;
+
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(value);
+    return;
+  }
+
   input.select();
   document.execCommand('copy');
 }
@@ -60,11 +74,17 @@ function toggleLanguage() {
   document.getElementById('resultLabel').textContent = t.resultLabel;
   document.getElementById('generateButton').textContent = t.generateButton;
   document.getElementById('copyButton').textContent = t.copyButton;
-  document.getElementById('themeToggle').textContent = t.toggleThemeButton;
+
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    themeToggle.textContent = t.toggleThemeButton;
+  }
   document.getElementById('languageToggle').textContent = t.toggleLanguageButton;
 }
 // ********** SLUT Språkväxling **********
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('languageToggle').addEventListener('click', toggleLanguage);
+  document.getElementById('languageToggle')?.addEventListener('click', toggleLanguage);
+  document.getElementById('generateButton')?.addEventListener('click', generateAddress);
+  document.getElementById('copyButton')?.addEventListener('click', copyToClipboard);
 });

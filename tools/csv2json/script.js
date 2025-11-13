@@ -174,3 +174,7 @@ function copyToClipboard() {
 
 // *********************** SLUT: Exportfunktioner ***********************
 
+document.getElementById('readFileBtn')?.addEventListener('click', handleFileUpload);
+document.getElementById('downloadJsonBtn')?.addEventListener('click', downloadJson);
+document.getElementById('copyJsonBtn')?.addEventListener('click', copyToClipboard);
+

@@ -5,48 +5,49 @@ $metaDescription = 'Beskrivning av vad verktyget gör, inklusive syfte, funktion
 include '../../includes/layout-start.php';
 ?>
 
-<main class="container">
-  <h1 class="title">
-    <?= $title ?>
-      <!--nedan kan strula och generera dubbla titlar på sidan. undersöks närmare-->
-    <?php include '../../includes/readme-icon.php'; ?>
+<main class="layout__container">
+  <h1 class="rubrik">
+    <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
   </h1>
+  <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
 
   <!-- ********** START Sektion: Formulär ********** -->
-  <form class="form-group">
-    <div class="form-group">
+  <form class="form">
+    <div class="form__grupp">
       <label for="input1">Exempelinput</label>
-      <input type="text" id="input1" class="input" placeholder="Skriv något...">
+      <input type="text" id="input1" class="falt__input" placeholder="Skriv något...">
     </div>
 
-    <div class="form-group">
+    <div class="form__grupp">
       <label for="input2">Ytterligare input</label>
-      <textarea id="input2" class="textarea" placeholder="Kommentarer..."></textarea>
+      <textarea id="input2" class="falt__textarea" placeholder="Kommentarer..."></textarea>
     </div>
 
     <div class="form__verktyg">
-      <button type="button" class="button" data-tippy-content="Kör verktyget och visa resultatet">Kör</button>
-      <button type="button" class="button hidden">Exportera</button>
-      <button type="button" class="button hidden">Rensa</button>
+      <button type="button" class="knapp" data-tippy-content="Kör verktyget och visa resultatet">Kör</button>
+      <button type="button" class="knapp hidden">Exportera</button>
+      <button type="button" class="knapp hidden">Rensa</button>
     </div>
   </form>
   <!-- ********** SLUT Sektion: Formulär ********** -->
 
   <!-- ********** START Sektion: Resultat ********** -->
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Kolumn 1</th>
-        <th>Kolumn 2</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Exempel</td>
-        <td>Rad</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="tabell__wrapper">
+    <table class="tabell">
+      <thead>
+        <tr>
+          <th>Kolumn 1</th>
+          <th>Kolumn 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Exempel</td>
+          <td>Rad</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <!-- ********** SLUT Sektion: Resultat ********** -->
 </main>
 

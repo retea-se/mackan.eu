@@ -4,54 +4,67 @@
 
 <main class="layout__container">
 
-  <!-- ********** START Sektion: Formulär ********** -->
-  <form class="form__grupp">
-    <div class="form__grupp">
-      <label for="antal">Antal personnummer</label>
-      <input type="number" id="antal" class="falt__input" value="10" min="1" max="100">
-    </div>
+  <header class="layout__sektion text--center">
+    <h1 class="rubrik rubrik--sektion">
+      <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
+    </h1>
+    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
+    <p class="text--lead">
+      Generera testpersonnummer för angivet intervall. Resultatet kan exporteras till flera format för vidare testning.
+    </p>
+  </header>
 
-    <div class="form__grupp">
-      <label for="startYear">Från år</label>
-      <input type="number" id="startYear" class="falt__input" value="1950" min="1930" max="2025">
-    </div>
+  <section class="layout__sektion">
+    <form class="form" id="generateForm" novalidate>
+      <div class="form__grupp">
+        <label for="antal" class="falt__etikett">Antal personnummer</label>
+        <input type="number" id="antal" class="falt__input" value="10" min="1" max="100">
+      </div>
 
-    <div class="form__grupp">
-      <label for="endYear">Till år</label>
-      <input type="number" id="endYear" class="falt__input" value="2020" min="1930" max="2025">
-    </div>
+      <div class="form__grupp">
+        <label for="startYear" class="falt__etikett">Från år</label>
+        <input type="number" id="startYear" class="falt__input" value="1950" min="1930" max="2025">
+      </div>
 
-    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
-      <button type="button" class="knapp" id="generateBtn">Hämta</button>
-      <div id="loader" class="spinner utils--dold" aria-label="Laddar"></div>
-    </div>
-  </form>
-  <!-- ********** SLUT Sektion: Formulär ********** -->
+      <div class="form__grupp">
+        <label for="endYear" class="falt__etikett">Till år</label>
+        <input type="number" id="endYear" class="falt__input" value="2020" min="1930" max="2025">
+      </div>
 
-  <!-- ********** START Exportmeny ********** -->
-  <div id="exportMenu" class="export-menu utils--dold"><!-- TODO: osäker konvertering: export-menu -->
-    <button class="knapp knapp--liten" data-format="json">JSON</button>
-    <button class="knapp knapp--liten" data-format="csv">CSV</button>
-    <button class="knapp knapp--liten" data-format="xlsx">Excel</button>
+      <div class="form__verktyg">
+        <button type="button" class="knapp" id="generateBtn" data-tippy-content="Hämta nya testpersoner">Hämta</button>
+      </div>
+    </form>
+  </section>
+
+  <div id="loader" class="hidden text--muted text--center" aria-live="polite">
+    <span aria-hidden="true">🔄</span> Hämtar testpersoner ...
   </div>
-  <!-- ********** SLUT Exportmeny ********** -->
 
-  <!-- ********** START Sektion: Resultat ********** -->
-  <table class="tabell" id="resultTable">
-    <thead>
-      <tr>
-        <th>Personnummer</th>
-        <th>Födelsedatum</th>
-        <th>Kön</th>
-        <th>Ålder</th>
-        <th>Giltigt</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Dynamiskt innehåll fylls av JS -->
-    </tbody>
-  </table>
-  <!-- ********** SLUT Sektion: Resultat ********** -->
+  <section class="layout__sektion">
+    <div id="exportMenu" class="knapp__grupp hidden">
+      <button class="knapp knapp--liten" data-format="json">JSON</button>
+      <button class="knapp knapp--liten" data-format="csv">CSV</button>
+      <button class="knapp knapp--liten" data-format="xlsx">Excel</button>
+    </div>
+
+    <div class="tabell__wrapper">
+      <table class="tabell" id="resultTable">
+        <thead>
+          <tr>
+            <th>Personnummer</th>
+            <th>Födelsedatum</th>
+            <th>Kön</th>
+            <th>Ålder</th>
+            <th>Giltigt</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dynamiskt innehåll fylls av JS -->
+        </tbody>
+      </table>
+    </div>
+  </section>
 
 </main>
 

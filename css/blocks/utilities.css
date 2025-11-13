@@ -16,6 +16,11 @@
   display: none !important;
 }
 
+/* Tillfällig alias för äldre verktyg som använder utils--dold */
+.utils--dold {
+  display: none !important;
+}
+
 /* === Flexcentrering (samma som .center) === */
 .center {
   display: flex;

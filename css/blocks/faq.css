@@ -1,0 +1,76 @@
+/* ===================================================== */
+/* Fil: faq.css - v1                                      */
+/* Komponent: FAQ-lista                                    */
+/* Struktur: BEM (.faq, .faq__item, .faq__summary, etc.)  */
+/* Syfte: Konsistent styling för accordions med <details> */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Layout och styling för FAQ-block                     */
+/* - Temastöd via variabler                               */
+/* ❌ Får INTE innehålla:                                 */
+/* - Globala elementregler                                */
+/* - Andra komponenters klasser                           */
+/* ===================================================== */
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+.faq__item {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--background-color);
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq__item[open] {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.faq__summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary-color);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq__summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__summary::after {
+  content: '▾';
+  font-size: 1.1rem;
+  margin-left: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.faq__item[open] .faq__summary::after {
+  transform: rotate(180deg);
+}
+
+.faq__content {
+  margin-top: 0.75rem;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .faq__item {
+  background: #202a35;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .faq__summary {
+  color: var(--primary-color, #70b1ff);
+}
+

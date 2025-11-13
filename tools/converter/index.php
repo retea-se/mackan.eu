@@ -3,115 +3,6 @@
 <?php $metaDescription = 'Konvertera mellan olika dataformat som CSV, JSON, YAML och XML'; ?>
 <?php include '../../includes/layout-start.php'; ?>
 
-<style>
-/* Converter-specific enhancements */
-.converter-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2em;
-  background: var(--background-color);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-.converter-header {
-  text-align: center;
-  margin-bottom: 2em;
-  padding-bottom: 1em;
-  border-bottom: 2px solid var(--border-color);
-}
-
-.converter-header h1 {
-  font-size: 2.5em;
-  color: var(--primary-color);
-  margin: 0 0 0.5em 0;
-  font-weight: 700;
-}
-
-.converter-header p {
-  color: var(--text-color);
-  opacity: 0.8;
-  font-size: 1.1em;
-}
-
-.converter-tabs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1em;
-  margin-bottom: 2em;
-  padding: 1em;
-  background: var(--secondary-color);
-  border-radius: 8px;
-}
-
-.converter-tab {
-  position: relative;
-  padding: 1em;
-  background: var(--background-color);
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
-  font-weight: 600;
-  color: var(--text-color);
-}
-
-.converter-tab:hover {
-  background: var(--hover-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.converter-tab.active {
-  background: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-}
-
-.converter-tab .tab-icon {
-  font-size: 1.5em;
-  display: block;
-  margin-bottom: 0.5em;
-}
-
-.converter-tab .tab-title {
-  font-size: 0.9em;
-  display: block;
-}
-
-.converter-content {
-  background: var(--background-color);
-  border-radius: 8px;
-  padding: 2em;
-  min-height: 400px;
-  border: 1px solid var(--border-color);
-}
-
-@media (max-width: 768px) {
-  .converter-container {
-    padding: 1em;
-  }
-  
-  .converter-tabs {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5em;
-  }
-  
-  .converter-tab {
-    padding: 0.8em;
-  }
-  
-  .converter-tab .tab-icon {
-    font-size: 1.2em;
-  }
-  
-  .converter-header h1 {
-    font-size: 2em;
-  }
-}
-</style>
-
 <!-- ********** START: Converter Interface ********** -->
 <div class="converter-container">
   <div class="converter-header">
@@ -182,9 +73,5 @@
 
 
 <script type="module" src="script.js"></script>
-<script>
-  // Tippy-tooltips för nya tabs
-  tippy('.converter-tab[data-tippy-content]');
-</script>
 
 <?php include '../../includes/layout-end.php'; ?>

@@ -11,6 +11,7 @@ document.getElementById('convertButton')?.addEventListener('click', () => {
   const input = document.getElementById('hexInput').value.trim();
   const hexValues = input.split('\n').map(val => val.trim()).filter(val => val);
   const resultBody = document.getElementById('resultBody');
+  const resultWrapper = document.getElementById('resultWrapper');
   let resultHTML = '';
 
   hexValues.forEach(hex => {
@@ -20,6 +21,9 @@ document.getElementById('convertButton')?.addEventListener('click', () => {
 
   resultBody.innerHTML = resultHTML;
   const hasRows = hexValues.length > 0;
+  if (resultWrapper) {
+    resultWrapper.classList.toggle('hidden', !hasRows);
+  }
   document.getElementById('exportButton').classList.toggle('hidden', !hasRows);
   document.getElementById('clearButton').classList.toggle('hidden', !hasRows);
 });
@@ -49,6 +53,7 @@ document.getElementById('clearButton')?.addEventListener('click', () => {
   document.getElementById('resultBody').innerHTML = '';
   document.getElementById('exportButton').classList.add('hidden');
   document.getElementById('clearButton').classList.add('hidden');
+  document.getElementById('resultWrapper')?.classList.add('hidden');
 });
 
 /* Enter som trigger */

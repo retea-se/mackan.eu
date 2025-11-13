@@ -12,66 +12,84 @@ $canonical = 'https://mackan.eu/tools/passwordgenerator/';
 <?php include '../../includes/layout-start.php'; ?>
 
 <main class="layout__container">
-  <!-- Breadcrumbs -->
-  <nav class="breadcrumbs" aria-label="Du är här" style="margin-bottom: 1rem; font-size: 0.9rem; color: #6c757d;">
-    <a href="/" style="color: #007bff; text-decoration: none;">🏠 Hem</a> ›
-    <a href="/tools/" style="color: #007bff; text-decoration: none;">🔧 Verktyg</a> ›
-    <span>🔐 Lösenordsgenerator</span>
-  </nav>
-
-  <!-- ********** Språkval ********** -->
-  <div style="text-align:right;">
-    <a href="?lang=sv">Svenska</a> | <a href="?lang=en">English</a>
-  </div>
+  <header class="layout__sektion text--center">
+    <h1 class="rubrik rubrik--sektion">
+      <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
+      <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
+    </h1>
+    <p class="text--lead">
+      <?= htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>
+    </p>
+    <div class="text--muted text--small">
+      <a href="?lang=sv">Svenska</a> | <a href="?lang=en">English</a>
+    </div>
+  </header>
 
   <!-- ********** Förhandslösenord högst upp ********** -->
-  <section class="losenord__sektion" style="margin-top:2rem;">
-    <div class="losenord__rubrik" style="display:flex;align-items:center;gap:1rem;">
-      <span id="previewPassword" class="losenord__text" style="font-size:1.3rem;"></span>
-      <button type="button" id="previewCopy" class="knapp__ikon" aria-label="<?= $t['copy'] ?>" data-tippy-content="<?= $t['tippy_copy'] ?>">
-        <i class="fa-solid fa-copy"></i>
-      </button>
-      <button type="button" id="previewRefresh" class="knapp__ikon" aria-label="<?= $t['refresh'] ?>" data-tippy-content="<?= $t['tippy_refresh'] ?>">
-        <i class="fa-solid fa-rotate"></i>
-      </button>
-      <span id="previewStrength"></span>
+  <section class="layout__sektion">
+    <div class="kort">
+      <div class="kort__innehall" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <span id="previewPassword" class="losenord__text" style="font-size:1.3rem;flex:1;min-width:200px;"></span>
+        <button type="button" id="previewCopy" class="knapp__ikon" aria-label="<?= $t['copy'] ?>" data-tippy-content="<?= $t['tippy_copy'] ?>">
+          <i class="fa-solid fa-copy"></i>
+        </button>
+        <button type="button" id="previewRefresh" class="knapp__ikon" aria-label="<?= $t['refresh'] ?>" data-tippy-content="<?= $t['tippy_refresh'] ?>">
+          <i class="fa-solid fa-rotate"></i>
+        </button>
+        <span id="previewStrength"></span>
+      </div>
     </div>
   </section>
 
   <!-- ********** Formulär ********** -->
-  <form id="generatorForm" class="form__grupp" style="margin-top:2rem;">
-    <label for="length"><?= $t['length'] ?></label>
-    <input type="number" id="length" class="falt__input" min="4" max="128" value="20">
+  <section class="layout__sektion">
+    <form id="generatorForm" class="form" novalidate>
+      <div class="form__grupp">
+        <label for="length" class="falt__etikett"><?= $t['length'] ?></label>
+        <input type="number" id="length" class="falt__input" min="4" max="128" value="20">
+      </div>
 
-    <label for="amount"><?= $t['amount'] ?></label>
-    <input type="number" id="amount" class="falt__input" min="1" max="100" value="5">
+      <div class="form__grupp">
+        <label for="amount" class="falt__etikett"><?= $t['amount'] ?></label>
+        <input type="number" id="amount" class="falt__input" min="1" max="100" value="5">
+      </div>
 
-    <label><input type="checkbox" id="useLower" checked> <?= $t['lower'] ?></label>
-    <label><input type="checkbox" id="useUpper" checked> <?= $t['upper'] ?></label>
-    <label><input type="checkbox" id="useNumbers" checked> <?= $t['numbers'] ?></label>
-    <label><input type="checkbox" id="useSymbols" checked> <?= $t['symbols'] ?></label>
-    <label><input type="checkbox" id="usePassphrase"> <?= $t['passphrase'] ?></label>
+      <div class="form__grupp">
+        <span class="falt__etikett">Alternativ</span>
+        <div class="flex-column">
+          <label class="falt__checkbox"><input type="checkbox" id="useLower" checked> <?= $t['lower'] ?></label>
+          <label class="falt__checkbox"><input type="checkbox" id="useUpper" checked> <?= $t['upper'] ?></label>
+          <label class="falt__checkbox"><input type="checkbox" id="useNumbers" checked> <?= $t['numbers'] ?></label>
+          <label class="falt__checkbox"><input type="checkbox" id="useSymbols" checked> <?= $t['symbols'] ?></label>
+          <label class="falt__checkbox"><input type="checkbox" id="usePassphrase"> <?= $t['passphrase'] ?></label>
+        </div>
+      </div>
 
-    <button type="submit" class="knapp"><?= $t['generate'] ?></button>
-  </form>
+      <div class="form__verktyg">
+        <button type="submit" class="knapp" data-tippy-content="<?= $t['generate'] ?>"><?= $t['generate'] ?></button>
+      </div>
+    </form>
+  </section>
 
   <!-- ********** Resultattabell ********** -->
-  <div class="tabell__wrapper utils--dold" id="resultWrapper">
-    <table class="tabell" id="resultTable">
-      <thead>
-        <tr>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- JS genererar rader här -->
-      </tbody>
-    </table>
-  </div>
-  <div class="knapp__grupp utils--dold" id="resultButtons">
-    <button id="exportBtn" class="knapp" data-tippy-content="<?= $t['export'] ?>"><?= $t['tippy_export'] ?></button>
-    <button id="resetBtn" class="knapp" data-tippy-content="<?= $t['reset'] ?>"><?= $t['tippy_reset'] ?></button>
-  </div>
+  <section class="layout__sektion hidden" id="resultWrapper">
+    <div class="tabell__wrapper">
+      <table class="tabell" id="resultTable">
+        <thead>
+          <tr>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JS genererar rader här -->
+        </tbody>
+      </table>
+    </div>
+    <div class="knapp__grupp">
+      <button id="exportBtn" class="knapp" data-tippy-content="<?= $t['export'] ?>"><?= $t['tippy_export'] ?></button>
+      <button id="resetBtn" class="knapp knapp--liten" data-tippy-content="<?= $t['reset'] ?>"><?= $t['tippy_reset'] ?></button>
+    </div>
+  </section>
 
 </main>
 
@@ -83,28 +101,32 @@ $canonical = 'https://mackan.eu/tools/passwordgenerator/';
 <script src="export.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    if (window.tippy) {
-      tippy('[data-tippy-content]', { theme: 'light', delay: [100, 0] });
-    }
-
     if (window.generatePreviewPassword) {
       generatePreviewPassword();
     }
 
-    document.getElementById('previewCopy').addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const pw = document.getElementById('previewPassword').textContent.trim();
-      navigator.clipboard.writeText(pw);
-      showToast(t_copied);
-    });
+    const previewCopy = document.getElementById('previewCopy');
+    if (previewCopy) {
+      previewCopy.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const pw = document.getElementById('previewPassword').textContent.trim();
+        if (pw) {
+          navigator.clipboard.writeText(pw);
+          showToast(t_copied);
+        }
+      });
+    }
 
-    document.getElementById('previewRefresh').addEventListener('click', function(e) {
-      e.preventDefault();
-      if (window.generatePreviewPassword) {
-        generatePreviewPassword();
-      }
-    });
+    const previewRefresh = document.getElementById('previewRefresh');
+    if (previewRefresh) {
+      previewRefresh.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.generatePreviewPassword) {
+          generatePreviewPassword();
+        }
+      });
+    }
   });
 
   const t_copied = "<?= $t['copied'] ?>";

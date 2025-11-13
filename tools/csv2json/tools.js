@@ -137,34 +137,3 @@ function convertDataTypes() {
 }
 
 // *********************** SLUT: Avancerad datatypshantering ***********************
-function updateLivePreview(csvContent) {
-    console.log("updateLivePreview körs");
-    const rows = csvContent.split(/\r?\n/).filter(row => row.trim() !== '');
-    if (rows.length === 0) return;
-
-    const headers = rows[0].split(',').map(header => header.trim());
-    const dataRows = rows.slice(1).map(row => row.split(',').map(value => value.trim()));
-    const selectedColumns = Array.from(document.querySelectorAll('#columnFilter input:checked')).map(input => input.value);
-
-    console.log("Markerade kolumner:", selectedColumns);
-
-    const jsonData = dataRows.map(row => {
-        const obj = {};
-        headers.forEach((header, index) => {
-            if (selectedColumns.includes(header)) {
-                obj[header] = row[index]; // Inkludera endast markerade kolumner
-            }
-        });
-        return obj;
-    });
-
-    console.log("Genererad JSON baserat på markerade kolumner:", jsonData);
-
-    // Uppdatera förhandsgranskning
-    const livePreview = document.getElementById('livePreview');
-    livePreview.textContent = JSON.stringify(jsonData, null, 2);
-
-    // Uppdatera JSON-output
-    const jsonOutput = document.getElementById('jsonOutput');
-    jsonOutput.textContent = JSON.stringify(jsonData, null, 4);
-}

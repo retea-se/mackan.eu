@@ -1,10 +1,8 @@
-<?php
-// layout-end.php - v6
-include __DIR__ . '/footer.php';
-include __DIR__ . '/visitor-logger-js.php';
-?>
-
     </main>
+    <?php
+    include __DIR__ . '/footer.php';
+    include __DIR__ . '/visitor-logger-js.php';
+    ?>
   </div> <!-- ✅ Stänger layout-wrappern här -->
 
 <script src="/js/info-check.js" defer></script>

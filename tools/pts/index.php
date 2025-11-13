@@ -7,60 +7,69 @@ $metaDescription = 'Sök, filtrera och exportera ärenden från PTS diarium. Kli
 
 <main class="layout__container">
 
-  <!-- ********** START Sektion: Formulär ********** -->
-  <form class="form__grupp" id="dateForm">
-    <div class="form__grupp">
-      <label for="startDate">Startdatum</label>
-      <input type="date" id="startDate" class="falt__input">
-    </div>
+  <header class="layout__sektion text--center">
+    <h1 class="rubrik rubrik--sektion">
+      <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
+    </h1>
+    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
+    <p class="text--lead">
+      Ange datumintervall och filtrera rubriker för att hämta ärenden från PTS diarium. Exportera resultatet eller analysera rubrikerna i ett ordmoln.
+    </p>
+  </header>
 
-    <div class="form__grupp">
-      <label for="endDate">Slutdatum</label>
-      <input type="date" id="endDate" class="falt__input">
-    </div>
+  <section class="layout__sektion">
+    <form class="form" id="dateForm" novalidate>
+      <div class="form__grupp">
+        <label for="startDate" class="falt__etikett">Startdatum</label>
+        <input type="date" id="startDate" class="falt__input">
+      </div>
 
-    <div class="form__grupp">
-      <label for="search">Filtrera rubriker</label>
-      <input type="text" id="search" class="falt__input" placeholder="Sök...">
-    </div>
+      <div class="form__grupp">
+        <label for="endDate" class="falt__etikett">Slutdatum</label>
+        <input type="date" id="endDate" class="falt__input">
+      </div>
 
-    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
-      <button type="submit" class="knapp">Kör</button>
-      <button type="button" class="knapp" id="exportJson" disabled>Exportera JSON</button>
-      <button type="button" class="knapp" id="exportCsv" disabled>Exportera CSV</button>
-      <button type="button" class="knapp" id="showWordcloud" disabled>Ordmoln</button>
-    </div>
-  </form>
-  <!-- ********** SLUT Sektion: Formulär ********** -->
+      <div class="form__grupp">
+        <label for="search" class="falt__etikett">Filtrera rubriker</label>
+        <input type="text" id="search" class="falt__input" placeholder="Sök...">
+      </div>
 
-  <!-- ********** START Sektion: Resultat ********** -->
-  <div class="tabell__wrapper">
-    <table class="tabell tabell--kompakt" id="resultTable">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Diarienummer</th>
-          <th>Datum</th>
-          <th>Status</th>
-          <th>Rubrik</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td colspan="5">⏳ Väntar på sökning...</td></tr>
-      </tbody>
-    </table>
+      <div class="form__verktyg">
+        <button type="submit" class="knapp" data-tippy-content="Hämta ärenden inom spannet">Kör</button>
+        <button type="button" class="knapp" id="exportJson" disabled>Exportera JSON</button>
+        <button type="button" class="knapp" id="exportCsv" disabled>Exportera CSV</button>
+        <button type="button" class="knapp" id="showWordcloud" disabled>Ordmoln</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="layout__sektion">
+    <div class="tabell__wrapper">
+      <table class="tabell tabell--kompakt" id="resultTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Diarienummer</th>
+            <th>Datum</th>
+            <th>Status</th>
+            <th>Rubrik</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="5">⏳ Väntar på sökning...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div id="wordcloudModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="wordcloudTitle">
+    <div class="modal__dialog">
+      <button id="closeWordcloud" class="modal__close" aria-label="Stäng ordmoln">&times;</button>
+      <h2 class="modal__title" id="wordcloudTitle">Ordmoln över rubriker</h2>
+      <canvas id="wordcloudCanvas" width="600" height="400" aria-describedby="wordlist"></canvas>
+      <div id="wordlist" class="modal__body"></div>
+    </div>
   </div>
-  <!-- ********** SLUT Sektion: Resultat ********** -->
-
-  <!-- ********** START Sektion: Ordmolnsmodal ********** -->
-  <div id="wordcloudModal" class="utils--dold" style="position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 9999;">
-    <div style="background: #fff; padding: 2rem; border-radius: 8px; max-width: 90vw; max-height: 90vh; overflow: auto; position: relative;">
-      <button id="closeWordcloud" style="position:absolute; top:8px; right:8px; font-size:1.2rem;">✖</button>
-      <canvas id="wordcloudCanvas" width="600" height="400"></canvas>
-      <div id="wordlist" style="margin-top:2rem;"></div>
-    </div>
-  </div>
-  <!-- ********** SLUT Sektion: Ordmolnsmodal ********** -->
 
 </main>
 
@@ -73,18 +82,3 @@ $metaDescription = 'Sök, filtrera och exportera ärenden från PTS diarium. Kli
   const btn = document.getElementById('showWordcloud');
   btn.addEventListener('click', () => initWordcloud(window.ärenden || []));
 </script>
-<script>
-  // Visa modalen
-  document.getElementById('wordcloudModal').classList.remove('utils--dold');
-  document.body.classList.add('modal-open');
-
-  // Dölj modalen
-  document.getElementById('wordcloudModal').classList.add('utils--dold');
-  document.body.classList.remove('modal-open');
-</script>
-<style>
-/* Lägg i din CSS */
-body.modal-open {
-  overflow: hidden;
-}
-</style>

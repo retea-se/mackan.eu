@@ -7,38 +7,60 @@ include '../../includes/layout-start.php';
 
 <main class="layout__container">
 
-  <?php if (!empty($subtitle)): ?>
-    <p class="subtitle"><!-- TODO: osäker konvertering: subtitle --><?= $subtitle ?></p>
-  <?php endif; ?>
+  <header class="layout__sektion text--center">
+    <h1 class="rubrik rubrik--sektion">
+      <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
+    </h1>
+    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
+    <?php if (!empty($subtitle)): ?>
+      <p class="text--lead"><?= htmlspecialchars($subtitle, ENT_QUOTES, 'UTF-8'); ?></p>
+    <?php endif; ?>
+  </header>
 
-  <textarea id="personnummerList" class="falt__textarea" rows="10" placeholder="Klistra in personnummer här..." data-tippy-content="Klistra in personnummer här"></textarea>
-  <button class="knapp" onclick="processPersonnummer()" data-tippy-content="Bearbetar personnummer">Bearbeta</button>
+  <section class="layout__sektion">
+    <form class="form" id="pnrForm" novalidate>
+      <div class="form__grupp">
+        <label for="personnummerList" class="falt__etikett">Personnummer</label>
+        <textarea id="personnummerList" class="falt__textarea" rows="10" placeholder="Klistra in personnummer här..." data-tippy-content="Klistra in personnummer här"></textarea>
+      </div>
+      <div class="form__verktyg">
+        <button type="submit" class="knapp" id="processBtn" data-tippy-content="Bearbeta personnummer">Bearbeta</button>
+      </div>
+    </form>
+  </section>
 
-  <h2 id="resultsHeader" class="utils--dold">Resultat:</h2>
-  <div id="summary" class="utils--dold">
-    <p>Antal män: <span id="maleCount">0</span> (<span id="malePercentage">0%</span>)</p>
-    <p>Antal kvinnor: <span id="femaleCount">0</span> (<span id="femalePercentage">0%</span>)</p>
-    <p>Snittålder: <span id="averageAge">0</span> år</p>
-  </div>
+  <section class="layout__sektion hidden" id="resultSection">
+    <h2 id="resultsHeader" class="rubrik rubrik--underrubrik">Resultat</h2>
+    <div id="summary" class="kort">
+      <div class="kort__innehall">
+        <p>Antal män: <span id="maleCount">0</span> (<span id="malePercentage">0%</span>)</p>
+        <p>Antal kvinnor: <span id="femaleCount">0</span> (<span id="femalePercentage">0%</span>)</p>
+        <p>Snittålder: <span id="averageAge">0</span> år</p>
+      </div>
+    </div>
 
-  <div class="tabell__wrapper">
-    <table id="resultsTable" class="tabell utils--dold">
-      <thead>
-        <tr>
-          <th>Personnummer</th>
-          <th>Validering</th>
-          <th>Kommentar</th>
-          <th>Kön</th>
-          <th>Ålder</th>
-          <th>Stjärntecken</th>
-          <th>Dagar kvar till födelsedag</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+    <div class="tabell__wrapper">
+      <table id="resultsTable" class="tabell hidden">
+        <thead>
+          <tr>
+            <th>Personnummer</th>
+            <th>Validering</th>
+            <th>Kommentar</th>
+            <th>Kön</th>
+            <th>Ålder</th>
+            <th>Stjärntecken</th>
+            <th>Dagar kvar till födelsedag</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
 
-  <button id="exportButton" class="knapp utils--dold" data-tippy-content="Exporterar resultat">Exportera</button>
+    <div class="knapp__grupp hidden" id="exportWrapper">
+      <button id="exportButton" class="knapp" data-tippy-content="Exporterar resultat">Exportera</button>
+    </div>
+  </section>
+
 </main>
 
 <?php include '../../includes/layout-end.php'; ?>

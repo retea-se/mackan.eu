@@ -1,0 +1,75 @@
+/* ===================================================== */
+/* Fil: modal.css - v1                                   */
+/* Komponent: Modal/Dialog                               */
+/* Struktur: BEM (.modal, .modal__dialog, .modal__close) */
+/* Syfte: Övergripande modal och dialoger                */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Layout och stilar för modala dialoger               */
+/* - Temastöd via variabler                               */
+/* ❌ Får INTE innehålla:                                 */
+/* - Globala elementregler                                */
+/* - Komponentspecifikt innehåll utanför modal           */
+/* ===================================================== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.modal__dialog {
+  position: relative;
+  background: var(--background-color, #fff);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.modal__title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.modal__body {
+  margin-top: 1.5rem;
+  color: var(--text-color);
+}
+
+.modal__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.modal__close:hover,
+.modal__close:focus {
+  color: var(--primary-color);
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+[data-theme="dark"] .modal__dialog {
+  background: #1f2a36;
+  color: var(--text-color, #e9ecef);
+}
+

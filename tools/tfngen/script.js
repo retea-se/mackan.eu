@@ -67,8 +67,14 @@ function uppdateraNummerLista() {
 
     // Visa exportknapp endast om det finns data
     const knappContainer = document.getElementById('exportKnappContainer');
+    const rensaKnapp = document.getElementById('rensaknapp');
+    const hasNumbers = genereradeNummer.length > 0;
+
     if (knappContainer) {
-        knappContainer.classList.toggle('hidden', genereradeNummer.length === 0);
+        knappContainer.classList.toggle('hidden', !hasNumbers);
+    }
+    if (rensaKnapp) {
+        rensaKnapp.classList.toggle('hidden', !hasNumbers);
     }
 }
 
@@ -94,3 +100,17 @@ function laddaNer(content, fileName) {
     link.click();
     document.body.removeChild(link);
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('generatorForm')?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        genereraNummer();
+    });
+
+    document.getElementById('exportJsonBtn')?.addEventListener('click', exporteraTillJSON);
+
+    document.getElementById('rensaknapp')?.addEventListener('click', () => {
+        genereradeNummer = [];
+        uppdateraNummerLista();
+    });
+});
