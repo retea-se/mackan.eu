@@ -22,30 +22,38 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
+          # Use absolute path - expand ~ if present
           DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
-          echo "📁 Deploy path: $DEPLOY_PATH"
-          
-          # Expand ~ to home directory if needed
-          if [[ "$DEPLOY_PATH" == ~* ]]; then
+          if [ "${DEPLOY_PATH#~}" != "$DEPLOY_PATH" ]; then
             DEPLOY_PATH="${DEPLOY_PATH/#\~/$HOME}"
           fi
           
-          echo "📁 Expanded path: $DEPLOY_PATH"
-          cd "$DEPLOY_PATH" || {
+          echo "📁 Deploy path: $DEPLOY_PATH"
+          echo "📂 Home directory: $HOME"
+          echo "📂 Current directory: $(pwd)"
+          
+          # Change to deploy directory
+          if ! cd "$DEPLOY_PATH"; then
             echo "❌ Failed to cd to $DEPLOY_PATH"
             echo "📂 Current directory: $(pwd)"
-            echo "📂 Home directory: $HOME"
+            ls -la "$(dirname "$DEPLOY_PATH")" || true
+            exit 1
+          fi
+          
+          echo "📂 Changed to: $(pwd)"
+          echo "📦 Fetching latest changes from main..."
+          git fetch origin main || {
+            echo "❌ Git fetch failed"
             exit 1
           }
-          echo "📂 Current directory: $(pwd)"
-          echo "📦 Fetching latest changes from main..."
-          git fetch origin main
           
           echo "📥 Pulling latest changes from main..."
-          # Try to pull, if it fails due to conflicts, use reset --hard
-          if ! git pull origin main 2>&1; then
+          if ! git pull origin main; then
             echo "⚠️  Git pull failed. Using hard reset to match remote..."
-            git reset --hard origin/main
+            git reset --hard origin/main || {
+              echo "❌ Git reset failed"
+              exit 1
+            }
           fi
           
           echo "✅ Deployment complete!"
