@@ -22,11 +22,19 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          set -e  # Exit on error
           DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
           echo "📁 Deploy path: $DEPLOY_PATH"
+          
+          # Expand ~ to home directory if needed
+          if [[ "$DEPLOY_PATH" == ~* ]]; then
+            DEPLOY_PATH="${DEPLOY_PATH/#\~/$HOME}"
+          fi
+          
+          echo "📁 Expanded path: $DEPLOY_PATH"
           cd "$DEPLOY_PATH" || {
             echo "❌ Failed to cd to $DEPLOY_PATH"
+            echo "📂 Current directory: $(pwd)"
+            echo "📂 Home directory: $HOME"
             exit 1
           }
           echo "📂 Current directory: $(pwd)"
