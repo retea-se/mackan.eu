@@ -21,17 +21,20 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        timeout: 30s
+        debug: true
         script: |
           # Use absolute path - expand ~ if present
           DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
           if [ "${DEPLOY_PATH#~}" != "$DEPLOY_PATH" ]; then
             DEPLOY_PATH="${DEPLOY_PATH/#\~/$HOME}"
           fi
-          
+
           echo "📁 Deploy path: $DEPLOY_PATH"
           echo "📂 Home directory: $HOME"
           echo "📂 Current directory: $(pwd)"
-          
+
           # Change to deploy directory
           if ! cd "$DEPLOY_PATH"; then
             echo "❌ Failed to cd to $DEPLOY_PATH"
@@ -39,14 +42,14 @@ jobs:
             ls -la "$(dirname "$DEPLOY_PATH")" || true
             exit 1
           fi
-          
+
           echo "📂 Changed to: $(pwd)"
           echo "📦 Fetching latest changes from main..."
           git fetch origin main || {
             echo "❌ Git fetch failed"
             exit 1
           }
-          
+
           echo "📥 Pulling latest changes from main..."
           if ! git pull origin main; then
             echo "⚠️  Git pull failed. Using hard reset to match remote..."
@@ -55,7 +58,7 @@ jobs:
               exit 1
             }
           fi
-          
+
           echo "✅ Deployment complete!"
           echo "📊 Current commit: $(git rev-parse --short HEAD)"
           echo "📊 Current branch: $(git branch --show-current)"
