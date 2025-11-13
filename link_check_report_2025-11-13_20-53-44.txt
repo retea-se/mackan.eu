@@ -1,0 +1,12 @@
+Länkkontrollrapport - 2025-11-13 20:53:44
+============================================================
+
+Totalt kontrollerade länkar: 40
+✅ OK: 38
+🔴 404: 0
+⚠️  Andra statuskoder: 1
+❌ Fel: 1
+
+ANDRA STATUSKODER:
+  - /admin/geo-country.php?ip=8.8.8.8 (500)
+

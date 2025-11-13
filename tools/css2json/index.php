@@ -11,7 +11,6 @@ include '../../includes/layout-start.php';
     <h1 class="rubrik rubrik--sektion">
       <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
     </h1>
-    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
     <p class="text--lead">
       Ladda upp en eller flera CSS-filer och få en JSON-representation som kan laddas ned
       eller kopieras vidare i ditt projekt.

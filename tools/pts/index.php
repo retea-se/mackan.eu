@@ -11,7 +11,6 @@ $metaDescription = 'Sök, filtrera och exportera ärenden från PTS diarium. Kli
     <h1 class="rubrik rubrik--sektion">
       <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
     </h1>
-    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
     <p class="text--lead">
       Ange datumintervall och filtrera rubriker för att hämta ärenden från PTS diarium. Exportera resultatet eller analysera rubrikerna i ett ordmoln.
     </p>

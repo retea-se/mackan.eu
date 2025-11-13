@@ -1,0 +1,9 @@
+Länkkontrollrapport - 2025-11-13 21:07:20
+============================================================
+
+Totalt kontrollerade länkar: 40
+✅ OK: 39
+🔴 404: 0
+⚠️  Andra statuskoder: 0
+❌ Fel: 1
+

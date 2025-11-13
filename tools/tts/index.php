@@ -8,7 +8,6 @@ include '../../includes/layout-start.php';
 <main class="layout__container">
   <h1 class="title"><!-- TODO: osäker konvertering: title -->
     <?= $title ?>
-    <a href="readme.php" class="ikon--info-flytande" title="Om verktyget">ⓘ</a>
   </h1>
   <?php if (!empty($subtitle)): ?>
     <p class="subtitle"><!-- TODO: osäker konvertering: subtitle --><?= $subtitle ?></p>

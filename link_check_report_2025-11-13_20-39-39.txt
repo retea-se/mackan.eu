@@ -1,0 +1,20 @@
+Länkkontrollrapport - 2025-11-13 20:39:39
+============================================================
+
+Totalt kontrollerade länkar: 40
+✅ OK: 32
+🔴 404: 6
+⚠️  Andra statuskoder: 1
+❌ Fel: 1
+
+404-FEL:
+  - /admin/pro-analytics.php
+  - /admin/security-monitor.php
+  - /tools/koordinat/impex.php
+  - /tools/koordinat/impex_map.php
+  - /tools/koordinat/index.php
+  - /tools/qr_v3/index.php
+
+ANDRA STATUSKODER:
+  - /admin/geo-country.php (400)
+

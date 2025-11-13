@@ -15,11 +15,13 @@
 
 ### Möjliga orsaker:
 
-1. **SSH-nyckel i GitHub secrets:** 
+1. **SSH-nyckel i GitHub secrets:**
+
    - Kanske inte korrekt kopierad (hela filen måste kopieras inklusive BEGIN/END rader)
    - Kanske har extra radbrytningar eller tecken
 
 2. **DEPLOY_PATH secret:**
+
    - Kanske behöver vara absolut sökväg (`/home/mackaneu/public_html`) istället för `~/public_html`
    - GitHub Actions kanske inte expanderar `~` korrekt
 

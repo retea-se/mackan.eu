@@ -10,7 +10,6 @@ $metaDescription = 'Konvertera hexadecimala Aptus-värden till decimalform. Klis
     <h1 class="rubrik rubrik--sektion">
       <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
     </h1>
-    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
     <p class="text--lead">
       Klistra in hexadecimala Aptus-värden – verktyget konverterar automatiskt till decimal
       och låter dig exportera resultatet som CSV.
@@ -47,11 +46,6 @@ $metaDescription = 'Konvertera hexadecimala Aptus-värden till decimalform. Klis
     </div>
   </section>
 
-  <div class="text--center">
-    <a href="readme.php" class="ikon--info-flytande" title="Om verktyget">
-      <i class="fa-solid fa-circle-info"></i>
-    </a>
-  </div>
 </main>
 
 <?php include '../../includes/layout-end.php'; ?>

@@ -9,7 +9,6 @@ $metaDescription = 'Hämta företagsdata från Bolagsverkets API baserat på org
     <h1 class="rubrik rubrik--sektion">
       <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
     </h1>
-    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
     <p class="text--lead">
       Slå upp företag direkt mot Bolagsverkets API. Ange ett organisationsnummer så presenteras
       struktur­erad data som du kan exportera.

@@ -11,7 +11,6 @@ $metaDescription = 'Skapa testnummer inom mobil- och fastnät. Välj serier, for
     <h1 class="rubrik rubrik--sektion">
       <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
     </h1>
-    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
     <p class="text--lead">
       Generera svenska testnummer för mobil- och fastnät. Välj serier och format, exportera resultatet vid behov.
     </p>

@@ -11,7 +11,6 @@ include '../../includes/layout-start.php';
     <h1 class="rubrik rubrik--sektion">
       <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
     </h1>
-    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
     <?php if (!empty($subtitle)): ?>
       <p class="text--lead"><?= htmlspecialchars($subtitle, ENT_QUOTES, 'UTF-8'); ?></p>
     <?php endif; ?>

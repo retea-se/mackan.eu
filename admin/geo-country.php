@@ -18,7 +18,14 @@ if (!empty($ip)) {
     // 🛰️ Hämta landskod via ipapi.co
     $url = "https://ipapi.co/$ip/country/";
 
-    $response = @file_get_contents($url);
+    $context = stream_context_create([
+        'http' => [
+            'timeout' => 5,
+            'user_agent' => 'Mackan.eu/1.0'
+        ]
+    ]);
+
+    $response = @file_get_contents($url, false, $context);
     if ($response === false) {
         http_response_code(500);
         echo json_encode(["error" => "Kunde inte hämta data från ipapi.co"]);

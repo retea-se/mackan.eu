@@ -1,319 +1,526 @@
 # 🚀 Deployment Guide för Mackan.eu
 
-## Nuvarande Situation
-- **Server**: omega.hostup.se (via SSH)
-- **Repository**: GitHub (tempdump/mackan-eu)
-- **Branch**: `main` (produktion)
-- **Tidigare metod**: SFTP (manuell filöverföring)
-- **Nuvarande metod**: SSH Git Pull (via `scripts/deploy.ps1`)
+## 📖 Innehållsförteckning
+
+1. [Vad är GitHub Actions?](#vad-är-github-actions)
+2. [Hur fungerar det?](#hur-fungerar-det)
+3. [Setup Status](#setup-status)
+4. [Steg-för-steg Setup](#steg-för-steg-setup)
+5. [Testa Deployment](#testa-deployment)
+6. [Felsökning](#felsökning)
+7. [Alternativ: Manuell Deployment](#alternativ-manuell-deployment)
 
 ---
 
-## 📋 Rekommenderade Deployment-Alternativ
+## 🎓 Vad är GitHub Actions?
 
-### 🥇 **Alternativ 1: GitHub Actions (CI/CD) - REKOMMENDERAT**
+**GitHub Actions** är ett automationssystem som körs i molnet. Tänk på det som en "robot" som automatiskt gör saker åt dig när du pushar kod till GitHub.
 
-**Fördelar:**
-- ✅ Automatisk deployment vid push till `main`
-- ✅ Gratis för publika repos
-- ✅ Historik och loggar i GitHub
-- ✅ Kan köra tester innan deployment
-- ✅ Rollback via GitHub UI
-- ✅ Ingen lokal installation krävs
+### Enkelt förklarat:
 
-**Nackdelar:**
-- ⚠️ Kräver SSH-nyckel på GitHub (säkert)
-- ⚠️ Första setup tar ~10 minuter
+1. **Du gör ändringar** i din kod lokalt
+2. **Du pushar** till GitHub (`git push origin main`)
+3. **GitHub Actions "ser"** att du pushade
+4. **Automatiskt** loggar den in på din server via SSH
+5. **Automatiskt** hämtar den den nya koden (`git pull`)
+6. **Klart!** Din webbplats är uppdaterad
 
-**Hur det fungerar:**
-1. Du pushar till `main` på GitHub
-2. GitHub Actions kör automatiskt
-3. Script loggar in via SSH och kör `git pull`
-4. Klart! 🎉
+**Före:** Du måste manuellt logga in på servern och köra `git pull`
+**Efter:** Det händer automatiskt när du pushar! 🎉
 
 ---
 
-### 🥈 **Alternativ 2: SSH Git Pull (Enkel & Snabb) - DU HAR REDAN DETTA!**
+## 🔄 Hur fungerar det?
 
-**Fördelar:**
-- ✅ Mycket enkelt
-- ✅ Fungerar direkt
-- ✅ Full kontroll
-- ✅ Inga extra verktyg
-- ✅ **Du har redan `scripts/deploy.ps1`!**
+### Visuellt flöde:
 
-**Nackdelar:**
-- ⚠️ Manuellt (måste köra kommandot)
-- ⚠️ Ingen automatisk deployment
-- ⚠️ Ingen historik
+```
+┌─────────────────┐
+│  Du gör ändring │
+│  i din kod      │
+└────────┬────────┘
+         │
+         │ git push origin main
+         ▼
+┌─────────────────┐
+│  GitHub tar     │
+│  emot koden     │
+└────────┬────────┘
+         │
+         │ GitHub Actions startar automatiskt
+         ▼
+┌─────────────────┐
+│  GitHub Actions │
+│  kör workflow   │
+│  (.github/      │
+│   workflows/    │
+│   deploy.yml)   │
+└────────┬────────┘
+         │
+         │ Använder secrets för att logga in
+         ▼
+┌─────────────────┐
+│  SSH-anslutning │
+│  till servern   │
+│  (omega.hostup. │
+│   se)           │
+└────────┬────────┘
+         │
+         │ cd ~/public_html && git pull
+         ▼
+┌─────────────────┐
+│  Koden är       │
+│  uppdaterad!    │
+│  ✅             │
+└─────────────────┘
+```
 
-**Hur det fungerar:**
+### Vad händer i detalj:
+
+1. **Workflow-filen** (`.github/workflows/deploy.yml`) säger till GitHub Actions:
+
+   - "När någon pushar till `main` branch, kör detta script"
+
+2. **Scriptet** gör följande:
+
+   - Loggar in på servern (`omega.hostup.se`) via SSH
+   - Går till rätt mapp (`~/public_html`)
+   - Kör `git pull origin main` för att hämta senaste koden
+   - Klart!
+
+3. **Secrets** är säkra variabler som lagras i GitHub:
+   - `SSH_HOST` = Var servern finns (`omega.hostup.se`)
+   - `SSH_USER` = Användarnamn (`mackaneu`)
+   - `SSH_PRIVATE_KEY` = Nyckeln för att logga in (känslig!)
+   - `DEPLOY_PATH` = Var på servern koden ska deployas (`~/public_html`)
+
+---
+
+## ✅ Setup Status
+
+### Vad som är klart:
+
+- ✅ **SSH-nyckel skapad** för GitHub Actions
+- ✅ **SSH-nyckel lagd till på servern** (kan logga in)
+- ✅ **Workflow-fil skapad** (`.github/workflows/deploy.yml`)
+- ✅ **Alla 4 secrets lagda i GitHub:**
+  - `SSH_HOST` = `omega.hostup.se`
+  - `SSH_USER` = `mackaneu`
+  - `SSH_PRIVATE_KEY` = (hela SSH-nyckeln)
+  - `DEPLOY_PATH` = `~/public_html`
+
+### ⚠️ Vad som behöver kontrolleras:
+
+1. **DEPLOY_PATH måste vara en git repository**
+   - Mappen `~/public_html` på servern måste vara en git repo
+   - Om den inte är det, kommer deployment att misslyckas
+   - Se [Felsökning](#felsökning) för hur du kontrollerar detta
+
+---
+
+## 📝 Steg-för-steg Setup
+
+### Steg 1: Kontrollera att servern har git repository
+
+**Varför?** GitHub Actions kör `git pull` i `~/public_html`, så mappen måste vara en git repository.
+
+**Kontrollera:**
+
 ```powershell
-# Använd ditt befintliga script:
-powershell -ExecutionPolicy Bypass -File scripts/deploy.ps1
-
-# Eller direkt SSH:
-"C:\Windows\System32\OpenSSH\ssh.exe" mackaneu@omega.hostup.se "cd ~/public_html && git pull origin main"
+# Logga in på servern och kolla
+ssh mackaneu@omega.hostup.se "cd ~/public_html && git status"
 ```
 
-**⚠️ OBS:** Justera `$remotePath` i `scripts/deploy.ps1` till rätt sökväg för mackan.eu!
+**Om det säger "not a git repository":**
+
+Du behöver antingen:
+
+- **Alternativ A:** Klona repositoryt på servern:
+
+  ```bash
+  ssh mackaneu@omega.hostup.se
+  cd ~/public_html
+  git clone https://github.com/tempdump/mackan-eu.git .
+  ```
+
+- **Alternativ B:** Initiera git i mappen:
+  ```bash
+  ssh mackaneu@omega.hostup.se
+  cd ~/public_html
+  git init
+  git remote add origin https://github.com/tempdump/mackan-eu.git
+  git pull origin main
+  ```
+
+### Steg 2: Verifiera att secrets är korrekta
+
+**Gå till:** https://github.com/tempdump/mackan-eu/settings/secrets/actions
+
+**Kontrollera att du ser alla 4 secrets:**
+
+- ✅ SSH_HOST
+- ✅ SSH_USER
+- ✅ SSH_PRIVATE_KEY
+- ✅ DEPLOY_PATH
+
+**Om något saknas:** Se [Steg 3](#steg-3-lägg-till-secrets-i-github) nedan.
+
+### Steg 3: Lägg till Secrets i GitHub (om de saknas)
+
+**Varför?** Secrets är säkra variabler som GitHub Actions använder för att logga in på servern. De lagras krypterat och kan inte ses av andra.
+
+**Gå till:** https://github.com/tempdump/mackan-eu/settings/secrets/actions
+
+**Klicka "New repository secret" för varje:**
+
+#### Secret 1: SSH_HOST
+
+- **Name:** `SSH_HOST`
+- **Value:** `omega.hostup.se`
+- **Vad är det?** Adressen till din server
+
+#### Secret 2: SSH_USER
+
+- **Name:** `SSH_USER`
+- **Value:** `mackaneu`
+- **Vad är det?** Användarnamnet för att logga in på servern
+
+#### Secret 3: SSH_PRIVATE_KEY
+
+- **Name:** `SSH_PRIVATE_KEY`
+- **Value:** (Öppna filen `C:\Users\marcu\.ssh\id_ed25519_github_actions_mackan` och kopiera HELA innehållet)
+- **Vad är det?** Den privata SSH-nyckeln som låter GitHub Actions logga in på servern
+- **⚠️ VIKTIGT:** Kopiera ALLT, inklusive `-----BEGIN OPENSSH PRIVATE KEY-----` och `-----END OPENSSH PRIVATE KEY-----`
+
+#### Secret 4: DEPLOY_PATH
+
+- **Name:** `DEPLOY_PATH`
+- **Value:** `~/public_html`
+- **Vad är det?** Var på servern din webbplats ligger (mappen som ska uppdateras)
+
+### Steg 4: Verifiera Workflow-filen
+
+**Filen ska finnas:** `.github/workflows/deploy.yml`
+
+**Innehåll:** Se filen ovan. Den säger till GitHub Actions:
+
+- "När någon pushar till `main`, logga in på servern och kör `git pull`"
+
+**Om filen inte finns:** Skapa den enligt mallen ovan.
 
 ---
 
-### 🥉 **Alternativ 3: Webhook-baserad (Avancerat)**
+## 🧪 Testa Deployment
 
-**Fördelar:**
-- ✅ Automatisk deployment
-- ✅ Kontrolleras av din server
+### Metod 1: Gör en liten ändring och pusha
 
-**Nackdelar:**
-- ⚠️ Kräver PHP-script på servern
-- ⚠️ Mer komplex setup
-- ⚠️ Säkerhetsöverväganden
+1. **Gör en liten ändring:**
 
----
-
-## 🎯 **MIN REKOMMENDATION: GitHub Actions**
-
-För ditt projekt passar **GitHub Actions** bäst eftersom:
-1. Du redan använder GitHub
-2. Du vill ha automatisk deployment
-3. Du vill ha historik och kontroll
-4. Det är gratis och professionellt
-5. **Workflow-filen är redan skapad!** (`.github/workflows/deploy.yml`)
-
-**Alternativ:** Om du föredrar manuell kontroll, använd ditt befintliga `scripts/deploy.ps1` script.
-
----
-
-## 📝 Steg-för-steg: Setup GitHub Actions
-
-**⚠️ VIKTIGT:** Du behöver veta var din webbplats ligger på servern!
-- Är det `~/public_html`?
-- Är det `~/public_html/mackan.eu`?
-- Eller något annat?
-
-Kontrollera genom att logga in:
-```bash
-"C:\Windows\System32\OpenSSH\ssh.exe" mackaneu@omega.hostup.se "pwd && ls -la"
-```
-
-### Steg 1: Skapa SSH-nyckel för GitHub Actions
-
-**✅ KLART!** SSH-nyckeln har skapats:
-- **Fil**: `C:\Users\marcu\.ssh\id_ed25519_github_actions_mackan`
-- **Publik nyckel**: `C:\Users\marcu\.ssh\id_ed25519_github_actions_mackan.pub`
-
-### Steg 2: Lägg till SSH-nyckel på servern
-
-**✅ KLART!** SSH-nyckeln har lagts till på servern.
-
-Den publika nyckeln har lagts till i `~/.ssh/authorized_keys` på `omega.hostup.se`.
-
-### Steg 3: Lägg till secrets i GitHub
-
-**⚠️ DU MÅSTE GÖRA DETTA MANUELLT:**
-
-1. Gå till: https://github.com/tempdump/mackan-eu/settings/secrets/actions
-2. Klicka "New repository secret" för varje secret nedan:
-
-   **Secret 1:**
-   - **Name**: `SSH_HOST`
-   - **Value**: `omega.hostup.se`
-
-   **Secret 2:**
-   - **Name**: `SSH_USER`
-   - **Value**: `mackaneu`
-
-   **Secret 3:**
-   - **Name**: `SSH_PRIVATE_KEY`
-   - **Value**: (Öppna filen `C:\Users\marcu\.ssh\id_ed25519_github_actions_mackan` och kopiera HELA innehållet, inklusive `-----BEGIN OPENSSH PRIVATE KEY-----` och `-----END OPENSSH PRIVATE KEY-----`)
-
-   **Secret 4:**
-   - **Name**: `DEPLOY_PATH`
-   - **Value**: `~/public_html` (eller rätt sökväg - kontrollera med kommandot nedan)
-
-**Kontrollera DEPLOY_PATH:**
-```powershell
-"C:\Windows\System32\OpenSSH\ssh.exe" -i "$env:USERPROFILE\.ssh\id_rsa_pollify" mackaneu@omega.hostup.se "pwd && ls -la"
-```
-
-### Steg 4: Skapa GitHub Actions Workflow
-
-**✅ Filen är redan skapad:** `.github/workflows/deploy.yml`
-
-Filen är redo att användas! Den kommer automatiskt deploya när du pushar till `main`.
-
-### Steg 5: Testa!
-
-1. Gör en liten ändring (t.ex. lägg till en kommentar i en fil)
-2. Commit och push till `main`:
    ```bash
-   git add .
-   git commit -m "Test: Deployment test"
+   echo "# Test deployment $(date)" >> README.md
+   ```
+
+2. **Commit och push:**
+
+   ```bash
+   git add README.md
+   git commit -m "Test: GitHub Actions deployment"
    git push origin main
    ```
-3. Gå till: https://github.com/tempdump/mackan-eu/actions
-4. Se deployment köras automatiskt! 🎉
-5. Vänta ~30 sekunder och testa din webbplats
 
-**Eller testa manuellt:**
+3. **Gå till Actions-sidan:**
+   https://github.com/tempdump/mackan-eu/actions
+
+4. **Vad ska hända:**
+
+   - Du ska se en ny workflow-körning starta (gul cirkel)
+   - Efter ~30 sekunder ska den bli grön (✅) om det fungerade
+   - Klicka på körningen för att se loggar
+
+5. **Kontrollera servern:**
+   - Vänta ~1 minut
+   - Testa din webbplats - ändringen ska synas!
+
+### Metod 2: Kör manuellt från GitHub UI
+
+1. **Gå till:** https://github.com/tempdump/mackan-eu/actions
+2. **Klicka på workflow:** "🚀 Deploy to Production"
+3. **Klicka "Run workflow"** (höger uppe)
+4. **Välj branch:** `main`
+5. **Klicka "Run workflow"**
+6. **Vänta och se resultatet!**
+
+---
+
+## 🔧 Felsökning
+
+### Problem: "cd: no such file or directory"
+
+**Orsak:** `DEPLOY_PATH` är felaktig - mappen finns inte på servern.
+
+**Lösning:**
+
+1. Logga in på servern och hitta rätt sökväg:
+   ```bash
+   ssh mackaneu@omega.hostup.se "pwd && ls -la"
+   ```
+2. Uppdatera `DEPLOY_PATH` secret i GitHub med rätt sökväg
+
+### Problem: "not a git repository"
+
+**Orsak:** Mappen `~/public_html` är inte en git repository.
+
+**Lösning:**
+
+1. Logga in på servern:
+   ```bash
+   ssh mackaneu@omega.hostup.se
+   ```
+2. Gå till mappen:
+   ```bash
+   cd ~/public_html
+   ```
+3. Initiera git (om mappen är tom):
+
+   ```bash
+   git init
+   git remote add origin https://github.com/tempdump/mackan-eu.git
+   git pull origin main
+   ```
+
+   ELLER klona repositoryt (om mappen är tom):
+
+   ```bash
+   cd ~
+   rm -rf public_html  # ⚠️ BACKUP FÖRST om det finns filer!
+   git clone https://github.com/tempdump/mackan-eu.git public_html
+   ```
+
+### Problem: "git pull failed" eller "Permission denied"
+
+**Orsak:** Git remote är inte korrekt konfigurerad eller SSH-nyckel saknar rättigheter.
+
+**Lösning:**
+
+1. Kontrollera git remote:
+   ```bash
+   ssh mackaneu@omega.hostup.se "cd ~/public_html && git remote -v"
+   ```
+2. Om remote saknas eller är fel:
+   ```bash
+   ssh mackaneu@omega.hostup.se "cd ~/public_html && git remote set-url origin https://github.com/tempdump/mackan-eu.git"
+   ```
+
+### Problem: "SSH connection failed"
+
+**Orsak:** SSH-nyckel eller credentials är felaktiga.
+
+**Lösning:**
+
+1. Kontrollera att `SSH_PRIVATE_KEY` secret innehåller HELA nyckeln (inklusive BEGIN/END rader)
+2. Testa SSH-anslutning manuellt:
+   ```powershell
+   ssh -i C:\Users\marcu\.ssh\id_ed25519_github_actions_mackan mackaneu@omega.hostup.se
+   ```
+
+### Problem: Workflow körs inte alls
+
+**Orsak:** Workflow-filen finns inte i `main` branch eller är felaktig.
+
+**Lösning:**
+
+1. Kontrollera att `.github/workflows/deploy.yml` finns i repositoryt
+2. Kontrollera att filen är pushad till `main` branch:
+   ```bash
+   git branch
+   git push origin main
+   ```
+
+---
+
+## 🔄 Alternativ: Manuell Deployment
+
+Om GitHub Actions inte fungerar eller du föredrar manuell kontroll:
+
+### Använd PowerShell-scriptet
+
+**Fil:** `scripts/deploy.ps1`
+
+**Kör:**
+
 ```powershell
-# Kör ditt befintliga script:
 powershell -ExecutionPolicy Bypass -File scripts/deploy.ps1
 ```
 
----
+**Vad gör det?**
 
-## 🔄 **Alternativ: Enkel SSH Git Pull (Om du föredrar manuell)**
-
-### Skapa ett lokalt script: `deploy.ps1`
-
-```powershell
-# deploy.ps1
-$sshKey = "C:\Users\marcu\.ssh\id_rsa_pollify"
-$server = "mackaneu@omega.hostup.se"
-$deployPath = "~/public_html"  # Justera detta!
-
-Write-Host "🚀 Deployar till produktion..." -ForegroundColor Green
-
-# Kör git pull på servern
-& "C:\Windows\System32\OpenSSH\ssh.exe" -i $sshKey $server "cd $deployPath && git pull origin main"
-
-if ($LASTEXITCODE -eq 0) {
-    Write-Host "✅ Deployment lyckades!" -ForegroundColor Green
-} else {
-    Write-Host "❌ Deployment misslyckades!" -ForegroundColor Red
-}
-```
-
-**Användning:**
-```powershell
-.\deploy.ps1
-```
-
----
-
-## 🛡️ **Säkerhetsöverväganden**
-
-### För GitHub Actions:
-- ✅ Använd **secrets** för känslig data (aldrig hårdkoda!)
-- ✅ Begränsa SSH-nyckelns rättigheter (endast git pull)
-- ✅ Överväg att använda **deploy keys** istället för full SSH-åtkomst
-
-### För SSH Git Pull:
-- ✅ Använd SSH-nycklar (inte lösenord)
-- ✅ Begränsa SSH-nyckelns rättigheter
-- ✅ Överväg att använda `git pull --ff-only` för säkerhet
-
----
-
-## 📊 **Jämförelse**
-
-| Funktion | GitHub Actions | SSH Git Pull | Webhook |
-|----------|---------------|--------------|---------|
-| Automatisk | ✅ | ❌ | ✅ |
-| Enkel setup | ⚠️ | ✅ | ⚠️ |
-| Historik | ✅ | ❌ | ⚠️ |
-| Rollback | ✅ | ⚠️ | ⚠️ |
-| Kostnad | Gratis | Gratis | Gratis |
-| Säkerhet | ✅ | ✅ | ⚠️ |
-
----
-
-## 🎓 **Rekommendation för Ditt Projekt**
-
-### **Alternativ A: GitHub Actions (Automatisk) - REKOMMENDERAT**
-
-**Starta med: GitHub Actions**
-
-Varför?
-1. Du får automatisk deployment (sparar tid)
-2. Du får historik (ser vad som deployades när)
-3. Du kan enkelt rollbacka (via GitHub)
-4. Det är professionellt och skalbart
-5. Du lär dig moderna DevOps-praktiker
-6. **Workflow-filen är redan skapad!**
-
-**Setup-tid:** ~10 minuter (en gång)
-
-### **Alternativ B: PowerShell Script (Manuell) - DU HAR REDAN DETTA**
-
-**Om GitHub Actions känns för komplext:**
-- Använd ditt befintliga `scripts/deploy.ps1`
-- Justera `$remotePath` till rätt sökväg
-- Kör: `powershell -ExecutionPolicy Bypass -File scripts/deploy.ps1`
+- Loggar in på servern via SSH
+- Kör `git pull origin main` i `~/public_html`
+- Klart!
 
 **Fördelar:**
+
 - ✅ Fungerar direkt
 - ✅ Full kontroll
 - ✅ Ingen setup krävs
 
 **Nackdelar:**
+
 - ⚠️ Måste komma ihåg att köra manuellt
 - ⚠️ Ingen historik
 
-### **Min Slutgiltiga Rekommendation:**
+---
 
-**Börja med GitHub Actions** - det är bara 10 minuters setup och ger dig mycket mer värde. Om det inte fungerar, fallback till ditt PowerShell-script.
+## 📋 Checklista: Är allt klart?
+
+Använd denna checklista för att verifiera att allt är konfigurerat:
+
+### ✅ Setup Checklista
+
+- [ ] **SSH-nyckel skapad** (`C:\Users\marcu\.ssh\id_ed25519_github_actions_mackan`)
+- [ ] **SSH-nyckel lagd till på servern** (kan logga in)
+- [ ] **Workflow-fil finns** (`.github/workflows/deploy.yml`)
+- [ ] **Workflow-fil är pushad till `main` branch**
+- [ ] **Alla 4 secrets lagda i GitHub:**
+  - [ ] `SSH_HOST` = `omega.hostup.se`
+  - [ ] `SSH_USER` = `mackaneu`
+  - [ ] `SSH_PRIVATE_KEY` = (hela nyckeln)
+  - [ ] `DEPLOY_PATH` = `~/public_html`
+- [ ] **`~/public_html` på servern är en git repository**
+- [ ] **Git remote är korrekt konfigurerad** (pekar på GitHub)
+
+### 🧪 Test Checklista
+
+- [ ] Gjort en test-ändring och pushat till `main`
+- [ ] Gått till Actions-sidan och sett workflow köras
+- [ ] Workflow blev grön (✅) utan fel
+- [ ] Ändringen syns på webbplatsen
 
 ---
 
-## 🚨 **Rollback-Process**
+## 🎯 Sammanfattning: Hur GitHub Actions Deployment Fungerar
 
-Om något går fel:
+### Det enkla svaret:
+
+**GitHub Actions är en "robot" som automatiskt deployar din kod när du pushar till GitHub.**
+
+### Detaljerat flöde:
+
+1. **Du gör ändringar lokalt** → Redigerar filer på din dator
+2. **Du pushar till GitHub** → `git push origin main`
+3. **GitHub Actions startar automatiskt** → Ser att du pushade till `main`
+4. **Workflow-filen körs** → Läser instruktioner från `.github/workflows/deploy.yml`
+5. **Loggar in på servern** → Använder secrets (SSH_HOST, SSH_USER, SSH_PRIVATE_KEY)
+6. **Kör git pull** → Hämtar senaste koden i `~/public_html`
+7. **Klart!** → Din webbplats är uppdaterad
+
+### Viktiga begrepp:
+
+- **Workflow** = Instruktioner för vad GitHub Actions ska göra
+- **Secrets** = Säkra variabler (lösenord, nycklar) som lagras krypterat
+- **Trigger** = När workflow ska köras (t.ex. vid push till `main`)
+- **Action** = Färdiga verktyg (t.ex. `appleboy/ssh-action` för SSH-anslutning)
+
+### Före vs Efter:
+
+**FÖRE (Manuellt):**
+
+```
+1. Gör ändringar
+2. git push
+3. Logga in på servern manuellt
+4. cd ~/public_html
+5. git pull
+6. Klart
+```
+
+**EFTER (Automatiskt):**
+
+```
+1. Gör ändringar
+2. git push
+3. Klart! (GitHub Actions gör resten automatiskt)
+```
+
+---
+
+## 🚨 Rollback (Återställning)
+
+Om något går fel och du behöver återställa:
 
 ### Med GitHub Actions:
-```bash
-# Gå till GitHub → Actions → Välj tidigare deployment → Re-run
-# ELLER
-git revert HEAD
-git push origin main
-```
 
-### Med SSH Git Pull:
+1. **Via GitHub UI:**
+
+   - Gå till: https://github.com/tempdump/mackan-eu/actions
+   - Hitta senaste lyckade deployment
+   - Klicka "Re-run workflow"
+
+2. **Via Git:**
+   ```bash
+   git revert HEAD
+   git push origin main
+   ```
+
+### Manuellt på servern:
+
 ```bash
-# Logga in på servern och återställ:
-ssh mackaneu@omega.hostup.se "cd ~/public_html && git reset --hard rollback-point"
+ssh mackaneu@omega.hostup.se
+cd ~/public_html
+git log  # Se tidigare commits
+git reset --hard <commit-hash>  # Återställ till specifik commit
 ```
 
 ---
 
-## 📚 **Nästa Steg**
-
-1. **Välj metod**: GitHub Actions eller SSH Git Pull?
-2. **Följ setup-guiden** ovan
-3. **Testa** med en liten ändring
-4. **Dokumentera** din process
-
----
-
-## ❓ **Vanliga Frågor**
+## ❓ Vanliga Frågor
 
 **Q: Vad händer om deployment misslyckas?**
-A: GitHub Actions visar felmeddelanden. SSH Git Pull visar fel i terminalen.
+A: GitHub Actions visar felmeddelanden i loggarna. Gå till Actions-sidan och klicka på den misslyckade körningen för att se detaljer.
 
-**Q: Kan jag deploya från feature-branches?**
-A: Ja! Ändra `branches: - main` till `branches: - feature/*` i workflow.
+**Q: Kan jag deploya från andra branches?**
+A: Ja! Ändra `branches: - main` till `branches: - feature/*` i workflow-filen. Eller lägg till flera branches.
 
-**Q: Hur gör jag rollback?**
-A: Använd git tag `rollback-point` som vi skapade tidigare, eller revert commit.
+**Q: Hur ofta körs deployment?**
+A: Varje gång du pushar till `main` branch. Du kan också köra det manuellt från GitHub UI.
 
-**Q: Behöver jag ändra något i koden?**
-A: Nej! Detta är bara deployment-process. Koden förblir oförändrad.
+**Q: Behöver jag ändra något i min kod?**
+A: Nej! Detta är bara deployment-process. Din kod förblir oförändrad.
+
+**Q: Vad kostar GitHub Actions?**
+A: Gratis för publika repositories! För privata repos finns det en gratis kvot.
+
+**Q: Kan jag se historik över deployment?**
+A: Ja! Gå till Actions-sidan på GitHub - där ser du alla deployment-körningar med loggar.
 
 ---
 
-## 📞 **Support**
+## 📞 Hjälp och Support
 
-Om du fastnar:
-1. Kolla GitHub Actions logs (om du använder Actions)
-2. Testa SSH-anslutning manuellt först
-3. Kontrollera att git-repo finns på servern
-4. Verifiera sökvägar (`DEPLOY_PATH`)
+Om något inte fungerar:
+
+1. **Kolla Actions-loggarna:**
+
+   - Gå till: https://github.com/tempdump/mackan-eu/actions
+   - Klicka på senaste körningen
+   - Läs felmeddelandena
+
+2. **Testa SSH-anslutning manuellt:**
+
+   ```powershell
+   ssh -i C:\Users\marcu\.ssh\id_ed25519_github_actions_mackan mackaneu@omega.hostup.se
+   ```
+
+3. **Kontrollera git repository på servern:**
+
+   ```bash
+   ssh mackaneu@omega.hostup.se "cd ~/public_html && git status"
+   ```
+
+4. **Se [Felsökning](#felsökning) sektionen** ovan för specifika problem
 
 ---
 
 **Skapad:** 2025-01-15
 **Senast uppdaterad:** 2025-01-15
-
+**Status:** ✅ Setup klar, redo att testa!

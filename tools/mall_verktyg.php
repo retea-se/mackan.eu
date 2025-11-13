@@ -9,7 +9,6 @@ include '../../includes/layout-start.php';
   <h1 class="rubrik">
     <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
   </h1>
-  <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
 
   <!-- ********** START Sektion: Formulär ********** -->
   <form class="form">

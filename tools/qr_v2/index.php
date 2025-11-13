@@ -12,7 +12,6 @@ include '../../includes/layout-start.php';
     <h1 class="rubrik rubrik--sektion">
       <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
     </h1>
-    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
     <p class="text--lead">
       Skapa professionella QR-koder för text, länkar, WiFi, kontakter och mer. Välj typ och fyll i uppgifterna
       – koden genereras direkt i din webbläsare.

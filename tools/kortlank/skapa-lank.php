@@ -8,7 +8,6 @@ include '../../includes/layout-start.php';
   <header class="layout__sektion text--center">
     <h1 class="rubrik rubrik--sektion">
       <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
-      <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
     </h1>
     <p class="text--lead">
       <?= htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8'); ?>
