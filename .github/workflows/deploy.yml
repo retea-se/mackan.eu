@@ -1,0 +1,38 @@
+name: 🚀 Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Tillåter manuell körning från GitHub UI
+
+jobs:
+  deploy:
+    name: Deploy via SSH
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+      
+    - name: 🔐 Deploy to server
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          cd ${{ secrets.DEPLOY_PATH }}
+          echo "📦 Pulling latest changes from main..."
+          git pull origin main
+          echo "✅ Deployment complete!"
+          
+          # Eventuellt: Rensa cache, restart services, etc.
+          # php artisan cache:clear  # Om du använder Laravel
+          # systemctl reload php-fpm  # Om du använder systemd
+          
+    - name: 📊 Deployment status
+      if: always()
+      run: |
+        echo "Deployment job completed with status: ${{ job.status }}"
+
