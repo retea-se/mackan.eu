@@ -29,21 +29,6 @@ $metaDescription = $metaDescription ?? 'Onlineverktyg för nördar';
   <!-- Schema markup för organisation -->
   <?php include __DIR__ . '/schema-organization.php'; ?>
 
-  <style>
-    /* === Sticky footer-stöd === */
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-    .layout {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .layout__main {
-      flex: 1 0 auto;
-    }
-  </style>
   <?php include_once __DIR__ . '/analyticstracking.php'; ?>
 </head>
 <body>

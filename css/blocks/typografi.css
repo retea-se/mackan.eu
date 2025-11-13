@@ -1,0 +1,52 @@
+/* ===================================================== */
+/* Fil: typografi.css - v1                               */
+/* Komponent: Typografi-helpers                          */
+/* Struktur: BEM/utility (.text--*)                      */
+/* Syfte: Återanvändbara textmodifierare                 */
+/* ===================================================== */
+/* ✅ Får innehålla:                                      */
+/* - Hjälpklasser för textstil (storlek, färg, vikt)     */
+/* - Modifierare för align, ton, toning                  */
+/* ❌ Får INTE innehålla:                                 */
+/* - Elementmålare (p, h1, etc.)                         */
+/* - Layoutrelaterade regler                             */
+/* ===================================================== */
+
+.text--lead {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--text-muted, #6c757d);
+  max-width: 70ch;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+}
+
+.text--muted {
+  color: var(--text-muted, #6c757d);
+}
+
+.text--center {
+  text-align: center;
+}
+
+.text--small {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.text--uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.text--highlight {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .text--lead,
+[data-theme="dark"] .text--muted {
+  color: var(--text-muted-dark, #adb5bd);
+}
+

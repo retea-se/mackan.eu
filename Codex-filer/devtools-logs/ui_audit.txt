@@ -1,0 +1,78 @@
+[200] https://mackan.eu/tools/addy/index.php
+  layout:yes footer:yes readmeIcon:no
+  UI OK
+[200] https://mackan.eu/tools/aptus/index.php
+  layout:yes footer:yes readmeIcon:yes
+  UI OK
+[200] https://mackan.eu/tools/csv2json/index.php
+  layout:yes footer:yes readmeIcon:yes
+  flags: classless-inputs:2
+[200] https://mackan.eu/tools/flow/index.php
+  layout:yes footer:yes readmeIcon:yes
+  UI OK
+[200] https://mackan.eu/tools/flow/index.html
+  layout:no footer:no readmeIcon:no
+  flags: no-layout, no-footer
+[200] https://mackan.eu/tools/koordinat/public/index.php
+  layout:no footer:no readmeIcon:no
+  flags: no-layout, no-footer
+[200] https://mackan.eu/tools/koordinat/index.php
+  layout:yes footer:yes readmeIcon:yes
+  UI OK
+[200] https://mackan.eu/tools/tfngen/index.php
+  layout:yes footer:yes readmeIcon:yes
+  flags: classless-inputs:5
+[200] https://mackan.eu/tools/stotta/index.php
+  layout:yes footer:yes readmeIcon:yes
+  UI OK
+[200] https://mackan.eu/tools/stotta/index.html
+  layout:no footer:no readmeIcon:no
+  flags: no-layout, no-footer
+[200] https://mackan.eu/tools/tts/index.php
+  layout:yes footer:yes readmeIcon:yes
+  UI OK
+[200] https://mackan.eu/tools/tts/index.html
+  layout:no footer:no readmeIcon:no
+  flags: no-layout, no-footer
+[200] https://mackan.eu/tools/pts/index.php
+  layout:yes footer:yes readmeIcon:yes
+  UI OK
+[200] https://mackan.eu/tools/bolagsverket/index.php
+  layout:yes footer:yes readmeIcon:yes
+  UI OK
+[200] https://mackan.eu/tools/converter/index.php
+  layout:yes footer:yes readmeIcon:yes
+  UI OK
+[200] https://mackan.eu/tools/passwordgenerator/index.php
+  layout:yes footer:yes readmeIcon:yes
+  flags: classless-inputs:5
+[200] https://mackan.eu/tools/skyddad/index.php
+  layout:yes footer:yes readmeIcon:yes
+  flags: classless-inputs:1
+[200] https://mackan.eu/tools/css2json/index.html
+  layout:no footer:no readmeIcon:no
+  flags: no-layout, no-footer
+[200] https://mackan.eu/tools/css2json/index.php
+  layout:yes footer:yes readmeIcon:yes
+  UI OK
+[200] https://mackan.eu/tools/rka/index.html
+  layout:no footer:no readmeIcon:no
+  flags: no-layout, no-footer
+[200] https://mackan.eu/tools/rka/index.php
+  layout:yes footer:yes readmeIcon:no
+  UI OK
+[200] https://mackan.eu/tools/index.php
+  layout:yes footer:yes readmeIcon:no
+  UI OK
+[200] https://mackan.eu/tools/dsu/index.html
+  layout:no footer:no readmeIcon:no
+  flags: no-layout, no-footer
+[200] https://mackan.eu/tools/dsu/index.php
+  layout:yes footer:yes readmeIcon:no
+  flags: classless-inputs:38
+[200] https://mackan.eu/tools/converters/index.html
+  layout:no footer:no readmeIcon:no
+  flags: no-layout, no-footer
+[200] https://mackan.eu/tools/converters/index.php
+  layout:yes footer:yes readmeIcon:no
+  flags: classless-inputs:2

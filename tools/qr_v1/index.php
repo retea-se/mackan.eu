@@ -8,7 +8,7 @@
     <button class="knapp" onclick="showQRCodeSection('lank')" data-tippy-content="Visar QR för länkar">QR för länkar</button>
   </div>
 
-  <section id="qr-section" class="form__grupp utils--dold">
+  <section id="qr-section" class="form__grupp hidden">
     <textarea id="textbox" class="falt__textarea" rows="10" placeholder="Ange text eller länkar per rad..." data-tippy-content="Skriv text eller länkar här"></textarea>
     <button id="generate-button" class="knapp" onclick="generateQRCode()" data-tippy-content="Skapar QR-koder">Generera QR-koder</button>
 

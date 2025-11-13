@@ -162,10 +162,12 @@ function processPersonnummer() {
   document.getElementById('femalePercentage').innerText = total ? Math.round(femaleCount / total * 100) + '%' : '0%';
   document.getElementById('averageAge').innerText = avg;
 
-document.getElementById('resultsTable').classList.remove('hidden');
-document.getElementById('summary').classList.remove('hidden');
-document.getElementById('resultsHeader').classList.remove('hidden');
-document.getElementById('exportButton').classList.remove('hidden');
+  document.getElementById('resultSection').classList.remove('hidden');
+  document.getElementById('resultsTable').classList.remove('hidden');
+  document.getElementById('summary').classList.remove('hidden');
+  document.getElementById('resultsHeader').classList.remove('hidden');
+  document.getElementById('exportWrapper').classList.remove('hidden');
+  document.getElementById('exportButton').classList.remove('hidden');
 
   console.log("✅ Bearbetning klar");
 }
@@ -173,3 +175,11 @@ document.getElementById('exportButton').classList.remove('hidden');
 // ********** SLUT Huvudfunktion **********
 
 window.processPersonnummer = processPersonnummer;
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('pnrForm');
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    processPersonnummer();
+  });
+});

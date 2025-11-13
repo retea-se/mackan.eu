@@ -43,9 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <main class="layout__container">
   <h1 class="rubrik">
-    <?= $title ?>
-    <?php include '../../includes/readme-icon.php'; ?>
+    <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
   </h1>
+  <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
 
   <section class="kort kort--smal mt-1">
     <div class="kort__rubrik">Ny kortlänk</div>

@@ -5,34 +5,53 @@ $metaDescription = 'Konvertera hexadecimala Aptus-värden till decimalform. Klis
 ?>
 <?php include '../../includes/layout-start.php'; ?>
 
+<main class="layout__container">
+  <header class="layout__sektion text--center">
+    <h1 class="rubrik rubrik--sektion">
+      <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>
+    </h1>
+    <?php $readmePath = 'readme.php'; include '../../includes/readme-icon.php'; ?>
+    <p class="text--lead">
+      Klistra in hexadecimala Aptus-värden – verktyget konverterar automatiskt till decimal
+      och låter dig exportera resultatet som CSV.
+    </p>
+  </header>
 
+  <section class="layout__sektion">
+    <form id="converter-form" class="form" novalidate>
+      <div class="form__grupp">
+        <label for="hexInput" class="falt__etikett">Hex-värden</label>
+        <textarea id="hexInput" class="falt__textarea" rows="10" placeholder="Ex: 0102030A&#10;FFEE3100"></textarea>
+        <p class="falt__hjälp">Skriv ett värde per rad. Ogiltiga rader markeras automatiskt.</p>
+      </div>
 
+      <div class="form__verktyg">
+        <button type="button" class="knapp" id="convertButton" data-tippy-content="Konvertera alla inmatade värden">Konvertera</button>
+        <button type="button" class="knapp knapp--liten hidden" id="exportButton" data-tippy-content="Exportera resultat till CSV">Exportera CSV</button>
+        <button type="button" class="knapp knapp--liten hidden" id="clearButton" data-tippy-content="Rensa fält och resultat">Rensa</button>
+      </div>
+    </form>
+  </section>
 
-  <form id="converter-form" class="form__grupp">
-    <textarea id="hexInput" class="falt__input" placeholder="Klistra in hexadecimala värden här, ett per rad"></textarea>
-
-    <div class="form__verktyg"><!-- TODO: osäker konvertering -->
-      <button type="button" class="knapp" id="convertButton" onclick="convertHex()">Konvertera</button>
-      <button type="button" class="knapp utils--dold" id="exportButton" onclick="exportToCSV()">Exportera till CSV</button>
-      <button type="button" class="knapp utils--dold" id="clearButton" onclick="clearResults()">Rensa</button>
+  <section class="layout__sektion hidden" id="resultWrapper">
+    <div class="tabell__wrapper">
+      <table id="resultTable" class="tabell">
+        <thead>
+          <tr>
+            <th>Original (HEX)</th>
+            <th>Decimal</th>
+          </tr>
+        </thead>
+        <tbody id="resultBody"></tbody>
+      </table>
     </div>
-  </form>
+  </section>
 
-<div class="form__verktyg"><!-- TODO: osäker konvertering -->
-  <a href="readme.php" class="ikon--info-flytande" title="Om verktyget">
-    <i class="fa-solid fa-circle-info"></i>
-  </a>
-</div>
-
-  <table id="resultTable" class="tabell">
-    <thead>
-      <tr>
-        <th>Original EM</th>
-        <th>Aptus</th>
-      </tr>
-    </thead>
-    <tbody id="resultBody"></tbody>
-  </table>
+  <div class="text--center">
+    <a href="readme.php" class="ikon--info-flytande" title="Om verktyget">
+      <i class="fa-solid fa-circle-info"></i>
+    </a>
+  </div>
 </main>
 
 <?php include '../../includes/layout-end.php'; ?>

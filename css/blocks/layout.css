@@ -13,11 +13,15 @@
 /* ===================================================== */
 
 /* === Grundstruktur för sticky footer === */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Gör att body alltid fyller hela höjden */
-  margin: 0;
 }
 
 .layout__main {
