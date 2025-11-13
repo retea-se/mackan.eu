@@ -1,70 +1,72 @@
-# 🚀 Deployment Setup Status
+# 🚀 Deployment Status - Uppdaterad
 
-## ✅ Klart:
+## ✅ Vad som fungerar:
 
-1. **SSH-nyckel skapad:**
-   - Fil: `C:\Users\marcu\.ssh\id_ed25519_github_actions_mackan`
-   - Publik nyckel: `C:\Users\marcu\.ssh\id_ed25519_github_actions_mackan.pub`
-   - Status: ✅ Skapad och redo
+1. **SSH-anslutning:** ✅ Fungerar perfekt
+2. **Git repository på servern:** ✅ Fungerar perfekt
+3. **Manuell deployment:** ✅ Fungerar perfekt
+4. **Workflow-fil:** ✅ Skapad och uppdaterad
+5. **Secrets i GitHub:** ✅ Alla 4 secrets lagda till
+6. **Script-test:** ✅ Scriptet fungerar när det körs manuellt
 
-2. **SSH-nyckel lagd till på servern:**
-   - Server: `omega.hostup.se`
-   - Användare: `mackaneu`
-   - Status: ✅ Lagd till i `~/.ssh/authorized_keys`
+## ⚠️ Problem:
 
-3. **GitHub Actions Workflow:**
-   - Fil: `.github/workflows/deploy.yml`
-   - Status: ✅ Skapad och pushad till GitHub
+**GitHub Actions-körningar misslyckas fortfarande**
 
-4. **Dokumentation:**
-   - `DEPLOYMENT_GUIDE.md` - Komplett guide
-   - `GITHUB_SECRETS_INSTRUCTIONS.md` - Instruktioner för secrets
-   - Status: ✅ Uppdaterad
+### Möjliga orsaker:
 
-## ⚠️ Kvar att göra (5 minuter):
+1. **SSH-nyckel i GitHub secrets:** 
+   - Kanske inte korrekt kopierad (hela filen måste kopieras inklusive BEGIN/END rader)
+   - Kanske har extra radbrytningar eller tecken
 
-### Steg 1: Lägg till Secrets i GitHub
+2. **DEPLOY_PATH secret:**
+   - Kanske behöver vara absolut sökväg (`/home/mackaneu/public_html`) istället för `~/public_html`
+   - GitHub Actions kanske inte expanderar `~` korrekt
 
-Följ instruktionerna i `GITHUB_SECRETS_INSTRUCTIONS.md`:
+3. **SSH-anslutning från GitHub Actions:**
+   - Kanske servern blockerar anslutningar från GitHub Actions IP-adresser
+   - Kanske SSH-nyckeln inte är korrekt konfigurerad på servern
+
+## 🔍 Nästa steg för felsökning:
+
+### Steg 1: Verifiera SSH-nyckel i GitHub
 
 1. Gå till: https://github.com/tempdump/mackan-eu/settings/secrets/actions
-2. Lägg till dessa 4 secrets:
-   - `SSH_HOST` = `omega.hostup.se`
-   - `SSH_USER` = `mackaneu`
-   - `SSH_PRIVATE_KEY` = (innehållet i `C:\Users\marcu\.ssh\id_ed25519_github_actions_mackan`)
-   - `DEPLOY_PATH` = `~/public_html` (eller rätt sökväg)
+2. Klicka på `SSH_PRIVATE_KEY` secret
+3. Verifiera att den innehåller HELA nyckeln:
+   - Måste börja med `-----BEGIN OPENSSH PRIVATE KEY-----`
+   - Måste sluta med `-----END OPENSSH PRIVATE KEY-----`
+   - Inga extra radbrytningar eller tecken
 
-### Steg 2: Testa Deployment
+### Steg 2: Uppdatera DEPLOY_PATH till absolut sökväg
 
-När secrets är lagda till:
+1. Gå till: https://github.com/tempdump/mackan-eu/settings/secrets/actions
+2. Klicka på `DEPLOY_PATH` secret
+3. Ändra från `~/public_html` till `/home/mackaneu/public_html`
+4. Spara
 
-```bash
-# Gör en liten test-ändring
-echo "# Test deployment" >> README.md
-git add .
-git commit -m "Test: GitHub Actions deployment"
-git push origin main
-```
+### Steg 3: Testa deployment igen
 
-Sedan:
-1. Gå till: https://github.com/tempdump/mackan-eu/actions
-2. Se deployment köras automatiskt! 🎉
+1. Gör en liten test-ändring
+2. Commit och push till `main`
+3. Gå till: https://github.com/tempdump/mackan-eu/actions
+4. Kolla loggarna för den senaste körningen
 
-## 📊 Testresultat:
+## 📊 Senaste testresultat:
 
-- SSH-nyckel: ✅ Fungerar
-- Server-anslutning: ✅ Fungerar
-- Workflow-fil: ✅ Skapad
-- Dokumentation: ✅ Uppdaterad
+- **Manuell deployment:** ✅ Fungerar perfekt
+- **Servern är uppdaterad:** ✅ Commit `2171ee2` deployad
+- **Git pull fungerar:** ✅ Fungerar perfekt
+- **SSH-anslutning:** ✅ Fungerar perfekt
 
-## 🎯 Nästa steg:
+## 🎯 Rekommendation:
 
-1. Lägg till secrets i GitHub (se `GITHUB_SECRETS_INSTRUCTIONS.md`)
-2. Testa deployment med en liten ändring
-3. Verifiera att deployment fungerar
+1. **Uppdatera DEPLOY_PATH secret** till absolut sökväg (`/home/mackaneu/public_html`)
+2. **Verifiera SSH_PRIVATE_KEY secret** att den är korrekt kopierad
+3. **Testa deployment igen** med en liten ändring
+4. **Kolla loggarna** i GitHub Actions för att se exakt vad som går fel
 
 ---
 
-**Skapad:** 2025-01-15  
-**Status:** Setup klar, väntar på secrets i GitHub
-
+**Senast uppdaterad:** 2025-11-13 20:02
+**Status:** Manuell deployment fungerar, GitHub Actions behöver felsökas
