@@ -93,12 +93,12 @@ Options -Indexes
   AddType text/css .css
 </IfModule>
 
-# Fallback för CSS-filer som inte finns - returnera tom CSS istället för 404
+# Fallback för CSS-filer som inte finns - returnera tom CSS istället för 404 HTML
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_URI} \.css$ [NC]
-  RewriteRule ^css/blocks/(.*)$ - [L]
+  RewriteRule ^css/blocks/(.*)$ /css/empty.css [L]
 </IfModule>
 
 # Honeypotfälla
