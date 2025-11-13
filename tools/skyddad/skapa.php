@@ -12,12 +12,20 @@ if (!function_exists('validate_csrf_token')) {
 }
 require_once __DIR__ . '/includes/db.php';
 
+// Ladda valideringsfunktioner
+require_once __DIR__ . '/../../includes/tools-validator.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!validate_csrf_token($_POST['csrf_token'] ?? '')) {
         die('❌ Ogiltig CSRF-token');
     }
 
-    $password = $_POST['password'] ?? '';
+    // Validera password
+    $password = validateString($_POST['password'] ?? '', ['min' => 1, 'max' => 10000, 'default' => '', 'trim' => true]);
+    if (empty($password)) {
+        die('❌ Ingen text angiven.');
+    }
+    
     $id = bin2hex(random_bytes(16));
     $encrypted = openssl_encrypt($password, 'AES-256-CBC', ENCRYPTION_KEY, 0, ENCRYPTION_IV);
     $expires = time() + 86400;

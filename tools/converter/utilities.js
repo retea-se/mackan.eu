@@ -50,7 +50,13 @@ function runUtility(type) {
         result = JSON.parse(`"${input}"`);
         break;
       case 'stringify':
-        result = JSON.stringify(eval("(" + input + ")"), null, 2);
+        try {
+          // Säker JSON-parsing istället för eval()
+          const parsed = JSON.parse(input);
+          result = JSON.stringify(parsed, null, 2);
+        } catch (e) {
+          result = "❌ Fel: Ogiltig JSON - " + e.message;
+        }
         break;
       default:
         result = "Okänd funktion.";

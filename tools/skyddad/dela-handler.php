@@ -13,11 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         return;
     }
 
-    $secret = trim($_POST['secret'] ?? '');
+    // Ladda valideringsfunktioner
+    require_once __DIR__ . '/../../includes/tools-validator.php';
+    
+    // Validera secret
+    $secret = validateString($_POST['secret'] ?? '', ['min' => 1, 'max' => 10000, 'default' => '', 'trim' => true]);
     if (empty($secret)) {
         $result = '<div class="error">❌ Ingen text angiven.</div>';
         return;
     }
+    
+    // Validera PIN om det anges
+    $pin = validateString($_POST['pin'] ?? '', ['min' => 0, 'max' => 255, 'default' => '', 'trim' => true]);
 
     $iv_length = openssl_cipher_iv_length('AES-256-CBC');
     $iv = random_bytes($iv_length);
@@ -29,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $token = hash_hmac('sha256', $id, TOKEN_SECRET);
     $expires = time() + 86400;
 
-    $pin = trim($_POST['pin'] ?? '');
+    // PIN är redan validerat ovan
     $pin_hash = $pin !== '' ? password_hash($pin, PASSWORD_DEFAULT) : null;
 
     $stmt = $pdo->prepare("INSERT INTO passwords (id, encrypted_data, expires_at, views_left, pin_hash) VALUES (?, ?, ?, 1, ?)");

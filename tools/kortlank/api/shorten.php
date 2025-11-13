@@ -29,14 +29,17 @@ header('Content-Type: application/json');
 // Ladda in databasanslutning
 require_once __DIR__ . '/../includes/db.php';
 
-// Ta emot data (POST: url, custom_alias, description, password)
-$url          = trim($_POST['url'] ?? '');
-$custom_alias = trim($_POST['custom_alias'] ?? '');
-$description  = trim($_POST['description'] ?? '');
-$password     = trim($_POST['password'] ?? '');
+// Ladda valideringsfunktioner
+require_once __DIR__ . '/../../includes/tools-validator.php';
 
-// Validera URL
-if (!filter_var($url, FILTER_VALIDATE_URL)) {
+// Ta emot och validera data (POST: url, custom_alias, description, password)
+$url          = validateUrl($_POST['url'] ?? '', null);
+$custom_alias = validateString($_POST['custom_alias'] ?? '', ['min' => 0, 'max' => 32, 'default' => '', 'trim' => true]);
+$description  = validateString($_POST['description'] ?? '', ['min' => 0, 'max' => 500, 'default' => '', 'trim' => true]);
+$password     = validateString($_POST['password'] ?? '', ['min' => 0, 'max' => 255, 'default' => '', 'trim' => true]);
+
+// Validera URL (redan validerad, men dubbelkolla)
+if ($url === null || empty($url)) {
     http_response_code(400);
     echo json_encode(['error' => 'Ogiltig URL']);
     exit;

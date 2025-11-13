@@ -1,33 +1,41 @@
 <?php
+// Ladda valideringsfunktioner
+require_once __DIR__ . '/../../includes/tools-validator.php';
+
 const COS_PHI = 0.8;
 const BASE_SC = 0.25;
 $fuelFac = ['DIESEL'=>1.00,'HVO100'=>1.04,'ECOPAR'=>0.93];
 $ullage = 0.10;  $bottom = 0.05;
 $avail  = 1 - $ullage - $bottom;
 
-$rating     = $_POST['rating']     ?? 100;
-$ratingUnit = $_POST['ratingUnit'] ?? 'kVA';
-$load       = $_POST['load']       ?? 50;
-$loadUnit   = $_POST['loadUnit']   ?? 'kVA';
-$days       = $_POST['days']       ?? '';
-$fuel       = $_POST['fuel']       ?? 'DIESEL';
+// Validera POST-data
+$rating     = validateNumeric($_POST['rating'] ?? null, ['min' => 1, 'max' => 10000, 'default' => 100]);
+$ratingUnit = validateEnum($_POST['ratingUnit'] ?? null, ['kVA', 'kW'], 'kVA');
+$load       = validateNumeric($_POST['load'] ?? null, ['min' => 0, 'max' => 10000, 'default' => 50]);
+$loadUnit   = validateEnum($_POST['loadUnit'] ?? null, ['kVA', 'kW'], 'kVA');
+$days       = validateNumeric($_POST['days'] ?? null, ['min' => 0, 'max' => 365, 'default' => 0]);
+$fuel       = validateEnum($_POST['fuel'] ?? null, ['DIESEL', 'HVO100', 'ECOPAR'], 'DIESEL');
 
 $profile = [];
 if (!empty($_POST['profileData'])) {
-    $json = json_decode($_POST['profileData'], true);
-    if (is_array($json)) {
+    $json = validateJson($_POST['profileData'], []);
+    if (is_array($json) && !empty($json)) {
         foreach ($json as $seg) {
-            if (is_numeric($seg['hours']) && is_numeric($seg['load']) && $seg['hours'] > 0) {
-                $profile[] = ['hours'=>(float)$seg['hours'], 'loadkW'=>(float)$seg['load']];
+            if (isset($seg['hours']) && isset($seg['load'])) {
+                $hours = validateNumeric($seg['hours'], ['min' => 0, 'max' => 8760, 'default' => 0]);
+                $load = validateNumeric($seg['load'], ['min' => 0, 'max' => 10000, 'default' => 0]);
+                if ($hours > 0 && $load >= 0) {
+                    $profile[] = ['hours' => (float)$hours, 'loadkW' => (float)$load];
+                }
             }
         }
     }
 } else {
     for ($i = 1; $i <= 3; $i++) {
-        $h = $_POST["hours_$i"] ?? '';
-        $l = $_POST["load_$i"]  ?? '';
-        if (is_numeric($h) && is_numeric($l) && $h > 0 && $l >= 0) {
-            $profile[] = ['hours'=>(float)$h, 'loadkW'=>(float)$l];
+        $h = validateNumeric($_POST["hours_$i"] ?? null, ['min' => 0, 'max' => 8760, 'default' => 0]);
+        $l = validateNumeric($_POST["load_$i"] ?? null, ['min' => 0, 'max' => 10000, 'default' => 0]);
+        if ($h > 0 && $l >= 0) {
+            $profile[] = ['hours' => (float)$h, 'loadkW' => (float)$l];
         }
     }
 }
@@ -41,7 +49,7 @@ if ($rating > 0 && $load >= 0) {
   $sc  = BASE_SC * $fuelFac[$fuel];
   $Lph = $loadKW * $sc;
 
-  $hasDays = is_numeric($days) && $days > 0;
+  $hasDays = $days > 0;
   if ($hasDays) { $Lpd = $Lph * 24; $net = $Lpd * $days; $tank = $net / $avail; }
   else          { $Lpd = $net = $tank = null; }
 

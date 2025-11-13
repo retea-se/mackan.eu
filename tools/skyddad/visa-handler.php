@@ -6,10 +6,14 @@ ini_set('display_errors', 1);
 
 require_once __DIR__ . '/includes/bootstrap.php';
 
-$id = $_GET['id'] ?? null;
-$token = $_GET['token'] ?? null;
+// Ladda valideringsfunktioner
+require_once __DIR__ . '/../../includes/tools-validator.php';
 
-if (!$id || !$token) {
+// Validera GET-parametrar
+$id = validateString($_GET['id'] ?? null, ['min' => 1, 'max' => 100, 'default' => '', 'trim' => true]);
+$token = validateString($_GET['token'] ?? null, ['min' => 1, 'max' => 100, 'default' => '', 'trim' => true]);
+
+if (empty($id) || empty($token)) {
     echo '❌ Ogiltig begäran.';
     return;
 }
@@ -49,7 +53,9 @@ if ($row['pin_hash']) {
         echo '</form>';
         exit;
     }
-    if (!password_verify($_POST['pin'], $row['pin_hash'])) {
+    // Validera PIN
+    $pin = validateString($_POST['pin'] ?? '', ['min' => 0, 'max' => 255, 'default' => '', 'trim' => true]);
+    if (!password_verify($pin, $row['pin_hash'])) {
         echo '<form method="POST" class="kort kort--smal" style="margin:2rem auto;">';
         echo '<div class="kort__rubrik">PIN-skydd</div>';
         echo '<div class="kort__innehall">';

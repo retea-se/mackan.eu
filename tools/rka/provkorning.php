@@ -14,32 +14,47 @@ $smhi_locations = [
   ["name"=>"Karlstad","temp"=>6,"alt"=>64], ["name"=>"Luleå","temp"=>2,"alt"=>11],
 ];
 
-$rating        = $_POST['rating']        ?? 100;
-$ratingUnit    = $_POST['ratingUnit']    ?? 'kVA';
-$cosphi        = $_POST['cosphi']        ?? COS_PHI_DEF;
-$phasemode     = $_POST['phasemode']     ?? '3';
-$fuel          = $_POST['fuel']          ?? 'DIESEL';
-$price         = $_POST['price']         ?? 20;
-$co2           = $_POST['co2']           ?? 2.67;
-$ambient       = $_POST['ambient']       ?? 20;
-$altitude      = $_POST['altitude']      ?? 0;
-$hours_per_yr  = $_POST['hours_per_year']?? 100;
-$extra_invest  = $_POST['extra_invest']  ?? 0;
+// Ladda valideringsfunktioner
+require_once __DIR__ . '/../../includes/tools-validator.php';
 
-$test_freq     = $_POST['test_freq']     ?? 'monthly';
-$test_minutes  = $_POST['test_minutes']  ?? 30;
-$test_kW       = $_POST['test_kW']       ?? 30;
-$tank_cap      = $_POST['tank_cap']      ?? 2000;
-$tank_level    = $_POST['tank_level']    ?? 1500;
-$alert_pct     = $_POST['alert_pct']     ?? 30;
+// Läs in calc_engine för COS_PHI_DEF
+require_once "calc_engine.php";
 
+// Validera POST-data
+$rating = validateNumeric($_POST['rating'] ?? null, ['min' => 1, 'max' => 10000, 'default' => 100]);
+$ratingUnit = validateEnum($_POST['ratingUnit'] ?? null, ['kVA', 'kW'], 'kVA');
+$cosphi = validateNumeric($_POST['cosphi'] ?? null, ['min' => 0.1, 'max' => 1.0, 'default' => COS_PHI_DEF]);
+$phasemode = validateEnum($_POST['phasemode'] ?? null, ['1', '3'], '3');
+$fuel = validateEnum($_POST['fuel'] ?? null, ['DIESEL', 'HVO100', 'ECOPAR'], 'DIESEL');
+$price = validateNumeric($_POST['price'] ?? null, ['min' => 0, 'max' => 1000, 'default' => 20]);
+$co2 = validateNumeric($_POST['co2'] ?? null, ['min' => 0, 'max' => 10, 'default' => 2.67]);
+$ambient = validateNumeric($_POST['ambient'] ?? null, ['min' => -50, 'max' => 50, 'default' => 20]);
+$altitude = validateNumeric($_POST['altitude'] ?? null, ['min' => 0, 'max' => 5000, 'default' => 0]);
+$hours_per_yr = validateNumeric($_POST['hours_per_year'] ?? null, ['min' => 0, 'max' => 8760, 'default' => 100]);
+$extra_invest = validateNumeric($_POST['extra_invest'] ?? null, ['min' => 0, 'max' => 10000000, 'default' => 0]);
+
+$test_freq = validateEnum($_POST['test_freq'] ?? null, ['monthly', 'weekly', 'daily'], 'monthly');
+$test_minutes = validateNumeric($_POST['test_minutes'] ?? null, ['min' => 1, 'max' => 300, 'default' => 30]);
+$test_kW = validateNumeric($_POST['test_kW'] ?? null, ['min' => 0, 'max' => 10000, 'default' => 30]);
+$tank_cap = validateNumeric($_POST['tank_cap'] ?? null, ['min' => 0, 'max' => 100000, 'default' => 2000]);
+$tank_level = validateNumeric($_POST['tank_level'] ?? null, ['min' => 0, 'max' => 100000, 'default' => 1500]);
+$alert_pct = validateNumeric($_POST['alert_pct'] ?? null, ['min' => 0, 'max' => 100, 'default' => 30]);
+
+// Validera lastprofil
 $profile = [];
 if (!empty($_POST['profileData'])) {
-  $j = json_decode($_POST['profileData'], true);
-  if (is_array($j))
-    foreach ($j as $s)
-      if (is_numeric($s['hours']) && is_numeric($s['load']) && $s['hours']>0)
-        $profile[]=['hours'=>(float)$s['hours'],'loadkW'=>(float)$s['load']];
+  $json = validateJson($_POST['profileData'], []);
+  if (is_array($json) && !empty($json)) {
+    foreach ($json as $s) {
+      if (isset($s['hours']) && isset($s['load'])) {
+        $hours = validateNumeric($s['hours'], ['min' => 0, 'max' => 8760, 'default' => 0]);
+        $load = validateNumeric($s['load'], ['min' => 0, 'max' => 10000, 'default' => 0]);
+        if ($hours > 0 && $load >= 0) {
+          $profile[] = ['hours' => (float)$hours, 'loadkW' => (float)$load];
+        }
+      }
+    }
+  }
 }
 if ($_SERVER['REQUEST_METHOD']==='GET' && empty($profile))
   $profile=[['hours'=>8,'loadkW'=>5],['hours'=>12,'loadkW'=>10],['hours'=>4,'loadkW'=>2]];

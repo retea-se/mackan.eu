@@ -4,20 +4,29 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
 
-// Spara debug-info om du vill felsöka, annars ta bort denna rad
-// if ($_POST) file_put_contents(__DIR__.'/debug.txt', print_r($_POST, true));
+// Ladda valideringsfunktioner
+require_once __DIR__ . '/../../includes/tools-validator.php';
 
 const COS_PHI_DEF = 0.80; const BASE_SC = 0.25;
 $fuelFac = ['ECOPAR'=>0.93,'DIESEL'=>1.00,'HVO100'=>1.04];
-$defaults = [
- 'rating'=>100,'ratingUnit'=>'kVA','cosphi'=>COS_PHI_DEF,
- 'swedeTown'=>'Stockholm','genType'=>'Container','phase'=>'3-fas',
- 'fuel'=>'ECOPAR','price'=>21,'co2'=>1.30,
- 'provMin'=>30,'provEveryVal'=>1,'provEveryUnit'=>'månad',
- 'runHrs'=>120,'tankInt'=>12,'buffDays'=>10,'buffPct'=>70
-];
-// Ladda värden från POST eller defaults
-foreach($defaults as $k=>$v) $$k = isset($_POST[$k]) ? $_POST[$k] : $v;
+
+// Validera POST-data med valideringsfunktioner
+$rating = validateNumeric($_POST['rating'] ?? null, ['min' => 1, 'max' => 10000, 'default' => 100]);
+$ratingUnit = validateEnum($_POST['ratingUnit'] ?? null, ['kVA', 'kW'], 'kVA');
+$cosphi = validateNumeric($_POST['cosphi'] ?? null, ['min' => 0.1, 'max' => 1.0, 'default' => COS_PHI_DEF]);
+$swedeTown = validateString($_POST['swedeTown'] ?? null, ['min' => 0, 'max' => 100, 'default' => 'Stockholm']);
+$genType = validateEnum($_POST['genType'] ?? null, ['Container', 'Stationary', 'Mobile'], 'Container');
+$phase = validateEnum($_POST['phase'] ?? null, ['1-fas', '3-fas'], '3-fas');
+$fuel = validateEnum($_POST['fuel'] ?? null, ['ECOPAR', 'DIESEL', 'HVO100'], 'ECOPAR');
+$price = validateNumeric($_POST['price'] ?? null, ['min' => 0, 'max' => 1000, 'default' => 21]);
+$co2 = validateNumeric($_POST['co2'] ?? null, ['min' => 0, 'max' => 10, 'default' => 1.30]);
+$provMin = validateNumeric($_POST['provMin'] ?? null, ['min' => 1, 'max' => 300, 'default' => 30]);
+$provEveryVal = validateNumeric($_POST['provEveryVal'] ?? null, ['min' => 1, 'max' => 12, 'default' => 1]);
+$provEveryUnit = validateEnum($_POST['provEveryUnit'] ?? null, ['månad', 'vecka'], 'månad');
+$runHrs = validateNumeric($_POST['runHrs'] ?? null, ['min' => 0, 'max' => 8760, 'default' => 120]);
+$tankInt = validateNumeric($_POST['tankInt'] ?? null, ['min' => 1, 'max' => 24, 'default' => 12]);
+$buffDays = validateNumeric($_POST['buffDays'] ?? null, ['min' => 0, 'max' => 365, 'default' => 10]);
+$buffPct = validateNumeric($_POST['buffPct'] ?? null, ['min' => 0, 'max' => 100, 'default' => 70]);
 
 // SMHI-orter
 $smhi = json_decode(file_get_contents(__DIR__.'/towns.json'),true);
@@ -36,10 +45,10 @@ $tempNorm=$townData['temp']; $altNorm=$townData['alt'];
 $ratingKW = $ratingUnit==='kW' ? $rating : $rating*$cosphi;
 $derate   = 1 + max(0,($tempNorm-25)/5)*.01 + max(0,($altNorm-1000)/300)*.01;
 
-// Hantera aktuell last-beräkning
-$aktuellLast = floatval(isset($_POST['aktuellLast']) ? $_POST['aktuellLast'] : 50);
-$aktuellLastUnit = isset($_POST['aktuellLastUnit']) ? $_POST['aktuellLastUnit'] : '%';
-$aktuellTid = floatval(isset($_POST['aktuellTid']) ? $_POST['aktuellTid'] : 8);
+// Hantera aktuell last-beräkning (validera)
+$aktuellLast = validateNumeric($_POST['aktuellLast'] ?? null, ['min' => 0, 'max' => 10000, 'default' => 50]);
+$aktuellLastUnit = validateEnum($_POST['aktuellLastUnit'] ?? null, ['%', 'kW', 'kVA'], '%');
+$aktuellTid = validateNumeric($_POST['aktuellTid'] ?? null, ['min' => 0, 'max' => 8760, 'default' => 8]);
 $aktuellResult = null;
 
 // --- Grundläggande kalkylatorberäkningar ---
