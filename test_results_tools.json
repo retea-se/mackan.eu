@@ -1,0 +1,273 @@
+{
+    "timestamp": "2025-11-13 23:12:13",
+    "results": [
+        {
+            "tool": "addy",
+            "url": "https://mackan.eu/tools/addy/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 8633,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "aptus",
+            "url": "https://mackan.eu/tools/aptus/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 9346,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "bolagsverket",
+            "url": "https://mackan.eu/tools/bolagsverket/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 9221,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "converter",
+            "url": "https://mackan.eu/tools/converter/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 10121,
+            "errors": [],
+            "warnings": [
+                "Verkar sakna standardlayout",
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "css2json",
+            "url": "https://mackan.eu/tools/css2json/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 9184,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "csv2json",
+            "url": "https://mackan.eu/tools/csv2json/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 9745,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "flow",
+            "url": "https://mackan.eu/tools/flow/",
+            "http_code": 404,
+            "content_type": "text/html",
+            "size": 324,
+            "errors": [
+                "HTTP 404"
+            ],
+            "warnings": [
+                "Saknar DOCTYPE",
+                "Verkar sakna standardlayout",
+                "Saknar meta-taggar"
+            ]
+        },
+        {
+            "tool": "koordinat",
+            "url": "https://mackan.eu/tools/koordinat/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 12013,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "kortlank",
+            "url": "https://mackan.eu/tools/kortlank/",
+            "http_code": 403,
+            "content_type": "text/html",
+            "size": 2161,
+            "errors": [
+                "HTTP 403"
+            ],
+            "warnings": [
+                "Verkar sakna standardlayout"
+            ]
+        },
+        {
+            "tool": "passwordgenerator",
+            "url": "https://mackan.eu/tools/passwordgenerator/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 12344,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "pts",
+            "url": "https://mackan.eu/tools/pts/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 10462,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "qr_v1",
+            "url": "https://mackan.eu/tools/qr_v1/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 8311,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "qr_v2",
+            "url": "https://mackan.eu/tools/qr_v2/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 12319,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "qr_v3",
+            "url": "https://mackan.eu/tools/qr_v3/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 11905,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "rka",
+            "url": "https://mackan.eu/tools/rka/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 13926,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "skyddad",
+            "url": "https://mackan.eu/tools/skyddad/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 8271,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "stotta",
+            "url": "https://mackan.eu/tools/stotta/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 9792,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "testdata",
+            "url": "https://mackan.eu/tools/testdata/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 12367,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "testid",
+            "url": "https://mackan.eu/tools/testid/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 9770,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "tfngen",
+            "url": "https://mackan.eu/tools/tfngen/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 10239,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        },
+        {
+            "tool": "tts",
+            "url": "https://mackan.eu/tools/tts/",
+            "http_code": 200,
+            "content_type": "text/html; charset=UTF-8",
+            "size": 8046,
+            "errors": [],
+            "warnings": [
+                "Saknar Open Graph meta-taggar"
+            ]
+        }
+    ],
+    "errors": [
+        "flow: HTTP 404",
+        "kortlank: HTTP 403"
+    ],
+    "warnings": [
+        "addy: Saknar Open Graph meta-taggar",
+        "aptus: Saknar Open Graph meta-taggar",
+        "bolagsverket: Saknar Open Graph meta-taggar",
+        "converter: Verkar sakna standardlayout",
+        "converter: Saknar Open Graph meta-taggar",
+        "css2json: Saknar Open Graph meta-taggar",
+        "csv2json: Saknar Open Graph meta-taggar",
+        "flow: Saknar DOCTYPE",
+        "flow: Verkar sakna standardlayout",
+        "flow: Saknar meta-taggar",
+        "koordinat: Saknar Open Graph meta-taggar",
+        "kortlank: Verkar sakna standardlayout",
+        "passwordgenerator: Saknar Open Graph meta-taggar",
+        "pts: Saknar Open Graph meta-taggar",
+        "qr_v1: Saknar Open Graph meta-taggar",
+        "qr_v2: Saknar Open Graph meta-taggar",
+        "qr_v3: Saknar Open Graph meta-taggar",
+        "rka: Saknar Open Graph meta-taggar",
+        "skyddad: Saknar Open Graph meta-taggar",
+        "stotta: Saknar Open Graph meta-taggar",
+        "testdata: Saknar Open Graph meta-taggar",
+        "testid: Saknar Open Graph meta-taggar",
+        "tfngen: Saknar Open Graph meta-taggar",
+        "tts: Saknar Open Graph meta-taggar"
+    ]
+}
