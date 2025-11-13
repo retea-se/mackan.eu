@@ -28,25 +28,29 @@ jobs:
           
           # Try to pull, and if it fails due to untracked files, handle it
           echo "📥 Pulling latest changes from main..."
-          GIT_PULL_OUTPUT=$(git pull origin main 2>&1) || {
-            PULL_EXIT_CODE=$?
-            echo "$GIT_PULL_OUTPUT"
+          if ! git pull origin main 2>&1 | tee /tmp/git-pull.log; then
+            echo "⚠️  Git pull failed. Checking error..."
             # Check if error is about untracked files that would be overwritten
-            if echo "$GIT_PULL_OUTPUT" | grep -q "would be overwritten by merge"; then
-              echo "⚠️  Git pull failed due to untracked files. Removing conflicting files..."
-              # Extract filenames from error message (lines between "would be overwritten" and "Please")
-              echo "$GIT_PULL_OUTPUT" | \
-                sed -n '/would be overwritten by merge:/,/Please move or remove them/p' | \
+            if grep -q "would be overwritten by merge" /tmp/git-pull.log; then
+              echo "🗑️  Removing conflicting untracked files..."
+              # Extract filenames - they appear after "would be overwritten by merge:" and before "Please"
+              grep -A 100 "would be overwritten by merge" /tmp/git-pull.log | \
                 grep -v "would be overwritten\|Please move\|Aborting" | \
                 sed 's/^[[:space:]]*//' | \
-                xargs -r rm -f
+                grep -v '^$' | \
+                while read file; do
+                  if [ -n "$file" ] && [ -f "$file" ]; then
+                    echo "  Removing: $file"
+                    rm -f "$file"
+                  fi
+                done
               echo "🔄 Retrying git pull..."
               git pull origin main
             else
               echo "❌ Git pull failed with different error. Attempting hard reset..."
               git reset --hard origin/main
             fi
-          }
+          fi
           
           echo "✅ Deployment complete!"
 
