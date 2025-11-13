@@ -10,11 +10,11 @@ jobs:
   deploy:
     name: Deploy via SSH
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: 📥 Checkout code
       uses: actions/checkout@v4
-      
+
     - name: 🔐 Deploy to server
       uses: appleboy/ssh-action@v1.0.3
       with:
@@ -23,14 +23,37 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd ${{ secrets.DEPLOY_PATH }}
-          echo "📦 Pulling latest changes from main..."
-          git pull origin main
-          echo "✅ Deployment complete!"
+          echo "📦 Fetching latest changes from main..."
+          git fetch origin main
           
+          # Try to pull, and if it fails due to untracked files, handle it
+          echo "📥 Pulling latest changes from main..."
+          GIT_PULL_OUTPUT=$(git pull origin main 2>&1) || {
+            PULL_EXIT_CODE=$?
+            echo "$GIT_PULL_OUTPUT"
+            # Check if error is about untracked files that would be overwritten
+            if echo "$GIT_PULL_OUTPUT" | grep -q "would be overwritten by merge"; then
+              echo "⚠️  Git pull failed due to untracked files. Removing conflicting files..."
+              # Extract filenames from error message (lines between "would be overwritten" and "Please")
+              echo "$GIT_PULL_OUTPUT" | \
+                sed -n '/would be overwritten by merge:/,/Please move or remove them/p' | \
+                grep -v "would be overwritten\|Please move\|Aborting" | \
+                sed 's/^[[:space:]]*//' | \
+                xargs -r rm -f
+              echo "🔄 Retrying git pull..."
+              git pull origin main
+            else
+              echo "❌ Git pull failed with different error. Attempting hard reset..."
+              git reset --hard origin/main
+            fi
+          }
+          
+          echo "✅ Deployment complete!"
+
           # Eventuellt: Rensa cache, restart services, etc.
           # php artisan cache:clear  # Om du använder Laravel
           # systemctl reload php-fpm  # Om du använder systemd
-          
+
     - name: 📊 Deployment status
       if: always()
       run: |
