@@ -258,7 +258,7 @@ body {
 .flow-canvas {
     flex: 1;
     position: relative;
-    background: 
+    background:
         radial-gradient(circle at 20px 20px, #e5e7eb 1px, transparent 1px),
         linear-gradient(to right, transparent 19px, #f3f4f6 20px, transparent 21px),
         linear-gradient(to bottom, transparent 19px, #f3f4f6 20px, transparent 21px);
@@ -374,11 +374,11 @@ body {
         border-radius: 0;
         height: 100vh;
     }
-    
+
     .flow-sidebar {
         width: 280px;
     }
-    
+
     .flow-properties {
         width: 250px;
     }
@@ -388,23 +388,23 @@ body {
     .flow-app {
         flex-direction: column;
     }
-    
+
     .flow-sidebar,
     .flow-properties {
         width: 100%;
         height: auto;
         max-height: 200px;
     }
-    
+
     .flow-main {
         flex: 1;
         min-height: 400px;
     }
-    
+
     .node-palette {
         grid-template-columns: repeat(4, 1fr);
     }
-    
+
     .toolbar-group {
         flex-wrap: wrap;
     }
@@ -478,14 +478,14 @@ body {
         <div class="flow-header">
             <h1>⚡ FlowCraft Pro</h1>
             <p>Advanced Flow Builder with AI</p>
-            
+
             <div class="flow-tabs">
                 <button class="flow-tab active" data-tab="nodes">Nodes</button>
                 <button class="flow-tab" data-tab="tools">Tools</button>
                 <button class="flow-tab" data-tab="templates">Templates</button>
             </div>
         </div>
-        
+
         <div class="flow-content">
             <!-- Nodes Tab -->
             <div id="tab-nodes" class="tab-content">
@@ -532,7 +532,7 @@ body {
                     </div>
                 </div>
             </div>
-            
+
             <!-- Tools Tab -->
             <div id="tab-tools" class="tab-content" style="display: none;">
                 <div class="tool-group">
@@ -547,7 +547,7 @@ body {
                         <span>↕️</span> Align Vertical
                     </button>
                 </div>
-                
+
                 <div class="tool-group">
                     <h3>AI Tools</h3>
                     <button class="tool-button" data-action="ai-suggest">
@@ -560,7 +560,7 @@ body {
                         <span>📝</span> Generate Docs
                     </button>
                 </div>
-                
+
                 <div class="tool-group">
                     <h3>Analysis</h3>
                     <button class="tool-button" data-action="validate-flow">
@@ -574,7 +574,7 @@ body {
                     </button>
                 </div>
             </div>
-            
+
             <!-- Templates Tab -->
             <div id="tab-templates" class="tab-content" style="display: none;">
                 <div class="tool-group">
@@ -589,7 +589,7 @@ body {
                         <span>🛒</span> Order Processing
                     </button>
                 </div>
-                
+
                 <div class="tool-group">
                     <h3>Development</h3>
                     <button class="tool-button" data-template="ci-cd-pipeline">
@@ -605,7 +605,7 @@ body {
             </div>
         </div>
     </div>
-    
+
     <!-- Main Canvas Area -->
     <div class="flow-main">
         <!-- Toolbar -->
@@ -624,7 +624,7 @@ body {
                     <span>📤</span> Export
                 </button>
             </div>
-            
+
             <div class="toolbar-group">
                 <button class="toolbar-button" data-action="undo">
                     <span>↶</span> Undo
@@ -642,7 +642,7 @@ body {
                     <span>🎯</span> Fit View
                 </button>
             </div>
-            
+
             <div class="toolbar-group">
                 <button class="toolbar-button" data-action="collaborate">
                     <span>👥</span> Collaborate
@@ -652,34 +652,34 @@ body {
                 </button>
             </div>
         </div>
-        
+
         <!-- React Flow Canvas -->
         <div class="flow-canvas" id="react-flow">
             <!-- React Flow will be rendered here -->
         </div>
-        
+
         <!-- Minimap -->
         <div class="flow-minimap" id="minimap">
             <!-- Minimap will be rendered here -->
         </div>
     </div>
-    
+
     <!-- Properties Panel -->
     <div class="flow-properties">
         <div class="properties-header">
             <h3>Properties</h3>
         </div>
-        
+
         <div class="properties-content" id="properties-panel">
             <div class="property-group">
                 <h4>Node Properties</h4>
                 <label>Name:</label>
                 <input type="text" class="property-input" id="node-name" placeholder="Enter node name">
-                
+
                 <label>Description:</label>
                 <textarea class="property-input" id="node-description" rows="3" placeholder="Enter description"></textarea>
             </div>
-            
+
             <div class="property-group">
                 <h4>Style</h4>
                 <label>Background Color:</label>
@@ -692,12 +692,12 @@ body {
                     <div class="color-swatch" style="background: #ef4444;" data-color="#ef4444"></div>
                 </div>
             </div>
-            
+
             <div class="property-group">
                 <h4>Configuration</h4>
                 <label>Timeout (ms):</label>
                 <input type="number" class="property-input" id="node-timeout" placeholder="5000">
-                
+
                 <label>Retry Count:</label>
                 <input type="number" class="property-input" id="node-retry" placeholder="3">
             </div>
