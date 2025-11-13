@@ -1,0 +1,155 @@
+name: 🔍 Diagnose Deployment Issues
+
+on:
+  workflow_dispatch:  # Kör endast manuellt
+
+jobs:
+  diagnose:
+    name: SSH Diagnostics
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+
+    - name: 🔍 Test 1 - Basic SSH Connection
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        timeout: 30s
+        debug: true
+        script: |
+          echo "✅ SSH connection successful!"
+          echo "📂 Home directory: $HOME"
+          echo "📂 Current directory: $(pwd)"
+          echo "👤 Current user: $(whoami)"
+
+    - name: 🔍 Test 2 - Check Deploy Path
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        timeout: 30s
+        debug: true
+        script: |
+          DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+          echo "🔍 Original DEPLOY_PATH: $DEPLOY_PATH"
+
+          # Expand ~ if present
+          if [ "${DEPLOY_PATH#\~}" != "$DEPLOY_PATH" ]; then
+            DEPLOY_PATH="${DEPLOY_PATH/#\~/$HOME}"
+            echo "🔍 Expanded DEPLOY_PATH: $DEPLOY_PATH"
+          fi
+
+          echo "📁 Checking if path exists: $DEPLOY_PATH"
+          if [ -d "$DEPLOY_PATH" ]; then
+            echo "✅ Deploy path exists!"
+            ls -la "$DEPLOY_PATH"
+          else
+            echo "❌ Deploy path does NOT exist!"
+            echo "📁 Checking parent directory:"
+            ls -la "$(dirname "$DEPLOY_PATH")" || echo "Parent directory also doesn't exist"
+          fi
+
+    - name: 🔍 Test 3 - Check Git Repository
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        timeout: 30s
+        debug: true
+        script: |
+          DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+          if [ "${DEPLOY_PATH#\~}" != "$DEPLOY_PATH" ]; then
+            DEPLOY_PATH="${DEPLOY_PATH/#\~/$HOME}"
+          fi
+
+          echo "📁 Changing to: $DEPLOY_PATH"
+          cd "$DEPLOY_PATH" || exit 1
+
+          echo "🔍 Checking Git repository:"
+          if [ -d ".git" ]; then
+            echo "✅ .git directory exists!"
+            echo "📊 Git status:"
+            git status
+            echo "📊 Git remote:"
+            git remote -v
+            echo "📊 Current branch:"
+            git branch --show-current
+            echo "📊 Git config:"
+            git config --list | grep -E "(remote|branch)" || true
+          else
+            echo "❌ Not a Git repository!"
+          fi
+
+    - name: 🔍 Test 4 - Test Git Fetch
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        timeout: 60s
+        debug: true
+        script: |
+          DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+          if [ "${DEPLOY_PATH#\~}" != "$DEPLOY_PATH" ]; then
+            DEPLOY_PATH="${DEPLOY_PATH/#\~/$HOME}"
+          fi
+
+          cd "$DEPLOY_PATH" || exit 1
+
+          echo "📦 Testing git fetch..."
+          if git fetch origin main; then
+            echo "✅ Git fetch succeeded!"
+          else
+            echo "❌ Git fetch failed!"
+            echo "🔍 Checking network connectivity:"
+            ping -c 3 github.com || true
+            echo "🔍 Testing HTTPS connection to GitHub:"
+            curl -I https://github.com 2>&1 | head -5 || true
+          fi
+
+    - name: 🔍 Test 5 - Test Git Pull
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        timeout: 60s
+        debug: true
+        script: |
+          DEPLOY_PATH="${{ secrets.DEPLOY_PATH }}"
+          if [ "${DEPLOY_PATH#\~}" != "$DEPLOY_PATH" ]; then
+            DEPLOY_PATH="${DEPLOY_PATH/#\~/$HOME}"
+          fi
+
+          cd "$DEPLOY_PATH" || exit 1
+
+          echo "📥 Testing git pull..."
+          if git pull origin main; then
+            echo "✅ Git pull succeeded!"
+            echo "📊 Current commit: $(git rev-parse --short HEAD)"
+          else
+            echo "❌ Git pull failed!"
+            echo "⚠️  Error details above"
+          fi
+
+    - name: 📊 Summary
+      if: always()
+      run: |
+        echo "🔍 Diagnostics complete!"
+        echo "📋 Check the results of each test above to identify the issue."
+        echo "📖 Common issues:"
+        echo "  - SSH connection fails: Check SSH_HOST, SSH_USER, SSH_PRIVATE_KEY secrets"
+        echo "  - Deploy path doesn't exist: Check DEPLOY_PATH secret"
+        echo "  - Git repository missing: Initialize git repo on server"
+        echo "  - Git fetch/pull fails: Check git remote configuration or network access"
