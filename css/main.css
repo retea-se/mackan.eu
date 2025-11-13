@@ -20,7 +20,8 @@
 
 
 /* === 3. Typografi & rubriker === */
-@import url('blocks/typografi.css');
+/* Temporärt kommenterat bort tills filerna finns i produktion */
+/* @import url('blocks/typografi.css'); */
 @import url('blocks/rubrik.css');
 
 
@@ -32,13 +33,15 @@
 @import url('blocks/knapp.css');
 @import url('blocks/kort.css');
 @import url('blocks/menykort.css');
-@import url('blocks/modal.css');
-@import url('blocks/qr.css');
-@import url('blocks/converter.css');
-@import url('blocks/faq.css');
+/* Temporärt kommenterat bort tills filerna finns i produktion */
+/* @import url('blocks/modal.css'); */
+/* @import url('blocks/qr.css'); */
+/* @import url('blocks/converter.css'); */
+/* @import url('blocks/faq.css'); */
 @import url('blocks/tabell.css');
 @import url('blocks/toast.css');
-@import url('blocks/ikon.css');
+/* Temporärt kommenterat bort tills filerna finns i produktion */
+/* @import url('blocks/ikon.css'); */
 
 /* === 6. Verktygsinformation & dokumentation === */
 @import url('blocks/verktygsinfo.css');
