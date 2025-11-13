@@ -1,7 +1,40 @@
 <?php
-// tools/tts/index.php - v1
+// tools/tts/index.php - v3
 $title = 'Text-to-Speech';
+$metaDescription = 'Skriv text och spela upp med vald röst. Konvertera text till tal direkt i webbläsaren med flera röster och språk. Ladda ner som ljudfil.';
+$keywords = 'text-to-speech, tts, tal, röst, syntes, ljud, webbläsare, text-till-tal';
+$canonical = 'https://mackan.eu/tools/tts/';
 $subtitle = 'Skriv text och spela upp med vald röst';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Text-to-Speech",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "Text till tal",
+    "Flera röster",
+    "Flera språk",
+    "Ladda ner som ljudfil"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
 include '../../includes/layout-start.php';
 ?>
 

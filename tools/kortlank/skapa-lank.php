@@ -1,6 +1,38 @@
 <?php
 $title = 'Skapa ny länk';
 $metaDescription = 'Förkorta en länk snabbt och enkelt. Klistra in din länk och få en direkt kortadress!';
+$keywords = 'kortlänk, URL shortener, förkorta länk, kortadress, länkförkortning, gratis';
+$canonical = 'https://mackan.eu/tools/kortlank/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Kortlänk",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "Förkorta länkar",
+    "Kortadress",
+    "Snabbt och enkelt",
+    "Gratis"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
 include '../../includes/layout-start.php';
 ?>
 

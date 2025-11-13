@@ -1,7 +1,41 @@
 <?php
-// tools/pnr/index.php - v2
+// tools/stotta/index.php - v3 (PNR-verktyg)
 $title = 'PNR-verktyg';
+$metaDescription = 'Verifiera och analysera svenska personnummer. Validera personnummer, beräkna ålder, kön, stjärntecken och exportera resultat.';
+$keywords = 'PNR, personnummer, personnummer validering, svenska personnummer, Luhn-algoritm, personnummer analys';
+$canonical = 'https://mackan.eu/tools/stotta/';
 $subtitle = 'Verifiera och analysera svenska personnummer';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PNR-verktyg",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "Validera personnummer",
+    "Beräkna ålder",
+    "Könsbestämning",
+    "Stjärntecken",
+    "Export till Excel"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
 include '../../includes/layout-start.php';
 ?>
 

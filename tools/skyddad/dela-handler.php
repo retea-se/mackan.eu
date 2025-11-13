@@ -15,14 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Ladda valideringsfunktioner
     require_once __DIR__ . '/../../includes/tools-validator.php';
-    
+
     // Validera secret
     $secret = validateString($_POST['secret'] ?? '', ['min' => 1, 'max' => 10000, 'default' => '', 'trim' => true]);
     if (empty($secret)) {
         $result = '<div class="error">❌ Ingen text angiven.</div>';
         return;
     }
-    
+
     // Validera PIN om det anges
     $pin = validateString($_POST['pin'] ?? '', ['min' => 0, 'max' => 255, 'default' => '', 'trim' => true]);
 

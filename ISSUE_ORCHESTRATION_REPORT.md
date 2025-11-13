@@ -1,7 +1,7 @@
 # 📊 Issue Orchestration Report
 
-**Datum:** 2025-01-16  
-**Orkestratör:** Projekt-Orkestratör  
+**Datum:** 2025-01-16
+**Orkestratör:** Projekt-Orkestratör
 **Issues hanterade:** #5, #6
 
 ---
@@ -13,8 +13,8 @@
 - ❌ `.github/workflows/claude-issues.yml` - Skapad (issue-hantering)
 
 ### Ny workflow
-**Fil:** `.github/workflows/claude-issues.yml`  
-**Triggers:** 
+**Fil:** `.github/workflows/claude-issues.yml`
+**Triggers:**
 - `issues: [opened, edited, closed, reopened]`
 - `issue_comment: [created, edited, deleted]`
 
@@ -166,7 +166,7 @@ Alla sub-agenter har slutförts framgångsrikt:
 
 ---
 
-**Genererad:** 2025-01-16 10:30  
-**Orkestratör:** Projekt-Orkestratör  
+**Genererad:** 2025-01-16 10:30
+**Orkestratör:** Projekt-Orkestratör
 **Status:** ✅ Alla sub-agenter avslutade
 

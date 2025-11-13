@@ -1,6 +1,41 @@
-<!-- tools/csv2json/index.php - v1 -->
-<?php $title = 'CSV till JSON v1'; ?>
-<?php include '../../includes/layout-start.php'; ?>
+<!-- tools/csv2json/index.php - v2 -->
+<?php
+$title = 'CSV till JSON';
+$metaDescription = 'Konvertera CSV-data till JSON-format direkt i webbläsaren. Stöd för flera kolumner och radbrytningar.';
+$keywords = 'CSV, JSON, konverterare, CSV till JSON, konvertering, data, webbläsare';
+$canonical = 'https://mackan.eu/tools/csv2json/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CSV till JSON",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "CSV till JSON konvertering",
+    "Flera kolumner",
+    "Direkt i webbläsaren",
+    "Snabb konvertering"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
+include '../../includes/layout-start.php';
+?>
 
 <main class="layout__container">
 

@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($password)) {
         die('❌ Ingen text angiven.');
     }
-    
+
     $id = bin2hex(random_bytes(16));
     $encrypted = openssl_encrypt($password, 'AES-256-CBC', ENCRYPTION_KEY, 0, ENCRYPTION_IV);
     $expires = time() + 86400;

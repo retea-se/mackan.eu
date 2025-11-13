@@ -1,9 +1,41 @@
-<!-- tools/pts/index.php - v4 -->
+<!-- tools/pts/index.php - v5 -->
 <?php
 $title = 'PTS Diarium – Ärendehämtare';
 $metaDescription = 'Sök, filtrera och exportera ärenden från PTS diarium. Klicka för att visa handlingar eller generera ordmoln.';
+$keywords = 'PTS, diarium, ärenden, PTS diarium, ärendehämtare, Post- och Telestyrelsen';
+$canonical = 'https://mackan.eu/tools/pts/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PTS Diarium – Ärendehämtare",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "Sök ärenden",
+    "Filtrera ärenden",
+    "Exportera ärenden",
+    "Generera ordmoln"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
+include '../../includes/layout-start.php';
 ?>
-<?php include '../../includes/layout-start.php'; ?>
 
 <main class="layout__container">
 

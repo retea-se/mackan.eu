@@ -1,9 +1,41 @@
-<!-- index.php - v6 -->
+<!-- index.php - v7 -->
 <?php
 $title = 'Testnummer – Generera svenska telefonnummer';
 $metaDescription = 'Skapa testnummer inom mobil- och fastnät. Välj serier, format och exportera till CSV, text eller JSON.';
+$keywords = 'testnummer, telefonnummer, mobilnummer, fastnät, svenska telefonnummer, testdata';
+$canonical = 'https://mackan.eu/tools/tfngen/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Testnummer – Generera svenska telefonnummer",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "Generera testnummer",
+    "Mobil- och fastnät",
+    "Välj serier",
+    "Export till CSV/JSON"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
+include '../../includes/layout-start.php';
 ?>
-<?php include '../../includes/layout-start.php'; ?>
 
 <main class="layout__container">
 

@@ -1,7 +1,43 @@
-<!-- tools/converter/index.php - v4 -->
-<?php $title = 'Data Converter'; ?>
-<?php $metaDescription = 'Konvertera mellan olika dataformat som CSV, JSON, YAML och XML'; ?>
-<?php include '../../includes/layout-start.php'; ?>
+<!-- tools/converter/index.php - v5 -->
+<?php
+$title = 'Data Converter';
+$metaDescription = 'Konvertera mellan olika dataformat som CSV, JSON, YAML och XML. Formatera, validera och reparera JSON.';
+$keywords = 'data converter, CSV, JSON, YAML, XML, konverterare, formatera, validera, reparera';
+$canonical = 'https://mackan.eu/tools/converter/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Data Converter",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "CSV till JSON",
+    "JSON formatering",
+    "JSON validering",
+    "JSON reparation",
+    "YAML konvertering",
+    "XML konvertering"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
+include '../../includes/layout-start.php';
+?>
 
 <!-- ********** START: Converter Interface ********** -->
 <div class="converter-container">

@@ -1,9 +1,40 @@
 <?php
-// tools/qr_v2/index.php - v2 med SEO-förbättringar
+// tools/qr_v2/index.php - v3 med SEO-förbättringar och JSON-LD
 $title = 'QR-kodgenerator - Skapa anpassade QR-koder';
 $metaDescription = 'Skapa professionella QR-koder för text, länkar, WiFi, kontakter och mer. Anpassa färger, storlek och lägg till logotyp. Gratis QR-kodgenerator.';
 $keywords = 'QR-kod generator, QR code, WiFi QR, kontakt QR, länk QR, anpassade QR-koder, gratis QR-generator';
 $canonical = 'https://mackan.eu/tools/qr_v2/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "QR-kodgenerator - Skapa anpassade QR-koder",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "QR-kodgenerering",
+    "Anpassade färger",
+    "WiFi QR-koder",
+    "Kontakt QR-koder",
+    "Länk QR-koder"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
 include '../../includes/layout-start.php';
 ?>
 

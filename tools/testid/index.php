@@ -1,6 +1,41 @@
-<!-- tools/testid/index.php - v4 -->
-<?php $title = 'TestID'; ?>
-<?php include '../../includes/layout-start.php'; ?>
+<!-- tools/testid/index.php - v5 -->
+<?php
+$title = 'TestID';
+$metaDescription = 'Generera testpersonnummer för angivet intervall. Resultatet kan exporteras till flera format för vidare testning.';
+$keywords = 'testid, testpersonnummer, personnummer, testdata, svenska personnummer, testnummer generator';
+$canonical = 'https://mackan.eu/tools/testid/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "TestID",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "Generera testpersonnummer",
+    "Välj intervall",
+    "Export till JSON/CSV/Excel",
+    "Testdata"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
+include '../../includes/layout-start.php';
+?>
 
 <main class="layout__container">
 

@@ -1,6 +1,41 @@
-<!-- tools/addy/index.php - v1 -->
-<?php $title = 'AnonAddy Address Generator'; ?>
-<?php include '../../includes/layout-start.php'; ?>
+<!-- tools/addy/index.php - v3 -->
+<?php
+$title = 'AnonAddy Address Generator';
+$metaDescription = 'Skapa vidarebefordringsadresser för AnonAddy på sekunder. Generera säkra e-postadresser för att skydda din riktiga e-postadress från spam.';
+$keywords = 'anonaddy, e-post, vidarebefordring, spam-skydd, säker e-post, anonym e-post';
+$canonical = 'https://mackan.eu/tools/addy/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AnonAddy Address Generator",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "Generera AnonAddy-adresser",
+    "Säkra e-postadresser",
+    "Spam-skydd",
+    "Vidarebefordring"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
+include '../../includes/layout-start.php';
+?>
 
 <main class="layout__container">
   <form id="addressForm" class="form">

@@ -1,8 +1,40 @@
 <?php
 $title = 'Bolagsverket API';
 $metaDescription = 'Hämta företagsdata från Bolagsverkets API baserat på organisationsnummer.';
+$keywords = 'bolagsverket, API, företagsdata, organisationsnummer, bolagsinformation, Sverige';
+$canonical = 'https://mackan.eu/tools/bolagsverket/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Bolagsverket API",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "Hämta företagsdata",
+    "Bolagsverket API",
+    "Organisationsnummer",
+    "Bolagsinformation"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
+include '../../includes/layout-start.php';
 ?>
-<?php include '../../includes/layout-start.php'; ?>
 
 <main class="layout__container">
   <header class="layout__sektion text--center">

@@ -1,9 +1,42 @@
-<!-- tools/testdata/index.php - v9 -->
+<!-- tools/testdata/index.php - v10 -->
 <?php
 $title = 'Personinformation - testdata';
 $metaDescription = 'Generera svenska testpersoner med namn, företag, telefonnummer, e-post, mobiltelefon och personnummer baserat på testdata.';
+$keywords = 'testdata, testpersoner, personinformation, testpersonnummer, svenska testpersoner, testdata generator';
+$canonical = 'https://mackan.eu/tools/testdata/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Personinformation - testdata",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "Generera testpersoner",
+    "Namn, företag, telefonnummer",
+    "E-post, mobiltelefon",
+    "Personnummer",
+    "Export till CSV/JSON/Excel"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
+include '../../includes/layout-start.php';
 ?>
-<?php include '../../includes/layout-start.php'; ?>
 <link rel="stylesheet" href="/css/ver250613.css">
 
 <main class="layout__container">

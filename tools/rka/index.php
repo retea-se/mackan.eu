@@ -71,8 +71,38 @@ if ($rating > 0 && $load >= 0) {
 
 $title = 'RKA-bränslekalkylator för reservkraftverk';
 $metaDescription = 'Beräkna bränsleförbrukning och tankvolym för reservkraft (diesel, HVO, EcoPar) – snabbt och responsivt. Professionellt verktyg för elkonsulter.';
-$keywords = 'RKA kalkylator, reservkraftverk, bränsleförbrukning, tankvolym, diesel, HVO100, EcoPar, generator, elkraft';
+$keywords = 'RKA kalkylator, reservkraftverk, bränsleförbrukning, tankvolym, diesel, HVO100, EcoPar, generator, elkraft, reservkraftaggregat';
 $canonical = 'https://mackan.eu/tools/rka/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "RKA-bränslekalkylator för reservkraftverk",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "Bränsleförbrukning",
+    "Tankvolym",
+    "Diesel, HVO, EcoPar",
+    "Professionell kalkylator"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
 include '../../includes/layout-start.php';
 ?>
 

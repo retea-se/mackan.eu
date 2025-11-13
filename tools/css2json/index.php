@@ -1,8 +1,39 @@
 <?php
-
-// tools/css2json/index.php - v4
+// tools/css2json/index.php - v5
 $title = 'CSS till JSON';
 $metaDescription = 'Konvertera en eller flera CSS-filer till JSON-format direkt i webbläsaren.';
+$keywords = 'CSS, JSON, konverterare, CSS till JSON, konvertering, webbläsare';
+$canonical = 'https://mackan.eu/tools/css2json/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CSS till JSON",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "CSS till JSON konvertering",
+    "Flera CSS-filer",
+    "Direkt i webbläsaren",
+    "Snabb konvertering"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
+
 include '../../includes/layout-start.php';
 ?>
 

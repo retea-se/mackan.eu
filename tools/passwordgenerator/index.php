@@ -1,4 +1,4 @@
-<!-- index.php - v11 med SEO-förbättringar -->
+<!-- index.php - v12 med SEO-förbättringar och JSON-LD -->
 <?php
 include 'lang.php';
 $lang = $_GET['lang'] ?? 'sv';
@@ -8,6 +8,35 @@ $title = $t['title'];
 $metaDescription = $t['metaDescription'];
 $keywords = 'lösenordsgenerator, säkra lösenord, password generator, säkerhet, GDPR, offline lösenord';
 $canonical = 'https://mackan.eu/tools/passwordgenerator/';
+
+// Strukturerad data för sökmotorer
+$extraHead = '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '",
+  "description": "' . htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') . '",
+  "url": "' . htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') . '",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SEK"
+  },
+  "featureList": [
+    "Generera säkra lösenord",
+    "Offline funktion",
+    "GDPR-kompatibel",
+    "Anpassningsbar längd"
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Mackan.eu"
+  }
+}
+</script>';
 ?>
 <?php include '../../includes/layout-start.php'; ?>
 
