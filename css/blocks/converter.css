@@ -1,40 +1,19 @@
 /* ===================================================== */
-/* Fil: converter.css - v1                               */
+/* Fil: converter.css - v2                               */
 /* Komponent: Data Converter gränssnitt                  */
-/* Struktur: BEM-liknande (.converter-*)                 */
+/* Struktur: BEM (.konverterar, .konverterar__tabs, etc) */
 /* Syfte: Layout och interaktion för data-verktyget       */
 /* ===================================================== */
+/* ✅ Får innehålla:                                     */
+/* - Endast .konverterar-relaterade BEM-klasser          */
+/* ===================================================== */
 
-.converter-container {
+.konverterar {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2em;
-  background: var(--background-color);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.converter-header {
-  text-align: center;
-  margin-bottom: 2em;
-  padding-bottom: 1em;
-  border-bottom: 2px solid var(--border-color);
-}
-
-.converter-header h1 {
-  font-size: 2.5em;
-  color: var(--primary-color);
-  margin: 0 0 0.5em 0;
-  font-weight: 700;
-}
-
-.converter-header p {
-  color: var(--text-color);
-  opacity: 0.8;
-  font-size: 1.1em;
-}
-
-.converter-tabs {
+.konverterar__tabs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1em;
@@ -44,7 +23,7 @@
   border-radius: 8px;
 }
 
-.converter-tab {
+.konverterar__tab {
   position: relative;
   padding: 1em;
   background: var(--background-color);
@@ -55,32 +34,34 @@
   text-align: center;
   font-weight: 600;
   color: var(--text-color);
+  font-family: inherit;
+  font-size: 1rem;
 }
 
-.converter-tab:hover {
+.konverterar__tab:hover {
   background: var(--hover-color);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.converter-tab.active {
+.konverterar__tab--aktiv {
   background: var(--primary-color);
   color: #fff;
   border-color: var(--primary-color);
 }
 
-.converter-tab .tab-icon {
+.konverterar__ikon {
   font-size: 1.5em;
   display: block;
   margin-bottom: 0.5em;
 }
 
-.converter-tab .tab-title {
+.konverterar__titel {
   font-size: 0.9em;
   display: block;
 }
 
-.converter-content {
+.konverterar__innehall {
   background: var(--background-color);
   border-radius: 8px;
   padding: 2em;
@@ -88,26 +69,26 @@
   border: 1px solid var(--border-color);
 }
 
-@media (max-width: 768px) {
-  .converter-container {
-    padding: 1em;
-  }
+.konverterar__sektion {
+  /* Sektioner är dolda/synliga via .hidden klass */
+}
 
-  .converter-tabs {
+@media (max-width: 768px) {
+  .konverterar__tabs {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5em;
   }
 
-  .converter-tab {
+  .konverterar__tab {
     padding: 0.8em;
   }
 
-  .converter-tab .tab-icon {
+  .konverterar__ikon {
     font-size: 1.2em;
   }
 
-  .converter-header h1 {
-    font-size: 2em;
+  .konverterar__innehall {
+    padding: 1em;
   }
 }
 

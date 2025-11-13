@@ -1,0 +1,149 @@
+/* ===================================================== */
+/* Fil: accessibility.css - v1                           */
+/* Komponent: Tillgänglighet (ARIA, keyboard)           */
+/* Struktur: BEM för tillgänglighetshjälpklasser        */
+/* Syfte: Förbättra tillgänglighet för skärmläsare och keyboard */
+/* ===================================================== */
+
+/* === Skip to main content (för keyboard-navigation) === */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* === ARIA live regions === */
+.aria-live--polite {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.aria-live--assertive {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* === Screen reader only (visuellt dold, läsbar för skärmläsare) === */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* === Focus visible för keyboard-navigation === */
+.focus-visible-only:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.focus-visible-only:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* === ARIA landmarks === */
+[role="banner"] {
+  /* Header/navigation */
+}
+
+[role="main"] {
+  /* Huvudinnehåll */
+}
+
+[role="contentinfo"] {
+  /* Footer */
+}
+
+[role="navigation"] {
+  /* Navigationsmeny */
+}
+
+[role="complementary"] {
+  /* Sidebar */
+}
+
+/* === Keyboard navigation hints === */
+.keyboard-hint {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* === Touch target sizes (minimum 44x44px) === */
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === High contrast mode support === */
+@media (prefers-contrast: high) {
+  .knapp,
+  .falt__input,
+  .falt__textarea {
+    border-width: 2px;
+  }
+}
+
+/* === Reduced motion support === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* === Focus trap för modaler === */
+.focus-trap {
+  position: relative;
+}
+
+.focus-trap__start,
+.focus-trap__end {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+

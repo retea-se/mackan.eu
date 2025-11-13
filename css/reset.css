@@ -38,11 +38,47 @@ img {
   border: 0;
   max-width: 100%;
   height: auto;
+  /* Optimera bildladdning */
+  loading: lazy;
+  decoding: async;
+}
+
+/* Bild utan lazy loading (för hero/above-fold bilder) */
+img[loading="eager"],
+img.eager {
+  loading: eager;
 }
 
 /* Ta bort outline på fokus (hanteras med egna klasser) */
 :focus {
   outline: none;
+}
+
+/* Förbättra keyboard-navigation med synlig fokus-indikator */
+:focus-visible {
+  outline: 2px solid var(--primary-color, #0066cc);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ARIA-hidden element döljs både visuellt och för skärmläsare */
+[aria-hidden="true"] {
+  display: none !important;
+}
+
+/* ARIA-live regioner för dynamiskt innehåll */
+[aria-live] {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Förbättra skärmläsning för interaktiva element */
+button:not([aria-label]):not([aria-labelledby]),
+a:not([aria-label]):not([aria-labelledby]) {
+  /* Ge varning om saknade ARIA-labels i utvecklingsmiljö */
 }
 
 /* ******************* SLUT reset.css ******************* */

@@ -109,7 +109,7 @@ $qrMsgUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . u
     <button class="knapp__ikon" onclick="copySecret()" data-tippy-content="Kopiera meddelandet" aria-label="Kopiera meddelandet">
       <i class="fa-solid fa-copy"></i>
     </button>
-    <button class="knapp__ikon" data-tippy-content="<img src='<?= $qrMsgUrl ?>' alt='QR-kod' width='120'>" data-tippy-allowHTML="true" aria-label="Visa QR-kod">
+    <button class="knapp__ikon touch-target" data-tippy-content="<img src='<?= $qrMsgUrl ?>' alt='QR-kod' width='120' height='120' loading='lazy' decoding='async'>" data-tippy-allowHTML="true" aria-label="Visa QR-kod" title="Visa QR-kod för meddelandet">
       <i class="fa-solid fa-qrcode"></i>
     </button>
   </div>

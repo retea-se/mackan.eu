@@ -3,33 +3,13 @@
 
 // ********** START Hjälpfunktioner **********
 
-function standardizePnrFormat(pnr) {
-  pnr = pnr.trim().replace(/-/g, '');
-  if (pnr.length === 10) {
-    const year = parseInt(pnr.substring(0, 2));
-    const century = (year > new Date().getFullYear() % 100) ? '19' : '20';
-    return century + pnr;
-  }
-  return pnr;
-}
-
-function validateLuhn(value) {
-  let sum = 0;
-  for (let i = 0; i < value.length; i++) {
-    let digit = parseInt(value.charAt(i));
-    if (i % 2 === value.length % 2) digit *= 2;
-    if (digit > 9) digit -= 9;
-    sum += digit;
-  }
-  return sum % 10 === 0;
-}
+// Använd gemensamma funktioner från tools-common.js istället:
+// - standardizePersonnummer() (ersätter standardizePnrFormat)
+// - validateLuhn() (ersätter validateLuhn)
+// - formatPersonnummer() (ersätter formatPnrForDisplay)
 
 function isLeapYear(year) {
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-}
-
-function formatPnrForDisplay(pnr) {
-  return pnr.substring(2, 8) + "-" + pnr.substring(8, 12);
 }
 
 function getZodiacSign(month, day) {
@@ -77,7 +57,8 @@ function processPersonnummer() {
 
   personnummerArray.forEach((raw, index) => {
     console.log(`🔢 Rad ${index + 1}: ${raw}`);
-    const pnr = standardizePnrFormat(raw);
+    // Använd gemensam standardizePersonnummer från tools-common.js
+    const pnr = standardizePersonnummer(raw);
     const errors = [];
 
     if (!pnr || pnr.length !== 12) {
@@ -97,14 +78,21 @@ function processPersonnummer() {
       const warning = document.createElement('span');
       warning.innerText = '⚠️';
       warning.title = age < 18 ? 'Minderårig' : 'Pensionär';
-      warning.style.marginRight = '5px';
+      warning.className = 'utils--mr-1'; // Använd BEM-klass istället för inline-style
       cell1.appendChild(warning);
     }
-    cell1.innerHTML += formatPnrForDisplay(pnr);
+    // Använd gemensam formatPersonnummer från tools-common.js
+    cell1.innerHTML += formatPersonnummer(pnr);
 
-    const isValid = validateLuhn(pnr.substring(2));
+    // Använd gemensam validateLuhn från tools-common.js
+    const isValid = validateLuhn(pnr);
     const cell2 = newRow.insertCell();
     cell2.innerText = isValid ? 'OK' : 'EJ OK';
+    if (isValid) {
+      cell2.classList.add('text--center');
+    } else {
+      cell2.classList.add('text--center', 'text--muted');
+    }
 
     const cell3 = newRow.insertCell();
     if (!isValid) {
@@ -117,15 +105,14 @@ function processPersonnummer() {
       if (birthDate > today) errors.push("Framtida datum");
       errors.push("Ogiltigt kontrollnummer");
       cell3.innerHTML = errors.join("<br>") + " ❌";
-      cell3.style.color = "red";
+      cell3.classList.add('text--center');
     } else {
       cell3.innerHTML = "✅";
-      cell3.style.color = "green";
-      cell3.style.textAlign = "center";
+      cell3.classList.add('text--center');
     }
 
     const cell4 = newRow.insertCell();
-    if (errors.length === 0) {
+    if (isValid) {
       const genderDigit = parseInt(pnr.charAt(pnr.length - 2));
       if (genderDigit % 2 === 0) {
         cell4.innerText = "KVINNA";
@@ -137,18 +124,18 @@ function processPersonnummer() {
     }
 
     const cell5 = newRow.insertCell();
-    if (errors.length === 0) {
+    if (isValid) {
       cell5.innerText = age;
       totalAge += age;
     }
 
     const cell6 = newRow.insertCell();
-    if (errors.length === 0) {
+    if (isValid) {
       cell6.innerText = getZodiacSign(pnr.substring(4, 6), pnr.substring(6, 8));
     }
 
     const cell7 = newRow.insertCell();
-    if (errors.length === 0) {
+    if (isValid) {
       cell7.innerText = getDaysUntilBirthday(pnr.substring(4, 6), pnr.substring(6, 8));
     }
   });

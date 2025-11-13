@@ -52,15 +52,20 @@ document.addEventListener('DOMContentLoaded', () => {
   formatBtn.addEventListener('click', () => {
     const colIndex = Array.from(tableHead.querySelectorAll('th'))
       .findIndex(th => th.textContent.toLowerCase().includes('personnummer'));
-    if (colIndex === -1) return;
+    if (colIndex === -1) {
+      showToast('Ingen personnummerkolumn hittades.', 'warning');
+      return;
+    }
 
     tableBody.querySelectorAll('tr').forEach(row => {
       const cell = row.cells[colIndex];
       if (!cell) return;
+      // Använd gemensam personnummer-formatering från tools-common.js
       cell.textContent = formatPersonnummer(cell.textContent.trim());
     });
 
     console.log('[v12] Personnummer formaterade.');
+    showToast('Personnummer formaterade.', 'success');
   });
 
   let sortDirection = 'asc';
@@ -88,6 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const antal = parseInt(antalInput.value) || 1;
     const fields = getSelectedFields();
 
+    if (fields.length === 0) {
+      showToast('Välj minst ett fält att generera.', 'warning');
+      return;
+    }
+
     console.log(`[v12] Genererar ${antal} personer med fält:`, fields);
 
     tableHead.innerHTML = '<tr>' + fields.map(f => `<th>${rubriker[f] || capitalize(f)}</th>`).join('') + '</tr>';
@@ -96,33 +106,43 @@ document.addEventListener('DOMContentLoaded', () => {
     formatBtn.classList.remove('hidden');
     if (exportControls) exportControls.classList.remove('hidden');
 
-    for (let i = 0; i < antal; i++) {
-      try {
-        const [baseRes, pnrRes] = await Promise.all([
-          fetch('generate.php'),
-          fetch('generatePerson.php')
-        ]);
-        const base = await baseRes.json();
-        const pnr = (await pnrRes.json()).personnummer || 'okänt';
-        const fullData = { ...base, personnummer: pnr };
+    // Visa loading-indikator
+    const loadingEl = showLoading(tableBody, `Genererar ${antal} personer...`);
 
-        const row = document.createElement('tr');
+    try {
+      for (let i = 0; i < antal; i++) {
+        try {
+          const [baseRes, pnrRes] = await Promise.all([
+            fetch('generate.php'),
+            fetch('generatePerson.php')
+          ]);
 
-        fields.forEach(f => {
-          const cell = document.createElement('td');
-
-          if (f === 'epost') {
-            cell.textContent = saneraEpost(fullData[f] ?? '');
-          } else {
-            cell.textContent = fullData[f] ?? '';
+          if (!baseRes.ok || !pnrRes.ok) {
+            throw new Error(`HTTP ${baseRes.status || pnrRes.status}`);
           }
+
+          const base = await baseRes.json();
+          const pnr = (await pnrRes.json()).personnummer || 'okänt';
+          const fullData = { ...base, personnummer: pnr };
+
+          const row = document.createElement('tr');
+
+          fields.forEach(f => {
+            const cell = document.createElement('td');
+
+            if (f === 'epost') {
+              cell.textContent = saneraEpost(fullData[f] ?? '');
+            } else {
+              cell.textContent = fullData[f] ?? '';
+            }
 
           if (f === 'personnummer') {
             cell.classList.add('personnummer-cell');
 
             if (fields.includes('kon')) {
               const kön = fullData['kon'];
-              const valid = valideraPersonnummer(pnr, kön);
+              // Använd gemensam personnummer-validering från tools-common.js
+              const valid = validatePersonnummer(pnr, kön);
               if (!valid) {
                 cell.classList.add('error');
                 cell.title = `Stämmer ej med kön: ${kön}`;
@@ -130,19 +150,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           }
 
-          cell.setAttribute('data-label', f); // Lägg till denna rad
+            cell.setAttribute('data-label', f);
 
-          row.appendChild(cell);
-        });
+            row.appendChild(cell);
+          });
 
-        tableBody.appendChild(row);
-        console.log(`[v12] Person ${i + 1}:`, fullData);
-      } catch (err) {
-        console.error(`[v12] Fel vid person ${i + 1}:`, err);
+          tableBody.appendChild(row);
+          console.log(`[v12] Person ${i + 1}:`, fullData);
+        } catch (err) {
+          console.error(`[v12] Fel vid person ${i + 1}:`, err);
+          showToast(`Fel vid generering av person ${i + 1}: ${err.message}`, 'error');
+        }
       }
-    }
 
-    console.log('[v12] Klar!');
+      console.log('[v12] Klar!');
+      showToast(`${antal} personer genererade.`, 'success');
+    } finally {
+      // Dölj loading-indikator
+      hideLoading(tableBody);
+    }
   });
 
   function renderTable(columns, data) {

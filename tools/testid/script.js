@@ -1,23 +1,11 @@
-// tools/testid/script.js - v15
+// tools/testid/script.js - v16
+// Använder gemensamma funktioner från tools-common.js
 
 import { exportData } from './export.js';
 
-console.log('TestID v15 laddat');
+console.log('TestID v16 laddat - Använder gemensamma funktioner från tools-common.js');
 
-const isValidLuhn = (numStr) => {
-  let sum = 0;
-  let alt = false;
-  for (let i = numStr.length - 1; i >= 0; i--) {
-    let n = parseInt(numStr.charAt(i), 10);
-    if (alt) {
-      n *= 2;
-      if (n > 9) n -= 9;
-    }
-    sum += n;
-    alt = !alt;
-  }
-  return sum % 10 === 0;
-};
+// Använd gemensam validateLuhn från tools-common.js istället för lokal isValidLuhn
 
 const getKön = (pnr) => {
   const genderDigit = parseInt(pnr.charAt(10), 10);
@@ -51,11 +39,14 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
   const loader = document.getElementById('loader');
 
   exportMenu?.classList.add('hidden');
-  loader?.classList.remove('hidden');
+
+  // Visa loading-indikator
+  const loadingEl = showLoading(tableBody, `Hämtar ${antal} personnummer...`);
   tableBody.innerHTML = '';
 
   if (startYear > endYear) {
-    alert('Startår kan inte vara större än slutår.');
+    showToast('Startår kan inte vara större än slutår.', 'error');
+    hideLoading(tableBody);
     loader?.classList.add('hidden');
     return;
   }
@@ -132,7 +123,7 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
         födelsedatum: `${pnr.slice(0, 4)}-${pnr.slice(4, 6)}-${pnr.slice(6, 8)}`,
         kön: getKön(pnr),
         ålder: getAge(pnr),
-        giltigt: isValidLuhn(pnr)
+        giltigt: validateLuhn(pnr) // Använd gemensam validateLuhn från tools-common.js
       };
     });
 
@@ -150,9 +141,15 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
       `;
       tableBody.appendChild(tr);
     });
+
+    showToast(`${selected.length} personnummer genererade.`, 'success');
   } catch (err) {
     console.error('🚨 Fel vid hämtning eller hantering:', err);
+    showToast('Fel vid hämtning: ' + err.message, 'error');
     loader?.classList.add('hidden');
+  } finally {
+    // Dölj loading-indikator
+    hideLoading(tableBody);
   }
 });
 

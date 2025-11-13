@@ -2,10 +2,10 @@
 
 /* ********** START: Tabbväxling ********** */
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("script.js v6 laddad");
+  console.log("script.js v7 laddad - BEM-struktur");
 
-  const buttons = document.querySelectorAll('.converter-tab[data-tab]');
-  const sections = document.querySelectorAll('.tab-section');
+  const buttons = document.querySelectorAll('.konverterar__tab[data-tab]');
+  const sections = document.querySelectorAll('.konverterar__sektion');
   let uploadModuleLoaded = false;
 
   buttons.forEach(button => {
@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetId = `tab-${button.dataset.tab}`;
 
       // Remove active class from all tabs
-      buttons.forEach(btn => btn.classList.remove('active'));
+      buttons.forEach(btn => btn.classList.remove('konverterar__tab--aktiv'));
       // Add active class to clicked tab
-      button.classList.add('active');
+      button.classList.add('konverterar__tab--aktiv');
 
       sections.forEach(section => {
         section.classList.toggle('hidden', section.id !== targetId);

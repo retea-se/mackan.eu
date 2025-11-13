@@ -5,6 +5,7 @@
     ?>
   </div> <!-- ✅ Stänger layout-wrappern här -->
 
+<script src="/includes/tools-common.js"></script>
 <script src="/js/info-check.js" defer></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>

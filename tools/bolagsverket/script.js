@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    // Visa loading-indikator
+    const loadingEl = showLoading(resultSection, 'Hämtar token...');
+
     try {
       const response = await fetch('get_token.php');
       const data = await response.json();
@@ -18,15 +21,23 @@ document.addEventListener('DOMContentLoaded', () => {
         tokenOutput.textContent = JSON.stringify(data, null, 2);
         resultSection.classList.remove('hidden');
         console.log('Access token hämtad:', data);
+        showToast('Token hämtad framgångsrikt.', 'success');
       } else {
-        tokenOutput.textContent = 'Fel vid hämtning av token: ' + data.error;
+        const errorMsg = 'Fel vid hämtning av token: ' + data.error;
+        tokenOutput.textContent = errorMsg;
         resultSection.classList.remove('hidden');
         console.error('Fel vid hämtning av token:', data.error);
+        showToast(errorMsg, 'error');
       }
     } catch (error) {
-      tokenOutput.textContent = 'Fel vid hämtning av token: ' + error.message;
+      const errorMsg = 'Fel vid hämtning av token: ' + error.message;
+      tokenOutput.textContent = errorMsg;
       resultSection.classList.remove('hidden');
       console.error('Fel vid hämtning av token:', error);
+      showToast(errorMsg, 'error');
+    } finally {
+      // Dölj loading-indikator
+      hideLoading(resultSection);
     }
   });
 

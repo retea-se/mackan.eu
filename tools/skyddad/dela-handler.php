@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </button>
   </div>
   <div class="kort__innehall center" style="margin-top:1rem;">
-    <img src="$qrUrl" alt="QR-kod för länken" width="120" height="120" style="border-radius:8px;border:1px solid #eee;">
+    <img src="$qrUrl" alt="QR-kod för länken" width="120" height="120" loading="lazy" decoding="async" style="border-radius:8px;border:1px solid #eee;">
   </div>
   <div class="kort__rad" style="margin-top:0.5rem;">
     <button type="button" class="knapp knapp--liten" onclick="toggleLongLink()" id="visaLangBtn">

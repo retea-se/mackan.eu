@@ -106,7 +106,6 @@ include '../../includes/layout-start.php';
 
 <?php include '../../includes/layout-end.php'; ?>
 <script src="script.js" defer></script>
-<script src="export.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.1.2/wordcloud2.min.js" defer></script>
 <script type="module">
   import { initWordcloud } from './cloud.js';

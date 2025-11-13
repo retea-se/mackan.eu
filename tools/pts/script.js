@@ -25,6 +25,7 @@ document.querySelector('#endDate').value = idag.toISOString().slice(0, 10);
 async function hamtaDiarium(start, end) {
   if (new Date(start) > new Date(end)) {
     console.warn('[v8] ⚠️ Ogiltigt datumintervall: startdatum efter slutdatum');
+    showToast('Startdatum får inte vara efter slutdatum.', 'warning');
     tableBody.innerHTML = `<tr><td colspan="5">⚠️ Startdatum får inte vara efter slutdatum.</td></tr>`;
     exportJsonBtn.disabled = exportCsvBtn.disabled = true;
     return;
@@ -32,6 +33,9 @@ async function hamtaDiarium(start, end) {
 
   const url = `proxy.php?start=${start}&end=${end}`;
   console.log(`[v8] 🔍 Begär ärenden från: ${url}`);
+
+  // Visa loading-indikator
+  const loadingEl = showLoading(tableBody.parentElement, 'Hämtar ärenden...');
 
   try {
     const res = await fetch(url);
@@ -48,11 +52,18 @@ async function hamtaDiarium(start, end) {
     exportJsonBtn.disabled = exportCsvBtn.disabled = data.length === 0;
     document.getElementById('showWordcloud').disabled = data.length === 0;
 
+    if (data.length > 0) {
+      showToast(`${data.length} ärenden hämtade.`, 'success');
+    }
+
   } catch (err) {
     console.error('[v8] ❌ Fel vid hämtning:', err);
-    alert(`Kunde inte hämta ärenden: ${err.message}`);
+    showToast(`Kunde inte hämta ärenden: ${err.message}`, 'error');
     tableBody.innerHTML = `<tr><td colspan="5">Fel: ${err.message}</td></tr>`;
     exportJsonBtn.disabled = exportCsvBtn.disabled = true;
+  } finally {
+    // Dölj loading-indikator
+    hideLoading(tableBody.parentElement);
   }
 }
 
@@ -119,6 +130,10 @@ tableBody.addEventListener('click', async e => {
   }
 
   const url = `proxy.php?caseid=${caseId}`;
+
+  // Visa loading-indikator
+  const loadingEl = showLoading(rad, 'Hämtar handlingar...');
+
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`404 Not Found`);
@@ -126,7 +141,7 @@ tableBody.addEventListener('click', async e => {
 
     if (json.error) {
       console.warn(`[v8] ⚠️ Fel från proxy: ${json.error}`);
-      alert(`Inga handlingar hittades för ${caseId}.`);
+      showToast(`Inga handlingar hittades för ${caseId}.`, 'warning');
       return;
     }
 
@@ -139,7 +154,7 @@ tableBody.addEventListener('click', async e => {
     cell.innerHTML = deeds.length
       ? `<ul>${deeds.map(d =>
           `<li>
-            <strong>${d.deedIdentifer}</strong> – ${d.deedTitle} 
+            <strong>${d.deedIdentifer}</strong> – ${d.deedTitle}
             (${d.deedArrivalDate?.split('T')[0]}, nr ${d.deedDiaryDocumentNo})
           </li>`
         ).join('')}</ul>`
@@ -148,7 +163,10 @@ tableBody.addEventListener('click', async e => {
     rad.insertAdjacentElement('afterend', deedRow);
   } catch (err) {
     console.error(`[v8] ❌ Fel vid hämtning av handlingar (${caseId}):`, err);
-    alert(`Det gick inte att ladda handlingar för ${caseId}: ${err.message}`);
+    showToast(`Det gick inte att ladda handlingar för ${caseId}: ${err.message}`, 'error');
+  } finally {
+    // Dölj loading-indikator
+    hideLoading(rad);
   }
 });
 
@@ -165,10 +183,18 @@ form.addEventListener('submit', e => {
 });
 
 exportJsonBtn.addEventListener('click', () => {
-  exportJSON(ärenden, 'pts-diarium.json');
+  exportToJSON(ärenden, 'pts-diarium.json');
 });
 exportCsvBtn.addEventListener('click', () => {
-  exportCSV(ärenden, 'pts-diarium.csv');
+  // Konvertera ärenden till format som exportToCSV förväntar sig
+  const data = ärenden.map(a => ({
+    ID: a.caseId || '',
+    Diarienummer: a.caseIdentifier || '',
+    Datum: a.caseRegDate?.split('T')[0] || '',
+    Status: a.caseStatus || '',
+    Rubrik: a.caseTitle || ''
+  }));
+  exportToCSV(data, 'pts-diarium.csv');
 });
 
 // ********** SLUT Sektion: Händelser **********

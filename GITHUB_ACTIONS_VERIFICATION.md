@@ -20,11 +20,13 @@
 ### Möjliga orsaker
 
 1. **SSH-autentisering från GitHub Actions**
+
    - SSH_PRIVATE_KEY secret kanske är felaktig
    - SSH-nyckel kanske inte är korrekt konfigurerad på produktionsservern
    - Server kanske blockerar anslutningar från GitHub Actions IP-adresser
 
 2. **DEPLOY_PATH konfiguration**
+
    - DEPLOY_PATH secret kanske är felaktig (`~/public_html/retea/key` vs `/home/mackaneu/public_html/retea/key`)
    - Workflow kan ha problem att expandera `~`
 
@@ -35,11 +37,13 @@
 ### Rekommendationer
 
 1. **Kontrollera GitHub Actions-loggarna direkt:**
+
    - Gå till: https://github.com/tempdump/mackan-eu/actions/runs/19347417331
    - Klicka på "Job Deploy via SSH"
    - Kolla detaljerade felmeddelanden i loggarna
 
 2. **Verifiera GitHub Secrets:**
+
    - Gå till: https://github.com/tempdump/mackan-eu/settings/secrets/actions
    - Verifiera att alla secrets är korrekt konfigurerade:
      - `SSH_HOST` = `omega.hostup.se`
@@ -53,10 +57,10 @@
 
 ### Jämförelse
 
-| Metod | Status | Resultat |
-|-------|--------|----------|
-| PowerShell script | ✅ Fungerar | Deployment lyckas |
-| GitHub Actions | ❌ Misslyckas | Alla workflow runs misslyckas |
+| Metod             | Status        | Resultat                      |
+| ----------------- | ------------- | ----------------------------- |
+| PowerShell script | ✅ Fungerar   | Deployment lyckas             |
+| GitHub Actions    | ❌ Misslyckas | Alla workflow runs misslyckas |
 
 ### Nästa steg
 
@@ -64,4 +68,3 @@
 2. Verifiera att alla secrets är korrekta
 3. Testa SSH-anslutning från GitHub Actions-miljön
 4. Uppdatera DEPLOY_PATH till absolut sökväg om nödvändigt
-

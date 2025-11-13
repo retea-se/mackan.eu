@@ -1,6 +1,6 @@
 <?php
-// layout-start.php - v7
-// git commit: Infört sticky-footer-stöd via .layout och .layout__main
+// layout-start.php - v8
+// git commit: Infört Open Graph, Twitter Card, ARIA-support och bildoptimering
 
 header(
   "Content-Security-Policy: " .
@@ -17,6 +17,8 @@ $title = $title ?? 'Mackan.eu';
 $metaDescription = $metaDescription ?? 'Onlineverktyg för nördar';
 $keywords = $keywords ?? null;
 $canonical = $canonical ?? "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$metaImage = $metaImage ?? 'https://mackan.eu/icon/android-chrome-512x512.png';
+$ogType = $ogType ?? 'website';
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -28,7 +30,44 @@ $canonical = $canonical ?? "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUES
   <meta name="keywords" content="<?= htmlspecialchars($keywords, ENT_QUOTES, 'UTF-8') ?>">
   <?php endif; ?>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0066cc">
+  <meta name="author" content="Mackan.eu">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="<?= htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') ?>">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="<?= htmlspecialchars($ogType, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:site_name" content="Mackan.eu">
+  <meta property="og:title" content="<?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:description" content="<?= htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:url" content="<?= htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:image" content="<?= htmlspecialchars($metaImage, ENT_QUOTES, 'UTF-8') ?>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="<?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
+  <meta name="twitter:description" content="<?= htmlspecialchars($metaDescription, ENT_QUOTES, 'UTF-8') ?>">
+  <meta name="twitter:image" content="<?= htmlspecialchars($metaImage, ENT_QUOTES, 'UTF-8') ?>">
+  <meta name="twitter:image:alt" content="<?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>">
+
+  <!-- Favicon & Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+  <link rel="manifest" href="/icon/site.webmanifest">
+  <link rel="shortcut icon" href="/icon/favicon.ico">
+
+  <!-- Preconnect för snabbare laddning -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="//unpkg.com">
+
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 

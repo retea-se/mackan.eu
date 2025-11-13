@@ -3,8 +3,11 @@
 ?>
 <header class="nav">
   <div class="nav__vänster">
-    <a href="/index.php" class="sidfot__ikonlank" aria-label="Startsida">
-      <i class="fa-solid fa-house"></i>
+    <a href="/index.php"
+       class="sidfot__ikonlank touch-target"
+       aria-label="Startsida"
+       title="Gå till startsida">
+      <i class="fa-solid fa-house" aria-hidden="true"></i>
     </a>
   </div>
 
@@ -31,8 +34,12 @@
       <?php
     }
     ?>
-    <button id="themeToggle" class="knapp__ikon" aria-label="Byt tema">
-      <i class="fa-solid fa-moon"></i>
+    <button id="themeToggle"
+            class="knapp__ikon touch-target"
+            aria-label="Byt tema"
+            aria-pressed="false"
+            title="Växla mellan ljust och mörkt tema">
+      <i class="fa-solid fa-moon" aria-hidden="true"></i>
     </button>
   </div>
 </header>

@@ -5,27 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const exportFormatSelect = document.getElementById('exportFormat');
   const resultTable = document.getElementById('resultTable');
 
-  function getTableData() {
-    const headers = Array.from(resultTable.querySelectorAll('thead th')).map(th => th.textContent.trim());
-    const rows = resultTable.querySelectorAll('tbody tr');
-    return Array.from(rows).map(row => {
-      const obj = {};
-      headers.forEach((h, i) => {
-        obj[h] = row.cells[i]?.textContent.trim() || '';
-      });
-      return obj;
-    });
-  }
+  // Använd gemensam getTableData från tools-common.js istället
+  // function getTableData() { ... } // Borttagen - använder getTableData() från tools-common.js
 
-  function convertToCSV(data) {
-    const headers = Object.keys(data[0]);
-    const lines = [headers.join(';')];
-    data.forEach(row => {
-      const line = headers.map(h => `"${(row[h] || '').replace(/"/g, '""')}"`).join(';');
-      lines.push(line);
-    });
-    return '\uFEFF' + lines.join('\n'); // BOM först
-  }
+  // Använd gemensam exportToCSV från tools-common.js istället
+  // convertToCSV har flyttats till tools-common.js (exportToCSV)
 
   function convertToTXT(data) {
     const headers = Object.keys(data[0]);
@@ -37,34 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return '\uFEFF' + lines.join('\n'); // BOM först
   }
 
-  function exportExcel(data) {
-    const ws = XLSX.utils.json_to_sheet(data);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Testdata');
-
-    const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-    const blob = new Blob([wbout], { type: 'application/octet-stream' });
-    downloadBlob(blob, makeFileName('xlsx'));
-  }
-
-  function makeFileName(ext) {
-    const now = new Date();
-    const pad = n => n.toString().padStart(2, '0');
-    return `testdata_${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}.${ext}`;
-  }
-
-  function downloadBlob(blob, filename) {
-    const a = document.createElement('a');
-    const url = URL.createObjectURL(blob);
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(() => {
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }, 100);
-  }
+  // Använd gemensamma funktioner från tools-common.js istället
+  // exportExcel, makeFileName, downloadBlob har flyttats till tools-common.js
 
   function openNewTabWithContent(content, format) {
     const newWin = window.open('', '_blank');
@@ -136,26 +94,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
   downloadBtn.addEventListener('click', () => {
     const format = exportFormatSelect.value.toLowerCase();
-    const data = getTableData();
+    const data = getTableData(); // Använd gemensam getTableData från tools-common.js
     if (data.length === 0) {
-      alert('Ingen data att exportera.');
+      showToast('Ingen data att exportera.', 'warning');
       return;
     }
+
+    // Skapa filnamn med timestamp
+    const now = new Date();
+    const pad = n => n.toString().padStart(2, '0');
+    const timestamp = `${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
 
     if (format === 'xlsx') {
-      exportExcel(data);
+      // Använd gemensam exportToExcel från tools-common.js
+      exportToExcel(data, `testdata_${timestamp}.xlsx`, 'Testdata');
       return;
     }
 
-    let text = '';
     if (format === 'json') {
-      text = JSON.stringify(data, null, 2);
-    } else if (format === 'csv') {
-      text = convertToCSV(data);
-    } else if (format === 'txt') {
-      text = convertToTXT(data);
+      // Använd gemensam exportToJSON från tools-common.js
+      exportToJSON(data, `testdata_${timestamp}.json`);
+      return;
     }
 
-    openNewTabWithContent(text, format);
+    if (format === 'csv') {
+      // Använd gemensam exportToCSV från tools-common.js
+      exportToCSV(data, `testdata_${timestamp}.csv`);
+      return;
+    }
+
+    // För TXT, öppna i ny flik (behåller befintlig funktionalitet)
+    if (format === 'txt') {
+      const text = convertToTXT(data);
+      openNewTabWithContent(text, format);
+      return;
+    }
   });
 });

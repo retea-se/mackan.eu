@@ -39,27 +39,33 @@ include '../../includes/layout-start.php';
 ?>
 
 <main class="layout__container">
-  <h1 class="title"><!-- TODO: osäker konvertering: title -->
-    <?= $title ?>
-  </h1>
-  <?php if (!empty($subtitle)): ?>
-    <p class="subtitle"><!-- TODO: osäker konvertering: subtitle --><?= $subtitle ?></p>
-  <?php endif; ?>
+  <header class="layout__sektion text--center">
+    <h1 class="rubrik rubrik--sektion">
+      <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?>
+    </h1>
+    <?php if (!empty($subtitle)): ?>
+      <p class="text--lead"><?= htmlspecialchars($subtitle, ENT_QUOTES, 'UTF-8') ?></p>
+    <?php endif; ?>
+  </header>
 
-  <div class="form__grupp">
-    <label for="textInput">Klistra in text:</label>
-    <textarea id="textInput" class="falt__textarea" rows="6"></textarea>
-  </div>
+  <section class="layout__sektion">
+    <form class="form">
+      <div class="form__grupp">
+        <label for="textInput" class="falt__etikett">Klistra in text:</label>
+        <textarea id="textInput" class="falt__textarea" rows="6"></textarea>
+      </div>
 
-  <div class="form__grupp">
-    <label for="voiceSelect">Välj röst:</label>
-    <select id="voiceSelect" class="falt__input"></select>
-  </div>
+      <div class="form__grupp">
+        <label for="voiceSelect" class="falt__etikett">Välj röst:</label>
+        <select id="voiceSelect" class="falt__select"></select>
+      </div>
 
-  <div class="form__grupp">
-    <button id="playBtn" class="knapp">Spela upp</button>
-    <button id="downloadBtn" class="knapp">Ladda ner</button>
-  </div>
+      <div class="form__verktyg">
+        <button id="playBtn" class="knapp" type="button">Spela upp</button>
+        <button id="downloadBtn" class="knapp" type="button">Ladda ner</button>
+      </div>
+    </form>
+  </section>
 </main>
 
 <?php include '../../includes/layout-end.php'; ?>

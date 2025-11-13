@@ -92,7 +92,7 @@ const toast = document.getElementById('toast');
 function setQrTippy(shortlink) {
   if (!qrBtn) return;
   const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(shortlink);
-  qrBtn.setAttribute('data-tippy-content', `<img src="${qrUrl}" alt="QR-kod" width="120">`);
+  qrBtn.setAttribute('data-tippy-content', `<img src="${qrUrl}" alt="QR-kod" width="120" height="120" loading="lazy" decoding="async">`);
 }
 
 // Anropa setQrTippy(data.shortlink) när du fått kortlänken!

@@ -6,9 +6,11 @@ export function init() {
 
   const section = document.getElementById('tab-utilities');
   section.innerHTML = `
-    <form class="form-group">
-      <label for="utilityInput">Input:</label>
-      <textarea id="utilityInput" class="textarea" rows="6" placeholder='{"nyckel":"värde"}'></textarea>
+    <form class="form">
+      <div class="form__grupp">
+        <label for="utilityInput" class="falt__etikett">Input:</label>
+        <textarea id="utilityInput" class="falt__textarea" rows="6" placeholder='{"nyckel":"värde"}'></textarea>
+      </div>
 
       <div class="form__verktyg">
         <button type="button" class="knapp knapp--liten" data-func="encode">URL Encode</button>
@@ -19,9 +21,9 @@ export function init() {
       </div>
     </form>
 
-    <div class="form-group">
-      <label for="utilityOutput">Output:</label>
-      <textarea id="utilityOutput" class="textarea" rows="6" readonly></textarea>
+    <div class="form__grupp">
+      <label for="utilityOutput" class="falt__etikett">Output:</label>
+      <textarea id="utilityOutput" class="falt__textarea" rows="6" readonly></textarea>
     </div>
   `;
 
@@ -55,16 +57,22 @@ function runUtility(type) {
           const parsed = JSON.parse(input);
           result = JSON.stringify(parsed, null, 2);
         } catch (e) {
+          showToast("Ogiltig JSON: " + e.message, 'error');
           result = "❌ Fel: Ogiltig JSON - " + e.message;
         }
         break;
       default:
         result = "Okänd funktion.";
+        showToast("Okänd funktion.", 'warning');
     }
     output.value = result;
     console.log(`Verktyg ${type} kördes`);
+    if (result && !result.startsWith('❌')) {
+      showToast(`Verktyg ${type} kördes framgångsrikt.`, 'success');
+    }
   } catch (e) {
     output.value = "❌ Fel: " + e.message;
+    showToast("Fel: " + e.message, 'error');
   }
 }
 /* ********** SLUT: JSON utilities ********** */

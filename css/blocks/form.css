@@ -43,6 +43,29 @@
   margin-top: 1rem;
 }
 
+/* === Responsiv layout för formulär === */
+@media (max-width: 768px) {
+  .form__centrerad {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .form__verktyg {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form__verktyg > * {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .form__grupp {
+    margin-bottom: 1rem;
+  }
+}
+
 /* === Temastöd === */
 [data-theme="dark"] .form__hint {
   color: #aaa;

@@ -120,5 +120,4 @@ include '../../includes/layout-start.php';
 <?php include '../../includes/layout-end.php'; ?>
 <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 <script src="script.js" defer></script>
-<script src="pnr-utils.js" defer></script>
 <script src="export.js" defer></script>

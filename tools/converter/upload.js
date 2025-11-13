@@ -12,12 +12,12 @@ export function init() {
   const fileInput = document.createElement('input');
   fileInput.type = 'file';
   fileInput.accept = '.csv,.json,.xlsx';
-  fileInput.className = 'input';
+  fileInput.className = 'falt__input';
   fileInput.id = 'uploadInput';
 
   const info = document.createElement('div');
   info.id = 'uploadInfo';
-  info.className = 'form-group';
+  info.className = 'form__grupp';
   info.style.marginTop = '0.5rem';
 
   container.appendChild(fileInput);
@@ -72,5 +72,6 @@ function handleFile(event) {
   else {
     output.value = "❌ Ogiltigt filformat.";
     console.warn("Filen kunde inte tolkas.");
+    showToast("Ogiltigt filformat. Stödda format: JSON, CSV, XLSX", 'error');
   }
 }

@@ -52,12 +52,36 @@
   opacity: 0.75;
 }
 
-/* === Fokusstil === */
+/* === Fokusstil med keyboard-navigation === */
 .falt__input:focus,
 .falt__textarea:focus,
 .falt__dropdown:focus {
   border-color: var(--primary-color);
   outline: none;
+}
+
+.falt__input:focus-visible,
+.falt__textarea:focus-visible,
+.falt__dropdown:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: var(--border-radius);
+}
+
+/* Error state med ARIA-stöd */
+.falt--fel .falt__input[aria-invalid="true"],
+.falt--fel .falt__textarea[aria-invalid="true"],
+.falt--fel .falt__dropdown[aria-invalid="true"] {
+  border-color: var(--error-color);
+  background-color: #ffeef0;
+}
+
+/* Required field indicator */
+.falt__etikett[aria-required="true"]::after,
+.falt__etikett.required::after {
+  content: ' *';
+  color: var(--error-color);
+  font-weight: bold;
 }
 
 /* === Checkbox-rad (label + checkbox) === */

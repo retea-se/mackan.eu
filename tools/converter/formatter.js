@@ -21,7 +21,7 @@ export function init() {
   editor = new JSONEditor(container, {
     mode: 'code',
     modes: ['code', 'tree', 'view'],
-    onError: err => alert("Fel i JSON: " + err.message),
+    onError: err => showToast("Fel i JSON: " + err.message, 'error'),
   });
 
   document.getElementById("btnBeautify").addEventListener("click", () => formatJson(false));
@@ -35,17 +35,18 @@ function formatJson(minify = false) {
     const output = JSON.stringify(data, null, minify ? 0 : 2);
     editor.setText(output);
     console.log("JSON formatterad:", minify ? "minify" : "beautify");
+    showToast(`JSON ${minify ? 'minifierad' : 'formaterad'} framgångsrikt.`, 'success');
   } catch (e) {
-    alert("Kunde inte formattera: " + e.message);
+    showToast("Kunde inte formattera: " + e.message, 'error');
   }
 }
 
 function copyJson() {
   try {
     const text = editor.getText();
-    navigator.clipboard.writeText(text).then(() => alert("JSON kopierat!"));
+    navigator.clipboard.writeText(text).then(() => showToast("JSON kopierat!", 'success'));
   } catch (e) {
-    alert("Kunde inte kopiera: " + e.message);
+    showToast("Kunde inte kopiera: " + e.message, 'error');
   }
 }
 /* ********** SLUT: Formatter med JSONEditor ********** */

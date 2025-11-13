@@ -109,11 +109,48 @@
   background: var(--hover-color, #e6f2fa);
 }
 
+/* Förbättrad keyboard-navigation */
+.knapp:focus-visible,
+.knapp__ikon:focus-visible {
+  outline: 2px solid var(--primary-color, #0066cc);
+  outline-offset: 2px;
+  border-radius: var(--border-radius);
+}
+
 .knapp__ikon:focus,
 .knapp__ikon:focus-visible,
 .knapp__ikon:active {
-  outline: none !important;
-  box-shadow: none !important;
+  /* Behåll outline för keyboard-navigation */
+}
+
+.knapp__ikon:active {
+  transform: scale(0.95);
+}
+
+/* Disabled state med ARIA-stöd */
+.knapp[disabled],
+.knapp[aria-disabled="true"] {
+  background-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Loading state */
+.knapp[aria-busy="true"]::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-right: 0.5em;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 /* === Modifierare: ikonstorlek === */
