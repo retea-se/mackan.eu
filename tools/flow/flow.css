@@ -1,0 +1,512 @@
+/* ===================================================== */
+/* Fil: flow.css - v1                                    */
+/* Komponent: Flow Builder                               */
+/* Struktur: BEM (.flow-wrapper, .flow-app, etc.)       */
+/* Syfte: Styling för Flow Builder verktyg               */
+/* ===================================================== */
+
+/* === Flow Wrapper === */
+.flow-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* === Flow App Container === */
+.flow-app {
+  display: flex;
+  min-height: 600px;
+  background: var(--background-color, #fff);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: var(--border-radius, 8px);
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+/* === Sidebar === */
+.flow-sidebar {
+  width: 320px;
+  min-width: 280px;
+  background: var(--flow-dark, #1f2937);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--flow-border, #e5e7eb);
+}
+
+.flow-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flow-header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.flow-header p {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* === Tabs === */
+.flow-tabs {
+  display: flex;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.flow-tab {
+  flex: 1;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+  font-family: inherit;
+}
+
+.flow-tab:hover,
+.flow-tab:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: 2px solid var(--primary-color, #0066cc);
+  outline-offset: 2px;
+}
+
+.flow-tab--aktiv,
+.flow-tab[aria-selected="true"] {
+  background: var(--flow-primary, #6366f1);
+  color: #fff;
+  border-color: var(--flow-primary, #6366f1);
+}
+
+/* === Tab Content === */
+.flow-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.tab-content {
+  display: block;
+}
+
+.tab-content.hidden,
+.tab-content[aria-hidden="true"] {
+  display: none;
+}
+
+/* === Node Palette === */
+.node-palette {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.node-item {
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #fff;
+  cursor: grab;
+  transition: all 0.2s ease;
+  text-align: center;
+  font-size: 0.85rem;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.node-item:hover,
+.node-item:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  outline: 2px solid var(--primary-color, #0066cc);
+  outline-offset: 2px;
+}
+
+.node-item:active {
+  cursor: grabbing;
+  transform: translateY(0);
+}
+
+.node-icon {
+  font-size: 1.5rem;
+  display: block;
+}
+
+/* === Tool Buttons === */
+.tool-group {
+  margin-bottom: 1.5rem;
+}
+
+.tool-group h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.tool-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.tool-button:hover,
+.tool-button:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  outline: 2px solid var(--primary-color, #0066cc);
+  outline-offset: 2px;
+}
+
+.tool-button.active {
+  background: var(--flow-primary, #6366f1);
+  border-color: var(--flow-primary, #6366f1);
+}
+
+/* === Main Canvas Area === */
+.flow-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--background-color, #f8fafc);
+  min-width: 0;
+}
+
+/* === Toolbar === */
+.flow-toolbar {
+  background: var(--background-color, #fff);
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.toolbar-button {
+  padding: 0.5rem 1rem;
+  background: var(--background-color, #fff);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text-color, #333);
+}
+
+.toolbar-button:hover,
+.toolbar-button:focus-visible {
+  background: var(--hover-color, #f3f4f6);
+  border-color: var(--primary-color, #0066cc);
+  outline: 2px solid var(--primary-color, #0066cc);
+  outline-offset: 2px;
+}
+
+.toolbar-button--primary,
+.toolbar-button.primary {
+  background: var(--primary-color, #0066cc);
+  color: #fff;
+  border-color: var(--primary-color, #0066cc);
+}
+
+.toolbar-button--primary:hover,
+.toolbar-button.primary:hover {
+  background: var(--primary-color-dark, #0052a3);
+}
+
+/* === Canvas === */
+.flow-canvas {
+  flex: 1;
+  position: relative;
+  background: 
+    radial-gradient(circle at 20px 20px, #e5e7eb 1px, transparent 1px),
+    linear-gradient(to right, transparent 19px, #f3f4f6 20px, transparent 21px),
+    linear-gradient(to bottom, transparent 19px, #f3f4f6 20px, transparent 21px);
+  background-size: 20px 20px, 20px 20px, 20px 20px;
+  min-height: 400px;
+}
+
+.flow-canvas:focus-visible {
+  outline: 2px solid var(--primary-color, #0066cc);
+  outline-offset: -2px;
+}
+
+/* === Properties Panel === */
+.flow-properties {
+  width: 300px;
+  min-width: 250px;
+  background: var(--background-color, #fff);
+  border-left: 1px solid var(--border-color, #e5e7eb);
+  display: flex;
+  flex-direction: column;
+}
+
+.properties-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  background: var(--secondary-color, #f8fafc);
+}
+
+.properties-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.properties-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.property-group {
+  margin-bottom: 1.5rem;
+}
+
+.property-group h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted, #6b7280);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.property-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+  background: var(--background-color, #fff);
+  color: var(--text-color, #333);
+}
+
+.property-input:focus,
+.property-input:focus-visible {
+  outline: none;
+  border-color: var(--primary-color, #0066cc);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* === Color Palette === */
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.color-swatch {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  padding: 0;
+  background: transparent;
+}
+
+.color-swatch:hover,
+.color-swatch:focus-visible {
+  transform: scale(1.1);
+  outline: 2px solid var(--primary-color, #0066cc);
+  outline-offset: 2px;
+}
+
+.color-swatch.active {
+  border-color: var(--flow-dark, #1f2937);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* === Statistics === */
+.flow-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color, #0066cc);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-muted, #6b7280);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* === Minimap === */
+.flow-minimap {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 200px;
+  height: 120px;
+  background: var(--background-color, #fff);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+/* === Responsive Design === */
+@media (max-width: 1024px) {
+  .flow-app {
+    flex-direction: column;
+  }
+
+  .flow-sidebar,
+  .flow-properties {
+    width: 100%;
+    max-height: 300px;
+  }
+
+  .flow-main {
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .flow-wrapper {
+    padding: 0;
+  }
+
+  .flow-app {
+    border-radius: 0;
+    margin: 1rem 0;
+  }
+
+  .flow-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-group {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .toolbar-button {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .node-palette {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .flow-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-minimap {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .flow-sidebar {
+    max-height: 250px;
+  }
+
+  .node-palette {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .toolbar-button {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+/* === Loading Animation === */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+/* === Dark Theme Support === */
+[data-theme="dark"] .flow-app {
+  background: var(--background-color-dark, #1a1a1a);
+  border-color: var(--border-color-dark, #333);
+}
+
+[data-theme="dark"] .flow-main {
+  background: var(--background-color-dark, #1a1a1a);
+}
+
+[data-theme="dark"] .flow-toolbar,
+[data-theme="dark"] .flow-properties,
+[data-theme="dark"] .properties-header {
+  background: var(--background-color-dark, #1a1a1a);
+  border-color: var(--border-color-dark, #333);
+}
+
+[data-theme="dark"] .flow-canvas {
+  background: 
+    radial-gradient(circle at 20px 20px, #333 1px, transparent 1px),
+    linear-gradient(to right, transparent 19px, #2a2a2a 20px, transparent 21px),
+    linear-gradient(to bottom, transparent 19px, #2a2a2a 20px, transparent 21px);
+  background-size: 20px 20px, 20px 20px, 20px 20px;
+}
+
