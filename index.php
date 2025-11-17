@@ -134,11 +134,11 @@ foreach ($toolsByCategory as $cat => $catTools) {
             <h2 class="landing-category__title"><?= htmlspecialchars($catInfo['title']) ?></h2>
           </div>
           <div class="landing-view-toggle">
-            <button class="landing-view-toggle__button landing-view-toggle__button--active" onclick="setView(this, 'grid')">
-              <i class="fas fa-grip"></i>
+            <button class="landing-view-toggle__button landing-view-toggle__button--active" onclick="setView(this, 'grid')" aria-label="Visa som rutnät" title="Visa som rutnät">
+              <i class="fas fa-grip" aria-hidden="true"></i>
             </button>
-            <button class="landing-view-toggle__button" onclick="setView(this, 'list')">
-              <i class="fas fa-list"></i>
+            <button class="landing-view-toggle__button" onclick="setView(this, 'list')" aria-label="Visa som lista" title="Visa som lista">
+              <i class="fas fa-list" aria-hidden="true"></i>
             </button>
           </div>
         </div>
