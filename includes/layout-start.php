@@ -21,7 +21,7 @@ $metaImage = $metaImage ?? 'https://mackan.eu/icon/android-chrome-512x512.png';
 $ogType = $ogType ?? 'website';
 ?>
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv" data-theme="light">
 <head>
   <meta charset="utf-8">
   <title><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?></title>
