@@ -57,12 +57,12 @@ if ($rating > 0 && $load >= 0) {
   $pen   = max(0, $sc - BASE_SC) * $loadKW * 24;
   $class = $gamma<=1.2 ? 'kort--gron' : ($gamma<=1.6 ? 'kort--gul' : 'kort--rod');
 
-  $effTxt = $gamma<=1.2 ? "🟢 Normal bränsleförbrukning."
-         : ($gamma<=1.6 ? "🟡 Måttlig ineffektivitet (+" . round(($gamma-1)*100) . "%) – ≈ " . round($pen) . " L extra/dygn."
-                        : "🔴 Kraftig ineffektivitet (+" . round(($gamma-1)*100) . "%) – > " . round($pen) . " L extra/dygn.");
+  $effTxt = $gamma<=1.2 ? "Normal bränsleförbrukning."
+         : ($gamma<=1.6 ? "Måttlig ineffektivitet (+" . round(($gamma-1)*100) . "%) – ≈ " . round($pen) . " L extra/dygn."
+                        : "Kraftig ineffektivitet (+" . round(($gamma-1)*100) . "%) – > " . round($pen) . " L extra/dygn.");
 
   $lowWarn = $loadPct < 20
-    ? "⚠️ Lasten är under 20 % av märkeffekten – hög specifik förbrukning och risk för sot (wet-stacking)."
+    ? "Lasten är under 20 % av märkeffekten – hög specifik förbrukning och risk för sot (wet-stacking)."
     : "";
 
   $result = compact('ratingKW','loadKW','loadPct','sc','Lph',
@@ -294,8 +294,6 @@ include '../../includes/tool-layout-start.php';
       </li>
     </ul>
   </section>
-
-</main>
 
 <script src="/js/faq.js"></script>
 <?php include '../../includes/tool-layout-end.php'; ?>

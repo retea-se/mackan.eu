@@ -89,7 +89,7 @@ include '../../includes/tool-layout-start.php';
       <div id="formFields" class="form"></div>
 
       <div class="qr__actions">
-        <button id="generateBtn" class="knapp knapp--liten hidden">🎯 Skapa QR-kod</button>
+        <button id="generateBtn" class="knapp knapp--liten hidden">Skapa QR-kod</button>
       </div>
 
       <div id="qrPreview" class="qr__preview" aria-live="polite"></div>

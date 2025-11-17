@@ -36,8 +36,9 @@
 
 /* Mörkt tema */
 [data-theme="dark"] {
-  --primary-color: #4db3fa;
-  --primary-color-hover: #1a6fb3;
+  --primary-color: #2196f3;
+  --primary-color-dark: #1976d2;
+  --primary-color-hover: #1565c0;
   --secondary-color: #222;
   --accent-color: #ffd700;
   --error-color: #ff6666;

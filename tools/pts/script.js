@@ -32,10 +32,7 @@ async function hamtaDiarium(start, end) {
   }
 
   const url = `proxy.php?start=${start}&end=${end}`;
-  console.log(`[v8] 🔍 Begär ärenden från: ${url}`);
-
-  // Visa loading-indikator
-  const loadingEl = showLoading(tableBody.parentElement, 'Hämtar ärenden...');
+  console.log(`[v8] Begär ärenden från: ${url}`);
 
   try {
     const res = await fetch(url);
@@ -44,7 +41,7 @@ async function hamtaDiarium(start, end) {
 
     if (data.error) throw new Error(data.error);
 
-    console.log(`[v8] ✅ ${data.length} ärenden hämtade`);
+    console.log(`[v8] ${data.length} ärenden hämtade`);
     ärenden = data;
     window.ärenden = data;
 
@@ -73,7 +70,7 @@ async function hamtaDiarium(start, end) {
 // ********** START Sektion: Visa resultat **********
 
 function visaResultat(lista) {
-  console.log(`[v8] 🖼️ Visar ${lista.length} ärenden i tabellen`);
+  console.log(`[v8] Visar ${lista.length} ärenden i tabellen`);
   tableBody.innerHTML = '';
 
   if (!lista.length) {
@@ -107,7 +104,7 @@ searchInput.addEventListener('input', () => {
   const filtrerat = ärenden.filter(a =>
     a.caseTitle.toLowerCase().includes(searchInput.value.toLowerCase())
   );
-  console.log(`[v8] 🔎 Filtrering aktiv: ${filtrerat.length} matchningar`);
+  console.log(`[v8] Filtrering aktiv: ${filtrerat.length} matchningar`);
   visaResultat(filtrerat);
 });
 
@@ -121,7 +118,7 @@ tableBody.addEventListener('click', async e => {
   if (!rad) return;
 
   const caseId = rad.dataset.caseIdentifier;
-  console.log(`[v8] 📂 Klick på ärende ${caseId}, försöker hämta handlingar...`);
+  console.log(`[v8] Klick på ärende ${caseId}, försöker hämta handlingar...`);
 
   const nextRow = rad.nextElementSibling;
   if (nextRow?.classList.contains('deed-row')) {

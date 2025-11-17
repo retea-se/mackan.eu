@@ -19,8 +19,8 @@ include '../../includes/tool-layout-start.php';
   <section class="layout__sektion">
     <div class="qr" data-qr="v3">
       <div class="qr__mode-tabs">
-        <button class="qr__mode-btn qr__mode-btn--active" data-mode="single" aria-label="Enkel QR-kod">📱 Enkel QR-kod</button>
-        <button class="qr__mode-btn" data-mode="batch" aria-label="Batch-generering">📋 Batch-generering</button>
+        <button class="qr__mode-btn qr__mode-btn--active" data-mode="single" aria-label="Enkel QR-kod">Enkel QR-kod</button>
+        <button class="qr__mode-btn" data-mode="batch" aria-label="Batch-generering">Batch-generering</button>
       </div>
 
       <div id="single-mode" class="qr__mode-content qr__mode-content--active">
@@ -61,22 +61,22 @@ include '../../includes/tool-layout-start.php';
 
         <div id="single-form" class="form"></div>
         <div class="qr__actions">
-          <button id="single-generate" class="knapp knapp--liten hidden">🎯 Skapa QR-kod</button>
+          <button id="single-generate" class="knapp knapp--liten hidden">Skapa QR-kod</button>
         </div>
         <div id="qr-preview" class="qr__preview" aria-live="polite"></div>
       </div>
 
       <div id="batch-mode" class="qr__mode-content hidden">
         <div class="qr__batch-select">
-          <button class="qr__mode-btn" data-batch-type="felanmalan" aria-label="Felanmälningar batch">⚠️ Felanmälningar</button>
-          <button class="qr__mode-btn" data-batch-type="links" aria-label="Länkar batch">🔗 Länkar</button>
-          <button class="qr__mode-btn" data-batch-type="text" aria-label="Text batch">📝 Text</button>
+          <button class="qr__mode-btn" data-batch-type="felanmalan" aria-label="Felanmälningar batch">Felanmälningar</button>
+          <button class="qr__mode-btn" data-batch-type="links" aria-label="Länkar batch">Länkar</button>
+          <button class="qr__mode-btn" data-batch-type="text" aria-label="Text batch">Text</button>
         </div>
 
         <div id="batch-input" class="hidden">
           <textarea id="batch-textarea" class="qr__batch-textarea" rows="10" placeholder="Ange text per rad..."></textarea>
           <div class="qr__actions">
-            <button id="batch-generate" class="knapp knapp--liten">📋 Generera QR-koder</button>
+            <button id="batch-generate" class="knapp knapp--liten">Generera QR-koder</button>
           </div>
         </div>
 
@@ -85,11 +85,11 @@ include '../../includes/tool-layout-start.php';
       </div>
 
       <div id="export-options" class="qr__export hidden">
-        <h3>💾 Export</h3>
+        <h3>Export</h3>
         <div class="qr__export-buttons">
-          <button id="download-png" class="knapp knapp--liten">🖼️ PNG</button>
-          <button id="download-zip" class="knapp knapp--liten">📦 ZIP</button>
-          <button id="download-docx" class="knapp knapp--liten">📄 DOCX</button>
+          <button id="download-png" class="knapp knapp--liten">PNG</button>
+          <button id="download-zip" class="knapp knapp--liten">ZIP</button>
+          <button id="download-docx" class="knapp knapp--liten">DOCX</button>
         </div>
       </div>
     </div>
