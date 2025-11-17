@@ -32,6 +32,11 @@ include '../../../includes/layout-start.php';
         <span class="status-value" id="historyCount">0</span>
       </div>
       <div>
+        <button id="themeToggle" class="qr-theme-toggle" aria-label="Växla tema" title="Växla mellan mörkt och ljust tema">
+          <span class="qr-theme-toggle__icon">🌙</span>
+        </button>
+      </div>
+      <div>
         <span class="status-label">Testläge</span>
         <span class="status-value">Lokalt</span>
       </div>
@@ -300,4 +305,5 @@ include '../../../includes/layout-start.php';
 <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script src="script.js" type="module"></script>
+
 

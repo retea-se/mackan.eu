@@ -2,16 +2,34 @@
 
 Alla värden är extraherade från `mackan.eu/index` (svartvit grunddesign) och ska användas konsekvent i hela verktyget.
 
-## Färger
+**Standardtema:** Mörkt tema är default. Ljust tema aktiveras via tema-växlare.
+
+## Färger (Mörkt tema - default)
+
+| Token | Hex | Användning |
+| --- | --- | --- |
+| `--color-bg` | `#050505` | Standardbakgrund |
+| `--color-panel` | `#0f0f10` | Paneler/kort |
+| `--color-bg-alt` | `#0a0a0b` | Alternativ bakgrund |
+| `--color-text` | `#f8f8f2` | Brödtext |
+| `--color-muted` | `#9fa0a6` | Sekundär text/etiketter |
+| `--color-border` | `#1f1f21` | Tunna linjer/ramar |
+| `--color-accent` | `#f7c843` | Fokus/accenter (knappar, badges) |
+| `--color-accent-soft` | `#2a2a2d` | Mjuk accentbakgrund |
+| `--color-danger` | `#ff4d4f` | Varningar |
+
+## Färger (Ljust tema)
 
 | Token | Hex | Användning |
 | --- | --- | --- |
 | `--color-bg` | `#fefefe` | Standardbakgrund |
-| `--color-bg-alt` | `#f4f4f2` | Sektioner/kort |
+| `--color-panel` | `#ffffff` | Paneler/kort |
+| `--color-bg-alt` | `#f4f4f2` | Alternativ bakgrund |
 | `--color-text` | `#111111` | Brödtext |
 | `--color-muted` | `#6d6d6d` | Sekundär text/etiketter |
-| `--color-border` | `#1c1c1c` | Tunna linjer/ramar |
+| `--color-border` | `#d4d4d4` | Tunna linjer/ramar |
 | `--color-accent` | `#ffd500` | Fokus/accenter (knappar, badges) |
+| `--color-accent-soft` | `#fff9e6` | Mjuk accentbakgrund |
 | `--color-danger` | `#ff4d4f` | Varningar |
 
 **Regel:** accentfärg används sparsamt; UI ska kännas monokromt med tydliga kontraster.

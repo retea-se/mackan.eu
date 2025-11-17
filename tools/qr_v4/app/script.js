@@ -156,6 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
   refs.expertDrawer?.addEventListener('click', (event) => {
     if (event.target === refs.expertDrawer) toggleExpertDrawer(false);
   });
+  refs.themeToggle?.addEventListener('click', handleThemeToggle);
+  
+  // Ladda sparad tema-inställning
+  const savedTheme = localStorage.getItem('qr_v4_theme') || 'dark';
+  applyTheme(savedTheme);
   createInitialQR();
   refreshWarnings();
   initTemplates();
@@ -165,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function cacheElements() {
   refs.statusIndicator = document.getElementById('statusIndicator');
   refs.historyCount = document.getElementById('historyCount');
+  refs.themeToggle = document.getElementById('themeToggle');
   refs.typeTags = document.getElementById('typeTags');
   refs.formFields = document.getElementById('formFields');
   refs.generateBtn = document.getElementById('generateBtn');
@@ -1114,6 +1120,26 @@ function getContrast(foreground, background) {
   const brighter = Math.max(l1, l2);
   const darker = Math.min(l1, l2);
   return (brighter + 0.05) / (darker + 0.05);
+}
+
+function handleThemeToggle() {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  applyTheme(newTheme);
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('qr_v4_theme', theme);
+  
+  // Uppdatera ikon
+  if (refs.themeToggle) {
+    const icon = refs.themeToggle.querySelector('.qr-theme-toggle__icon');
+    if (icon) {
+      icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+    }
+    refs.themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Växla till ljust tema' : 'Växla till mörkt tema');
+  }
 }
 
 function hexToRgb(hex) {
