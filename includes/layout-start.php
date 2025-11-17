@@ -6,7 +6,7 @@ header(
   "Content-Security-Policy: " .
   "default-src 'self'; " .
   "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com https://cdn.sheetjs.com https://html2canvas.hertzen.com https://www.googletagmanager.com https://www.google-analytics.com; " .
-  "connect-src 'self' https://skatteverket.entryscape.net https://www.google-analytics.com https://stats.g.doubleclick.net; " .
+  "connect-src 'self' https://skatteverket.entryscape.net https://www.google-analytics.com https://stats.g.doubleclick.net https://unpkg.com; " .
   "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://fonts.googleapis.com; " .
   "img-src 'self' data: https://api.qrserver.com https://www.google-analytics.com https://stats.g.doubleclick.net; " .
   "font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;"
