@@ -26,35 +26,35 @@ include '../../includes/tool-layout-start.php';
       <div id="single-mode" class="qr__mode-content qr__mode-content--active">
         <div class="qr__type-grid">
           <button class="qr__type-btn" data-type="text" title="Skapar QR för ren text" aria-label="Text QR-kod">
-            <span class="qr__type-icon" aria-hidden="true">📝</span>
+            <span class="qr__type-icon" aria-hidden="true"></span>
             <span>Text</span>
           </button>
           <button class="qr__type-btn" data-type="url" title="Skapar QR för webbadress" aria-label="Länk QR-kod">
-            <span class="qr__type-icon" aria-hidden="true">🔗</span>
+            <span class="qr__type-icon" aria-hidden="true"></span>
             <span>Länk</span>
           </button>
           <button class="qr__type-btn" data-type="vcard" title="Skapar QR för kontaktuppgifter" aria-label="Kontakt QR-kod">
-            <span class="qr__type-icon" aria-hidden="true">👤</span>
+            <span class="qr__type-icon" aria-hidden="true"></span>
             <span>Kontakt</span>
           </button>
           <button class="qr__type-btn" data-type="wifi" title="Skapar QR för WiFi-anslutning" aria-label="WiFi QR-kod">
-            <span class="qr__type-icon" aria-hidden="true">📶</span>
+            <span class="qr__type-icon" aria-hidden="true"></span>
             <span>WiFi</span>
           </button>
           <button class="qr__type-btn" data-type="email" title="Skapar QR för e-post" aria-label="E-post QR-kod">
-            <span class="qr__type-icon" aria-hidden="true">✉️</span>
+            <span class="qr__type-icon" aria-hidden="true"></span>
             <span>E-post</span>
           </button>
           <button class="qr__type-btn" data-type="sms" title="Skapar QR för SMS" aria-label="SMS QR-kod">
-            <span class="qr__type-icon" aria-hidden="true">💬</span>
+            <span class="qr__type-icon" aria-hidden="true"></span>
             <span>SMS</span>
           </button>
           <button class="qr__type-btn" data-type="phone" title="Skapar QR för telefon" aria-label="Telefon QR-kod">
-            <span class="qr__type-icon" aria-hidden="true">📞</span>
+            <span class="qr__type-icon" aria-hidden="true"></span>
             <span>Telefon</span>
           </button>
           <button class="qr__type-btn" data-type="geo" title="Skapar QR för plats" aria-label="Plats QR-kod">
-            <span class="qr__type-icon" aria-hidden="true">📍</span>
+            <span class="qr__type-icon" aria-hidden="true"></span>
             <span>Plats</span>
           </button>
         </div>

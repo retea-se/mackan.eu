@@ -50,27 +50,27 @@ include '../../includes/tool-layout-start.php';
     <div class="konverterar">
       <div class="konverterar__tabs">
         <button class="konverterar__tab konverterar__tab--aktiv" data-tab="csvtojson" data-tippy-content="Konvertera CSV till JSON" aria-label="CSV till JSON">
-          <span class="konverterar__ikon">📊</span>
+          <span class="konverterar__ikon"></span>
           <span class="konverterar__titel">CSV → JSON</span>
         </button>
         <button class="konverterar__tab" data-tab="formatter" data-tippy-content="Formatera JSON" aria-label="Formatter">
-          <span class="konverterar__ikon">✨</span>
+          <span class="konverterar__ikon"></span>
           <span class="konverterar__titel">Formatter</span>
         </button>
         <button class="konverterar__tab" data-tab="validator" data-tippy-content="Validera JSON" aria-label="Validera">
-          <span class="konverterar__ikon">✅</span>
+          <span class="konverterar__ikon"></span>
           <span class="konverterar__titel">Validera</span>
         </button>
         <button class="konverterar__tab" data-tab="fixer" data-tippy-content="Reparera JSON" aria-label="Reparera">
-          <span class="konverterar__ikon">🔧</span>
+          <span class="konverterar__ikon"></span>
           <span class="konverterar__titel">Reparera</span>
         </button>
         <button class="konverterar__tab" data-tab="utilities" data-tippy-content="Småverktyg" aria-label="Verktyg">
-          <span class="konverterar__ikon">🛠️</span>
+          <span class="konverterar__ikon"></span>
           <span class="konverterar__titel">Verktyg</span>
         </button>
         <button class="konverterar__tab" data-tab="converter" data-tippy-content="Konvertera JSON ↔ CSV/YAML/XML" aria-label="Konvertera">
-          <span class="konverterar__ikon">🔄</span>
+          <span class="konverterar__ikon"></span>
           <span class="konverterar__titel">Konvertera</span>
         </button>
       </div>
