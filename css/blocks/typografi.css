@@ -15,14 +15,14 @@
 .text--lead {
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   line-height: 1.6;
-  color: var(--text-muted, #6c757d);
+  color: var(--text-muted, #5a6268);
   max-width: 70ch;
   margin: 0 auto 2rem auto;
   text-align: center;
 }
 
 .text--muted {
-  color: var(--text-muted, #6c757d);
+  color: var(--text-muted, #5a6268);
 }
 
 .text--center {

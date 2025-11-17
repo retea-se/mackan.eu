@@ -45,7 +45,7 @@
                         <h2 data-i18n="timer-settings">Timer-inställningar</h2>
                         
                         <div class="setting-row">
-                            <label data-i18n="direction">Riktning:</label>
+                            <label for="timer-direction" data-i18n="direction">Riktning:</label>
                             <select id="timer-direction">
                                 <option value="down" data-i18n="countdown">Nedräkning</option>
                                 <option value="up" data-i18n="countup">Uppräkning</option>
@@ -54,15 +54,15 @@
 
                         <div class="time-inputs">
                             <div class="time-input-group">
-                                <label data-i18n="hours">Timmar</label>
+                                <label for="hours" data-i18n="hours">Timmar</label>
                                 <input type="number" id="hours" min="0" max="99" value="0">
                             </div>
                             <div class="time-input-group">
-                                <label data-i18n="minutes">Minuter</label>
+                                <label for="minutes" data-i18n="minutes">Minuter</label>
                                 <input type="number" id="minutes" min="0" max="59" value="15">
                             </div>
                             <div class="time-input-group">
-                                <label data-i18n="seconds">Sekunder</label>
+                                <label for="seconds" data-i18n="seconds">Sekunder</label>
                                 <input type="number" id="seconds" min="0" max="59" value="0">
                             </div>
                         </div>

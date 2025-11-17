@@ -93,6 +93,12 @@
   padding: 1rem;
 }
 
+.flow-content h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
 .tab-content {
   display: block;
 }
