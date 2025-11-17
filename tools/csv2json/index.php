@@ -137,8 +137,6 @@ include '../../includes/tool-layout-start.php';
     </ul>
   </section>
 
-</main>
-
 <?php include '../../includes/tool-layout-end.php'; ?>
 <script src="script.js" defer></script>
 <script src="tools.js" defer></script>

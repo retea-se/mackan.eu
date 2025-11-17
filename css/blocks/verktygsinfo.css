@@ -59,14 +59,14 @@
 
 /* === FAQ === */
 .faq {
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 .faq__rubrik {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: var(--text-primary);
+  margin-bottom: 1rem;
+  color: var(--landing-text-primary);
 }
 
 .faq__lista {
@@ -76,19 +76,23 @@
 }
 
 .faq__item {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  background: var(--landing-card-bg);
+  border: 1px solid var(--landing-border-color);
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
   transition: all 0.2s;
 }
 
+.faq__item:hover {
+  border-color: var(--landing-border-hover);
+}
+
 .faq__fraga {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--landing-text-primary);
   margin: 0;
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.25rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -98,9 +102,9 @@
 
 .faq__fraga::after {
   content: '+';
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--text-secondary);
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--landing-text-secondary);
   transition: transform 0.2s;
 }
 
@@ -109,9 +113,10 @@
 }
 
 .faq__svar {
-  padding: 0 1.5rem 1.25rem;
-  color: var(--text-secondary);
+  padding: 0 1.25rem 1rem;
+  color: var(--landing-text-secondary);
   line-height: 1.6;
+  font-size: 0.95rem;
   display: none;
 }
 

@@ -153,7 +153,6 @@ include '../../includes/tool-layout-start.php';
       </li>
     </ul>
   </section>
-</main>
 
 <?php include '../../includes/tool-layout-end.php'; ?>
 
