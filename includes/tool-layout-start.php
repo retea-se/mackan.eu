@@ -7,7 +7,7 @@ header(
   "Content-Security-Policy: " .
   "default-src 'self'; " .
   "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com https://cdn.sheetjs.com https://html2canvas.hertzen.com https://www.googletagmanager.com https://www.google-analytics.com; " .
-  "connect-src 'self' https://skatteverket.entryscape.net https://www.google-analytics.com https://stats.g.doubleclick.net https://unpkg.com; " .
+  "connect-src 'self' https://skatteverket.entryscape.net https://www.google-analytics.com https://stats.g.doubleclick.net https://unpkg.com https://cdn.jsdelivr.net; " .
   "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com https://fonts.googleapis.com; " .
   "img-src 'self' data: https://api.qrserver.com https://www.google-analytics.com https://stats.g.doubleclick.net https://*.tile.openstreetmap.org https://unpkg.com; " .
   "font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;"
@@ -69,7 +69,7 @@ $ogType = $ogType ?? 'website';
   <link rel="dns-prefetch" href="//unpkg.com">
 
   <!-- Critical CSS först -->
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/main.css?v=20251117">
 
   <!-- FontAwesome Subset - only 34 icons, ~3KB instead of 112KB -->
   <link rel="stylesheet" href="/css/fontawesome-subset.css">
