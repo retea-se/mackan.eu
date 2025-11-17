@@ -136,5 +136,3 @@ include '../../includes/tool-layout-start.php';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js"></script>
 <script src="script.js" defer></script>
-
-<?php include '../../includes/tool-layout-end.php'; ?>

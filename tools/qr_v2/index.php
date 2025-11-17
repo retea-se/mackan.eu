@@ -156,5 +156,3 @@ include '../../includes/tool-layout-start.php';
   }
 </script>
 <script src="script.js" defer></script>
-
-<?php include '../../includes/tool-layout-end.php'; ?>
