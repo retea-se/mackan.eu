@@ -55,6 +55,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Skapa MutationObserver för att lägga till alt-text på QR-bilder
+    const qrObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (node.tagName === 'IMG') {
+                    const altText = selectedType === 'text' ? collectFormData(selectedType).text :
+                                   selectedType === 'url' ? collectFormData(selectedType).url :
+                                   selectedType === 'wifi' ? `WiFi: ${collectFormData(selectedType).ssid}` :
+                                   selectedType === 'vcard' ? `Kontakt: ${collectFormData(selectedType).name}` :
+                                   selectedType === 'email' ? `E-post: ${collectFormData(selectedType).email}` :
+                                   selectedType === 'sms' ? `SMS: ${collectFormData(selectedType).phone}` :
+                                   selectedType === 'phone' ? `Tel: ${collectFormData(selectedType).phone}` :
+                                   selectedType === 'geo' ? `Plats: ${collectFormData(selectedType).lat}, ${collectFormData(selectedType).lng}` :
+                                   'QR kod';
+                    node.alt = `QR kod för ${altText}`;
+                    console.log(`Alt-text tillagd: ${node.alt}`);
+                }
+            });
+        });
+    });
+
+    // Observera QR-preview
+    if (qrPreview) {
+        qrObserver.observe(qrPreview, { childList: true, subtree: true });
+    }
+
     generateBtn.addEventListener('click', () => {
         console.log('Log: Generate button clicked');
         const qrData = collectFormData(selectedType);
@@ -70,23 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
             width: 256,
             height: 256
         });
-
-        // Lägg till alt-text på QR-bilden efter den skapats
-        setTimeout(() => {
-            const img = qrPreview.querySelector('img');
-            if (img) {
-                const altText = selectedType === 'text' ? qrData.text :
-                               selectedType === 'url' ? qrData.url :
-                               selectedType === 'wifi' ? `WiFi: ${qrData.ssid}` :
-                               selectedType === 'vcard' ? `Kontakt: ${qrData.name}` :
-                               selectedType === 'email' ? `E-post: ${qrData.email}` :
-                               selectedType === 'sms' ? `SMS: ${qrData.phone}` :
-                               selectedType === 'phone' ? `Tel: ${qrData.phone}` :
-                               selectedType === 'geo' ? `Plats: ${qrData.lat}, ${qrData.lng}` :
-                               'QR kod';
-                img.alt = `QR kod för ${altText}`;
-            }
-        }, 100);
 
         createExtraButtons();
     });

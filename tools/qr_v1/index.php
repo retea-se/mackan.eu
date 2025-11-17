@@ -23,10 +23,10 @@
 
 <?php include '../../includes/layout-end.php'; ?>
 
-<!-- Externa bibliotek -->
+<!-- Externa bibliotek - JSZip ladda synkront -->
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" defer></script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/docx@7.0.0/build/index.js" defer></script>
 
 <!-- Lokala skript -->

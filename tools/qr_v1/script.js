@@ -1,12 +1,14 @@
 // JSZip-instans kommer skapas när det behövs
 let zip = null;
 
-// Funktion för att vänta på JSZip
-function waitForJSZip(callback) {
+// Funktion för att vänta på JSZip med robust retry-mekanism
+function waitForJSZip(callback, attempts = 0) {
   if (typeof JSZip !== 'undefined') {
     callback();
+  } else if (attempts < 50) { // Försök i 5 sekunder (50 x 100ms)
+    setTimeout(() => waitForJSZip(callback, attempts + 1), 100);
   } else {
-    setTimeout(() => waitForJSZip(callback), 100);
+    console.warn('⚠️ JSZip failed to load after 50 attempts');
   }
 }
 
@@ -67,6 +69,26 @@ function generateQRCode() {
     const lines = document.getElementById("textbox").value.split("\n");
     console.log("Rader att bearbeta:", lines);
 
+    // Skapa MutationObserver för att lägga till alt-text på QR-bilder
+    const qrObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (node.tagName === 'IMG') {
+                    const container = node.closest('.qr-container');
+                    if (container) {
+                        const textDiv = container.querySelector('.qr-text');
+                        const displayText = textDiv ? textDiv.textContent : 'QR-kod';
+                        node.alt = `QR kod för: ${displayText}`;
+                        console.log(`Alt-text tillagd: ${node.alt}`);
+                    }
+                }
+            });
+        });
+    });
+
+    // Observera QR-container
+    qrObserver.observe(qrContainer, { childList: true, subtree: true });
+
     lines.forEach((line, index) => {
         if (!line.trim()) {
             console.log(`Tom rad hoppar över index ${index}`);
@@ -95,27 +117,20 @@ function generateQRCode() {
         qrDiv.id = `qrcode${index}`;
         qrDivContainer.appendChild(qrDiv);
 
+        // Lägg till text under QR-koden FÖRST (så att MutationObserver kan hitta den)
+        const qrTextDiv = document.createElement("div");
+        qrTextDiv.className = "qr-text";
+        qrTextDiv.textContent = displayText;
+        qrDivContainer.appendChild(qrTextDiv);
+
+        // Generera QR-kod (MutationObserver lägger till alt-text automatiskt)
         new QRCode(qrDiv.id, {
             text: emailLink,
             width: 128,
             height: 128
         });
 
-        // Lägg till alt-text på QR-bilden efter den skapats
-        setTimeout(() => {
-            const img = qrDiv.querySelector('img');
-            if (img) {
-                img.alt = `QR kod för: ${displayText}`;
-            }
-        }, 100);
-
         console.log(`QR-kod genererad för index ${index}:`, emailLink);
-
-        // Lägg till text under QR-koden
-        const qrTextDiv = document.createElement("div");
-        qrTextDiv.className = "qr-text";
-        qrTextDiv.textContent = displayText;
-        qrDivContainer.appendChild(qrTextDiv);
     });
 
     console.log("Alla QR-koder genererade!");

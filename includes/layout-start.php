@@ -71,13 +71,12 @@ $ogType = $ogType ?? 'website';
   <!-- Critical CSS först -->
   <link rel="stylesheet" href="/css/main.css">
 
-  <!-- FontAwesome - async loading med fallback -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+  <!-- FontAwesome Subset - only 34 icons, ~3KB instead of 112KB -->
+  <link rel="stylesheet" href="/css/fontawesome-subset.css">
 
-  <!-- Tippy.js - defer för bättre prestanda -->
-  <script src="https://unpkg.com/@popperjs/core@2" defer></script>
-  <script src="https://unpkg.com/tippy.js@6" defer></script>
+  <!-- Tippy.js - ladda synkront för garanterad tillgänglighet -->
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
 
   <!-- Schema markup för organisation -->
   <?php include __DIR__ . '/schema-organization.php'; ?>

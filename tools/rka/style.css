@@ -50,3 +50,16 @@ details summary::before {
 details[open] summary::before {
   transform: rotate(90deg);  /* vrid nedåt när öppen */
 }
+
+/* === Tillgänglighet: länkar måste särskiljas från text === */
+.breadcrumbs a,
+.related-content a,
+p a:not(.knapp):not(button),
+li a:not(.knapp):not(button),
+td a:not(.knapp):not(button),
+.intro-text a,
+#result a,
+#info a {
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+}

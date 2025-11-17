@@ -12,12 +12,15 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Vänta på att Tippy.js ska laddas (laddas med defer)
-    function initTippy() {
+    // Vänta på att Tippy.js ska laddas med robust retry-mekanism
+    function initTippy(attempts = 0) {
       if (typeof tippy !== 'undefined') {
         tippy('[data-tippy-content]');
+        console.log('✅ Tippy initialized successfully');
+      } else if (attempts < 50) { // Försök i 5 sekunder (50 x 100ms)
+        setTimeout(() => initTippy(attempts + 1), 100);
       } else {
-        setTimeout(initTippy, 100);
+        console.warn('⚠️ Tippy failed to load after 50 attempts');
       }
     }
     initTippy();
