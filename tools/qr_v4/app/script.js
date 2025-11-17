@@ -157,10 +157,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target === refs.expertDrawer) toggleExpertDrawer(false);
   });
   refs.themeToggle?.addEventListener('click', handleThemeToggle);
-  
+
   // Ladda sparad tema-inställning
   const savedTheme = localStorage.getItem('qr_v4_theme') || 'dark';
   applyTheme(savedTheme);
+
+  // Skapa initial QR efter att tema är satt
   createInitialQR();
   refreshWarnings();
   initTemplates();
@@ -627,10 +629,10 @@ function updateQRInstance(data) {
     },
     image: state.styles.logoData || undefined,
     imageOptions: state.styles.logoData ? {
-      margin: 12,
+      margin: 8,
       imageSize: state.styles.logoSize,
       crossOrigin: 'anonymous',
-      hideBackgroundDots: false
+      hideBackgroundDots: true
     } : undefined
   };
   state.qrInstance.update(options);
@@ -722,15 +724,19 @@ function updateSummaryStyle() {
 }
 
 function showLogoPreview(src) {
-  if (!refs.logoPreview || !refs.logoPreviewImage) return;
+  if (!refs.logoPreview) return;
+  const img = refs.logoPreviewImage || refs.logoPreview.querySelector('img');
+  if (!img) return;
   refs.logoPreview.classList.remove('hidden');
-  refs.logoPreviewImage.src = src;
+  img.src = src;
+  img.alt = 'Förhandsvisning av logotyp';
 }
 
 function hideLogoPreview() {
-  if (!refs.logoPreview || !refs.logoPreviewImage) return;
+  if (!refs.logoPreview) return;
+  const img = refs.logoPreviewImage || refs.logoPreview.querySelector('img');
+  if (img) img.src = '';
   refs.logoPreview.classList.add('hidden');
-  refs.logoPreviewImage.src = '';
 }
 
 function saveHistoryEntry(type, data, formSnapshot) {
@@ -1131,14 +1137,21 @@ function handleThemeToggle() {
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('qr_v4_theme', theme);
-  
+
   // Uppdatera ikon
   if (refs.themeToggle) {
-    const icon = refs.themeToggle.querySelector('.qr-theme-toggle__icon');
-    if (icon) {
-      icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+    const moonIcon = refs.themeToggle.querySelector('.qr-theme-toggle__icon--moon');
+    const sunIcon = refs.themeToggle.querySelector('.qr-theme-toggle__icon--sun');
+
+    if (theme === 'dark') {
+      moonIcon?.classList.remove('hidden');
+      sunIcon?.classList.add('hidden');
+      refs.themeToggle.setAttribute('aria-label', 'Växla till ljust tema');
+    } else {
+      moonIcon?.classList.add('hidden');
+      sunIcon?.classList.remove('hidden');
+      refs.themeToggle.setAttribute('aria-label', 'Växla till mörkt tema');
     }
-    refs.themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Växla till ljust tema' : 'Växla till mörkt tema');
   }
 }
 

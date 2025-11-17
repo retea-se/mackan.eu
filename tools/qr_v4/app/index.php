@@ -33,7 +33,13 @@ include '../../../includes/layout-start.php';
       </div>
       <div>
         <button id="themeToggle" class="qr-theme-toggle" aria-label="Växla tema" title="Växla mellan mörkt och ljust tema">
-          <span class="qr-theme-toggle__icon">🌙</span>
+          <svg class="qr-theme-toggle__icon qr-theme-toggle__icon--moon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17.5 10.5c0 4.14-3.36 7.5-7.5 7.5a7.5 7.5 0 0 1-5.5-2.5c2.5 0 4.5-2 4.5-4.5s-2-4.5-4.5-4.5A7.5 7.5 0 0 1 17.5 10.5Z"/>
+          </svg>
+          <svg class="qr-theme-toggle__icon qr-theme-toggle__icon--sun hidden" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10" cy="10" r="4"/>
+            <path d="M10 2v2M10 16v2M18 10h-2M4 10H2m13.66-5.66l-1.41 1.41M5.75 14.25l-1.41 1.41m10.32 0l-1.41-1.41M5.75 5.75l-1.41-1.41"/>
+          </svg>
         </button>
       </div>
       <div>
