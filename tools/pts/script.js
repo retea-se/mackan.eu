@@ -24,9 +24,9 @@ document.querySelector('#endDate').value = idag.toISOString().slice(0, 10);
 
 async function hamtaDiarium(start, end) {
   if (new Date(start) > new Date(end)) {
-    console.warn('[v8] ⚠️ Ogiltigt datumintervall: startdatum efter slutdatum');
+    console.warn('[v8] Ogiltigt datumintervall: startdatum efter slutdatum');
     showToast('Startdatum får inte vara efter slutdatum.', 'warning');
-    tableBody.innerHTML = `<tr><td colspan="5">⚠️ Startdatum får inte vara efter slutdatum.</td></tr>`;
+    tableBody.innerHTML = `<tr><td colspan="5">Startdatum får inte vara efter slutdatum.</td></tr>`;
     exportJsonBtn.disabled = exportCsvBtn.disabled = true;
     return;
   }
@@ -54,7 +54,7 @@ async function hamtaDiarium(start, end) {
     }
 
   } catch (err) {
-    console.error('[v8] ❌ Fel vid hämtning:', err);
+    console.error('[v8] Fel vid hämtning:', err);
     showToast(`Kunde inte hämta ärenden: ${err.message}`, 'error');
     tableBody.innerHTML = `<tr><td colspan="5">Fel: ${err.message}</td></tr>`;
     exportJsonBtn.disabled = exportCsvBtn.disabled = true;
@@ -137,7 +137,7 @@ tableBody.addEventListener('click', async e => {
     const json = await res.json();
 
     if (json.error) {
-      console.warn(`[v8] ⚠️ Fel från proxy: ${json.error}`);
+      console.warn(`[v8] Fel från proxy: ${json.error}`);
       showToast(`Inga handlingar hittades för ${caseId}.`, 'warning');
       return;
     }
@@ -155,11 +155,11 @@ tableBody.addEventListener('click', async e => {
             (${d.deedArrivalDate?.split('T')[0]}, nr ${d.deedDiaryDocumentNo})
           </li>`
         ).join('')}</ul>`
-      : '⚠️ Inga handlingar hittades för detta ärende.';
+      : 'Inga handlingar hittades för detta ärende.';
     deedRow.appendChild(cell);
     rad.insertAdjacentElement('afterend', deedRow);
   } catch (err) {
-    console.error(`[v8] ❌ Fel vid hämtning av handlingar (${caseId}):`, err);
+    console.error(`[v8] Fel vid hämtning av handlingar (${caseId}):`, err);
     showToast(`Det gick inte att ladda handlingar för ${caseId}: ${err.message}`, 'error');
   } finally {
     // Dölj loading-indikator

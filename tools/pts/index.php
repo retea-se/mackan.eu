@@ -87,7 +87,7 @@ include '../../includes/tool-layout-start.php';
           </tr>
         </thead>
         <tbody>
-          <tr><td colspan="5">⏳ Väntar på sökning...</td></tr>
+          <tr><td colspan="5">Väntar på sökning...</td></tr>
         </tbody>
       </table>
     </div>

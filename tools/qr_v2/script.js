@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     images.forEach((img) => {
                         if (!img.alt || img.alt === '') {
                             img.alt = `QR-kod för ${lastQRDescription}`;
-                            console.log(`✅ Alt-text added: ${img.alt}`);
+                            console.log(`Alt-text added: ${img.alt}`);
                         }
                     });
                 }
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                'innehåll';
         } catch (e) {
             lastQRDescription = 'innehåll';
-            console.warn('⚠️ Could not generate description:', e);
+            console.warn('Could not generate description:', e);
         }
 
         new QRCode(qrPreview, {

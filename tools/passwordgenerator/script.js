@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     resetBtn.classList.add("hidden");
     genererade.length = 0;
     doldResultatTabell();
-    console.log("🧹 Resultat rensat");
+    console.log("Resultat rensat");
   });
 
   // Event delegation för kopiera-knappar (om du vill stödja dynamiska knappar)
