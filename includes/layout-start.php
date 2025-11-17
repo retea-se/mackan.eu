@@ -82,5 +82,7 @@ $ogType = $ogType ?? 'website';
 </head>
 <body>
   <div class="layout">
+    <?php if (!isset($skipHeader) || !$skipHeader): ?>
     <?php include __DIR__ . '/header.php'; ?>
+    <?php endif; ?>
     <main class="layout__main">

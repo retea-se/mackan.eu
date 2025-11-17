@@ -29,6 +29,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 $title = 'Verktyg';
 $metaDescription = 'Utforska kostnadsfria onlineverktyg för utvecklare och tekniker. Generera, konvertera och analysera data snabbt och enkelt.';
+$skipHeader = true; // Landningssidan har egen navigation
 ?>
 <?php include 'includes/layout-start.php'; ?>
 
