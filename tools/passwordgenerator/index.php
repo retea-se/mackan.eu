@@ -58,11 +58,11 @@ $extraHead = '
     <div class="kort">
       <div class="kort__innehall" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
         <span id="previewPassword" class="losenord__text" style="font-size:1.3rem;flex:1;min-width:200px;"></span>
-        <button type="button" id="previewCopy" class="knapp__ikon" aria-label="<?= $t['copy'] ?>" data-tippy-content="<?= $t['tippy_copy'] ?>">
-          <i class="fa-solid fa-copy"></i>
+        <button type="button" id="previewCopy" class="knapp__ikon" aria-label="Kopiera lösenord" data-tippy-content="<?= $t['tippy_copy'] ?>">
+          <i class="fa-solid fa-copy" aria-hidden="true"></i>
         </button>
-        <button type="button" id="previewRefresh" class="knapp__ikon" aria-label="<?= $t['refresh'] ?>" data-tippy-content="<?= $t['tippy_refresh'] ?>">
-          <i class="fa-solid fa-rotate"></i>
+        <button type="button" id="previewRefresh" class="knapp__ikon" aria-label="Generera nytt lösenord" data-tippy-content="<?= $t['tippy_refresh'] ?>">
+          <i class="fa-solid fa-rotate" aria-hidden="true"></i>
         </button>
         <span id="previewStrength"></span>
       </div>
@@ -119,6 +119,49 @@ $extraHead = '
     </div>
   </section>
 
+  <!-- Vanliga frågor -->
+  <section class="layout__sektion faq">
+    <h2 class="faq__rubrik">Vanliga frågor</h2>
+    <ul class="faq__lista">
+      <li class="faq__item">
+        <h3 class="faq__fraga">Hur skapar jag ett starkt lösenord?</h3>
+        <div class="faq__svar">
+          <p>Ett starkt lösenord bör vara minst 12 tecken långt och innehålla en kombination av gemener, versaler, siffror och symboler. Använd verktyget för att generera säkra lösenord automatiskt baserat på dina valda inställningar. Ju längre och mer varierat lösenordet är, desto säkrare blir det.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Vad betyder olika teckentyper?</h3>
+        <div class="faq__svar">
+          <p>Gemener är små bokstäver (a-z), versaler är stora bokstäver (A-Z), siffror är 0-9, och symboler är specialtecken som !@#$%. Genom att kombinera flera teckentyper ökar du lösenordets komplexitet och gör det svårare att knäcka. Du kan välja vilka teckentyper som ska ingå i ditt genererade lösenord.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Är lösenorden säkra att använda?</h3>
+        <div class="faq__svar">
+          <p>Ja, lösenorden genereras direkt i din webbläsare med kryptografiskt säker slumpgenerering. Alla beräkningar sker lokalt på din enhet och ingen information skickas till någon server. Detta gör verktyget säkert för att skapa lösenord även för känsliga system.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Sparas lösenorden någonstans?</h3>
+        <div class="faq__svar">
+          <p>Nej, verktyget sparar inte några lösenord. All generering sker lokalt i din webbläsare utan någon kommunikation med externa servrar. När du stänger sidan försvinner lösenorden helt, så se till att spara dem i en lösenordshanterare innan du lämnar sidan.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Hur många lösenord kan jag generera?</h3>
+        <div class="faq__svar">
+          <p>Du kan generera upp till 100 lösenord samtidigt genom att ange önskat antal i formuläret. Detta är praktiskt när du behöver skapa många unika lösenord på en gång, till exempel för flera användarkonton eller system. Varje lösenord genereras individuellt och är unikt.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Varför ska man använda olika lösenord?</h3>
+        <div class="faq__svar">
+          <p>Att återanvända samma lösenord på flera tjänster innebär att om en tjänst komprometteras kan alla dina konton vara i fara. Genom att använda unika lösenord för varje tjänst begränsar du skadan vid ett eventuellt dataintrång. En lösenordshanterare kan hjälpa dig att hålla koll på alla dina unika lösenord.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
 </main>
 
 <div id="toast" class="toast"></div>
@@ -127,6 +170,7 @@ $extraHead = '
 <script src="preview.js"></script>
 <script src="passphrase.js"></script>
 <script src="export.js"></script>
+<script src="/js/faq.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     if (window.generatePreviewPassword) {

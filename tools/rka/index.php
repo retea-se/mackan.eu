@@ -251,6 +251,51 @@ include '../../includes/tool-layout-start.php';
       Well-to-Wheel, beräknat med svensk elmix och officiella bränsle­deklarationer.
     </p>
   </section>
+
+  <!-- Vanliga frågor -->
+  <section class="layout__sektion faq">
+    <h2 class="faq__rubrik">Vanliga frågor</h2>
+    <ul class="faq__lista">
+      <li class="faq__item">
+        <h3 class="faq__fraga">Vad är RKA?</h3>
+        <div class="faq__svar">
+          <p>RKA står för reservkraftaggregat och är en generator som automatiskt startar vid strömavbrott för att säkerställa kontinuerlig elförsörjning. Dessa system används ofta i datacenter, sjukhus, industrier och andra kritiska anläggningar där elavbrott inte är acceptabelt. Kalkylatorn hjälper dig att beräkna bränsleförbrukning och dimensionera tankvolym för ditt aggregat.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Hur beräknar jag effektbehov?</h3>
+        <div class="faq__svar">
+          <p>Ange aggregatets märkeffekt och din beräknade eller uppmätta last i antingen kVA eller kW. Verktyget konverterar automatiskt mellan enheterna med standardvärdet cos φ = 0,8. Baserat på lasten och vald bränsletyp beräknas sedan förbrukningen i liter per timme och per dygn.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Vilka standarder används?</h3>
+        <div class="faq__svar">
+          <p>Kalkylatorn använder ett svenskt schablonvärde på 0,25 liter per kWh för dieselgeneratorer vid 75 procent last. Detta baseras på produktblad från flera tillverkare och är ett erkänt branschvärde. För alternativa bränslen justeras schablonen med kända konverteringsfaktorer baserade på energiinnehåll och densitet.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Kan jag spara beräkningar?</h3>
+        <div class="faq__svar">
+          <p>Verktyget sparar inte beräkningar automatiskt, men du kan enkelt skriva ut resultatsidan eller spara den som PDF genom webbläsarens utskriftsfunktion. För mer avancerade beräkningar med historik och rapporter kan du använda de avancerade verktygen som finns tillgängliga via navigeringen.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Vad betyder olika parametrar?</h3>
+        <div class="faq__svar">
+          <p>Märkeffekt är generatorns maximala kontinuerliga effekt, aktuell last är den faktiska effekt som generatorn levererar. Drifttid anger hur länge aggregatet ska köras, vilket används för att beräkna total bränsleförbrukning och erforderlig tankvolym. Bränsletypen påverkar specifik förbrukning eftersom olika bränslen har olika energiinnehåll.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Hur tolkar jag resultatet?</h3>
+        <div class="faq__svar">
+          <p>Resultatet visar bränsleförbrukning per timme och dygn samt total tankvolym inklusive marginaler. Färgkodningen indikerar bränsleeffektivitet: grönt betyder normal förbrukning, gult indikerar måttlig ineffektivitet och rött varnar för kraftigt ökad förbrukning. Vid last under 20 procent visas en varning eftersom detta kan leda till sot och dålig förbränning.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
 </main>
 
+<script src="/js/faq.js"></script>
 <?php include '../../includes/tool-layout-end.php'; ?>

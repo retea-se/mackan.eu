@@ -110,6 +110,49 @@ include '../../includes/tool-layout-start.php';
       <a href="impex_map.php" class="knapp knapp--sekundär" data-tippy-content="Plotta koordinater på karta och sök adresser">Plot/Adress</a>
     </div>
   </section>
+
+  <!-- Vanliga frågor -->
+  <section class="layout__sektion faq">
+    <h2 class="faq__rubrik">Vanliga frågor</h2>
+    <ul class="faq__lista">
+      <li class="faq__item">
+        <h3 class="faq__fraga">Vilka koordinatsystem stöds?</h3>
+        <div class="faq__svar">
+          <p>Verktyget stöder konvertering mellan WGS84 (GPS-koordinater), SWEREF99 TM och RT90. WGS84 används globalt av GPS-system, SWEREF99 TM är svenskt standardsystem och RT90 är det äldre svenska systemet som fortfarande används i vissa sammanhang.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Hur konverterar jag från WGS84 till SWEREF99?</h3>
+        <div class="faq__svar">
+          <p>Ange koordinaterna i WGS84 format (till exempel 59.3293, 18.0686) i inmatningsfältet och tryck Konvertera. Resultatet visar koordinaterna i alla tillgängliga format inklusive SWEREF99 TM. Du kan även klicka direkt på kartan för att välja en plats.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Kan jag konvertera flera koordinater samtidigt?</h3>
+        <div class="faq__svar">
+          <p>Ja, använd funktionen Avancerad/Batch för att konvertera flera koordinater på en gång. Du kan importera en CSV-fil eller klistra in en lista med koordinater. Resultatet kan exporteras som CSV-fil för vidare användning i GIS-program.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Fungerar verktyget offline?</h3>
+        <div class="faq__svar">
+          <p>Konverteringen sker lokalt i din webbläsare och kräver ingen serveranslutning. Kartvisningen kräver dock internetanslutning för att ladda kartbilder. Dina koordinater skickas aldrig till någon server vilket gör verktyget säkert för känslig information.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Hur exakta är konverteringarna?</h3>
+        <div class="faq__svar">
+          <p>Konverteringarna använder officiella transformationsparametrar från Lantmäteriet och är exakta inom centimeternivå för vanliga tillämpningar. Proj4js-biblioteket som används följer EPSG-standarder för koordinattransformationer.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <h3 class="faq__fraga">Vilka koordinatformat accepteras?</h3>
+        <div class="faq__svar">
+          <p>Verktyget accepterar decimalgrader (59.3293, 18.0686), grader med decimaler och SWEREF99/RT90 koordinater. Systemet känner automatiskt igen formatet och konverterar till alla andra format.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
 </main>
 
 <?php include '../../includes/tool-layout-end.php'; ?>
@@ -118,6 +161,7 @@ include '../../includes/tool-layout-start.php';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.2/proj4.js"></script>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script type="module" src="/js/modal-utils.js"></script>
+<script src="/js/faq.js"></script>
 <script src="script.js" defer></script>
 <script src="export.js" defer></script>
 
