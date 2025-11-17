@@ -92,3 +92,13 @@
   background-color: var(--secondary-color, #0056b3);
 }
 /* ********** SLUT Knappgrupp ********** */
+
+/* ********** START Leaflet Accessibility ********** */
+/* Förstora zoom-knappar för WCAG touch target size (minst 24x24px) */
+.leaflet-control-zoom a {
+  width: 30px !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  font-size: 18px !important;
+}
+/* ********** SLUT Leaflet Accessibility ********** */

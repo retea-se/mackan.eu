@@ -13,7 +13,6 @@ Disallow: /backups/
 Disallow: /_old/
 Disallow: /private/
 Disallow: /temp/
-Disallow: /tools/skyddad/
 Disallow: /tools/**/admin.php
 Disallow: /*.log$
 Disallow: /*.txt$

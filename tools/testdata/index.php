@@ -37,7 +37,6 @@ $extraHead = '
 
 include '../../includes/layout-start.php';
 ?>
-<link rel="stylesheet" href="/css/ver250613.css">
 
 <main class="layout__container">
 

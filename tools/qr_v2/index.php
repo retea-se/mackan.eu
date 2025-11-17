@@ -96,18 +96,18 @@ include '../../includes/layout-start.php';
       <div id="extraButtons" class="qr__extra hidden" aria-hidden="true"></div>
 
       <div class="qr__related">
-        <h3 class="rubrik rubrik--underrubrik">Relaterade verktyg</h3>
+        <h2 class="rubrik rubrik--underrubrik">Relaterade verktyg</h2>
         <div class="qr__related-grid">
           <a class="qr__related-link" href="../koordinat/">
-            <h4 class="rubrik rubrik--underrubrik">🗺️ Koordinatverktyg</h4>
+            <h3 class="rubrik rubrik--underrubrik">🗺️ Koordinatverktyg</h3>
             <p class="text--muted text--small">Konvertera koordinater och exportera resultat.</p>
           </a>
           <a class="qr__related-link" href="../rka/">
-            <h4 class="rubrik rubrik--underrubrik">⚡ RKA-kalkylatorer</h4>
+            <h3 class="rubrik rubrik--underrubrik">⚡ RKA-kalkylatorer</h3>
             <p class="text--muted text--small">Dimensionera reservkraftverk och provkörningsscheman.</p>
           </a>
           <a class="qr__related-link" href="../qr_v3/">
-            <h4 class="rubrik rubrik--underrubrik">📱 QR-verkstad</h4>
+            <h3 class="rubrik rubrik--underrubrik">📱 QR-verkstad</h3>
             <p class="text--muted text--small">Avancerad QR-generator med batch-stöd.</p>
           </a>
         </div>
