@@ -12,10 +12,13 @@ function waitForJSZip(callback, attempts = 0) {
   }
 }
 
-// Kontrollera om `docx` och andra moduler är korrekt laddade
-console.log("JSZip loaded:", typeof JSZip !== "undefined" ? "Yes" : "No");
-console.log("QRCode.js loaded:", typeof QRCode !== "undefined" ? "Yes" : "No");
-console.log("docx.js loaded:", typeof docx !== "undefined" ? "Yes" : "No");
+// Wrappa diagnostik i DOMContentLoaded för att säkerställa att allt laddats
+document.addEventListener('DOMContentLoaded', function() {
+  // Kontrollera om `docx` och andra moduler är korrekt laddade
+  console.log("JSZip loaded:", typeof JSZip !== "undefined" ? "Yes" : "No");
+  console.log("QRCode.js loaded:", typeof QRCode !== "undefined" ? "Yes" : "No");
+  console.log("docx.js loaded:", typeof docx !== "undefined" ? "Yes" : "No");
+});
 
 // Extrahera "Nod" och "Adress" från en rad
 function extractNodAndAddress(line) {

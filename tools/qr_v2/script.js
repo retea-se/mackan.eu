@@ -1,12 +1,12 @@
-// script.js - v13
+// script.js - v14 - Improved alt-text with MutationObserver
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Log: JS v13 started');
+    console.log('Log: JS v14 started');
 
     // ********** START Version Info **********
     const HTML_VERSION = 'v9';
     const CSS_VERSION = 'v11';
-    const JS_VERSION = 'v13';
+    const JS_VERSION = 'v14';
 
     const versionInfo = document.getElementById('versionInfo');
     if (versionInfo) {
@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const qrPreview = document.getElementById('qrPreview');
     const extraButtons = document.getElementById('extraButtons');
     let selectedType = '';
+    let lastQRDescription = 'QR-kod'; // Lagra senaste beskrivningen för alt-text
 
     console.log('Log: Element status:', {
         typeButtonsCount: typeButtons.length,
@@ -59,18 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const qrObserver = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             mutation.addedNodes.forEach((node) => {
-                if (node.tagName === 'IMG') {
-                    const altText = selectedType === 'text' ? collectFormData(selectedType).text :
-                                   selectedType === 'url' ? collectFormData(selectedType).url :
-                                   selectedType === 'wifi' ? `WiFi: ${collectFormData(selectedType).ssid}` :
-                                   selectedType === 'vcard' ? `Kontakt: ${collectFormData(selectedType).name}` :
-                                   selectedType === 'email' ? `E-post: ${collectFormData(selectedType).email}` :
-                                   selectedType === 'sms' ? `SMS: ${collectFormData(selectedType).phone}` :
-                                   selectedType === 'phone' ? `Tel: ${collectFormData(selectedType).phone}` :
-                                   selectedType === 'geo' ? `Plats: ${collectFormData(selectedType).lat}, ${collectFormData(selectedType).lng}` :
-                                   'QR kod';
-                    node.alt = `QR kod för ${altText}`;
-                    console.log(`Alt-text tillagd: ${node.alt}`);
+                if (node.nodeType === 1) { // Element node
+                    // Kolla både noden själv och dess barn
+                    const images = node.tagName === 'IMG' ? [node] : node.querySelectorAll('img');
+                    images.forEach((img) => {
+                        if (!img.alt || img.alt === '') {
+                            img.alt = `QR-kod för ${lastQRDescription}`;
+                            console.log(`✅ Alt-text added: ${img.alt}`);
+                        }
+                    });
                 }
             });
         });
@@ -90,6 +88,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formattedData = formatData(selectedType, qrData);
         console.log('Log: Formatted QR data:', formattedData);
+
+        // Sätt beskrivning för alt-text baserat på typ och data
+        try {
+            lastQRDescription = selectedType === 'text' ? (qrData.text || 'text') :
+                               selectedType === 'url' ? (qrData.url || 'länk') :
+                               selectedType === 'wifi' ? `WiFi: ${qrData.ssid || 'nätverk'}` :
+                               selectedType === 'vcard' ? `Kontakt: ${qrData.name || 'kontakt'}` :
+                               selectedType === 'email' ? `E-post: ${qrData.email || 'e-post'}` :
+                               selectedType === 'sms' ? `SMS: ${qrData.phone || 'telefon'}` :
+                               selectedType === 'phone' ? `Tel: ${qrData.phone || 'telefon'}` :
+                               selectedType === 'geo' ? `Plats: ${qrData.lat || '?'}, ${qrData.lng || '?'}` :
+                               'innehåll';
+        } catch (e) {
+            lastQRDescription = 'innehåll';
+            console.warn('⚠️ Could not generate description:', e);
+        }
 
         new QRCode(qrPreview, {
             text: formattedData,

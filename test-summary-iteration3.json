@@ -1,0 +1,1111 @@
+{
+  "summary": {
+    "totalRoutesChecked": 26,
+    "successfulRoutes": 25,
+    "routingIssues": 2,
+    "toolsWithA11yViolations": 19,
+    "totalConsoleErrors": 448,
+    "totalRuntimeErrors": 198,
+    "pagesCrawled": 55
+  },
+  "a11yViolations": {
+    "Addy": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      }
+    ],
+    "CSV till JSON": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 8
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 8
+      }
+    ],
+    "GeoParser & Plotter": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 7
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 7
+      }
+    ],
+    "Koordinatkonverterare": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      }
+    ],
+    "Koordinater Impex": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      }
+    ],
+    "Lösenordsgenerator": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 3
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 3
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 5
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 5
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 5
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 5
+      }
+    ],
+    "JSON Converter": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "select-name",
+        "impact": "critical",
+        "description": "Ensure select element has an accessible name",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "select-name",
+        "impact": "critical",
+        "description": "Ensure select element has an accessible name",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "select-name",
+        "impact": "critical",
+        "description": "Ensure select element has an accessible name",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "select-name",
+        "impact": "critical",
+        "description": "Ensure select element has an accessible name",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "select-name",
+        "impact": "critical",
+        "description": "Ensure select element has an accessible name",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      }
+    ],
+    "Persontestdata": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 3
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 3
+      }
+    ],
+    "QR-kodverkstad": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 10
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 10
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 10
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 10
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 10
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 10
+      }
+    ],
+    "QR-kodgenerator": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 11
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 11
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "image-alt",
+        "impact": "critical",
+        "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "image-alt",
+        "impact": "critical",
+        "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "image-alt",
+        "impact": "critical",
+        "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      }
+    ],
+    "Stötta – kontrollera personnummer": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      }
+    ],
+    "RKA-kalkylator": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 6
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+        "nodes": 2
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 6
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+        "nodes": 2
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+        "nodes": 2
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+        "nodes": 2
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+        "nodes": 2
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "link-in-text-block",
+        "impact": "serious",
+        "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
+        "nodes": 2
+      }
+    ],
+    "Telefonnummergenerator": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      }
+    ],
+    "Timer & klocka": [
+      {
+        "id": "html-has-lang",
+        "impact": "serious",
+        "description": "Ensure every HTML document has a lang attribute",
+        "nodes": 1
+      },
+      {
+        "id": "html-has-lang",
+        "impact": "serious",
+        "description": "Ensure every HTML document has a lang attribute",
+        "nodes": 1
+      }
+    ],
+    "QR-kodgenerator (v1)": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 4
+      }
+    ],
+    "PTS Diarium": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 3
+      }
+    ],
+    "Flow Builder": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 13
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 12
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 12
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 15
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 12
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 2
+      }
+    ],
+    "Bildkonverterare": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 6
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 6
+      }
+    ],
+    "Text till tal": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 1
+      }
+    ]
+  },
+  "consoleErrorTypes": {
+    "error": 440,
+    "warning": 8
+  },
+  "topRuntimeErrors": [
+    {
+      "message": "tippy is not defined",
+      "count": 112
+    },
+    {
+      "message": "Failed to execute 'writeText' on 'Clipboard': Write permission denied.",
+      "count": 42
+    },
+    {
+      "message": "JSZip is not defined",
+      "count": 24
+    },
+    {
+      "message": "Cannot read properties of null (reading 'value')",
+      "count": 12
+    },
+    {
+      "message": "JSONEditor is not defined",
+      "count": 6
+    },
+    {
+      "message": "QRCode is not defined",
+      "count": 2
+    }
+  ],
+  "routingIssues": [
+    {
+      "url": "https://mackan.eu/tools",
+      "timestamp": "2025-11-17T10:15:57.377Z",
+      "notes": [],
+      "fetchStatus": 301,
+      "redirected": true,
+      "finalUrl": "https://mackan.eu/tools/",
+      "navStatus": 200
+    },
+    {
+      "url": "https://mackan.eu/timer",
+      "timestamp": "2025-11-17T10:16:13.776Z",
+      "notes": [],
+      "fetchStatus": 301,
+      "redirected": true,
+      "finalUrl": "https://mackan.eu/tools/timer/",
+      "navStatus": 404
+    }
+  ],
+  "sitemap": [
+    {
+      "url": "https://mackan.eu/tools",
+      "title": "Verktyg - Professionella onlineverktyg för utvecklare och tekniker",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/addy/index.php",
+      "title": "AnonAddy Address Generator",
+      "forms": 1,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/aptus/index.php",
+      "title": "Hex till Dec Konverterare",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/bolagsverket/index.php",
+      "title": "Bolagsverket API",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/css2json/index.php",
+      "title": "CSS till JSON",
+      "forms": 1,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/csv2json/index.php",
+      "title": "CSV till JSON",
+      "forms": 1,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/koordinat/impex_map.php",
+      "title": "GeoParser & Plotter",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/converter/index.php",
+      "title": "Data Converter",
+      "forms": 1,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/koordinat/impex.php",
+      "title": "Avancerad Koordinathantering",
+      "forms": 2,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/koordinat/index.php",
+      "title": "Koordinatkonverterare",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/kortlank/skapa-lank.php",
+      "title": "Skapa ny länk",
+      "forms": 1,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/passwordgenerator/index.php",
+      "title": "Lösenordsgenerator",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/testdata/index.php",
+      "title": "Personinformation - testdata",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/pts/index.php",
+      "title": "PTS Diarium – Ärendehämtare",
+      "forms": 1,
+      "tables": 1,
+      "modals": 1,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/qr_v2/index.php",
+      "title": "QR-kodgenerator - Skapa anpassade QR-koder",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": [
+        "a11y_violations=1"
+      ]
+    },
+    {
+      "url": "https://mackan.eu/tools/qr_v3/index.php",
+      "title": "QR-kodgenerator - Komplett verktyg för alla behov",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/rka/index.php",
+      "title": "RKA-bränslekalkylator för reservkraftverk",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": [
+        "a11y_violations=2"
+      ]
+    },
+    {
+      "url": "https://mackan.eu/tools/skyddad/index.php",
+      "title": "Skyddad delning",
+      "forms": 1,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/stotta/index.php",
+      "title": "PNR-verktyg",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/tfngen/index.php",
+      "title": "Testnummer – Generera svenska telefonnummer",
+      "forms": 1,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/testid/index.php",
+      "title": "TestID",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/tts/index.php",
+      "title": "Text-to-Speech",
+      "forms": 1,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/koordinat/",
+      "title": "Koordinatkonverterare",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/qr_v2/",
+      "title": "QR-kodgenerator - Skapa anpassade QR-koder",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": [
+        "a11y_violations=1"
+      ]
+    },
+    {
+      "url": "https://mackan.eu/tools/passwordgenerator/",
+      "title": "Lösenordsgenerator",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/aptus/readme.php",
+      "title": "Om Aptus-verktyget",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/bolagsverket/readme.php",
+      "title": "Om Bolagsverket API",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/css2json/readme.php",
+      "title": "Om CSS till JSON-verktyget",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/csv2json/readme.php",
+      "title": "Dokumentation – CSV till JSON",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/koordinat/impex_map_help.php",
+      "title": "Hjälp - Kartplot och terminalutskrift",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/koordinat/help1.php",
+      "title": "404 Not Found",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": [
+        "a11y_violations=1"
+      ]
+    },
+    {
+      "url": "https://mackan.eu/tools/converter/readme.php",
+      "title": "Om JSON Converter",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/kortlank/readme.php",
+      "title": "Om Kortlänk",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/passwordgenerator/readme.php",
+      "title": "Om Lösenordsgeneratorn",
+      "forms": 0,
+      "tables": 1,
+      "modals": 0,
+      "notes": [
+        "a11y_violations=2"
+      ]
+    },
+    {
+      "url": "https://mackan.eu/tools/passwordgenerator/index.php?lang=sv",
+      "title": "Lösenordsgenerator",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/passwordgenerator/index.php?lang=en",
+      "title": "Password Generator",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/testdata/readme.php",
+      "title": "Personinformation - testdata – Detaljerad beskrivning och användning",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/pts/readme.php",
+      "title": "Om PTS Diarium – Ärendeanalys",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/qr_v2/readme.php",
+      "title": "Dokumentation – QR v2",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/rka/",
+      "title": "RKA-bränslekalkylator för reservkraftverk",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": [
+        "a11y_violations=2"
+      ]
+    },
+    {
+      "url": "https://mackan.eu/tools/qr_v3/",
+      "title": "QR-kodgenerator - Komplett verktyg för alla behov",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/",
+      "title": "Verktyg - Professionella onlineverktyg för utvecklare och tekniker",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/rka/avancerad.php",
+      "title": "Avancerad och robust RKA-kalkylator",
+      "forms": 1,
+      "tables": 2,
+      "modals": 0,
+      "notes": [
+        "a11y_violations=2"
+      ]
+    },
+    {
+      "url": "https://mackan.eu/tools/rka/a2.php",
+      "title": "Avancerad kalkylator för dimensionering av tankvolym till reservkraftverk",
+      "forms": 1,
+      "tables": 0,
+      "modals": 0,
+      "notes": [
+        "a11y_violations=3"
+      ]
+    },
+    {
+      "url": "https://mackan.eu/tools/rka/provkorning.php",
+      "title": "Mackan.eu",
+      "forms": 1,
+      "tables": 2,
+      "modals": 0,
+      "notes": [
+        "a11y_violations=1"
+      ]
+    },
+    {
+      "url": "https://mackan.eu/tools/skyddad/readme.php",
+      "title": "Om Skyddad",
+      "forms": 0,
+      "tables": 2,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/stotta/readme.php",
+      "title": "Dokumentation – PnrVerifier™",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/tfngen/readme.php",
+      "title": "Testnummer – Generera svenska telefonnummer",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/testid/readme.php",
+      "title": "TestID",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/passwordgenerator/?lang=sv",
+      "title": "Lösenordsgenerator",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/passwordgenerator/?lang=en",
+      "title": "Password Generator",
+      "forms": 1,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/passwordgenerator/readme.php?lang=sv",
+      "title": "Om Lösenordsgeneratorn",
+      "forms": 0,
+      "tables": 1,
+      "modals": 0,
+      "notes": [
+        "a11y_violations=2"
+      ]
+    },
+    {
+      "url": "https://mackan.eu/tools/passwordgenerator/readme.php?lang=en",
+      "title": "About the Password Generator",
+      "forms": 0,
+      "tables": 1,
+      "modals": 0,
+      "notes": [
+        "a11y_violations=1"
+      ]
+    },
+    {
+      "url": "https://mackan.eu/tools/rka/a2_readme.php",
+      "title": "README – Reservkraftkalkylator (diesel / HVO) med derating & tankprognos",
+      "forms": 0,
+      "tables": 1,
+      "modals": 0,
+      "notes": []
+    },
+    {
+      "url": "https://mackan.eu/tools/kortlank/",
+      "title": "Kortlänk",
+      "forms": 0,
+      "tables": 0,
+      "modals": 0,
+      "notes": []
+    }
+  ]
+}
