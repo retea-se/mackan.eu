@@ -118,9 +118,9 @@ include '../../includes/layout-start.php';
 <div class="layout__container">
   <!-- Breadcrumbs för bättre SEO och navigation -->
   <nav class="breadcrumbs" aria-label="Du är här" style="margin-bottom: 1rem; font-size: 0.9rem;">
-    <a href="/" style="color: #007bff; text-decoration: none;">Hem</a> ›
-    <a href="/tools/" style="color: #007bff; text-decoration: none;">Verktyg</a> ›
-    <a href="/tools/rka/" style="color: #007bff; text-decoration: none;">RKA-kalkylatorer</a> ›
+    <a href="/" style="color: #0056b3; text-decoration: underline;">Hem</a> ›
+    <a href="/tools/" style="color: #0056b3; text-decoration: underline;">Verktyg</a> ›
+    <a href="/tools/rka/" style="color: #0056b3; text-decoration: underline;">RKA-kalkylatorer</a> ›
     <span style="color: #6c757d;">Avancerad 2</span>
   </nav>
 
@@ -132,7 +132,7 @@ include '../../includes/layout-start.php';
     <p>Denna avancerade kalkylator hjälper dig beräkna exakt tankvolym för reservkraftverk baserat på provkörning, buffertdagar och planerad drift. Verktyget tar hänsyn till klimatjustering, olika bränsletyper och ger detaljerade ekonomi- och miljöanalyser.</p>
 
     <details style="margin-top: 1rem;">
-      <summary style="cursor: pointer; font-weight: 600; color: #007bff;">💡 Vad kan denna kalkylator beräkna?</summary>
+      <summary style="cursor: pointer; font-weight: 600; color: #0056b3;">💡 Vad kan denna kalkylator beräkna?</summary>
       <ul style="margin-top: 0.5rem; margin-bottom: 0;">
         <li>✅ Exakt tankvolym baserat på driftkrav</li>
         <li>✅ Provkörningskostnader per år</li>
@@ -600,18 +600,18 @@ include '../../includes/layout-start.php';
       <div>
         <h4 style="margin-bottom: 0.5rem; color: #495057;">📊 Andra RKA-kalkylatorer</h4>
         <ul style="list-style: none; padding: 0; margin: 0;">
-          <li style="margin-bottom: 0.3rem;">→ <a href="index.php" style="color: #007bff; text-decoration: none;">Snabbkalkyl för bränsle och tank</a></li>
-          <li style="margin-bottom: 0.3rem;">→ <a href="avancerad.php" style="color: #007bff; text-decoration: none;">Avancerad kalkyl med miljöanalys</a></li>
-          <li>→ <a href="provkorning.php" style="color: #007bff; text-decoration: none;">Provkörning & tankprognos</a></li>
+          <li style="margin-bottom: 0.3rem;">→ <a href="index.php" style="color: #0056b3; text-decoration: underline;">Snabbkalkyl för bränsle och tank</a></li>
+          <li style="margin-bottom: 0.3rem;">→ <a href="avancerad.php" style="color: #0056b3; text-decoration: underline;">Avancerad kalkyl med miljöanalys</a></li>
+          <li>→ <a href="provkorning.php" style="color: #0056b3; text-decoration: underline;">Provkörning & tankprognos</a></li>
         </ul>
       </div>
 
       <div>
         <h4 style="margin-bottom: 0.5rem; color: #495057;">🛠️ Andra verktyg</h4>
         <ul style="list-style: none; padding: 0; margin: 0;">
-          <li style="margin-bottom: 0.3rem;">→ <a href="../koordinat/" style="color: #007bff; text-decoration: none;">Koordinatverktyg</a></li>
-          <li style="margin-bottom: 0.3rem;">→ <a href="../qr_v2/" style="color: #007bff; text-decoration: none;">QR-kodgenerator</a></li>
-          <li>→ <a href="../../" style="color: #007bff; text-decoration: none;">Alla verktyg</a></li>
+          <li style="margin-bottom: 0.3rem;">→ <a href="../koordinat/" style="color: #0056b3; text-decoration: underline;">Koordinatverktyg</a></li>
+          <li style="margin-bottom: 0.3rem;">→ <a href="../qr_v2/" style="color: #0056b3; text-decoration: underline;">QR-kodgenerator</a></li>
+          <li>→ <a href="../../" style="color: #0056b3; text-decoration: underline;">Alla verktyg</a></li>
         </ul>
       </div>
     </div>

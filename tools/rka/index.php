@@ -109,8 +109,8 @@ include '../../includes/layout-start.php';
 <main class="layout__container">
   <!-- Breadcrumbs -->
   <nav class="breadcrumbs" aria-label="Du är här" style="margin-bottom: 1rem; font-size: 0.9rem; color: #6c757d;">
-    <a href="/" style="color: #007bff; text-decoration: none;">🏠 Hem</a> ›
-    <a href="/tools/" style="color: #007bff; text-decoration: none;">🔧 Verktyg</a> ›
+    <a href="/" style="color: #0056b3; text-decoration: underline;">🏠 Hem</a> ›
+    <a href="/tools/" style="color: #0056b3; text-decoration: underline;">🔧 Verktyg</a> ›
     <span>⚡ RKA-kalkylatorer</span>
   </nav>
 
