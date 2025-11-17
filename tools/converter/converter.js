@@ -13,7 +13,7 @@ export function init() {
       </div>
 
       <div class="form__verktyg">
-        <select id="converterDirection" class="falt__dropdown">
+        <select id="converterDirection" class="falt__dropdown" aria-label="Välj konverteringsriktning">
           <option value="json2csv">JSON → CSV</option>
           <option value="csv2json">CSV → JSON</option>
         </select>

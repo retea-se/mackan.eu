@@ -71,6 +71,23 @@ document.addEventListener('DOMContentLoaded', () => {
             height: 256
         });
 
+        // Lägg till alt-text på QR-bilden efter den skapats
+        setTimeout(() => {
+            const img = qrPreview.querySelector('img');
+            if (img) {
+                const altText = selectedType === 'text' ? qrData.text :
+                               selectedType === 'url' ? qrData.url :
+                               selectedType === 'wifi' ? `WiFi: ${qrData.ssid}` :
+                               selectedType === 'vcard' ? `Kontakt: ${qrData.name}` :
+                               selectedType === 'email' ? `E-post: ${qrData.email}` :
+                               selectedType === 'sms' ? `SMS: ${qrData.phone}` :
+                               selectedType === 'phone' ? `Tel: ${qrData.phone}` :
+                               selectedType === 'geo' ? `Plats: ${qrData.lat}, ${qrData.lng}` :
+                               'QR kod';
+                img.alt = `QR kod för ${altText}`;
+            }
+        }, 100);
+
         createExtraButtons();
     });
     // ********** SLUT Händelser **********

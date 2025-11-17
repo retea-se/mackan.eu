@@ -12,9 +12,15 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    if (typeof tippy !== 'undefined') {
-      tippy('[data-tippy-content]');
+    // Vänta på att Tippy.js ska laddas (laddas med defer)
+    function initTippy() {
+      if (typeof tippy !== 'undefined') {
+        tippy('[data-tippy-content]');
+      } else {
+        setTimeout(initTippy, 100);
+      }
     }
+    initTippy();
   });
 
   function copyLink() {

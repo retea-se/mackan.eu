@@ -46,7 +46,7 @@
 
 .flow-header p {
   margin: 0;
-  color: #9ca3af;
+  color: #d1d5db;
   font-size: 0.9rem;
 }
 
@@ -63,7 +63,7 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
-  color: #9ca3af;
+  color: #d1d5db;
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.85rem;
@@ -72,7 +72,7 @@
 
 .flow-tab:hover,
 .flow-tab:focus-visible {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   color: #fff;
   outline: 2px solid var(--primary-color, #0066cc);
   outline-offset: 2px;
@@ -111,8 +111,8 @@
 
 .node-item {
   padding: 0.8rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
   color: #fff;
   cursor: grab;
@@ -128,7 +128,7 @@
 
 .node-item:hover,
 .node-item:focus-visible {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
   outline: 2px solid var(--primary-color, #0066cc);
   outline-offset: 2px;
@@ -152,7 +152,7 @@
 .tool-group h3 {
   margin: 0 0 0.75rem 0;
   font-size: 0.9rem;
-  color: #9ca3af;
+  color: #d1d5db;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 600;
@@ -161,8 +161,8 @@
 .tool-button {
   width: 100%;
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
@@ -178,7 +178,7 @@
 
 .tool-button:hover,
 .tool-button:focus-visible {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   outline: 2px solid var(--primary-color, #0066cc);
   outline-offset: 2px;
 }
@@ -219,7 +219,7 @@
 .toolbar-button {
   padding: 0.5rem 1rem;
   background: var(--background-color, #fff);
-  border: 1px solid var(--border-color, #e5e7eb);
+  border: 1px solid var(--border-color, #d1d5db);
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -228,12 +228,12 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  color: var(--text-color, #333);
+  color: var(--text-color, #1f2937);
 }
 
 .toolbar-button:hover,
 .toolbar-button:focus-visible {
-  background: var(--hover-color, #f3f4f6);
+  background: var(--hover-color, #e5e7eb);
   border-color: var(--primary-color, #0066cc);
   outline: 2px solid var(--primary-color, #0066cc);
   outline-offset: 2px;

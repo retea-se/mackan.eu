@@ -1,5 +1,14 @@
-// Skapa en ny JSZip-instans
-const zip = new JSZip();
+// JSZip-instans kommer skapas när det behövs
+let zip = null;
+
+// Funktion för att vänta på JSZip
+function waitForJSZip(callback) {
+  if (typeof JSZip !== 'undefined') {
+    callback();
+  } else {
+    setTimeout(() => waitForJSZip(callback), 100);
+  }
+}
 
 // Kontrollera om `docx` och andra moduler är korrekt laddade
 console.log("JSZip loaded:", typeof JSZip !== "undefined" ? "Yes" : "No");
@@ -92,6 +101,14 @@ function generateQRCode() {
             height: 128
         });
 
+        // Lägg till alt-text på QR-bilden efter den skapats
+        setTimeout(() => {
+            const img = qrDiv.querySelector('img');
+            if (img) {
+                img.alt = `QR kod för: ${displayText}`;
+            }
+        }, 100);
+
         console.log(`QR-kod genererad för index ${index}:`, emailLink);
 
         // Lägg till text under QR-koden
@@ -106,34 +123,37 @@ function generateQRCode() {
 
 function downloadAllQRCodes() {
     console.log("Laddar ner alla QR-koder som PNG...");
-    const qrContainerList = document.querySelectorAll(".qr-container");
-    if (!qrContainerList.length) {
-        console.warn("Inga QR-koder hittades för nedladdning!");
-        return;
-    }
-
-    const currentDate = new Date().toISOString().split("T")[0];
-    const zipFileName = `QR-koder-${currentDate}.zip`;
-
-    qrContainerList.forEach((qrContainer, index) => {
-        const lineText = qrContainer.querySelector(".qr-text")?.textContent || `QR${index + 1}`;
-        const canvas = qrContainer.querySelector("canvas");
-        if (!canvas) {
-            console.warn(`QR-kod saknas för index ${index}`);
+    waitForJSZip(() => {
+        const qrContainerList = document.querySelectorAll(".qr-container");
+        if (!qrContainerList.length) {
+            console.warn("Inga QR-koder hittades för nedladdning!");
             return;
         }
 
-        const dataURL = canvas.toDataURL("image/png", 1.0);
-        const dataBlob = dataURLtoBlob(dataURL);
-        zip.file(`${lineText}.png`, dataBlob);
-    });
+        zip = new JSZip();
+        const currentDate = new Date().toISOString().split("T")[0];
+        const zipFileName = `QR-koder-${currentDate}.zip`;
 
-    zip.generateAsync({ type: "blob" }).then((content) => {
-        const link = document.createElement("a");
-        link.download = zipFileName;
-        link.href = URL.createObjectURL(content);
-        link.click();
-        console.log("QR-koder nedladdade som ZIP:", zipFileName);
+        qrContainerList.forEach((qrContainer, index) => {
+            const lineText = qrContainer.querySelector(".qr-text")?.textContent || `QR${index + 1}`;
+            const canvas = qrContainer.querySelector("canvas");
+            if (!canvas) {
+                console.warn(`QR-kod saknas för index ${index}`);
+                return;
+            }
+
+            const dataURL = canvas.toDataURL("image/png", 1.0);
+            const dataBlob = dataURLtoBlob(dataURL);
+            zip.file(`${lineText}.png`, dataBlob);
+        });
+
+        zip.generateAsync({ type: "blob" }).then((content) => {
+            const link = document.createElement("a");
+            link.download = zipFileName;
+            link.href = URL.createObjectURL(content);
+            link.click();
+            console.log("QR-koder nedladdade som ZIP:", zipFileName);
+        });
     });
 }
 
@@ -153,6 +173,9 @@ function dataURLtoBlob(dataURL) {
 
 async function downloadAllDocx() {
     console.log("Laddar ner QR-koder som DOCX...");
+
+    await new Promise(resolve => waitForJSZip(resolve));
+
     const qrContainerList = document.querySelectorAll(".qr-container");
     const wordZip = new JSZip();
 
