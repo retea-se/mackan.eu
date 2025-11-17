@@ -26,11 +26,20 @@ file_put_contents($rateFile, implode("\n", $times));
 // Kortlänk API – Skapa kortlänk
 header('Content-Type: application/json');
 
-// Ladda in databasanslutning
-require_once __DIR__ . '/../includes/db.php';
-
-// Ladda valideringsfunktioner
+// Ladda valideringsfunktioner först
 require_once __DIR__ . '/../../includes/tools-validator.php';
+
+// Ladda in databasanslutning (kan misslyckas i testmiljö)
+try {
+    require_once __DIR__ . '/../includes/db.php';
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode([
+        'error' => 'Databasanslutning misslyckades',
+        'message' => 'Kortlänk-verktyget är tillfälligt otillgängligt'
+    ]);
+    exit;
+}
 
 // Ta emot och validera data (POST: url, custom_alias, description, password)
 $url          = validateUrl($_POST['url'] ?? '', null);

@@ -3,7 +3,7 @@
 
 $envPath = __DIR__ . '/../.env';
 if (!file_exists($envPath)) {
-    die("Fel: .env-filen hittas inte på $envPath");
+    throw new Exception("Fel: .env-filen hittas inte på $envPath");
 }
 
 $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -19,10 +19,9 @@ foreach ($lines as $line) {
     putenv("$name=$value");
 }
 
-// Debug: Visa vad som laddats in (ta bort när allt fungerar)
+// Validera att alla nödvändiga variabler finns
 if (!isset($_ENV['DB_HOST'], $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASS'])) {
-    var_dump($_ENV);
-    die('Fel: Någon miljövariabel saknas!');
+    throw new Exception('Fel: Någon miljövariabel saknas i .env');
 }
 
 $host = $_ENV['DB_HOST'];
