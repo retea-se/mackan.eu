@@ -50,3 +50,27 @@ xob-janne/
 # Ignore optional admin pages
 admin/pro-analytics.php
 admin/security-monitor.php
+
+# Testing & Development files
+.lighthouseci/
+test-results/
+tests/
+mockups/
+logs/
+analyze-logs.js
+test_summary.json
+test-summary.json
+playwright.prod.config.ts
+package.json
+package-lock.json
+tsconfig.json
+setup_github_deploy.ps1
+
+# Temporary documentation (keep main docs only)
+SEO_ANALYSIS.md
+TOOLS_FIXES_SUMMARY.md
+TOOLS_LINKS_AUDIT.md
+lighthouse-summary.md
+
+# Development tools (keep main ones in repo)
+tools/bildconverter/

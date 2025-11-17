@@ -255,13 +255,15 @@
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;
-  color: var(--landing-text-secondary);
+  color: var(--landing-text-primary);
+  opacity: 0.7;
   transition: all 0.2s;
 }
 
 .landing-view-toggle__button--active {
   background: var(--landing-card-bg);
   color: var(--landing-text-primary);
+  opacity: 1;
   box-shadow: 0 1px 3px var(--landing-shadow);
 }
 

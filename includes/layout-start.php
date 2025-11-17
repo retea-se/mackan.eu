@@ -69,7 +69,11 @@ $ogType = $ogType ?? 'website';
   <link rel="dns-prefetch" href="//unpkg.com">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+
+  <!-- Tippy.js - defer för bättre prestanda -->
+  <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+  <script src="https://unpkg.com/tippy.js@6" defer></script>
 
   <!-- Schema markup för organisation -->
   <?php include __DIR__ . '/schema-organization.php'; ?>
