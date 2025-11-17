@@ -31,6 +31,9 @@ $title = 'Verktyg';
 $metaDescription = 'Utforska kostnadsfria onlineverktyg för utvecklare och tekniker. Generera, konvertera och analysera data snabbt och enkelt.';
 $skipHeader = true; // Landningssidan har egen navigation
 $skipFooter = true; // Landningssidan har egen footer
+
+// Inline critical CSS för snabbare LCP
+$extraHead = '<style>body{margin:0;font-family:system-ui,-apple-system,sans-serif}:root[data-theme="light"]{--landing-bg-primary:#fff;--landing-bg-secondary:#f9fafb;--landing-text-primary:#1f2937;--landing-text-secondary:#6b7280;--landing-border-color:#e5e7eb;--landing-card-bg:#fff}:root[data-theme="dark"]{--landing-bg-primary:#181a1b;--landing-bg-secondary:#1f2124;--landing-text-primary:#f2f2f2;--landing-text-secondary:#9ca3af;--landing-border-color:#374151;--landing-card-bg:#1f2124}.landing-nav{background:var(--landing-bg-primary);border-bottom:1px solid var(--landing-border-color);position:sticky;top:0;z-index:100}.landing-hero{background:var(--landing-bg-secondary);padding:4rem 0 3rem}</style>';
 ?>
 <?php include 'includes/layout-start.php'; ?>
 
