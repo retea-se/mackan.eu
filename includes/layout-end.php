@@ -7,6 +7,9 @@
     ?>
   </div> <!-- ✅ Stänger layout-wrappern här -->
 
+<!-- DOM utilities - Safe DOM operations with null checks -->
+<script src="/js/dom-utils.js"></script>
+
 <script src="/includes/tools-common.js"></script>
 <script src="/js/info-check.js" defer></script>
 
@@ -15,16 +18,23 @@
 
 <script>
   function copyLink() {
-    const el = document.getElementById('secretLink');
+    const el = safeGetById('secretLink');
     if (!el) return;
 
     const text = el.innerText;
+    if (!navigator.clipboard) {
+      console.warn('Clipboard API not available');
+      return;
+    }
+
     navigator.clipboard.writeText(text).then(() => {
-      const btn = document.querySelector('.knapp.knapp--liten');
+      const btn = safeQuery('.knapp.knapp--liten');
       if (btn) {
         btn.innerText = 'Kopierad!';
         setTimeout(() => btn.innerText = 'Kopiera', 2000);
       }
+    }).catch(err => {
+      console.warn('Failed to copy to clipboard:', err);
     });
   }
 </script>
