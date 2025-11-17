@@ -1,10 +1,10 @@
-// tools/converter/formatter.js - v1
+// tools/converter/formatter.js - v2 - Added JSONEditor loading check
 
 /* ********** START: Formatter med JSONEditor ********** */
 let editor;
 
 export function init() {
-  console.log("formatter.js v1 initieras");
+  console.log("formatter.js v2 initieras");
 
   const section = document.getElementById('tab-formatter');
   section.innerHTML = `
@@ -17,16 +17,30 @@ export function init() {
     </div>
   `;
 
-  const container = document.getElementById("jsoneditor");
-  editor = new JSONEditor(container, {
-    mode: 'code',
-    modes: ['code', 'tree', 'view'],
-    onError: err => showToast("Fel i JSON: " + err.message, 'error'),
-  });
+  // Wait for JSONEditor to load with retry mechanism
+  function initEditor(attempts = 0) {
+    if (typeof JSONEditor !== 'undefined') {
+      const container = document.getElementById("jsoneditor");
+      editor = new JSONEditor(container, {
+        mode: 'code',
+        modes: ['code', 'tree', 'view'],
+        onError: err => showToast("Fel i JSON: " + err.message, 'error'),
+      });
 
-  document.getElementById("btnBeautify").addEventListener("click", () => formatJson(false));
-  document.getElementById("btnMinify").addEventListener("click", () => formatJson(true));
-  document.getElementById("btnCopy").addEventListener("click", copyJson);
+      document.getElementById("btnBeautify").addEventListener("click", () => formatJson(false));
+      document.getElementById("btnMinify").addEventListener("click", () => formatJson(true));
+      document.getElementById("btnCopy").addEventListener("click", copyJson);
+
+      console.log('✅ JSONEditor initialized successfully');
+    } else if (attempts < 50) { // 5 seconds max (50 x 100ms)
+      setTimeout(() => initEditor(attempts + 1), 100);
+    } else {
+      console.error('❌ JSONEditor failed to load after 5 seconds');
+      showToast('JSONEditor kunde inte laddas. Försök ladda om sidan.', 'error');
+    }
+  }
+
+  initEditor();
 }
 
 function formatJson(minify = false) {

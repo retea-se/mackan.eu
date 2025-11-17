@@ -111,6 +111,9 @@ include '../../includes/layout-start.php';
 </main>
 <!-- ********** SLUT: Converter Interface ********** -->
 
+<!-- JSONEditor library for formatter -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsoneditor@10.0.3/dist/jsoneditor.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jsoneditor@10.0.3/dist/jsoneditor.min.js"></script>
 
 <script type="module" src="script.js"></script>
 
