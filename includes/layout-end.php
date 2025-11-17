@@ -1,18 +1,20 @@
     </main>
     <?php
-    include __DIR__ . '/footer.php';
+    if (!isset($skipFooter) || !$skipFooter) {
+      include __DIR__ . '/footer.php';
+    }
     include __DIR__ . '/visitor-logger-js.php';
     ?>
   </div> <!-- ✅ Stänger layout-wrappern här -->
 
 <script src="/includes/tools-common.js"></script>
 <script src="/js/info-check.js" defer></script>
-<script src="https://unpkg.com/@popperjs/core@2"></script>
-<script src="https://unpkg.com/tippy.js@6"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    tippy('[data-tippy-content]');
+    if (typeof tippy !== 'undefined') {
+      tippy('[data-tippy-content]');
+    }
   });
 
   function copyLink() {

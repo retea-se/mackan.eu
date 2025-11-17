@@ -195,7 +195,7 @@ Du behöver antingen:
 #### Secret 4: DEPLOY_PATH
 
 - **Name:** `DEPLOY_PATH`
-- **Value:** `~/public_html`
+- **Value:** `/home/mackaneu/public_html`
 - **Vad är det?** Var på servern din webbplats ligger (mappen som ska uppdateras)
 
 ### Steg 4: Verifiera Workflow-filen
@@ -253,6 +253,11 @@ Du behöver antingen:
 ---
 
 ## 🔧 Felsökning
+
+### Viktigt: Använd absolut DEPLOY_PATH
+
+- Sätt `DEPLOY_PATH` i GitHub Secrets till en absolut sökväg, t.ex. `/home/mackaneu/public_html` eller den exakta underkatalogen (t.ex. `/home/mackaneu/public_html/retea/key`).
+- Undvik `~` i GitHub Actions; vår workflow expanderar `~`, men absolut sökväg är säkrast.
 
 ### Problem: "cd: no such file or directory"
 
@@ -336,15 +341,117 @@ Du behöver antingen:
    git push origin main
    ```
 
+### Diagnos-workflow
+
+- Kör manuellt från GitHub Actions: "🔎 Diagnose SSH Deploy".
+- Validerar SSH, `DEPLOY_PATH` och repo-status utan att göra deployment.
+
 ---
 
 ## 🔄 Alternativ: Manuell Deployment
 
-Om GitHub Actions inte fungerar eller du föredrar manuell kontroll:
+Om GitHub Actions inte fungerar eller du föredrar manuell kontroll finns två alternativ:
 
-### Använd PowerShell-scriptet
+### Metod 1: SSH-deployment via Git Push
 
-**Fil:** `scripts/deploy.ps1`
+**Status:** ⚠️ **Rekommenderad metod** (SSH-nycklar behöver konfigureras korrekt)
+
+GitHub Actions är för närvarande inaktiverat. Istället används manuell deployment via SSH.
+
+#### Förutsättningar
+
+1. **SSH-nyckel konfigurerad:**
+   - Nyckel: `~/.ssh/id_rsa` (standard RSA-nyckel)
+   - Server: `mackan_eu@omega.hostup.se`
+   - Katalog: `~/public_html`
+
+2. **Git repository på servern:**
+   - Remote: `https://github.com/retea-se/mackan.eu.git`
+   - Branch: `main`
+
+#### Deploy-process
+
+1. **Gör ändringar lokalt och pusha till GitHub:**
+
+```bash
+# Gör dina ändringar
+git add .
+git commit -m "Din commit-meddelande"
+git push origin main
+```
+
+2. **Deploya till produktion via SSH:**
+
+```bash
+# Windows (PowerShell)
+ssh -i ~/.ssh/id_rsa mackan_eu@omega.hostup.se "cd ~/public_html && git pull origin main"
+
+# Om SSH-nyckeln har ett annat namn eller sökväg
+ssh -i C:\Users\marcu\.ssh\id_rsa mackan_eu@omega.hostup.se "cd ~/public_html && git pull origin main"
+```
+
+3. **Verifiera deployment:**
+
+```bash
+curl -I https://mackan.eu/
+```
+
+#### Troubleshooting SSH
+
+Om SSH-anslutning timeout:
+
+1. **Kontrollera SSH-nyckel:**
+   ```bash
+   ls ~/.ssh/id*
+   ```
+
+2. **Testa anslutning:**
+   ```bash
+   ssh -i ~/.ssh/id_rsa -v mackan_eu@omega.hostup.se
+   ```
+
+3. **Kontrollera nyckelpermissions:**
+   ```powershell
+   icacls C:\Users\marcu\.ssh\id_rsa
+   ```
+
+4. **Om timeout uppstår:** Kontakta webbhotellet för att verifiera SSH-access
+
+#### Aktuell Git-konfiguration
+
+- **Lokalt repo:** `tempdump/mackan-eu` → uppdaterat till `retea-se/mackan.eu`
+- **Server repo:** `retea-se/mackan.eu`
+- **GitHub Account:** retea-se
+- **PAT:** Lagras säkert (ej i dokumentation)
+
+### Metod 2: GitHub Webhook (utvecklas)
+
+**Fil:** `deploy-webhook.php`
+
+**Status:** 🚧 Under utveckling
+
+Webhook-lösning för automatisk deployment utan GitHub Actions billing.
+
+**Setup:**
+1. Ladda upp `deploy-webhook.php` till server root
+2. Sätt webhook secret i filen
+3. Konfigurera GitHub webhook:
+   - URL: `https://mackan.eu/deploy-webhook.php`
+   - Secret: Samma som i PHP-filen
+   - Event: Push to main
+
+**Fördelar:**
+- ✅ Automatisk deployment
+- ✅ Ingen GitHub Actions-kostnad
+- ✅ Fungerar med privata repos
+
+**Nackdelar:**
+- ⚠️ Kräver PHP på servern
+- ⚠️ Behöver webhook-konfiguration
+
+### Metod 3: PowerShell-script (Legacy)
+
+**Fil:** `scripts/deploy.ps1` (om det finns)
 
 **Kör:**
 
@@ -352,20 +459,12 @@ Om GitHub Actions inte fungerar eller du föredrar manuell kontroll:
 powershell -ExecutionPolicy Bypass -File scripts/deploy.ps1
 ```
 
-**Vad gör det?**
-
-- Loggar in på servern via SSH
-- Kör `git pull origin main` i `~/public_html`
-- Klart!
-
 **Fördelar:**
-
 - ✅ Fungerar direkt
 - ✅ Full kontroll
 - ✅ Ingen setup krävs
 
 **Nackdelar:**
-
 - ⚠️ Måste komma ihåg att köra manuellt
 - ⚠️ Ingen historik
 
@@ -385,7 +484,7 @@ Använd denna checklista för att verifiera att allt är konfigurerat:
   - [ ] `SSH_HOST` = `omega.hostup.se`
   - [ ] `SSH_USER` = `mackaneu`
   - [ ] `SSH_PRIVATE_KEY` = (hela nyckeln)
-  - [ ] `DEPLOY_PATH` = `~/public_html`
+  - [ ] `DEPLOY_PATH` = `/home/mackaneu/public_html` (absolut sökväg)
 - [ ] **`~/public_html` på servern är en git repository**
 - [ ] **Git remote är korrekt konfigurerad** (pekar på GitHub)
 
@@ -522,5 +621,18 @@ Om något inte fungerar:
 ---
 
 **Skapad:** 2025-01-15
-**Senast uppdaterad:** 2025-01-15
-**Status:** ✅ Setup klar, redo att testa!
+**Senast uppdaterad:** 2025-11-17
+**Status:** ⚠️ SSH-deployment aktiv, GitHub Actions inaktiverat
+
+## 📝 Ändringslogg
+
+### 2025-11-17
+- ✅ Bytte GitHub-konto från `tempdump/mackan-eu` till `retea-se/mackan.eu`
+- ✅ Uppdaterade deployment-instruktioner för SSH-metod
+- ✅ Dokumenterade troubleshooting för SSH-anslutning
+- ✅ La till webhook-alternativ (under utveckling)
+- ⚠️ GitHub Actions temporärt inaktiverat pga SSH-timeout
+
+### 2025-01-15
+- ✅ Initial setup av GitHub Actions deployment
+- ✅ Skapade workflow-fil och secrets
