@@ -7,7 +7,7 @@ $metaDescription = 'Förkorta en länk snabbt och enkelt. Klistra in din länk o
 $keywords = 'kortlänk, URL shortener, förkorta länk, kortadress, länkförkortning, gratis';
 $canonical = 'https://mackan.eu/tools/kortlank/';
 
-include '../../includes/layout-start.php';
+include '../../includes/tool-layout-start.php';
 ?>
 
 <main class="layout__container">
@@ -26,5 +26,5 @@ include '../../includes/layout-start.php';
   </section>
 </main>
 
-<?php include '../../includes/layout-end.php'; ?>
+<?php include '../../includes/tool-layout-end.php'; ?>
 

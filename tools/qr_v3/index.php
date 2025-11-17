@@ -2,7 +2,7 @@
 // tools/qr_v3/index.php - Kombinerad QR-kodgenerator
 $title = 'QR-kodgenerator - Komplett verktyg för alla behov';
 $metaDescription = 'Skapa QR-koder för text, länkar, WiFi, kontakter, felanmälningar och mer. Batch-generering, anpassning och export till flera format.';
-include '../../includes/layout-start.php';
+include '../../includes/tool-layout-start.php';
 ?>
 
 <main class="layout__container">
@@ -122,7 +122,7 @@ include '../../includes/layout-start.php';
 }
 </script>
 
-<?php include '../../includes/layout-end.php'; ?>
+<?php include '../../includes/tool-layout-end.php'; ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
@@ -136,3 +136,5 @@ include '../../includes/layout-start.php';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.js"></script>
 <script src="script.js" defer></script>
+
+<?php include '../../includes/tool-layout-end.php'; ?>

@@ -36,7 +36,7 @@ $extraHead = '
 }
 </script>';
 
-include '../../includes/layout-start.php';
+include '../../includes/tool-layout-start.php';
 ?>
 
 <main class="layout__container">
@@ -96,7 +96,7 @@ include '../../includes/layout-start.php';
 
 </main>
 
-<?php include '../../includes/layout-end.php'; ?>
+<?php include '../../includes/tool-layout-end.php'; ?>
 <script src="script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>

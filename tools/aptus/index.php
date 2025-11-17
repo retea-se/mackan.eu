@@ -34,7 +34,7 @@ $extraHead = '
 }
 </script>';
 
-include '../../includes/layout-start.php';
+include '../../includes/tool-layout-start.php';
 ?>
 
 <main class="layout__container">
@@ -80,5 +80,5 @@ include '../../includes/layout-start.php';
 
 </main>
 
-<?php include '../../includes/layout-end.php'; ?>
+<?php include '../../includes/tool-layout-end.php'; ?>
 <script src="script.js" defer></script>

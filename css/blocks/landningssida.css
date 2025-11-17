@@ -424,3 +424,43 @@
     margin-bottom: 2rem;
   }
 }
+
+/* === Tool-specific styling === */
+.landing-nav__link {
+  background: var(--landing-bg-tertiary);
+  border: 1px solid var(--landing-border-color);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  color: var(--landing-text-primary);
+  text-decoration: none;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.landing-nav__link:hover {
+  background: var(--landing-card-hover);
+  border-color: var(--landing-border-hover);
+}
+
+/* Tool wrapper for content area */
+.tool-wrapper {
+  background: var(--landing-bg-primary);
+  min-height: calc(100vh - 200px);
+  transition: background-color 0.3s;
+}
+
+.tool-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: var(--landing-text-primary);
+}
+
+@media (max-width: 768px) {
+  .tool-main {
+    padding: 1.5rem 1rem;
+  }
+}

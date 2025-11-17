@@ -35,7 +35,7 @@ $extraHead = '
 }
 </script>';
 
-include '../../includes/layout-start.php';
+include '../../includes/tool-layout-start.php';
 ?>
 
 <main class="layout__container">
@@ -145,7 +145,7 @@ include '../../includes/layout-start.php';
 }
 </script>
 
-<?php include '../../includes/layout-end.php'; ?>
+<?php include '../../includes/tool-layout-end.php'; ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
@@ -156,3 +156,5 @@ include '../../includes/layout-start.php';
   }
 </script>
 <script src="script.js" defer></script>
+
+<?php include '../../includes/tool-layout-end.php'; ?>

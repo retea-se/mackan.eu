@@ -34,7 +34,7 @@ $extraHead = '
 }
 </script>';
 
-include '../../includes/layout-start.php';
+include '../../includes/tool-layout-start.php';
 require_once 'dela-handler.php';
 ?>
 
@@ -46,4 +46,4 @@ require_once 'dela-handler.php';
   </div>
 </main>
 
-<?php include '../../includes/layout-end.php'; ?>
+<?php include '../../includes/tool-layout-end.php'; ?>

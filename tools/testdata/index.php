@@ -35,7 +35,7 @@ $extraHead = '
 }
 </script>';
 
-include '../../includes/layout-start.php';
+include '../../includes/tool-layout-start.php';
 ?>
 
 <main class="layout__container">
@@ -116,7 +116,7 @@ include '../../includes/layout-start.php';
   <!-- ********** SLUT Sektion: Resultat ********** -->
 </main>
 
-<?php include '../../includes/layout-end.php'; ?>
+<?php include '../../includes/tool-layout-end.php'; ?>
 <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 <script src="script.js" defer></script>
 <script src="export.js" defer></script>

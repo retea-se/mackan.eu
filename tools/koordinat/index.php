@@ -44,7 +44,7 @@ $extraHead = '
     }
     </script>';
 
-include '../../includes/layout-start.php';
+include '../../includes/tool-layout-start.php';
 ?>
 
 <main class="layout__container">
@@ -112,7 +112,7 @@ include '../../includes/layout-start.php';
   </section>
 </main>
 
-<?php include '../../includes/layout-end.php'; ?>
+<?php include '../../includes/tool-layout-end.php'; ?>
 
 <!-- Ladda JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.2/proj4.js"></script>

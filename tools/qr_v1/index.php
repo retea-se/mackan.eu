@@ -1,5 +1,5 @@
 <?php $title = 'QR Code Generator'; ?>
-<?php include '../../includes/layout-start.php'; ?>
+<?php include '../../includes/tool-layout-start.php'; ?>
 
 <main class="layout__container">
 
@@ -21,7 +21,7 @@
   </section>
 </main>
 
-<?php include '../../includes/layout-end.php'; ?>
+<?php include '../../includes/tool-layout-end.php'; ?>
 
 <!-- Externa bibliotek - JSZip ladda synkront -->
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" defer></script>

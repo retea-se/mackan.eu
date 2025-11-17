@@ -37,7 +37,7 @@ $extraHead = '
 </script>
 <link rel="stylesheet" href="flow.css">';
 
-include '../../includes/layout-start.php';
+include '../../includes/tool-layout-start.php';
 ?>
 
 <main class="layout__container">
@@ -518,7 +518,7 @@ include '../../includes/layout-start.php';
   </section>
 </main>
 
-<?php include '../../includes/layout-end.php'; ?>
+<?php include '../../includes/tool-layout-end.php'; ?>
 
 <!-- React Flow Dependencies -->
 <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js" defer></script>

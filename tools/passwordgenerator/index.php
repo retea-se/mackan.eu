@@ -38,7 +38,7 @@ $extraHead = '
 }
 </script>';
 ?>
-<?php include '../../includes/layout-start.php'; ?>
+<?php include '../../includes/tool-layout-start.php'; ?>
 
 <main class="layout__container">
   <header class="layout__sektion text--center">
@@ -168,4 +168,4 @@ $extraHead = '
     }, 1800);
   }
 </script>
-<?php include '../../includes/layout-end.php'; ?>
+<?php include '../../includes/tool-layout-end.php'; ?>
