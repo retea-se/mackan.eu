@@ -40,7 +40,6 @@ include '../../includes/tool-layout-start.php';
 ?>
 
 <!-- ********** START: Converter Interface ********** -->
-<main class="layout__container">
   <header class="layout__sektion text--center">
     <h1 class="rubrik rubrik--sektion">Data Converter</h1>
     <p class="text--lead">Konvertera mellan olika dataformat snabbt och enkelt</p>

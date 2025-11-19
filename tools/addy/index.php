@@ -37,7 +37,6 @@ $extraHead = '
 include '../../includes/tool-layout-start.php';
 ?>
 
-<main class="layout__container">
   <form id="addressForm" class="form">
     <div class="form__grupp">
       <label for="fromAddress" id="fromLabel">Från</label>

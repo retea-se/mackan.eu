@@ -38,8 +38,6 @@ include '../../includes/tool-layout-start.php';
 require_once 'dela-handler.php';
 ?>
 
-<main class="layout__container">
-
   <div class="kort">
     <?php if (!empty($result)) echo $result; ?>
     <?php include 'mallar/dela-form.php'; ?>

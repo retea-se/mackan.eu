@@ -38,8 +38,6 @@ $extraHead = '
 include '../../includes/tool-layout-start.php';
 ?>
 
-<main class="layout__container">
-
   <!-- ********** START Sektion: Fältval ********** -->
   <div class="form__grupp">
     <label data-tippy-content="Välj vilka fält som ska genereras">Vilka fält ska genereras?</label>

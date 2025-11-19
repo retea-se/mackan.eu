@@ -5,7 +5,6 @@ $metaDescription = 'Skapa QR-koder för text, länkar, WiFi, kontakter, felanmä
 include '../../includes/tool-layout-start.php';
 ?>
 
-<main class="layout__container">
   <header class="layout__sektion text--center">
     <h1 class="rubrik rubrik--sektion">
       <?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?>

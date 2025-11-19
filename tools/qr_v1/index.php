@@ -1,8 +1,6 @@
 <?php $title = 'QR Code Generator'; ?>
 <?php include '../../includes/tool-layout-start.php'; ?>
 
-<main class="layout__container">
-
   <div class="form__verktyg"><!-- TODO: osäker konvertering -->
     <button class="knapp" onclick="showQRCodeSection('felanmalning')" data-tippy-content="Visar QR för felanmälan">QR för felanmälan</button>
     <button class="knapp" onclick="showQRCodeSection('lank')" data-tippy-content="Visar QR för länkar">QR för länkar</button>
