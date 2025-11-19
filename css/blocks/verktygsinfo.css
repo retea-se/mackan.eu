@@ -67,12 +67,43 @@
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--landing-text-primary);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.faq__rubrik:hover {
+  color: var(--primary-color);
+}
+
+.faq__rubrik::after {
+  content: '−';
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--landing-text-secondary);
+  transition: transform 0.2s;
+}
+
+.faq--collapsed .faq__rubrik::after {
+  content: '+';
 }
 
 .faq__lista {
   list-style: none;
   padding: 0;
   margin: 0;
+  max-height: 2000px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  opacity: 1;
+}
+
+.faq--collapsed .faq__lista {
+  max-height: 0;
+  opacity: 0;
 }
 
 .faq__item {
