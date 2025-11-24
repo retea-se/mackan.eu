@@ -2,6 +2,9 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+// Starta session FÖRE layout-start.php (som skickar headers)
+require_once __DIR__ . '/includes/bootstrap.php';
+
 $title = 'Skyddad';
 $metaDescription = 'Skapa en engångslänk till en krypterad hemlighet som förstörs efter visning.';
 include '../../includes/layout-start.php';

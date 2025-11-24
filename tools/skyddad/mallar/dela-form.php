@@ -1,6 +1,7 @@
-<!-- mallar/dela-form.php - v2 -->
+<!-- mallar/dela-form.php - v3 -->
 <?php
-require_once __DIR__ . '/../includes/csrf.php';
+// csrf.php är redan inkluderad via bootstrap.php i dela.php
+// Funktionen generateCsrfToken() är redan tillgänglig
 
 $csrf_token = generateCsrfToken();
 ?>

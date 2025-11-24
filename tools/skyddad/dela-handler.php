@@ -1,8 +1,9 @@
 <?php
-// dela-handler.php - v6
-// git commit: Spara valfri PIN hashad i passwords-tabellen
+// dela-handler.php - v7
+// git commit: Ta bort dubbel inkludering av bootstrap.php (redan inkluderad i dela.php)
 
-require_once __DIR__ . '/includes/bootstrap.php';
+// bootstrap.php är redan inkluderad i dela.php, så vi behöver inte inkludera den igen
+// Alla funktioner och variabler ($pdo, ENCRYPTION_KEY, TOKEN_SECRET, verifyCsrfToken) är redan tillgängliga
 
 $result = '';
 
@@ -10,58 +11,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $csrf_token = $_POST['csrf_token'] ?? '';
     if (!verifyCsrfToken($csrf_token)) {
         $result = '<div class="error">❌ Ogiltig CSRF-token. Försök igen.</div>';
-        return;
-    }
+        // Fortsätt att rendera sidan så att användaren ser felet och kan försöka igen
+    } else {
+        // Ladda valideringsfunktioner
+        require_once __DIR__ . '/../../includes/tools-validator.php';
 
-    // Ladda valideringsfunktioner
-    require_once __DIR__ . '/../../includes/tools-validator.php';
+        // Validera secret
+        $secret = validateString($_POST['secret'] ?? '', ['min' => 1, 'max' => 10000, 'default' => '', 'trim' => true]);
+        if (empty($secret)) {
+            $result = '<div class="error">❌ Ingen text angiven.</div>';
+        } else {
+            // Validera PIN om det anges
+            $pin = validateString($_POST['pin'] ?? '', ['min' => 0, 'max' => 255, 'default' => '', 'trim' => true]);
 
-    // Validera secret
-    $secret = validateString($_POST['secret'] ?? '', ['min' => 1, 'max' => 10000, 'default' => '', 'trim' => true]);
-    if (empty($secret)) {
-        $result = '<div class="error">❌ Ingen text angiven.</div>';
-        return;
-    }
+            $iv_length = openssl_cipher_iv_length('AES-256-CBC');
+            $iv = random_bytes($iv_length);
+            $encrypted = openssl_encrypt($secret, 'AES-256-CBC', ENCRYPTION_KEY, OPENSSL_RAW_DATA, $iv);
+            // Spara IV + krypterad data ihop, base64-kodat
+            $encrypted_data = base64_encode($iv . $encrypted);
 
-    // Validera PIN om det anges
-    $pin = validateString($_POST['pin'] ?? '', ['min' => 0, 'max' => 255, 'default' => '', 'trim' => true]);
+            $id = bin2hex(random_bytes(16));
+            $token = hash_hmac('sha256', $id, TOKEN_SECRET);
+            $expires = time() + 86400;
 
-    $iv_length = openssl_cipher_iv_length('AES-256-CBC');
-    $iv = random_bytes($iv_length);
-    $encrypted = openssl_encrypt($secret, 'AES-256-CBC', ENCRYPTION_KEY, OPENSSL_RAW_DATA, $iv);
-    // Spara IV + krypterad data ihop, base64-kodat
-    $encrypted_data = base64_encode($iv . $encrypted);
+            // PIN är redan validerat ovan
+            $pin_hash = $pin !== '' ? password_hash($pin, PASSWORD_DEFAULT) : null;
 
-    $id = bin2hex(random_bytes(16));
-    $token = hash_hmac('sha256', $id, TOKEN_SECRET);
-    $expires = time() + 86400;
+            $stmt = $pdo->prepare("INSERT INTO passwords (id, encrypted_data, expires_at, views_left, pin_hash) VALUES (?, ?, ?, 1, ?)");
+            $stmt->execute([$id, $encrypted_data, $expires, $pin_hash]);
 
-    // PIN är redan validerat ovan
-    $pin_hash = $pin !== '' ? password_hash($pin, PASSWORD_DEFAULT) : null;
+            // Logga skapandet
+            $logStmt = $pdo->prepare("INSERT INTO log_events (event_type, secret_id, ip) VALUES (?, ?, ?)");
+            $logStmt->execute(['created', $id, $_SERVER['REMOTE_ADDR']]);
 
-    $stmt = $pdo->prepare("INSERT INTO passwords (id, encrypted_data, expires_at, views_left, pin_hash) VALUES (?, ?, ?, 1, ?)");
-    $stmt->execute([$id, $encrypted_data, $expires, $pin_hash]);
+            $url = "https://$_SERVER[HTTP_HOST]/tools/skyddad/visa.php?id=$id&token=$token";
 
-    // Logga skapandet
-    $logStmt = $pdo->prepare("INSERT INTO log_events (event_type, secret_id, ip) VALUES (?, ?, ?)");
-    $logStmt->execute(['created', $id, $_SERVER['REMOTE_ADDR']]);
+            // Skapa kortlänk via API
+            $ch = curl_init('https://'.$_SERVER['HTTP_HOST'].'/tools/kortlank/api/shorten.php');
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['url' => $url]));
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
+            curl_close($ch);
 
-    $url = "https://$_SERVER[HTTP_HOST]/tools/skyddad/visa.php?id=$id&token=$token";
+            $data = json_decode($response, true);
+            $shortlink = $data['shortlink'] ?? $url; // fallback till lång länk om fel
 
-    // Skapa kortlänk via API
-    $ch = curl_init('https://'.$_SERVER['HTTP_HOST'].'/tools/kortlank/api/shorten.php');
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['url' => $url]));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $response = curl_exec($ch);
-    curl_close($ch);
+            $qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . urlencode($url);
 
-    $data = json_decode($response, true);
-    $shortlink = $data['shortlink'] ?? $url; // fallback till lång länk om fel
-
-    $qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . urlencode($url);
-
-    $result = <<<HTML
+            $result = <<<HTML
 <div class="kort kort--huvud">
   <div class="kort__rubrik">✅ Skapad kortlänk</div>
   <div class="kort__rad" style="display:flex;align-items:center;gap:0.5rem;">
@@ -96,4 +94,6 @@ function toggleLongLink() {
 }
 </script>
 HTML;
+        }
+    }
 }

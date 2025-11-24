@@ -1,10 +1,13 @@
 <?php
-// includes/csrf.php - v1
-// git commit: Lägg till funktioner för CSRF-skydd: generering och verifiering
+// includes/csrf.php - v2
+// git commit: Förbättrad session-hantering för att undvika header-konflikter
 
 // Starta session om inte redan startad
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+    // Konfigurera session cookie för bättre kompatibilitet (måste göras FÖRE session_start)
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.cookie_samesite', 'Lax'); // Tillåter POST från samma site
+    @session_start(); // @ för att undvika varningar om headers redan skickats
 }
 
 // Generera ett nytt CSRF-token och spara i sessionen
