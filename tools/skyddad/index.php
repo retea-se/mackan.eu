@@ -1,5 +1,10 @@
 <?php
-// tools/skyddad/index.php - v3
+// tools/skyddad/index.php - v4
+// git commit: Starta session innan headers skickas
+
+// Starta session FÖRE tool-layout-start.php (som skickar headers)
+require_once __DIR__ . '/includes/bootstrap.php';
+
 $title = 'Skyddad delning';
 $metaDescription = 'Dela hemliga meddelanden via engångslänk som självförstörs efter visning.';
 $keywords = 'skyddad delning, engångslänk, säker delning, hemliga meddelanden, självförstörande länk';

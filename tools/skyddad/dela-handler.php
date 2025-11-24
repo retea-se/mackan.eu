@@ -47,24 +47,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $url = "https://$_SERVER[HTTP_HOST]/tools/skyddad/visa.php?id=$id&token=$token";
 
             // Skapa kortlänk via API
-            $ch = curl_init('https://'.$_SERVER['HTTP_HOST'].'/tools/kortlank/api/shorten.php');
+            $shortlink = $url; // Fallback till lång länk
+            $apiUrl = 'https://'.$_SERVER['HTTP_HOST'].'/tools/kortlank/api/shorten.php';
+            $ch = curl_init($apiUrl);
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['url' => $url]));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // För lokal utveckling
             $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $curlError = curl_error($ch);
             curl_close($ch);
 
-            $data = json_decode($response, true);
-            $shortlink = $data['shortlink'] ?? $url; // fallback till lång länk om fel
+            // Debug: logga om kortlänk misslyckas (ta bort i produktion)
+            if ($response !== false && $httpCode === 200) {
+                $data = json_decode($response, true);
+                if (json_last_error() === JSON_ERROR_NONE && isset($data['shortlink']) && !empty($data['shortlink'])) {
+                    $shortlink = $data['shortlink'];
+                }
+            }
 
-            $qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . urlencode($url);
+            // Använd kortlänken för QR-kod om den finns, annars den långa länken
+            $qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' . urlencode($shortlink);
 
+            $isShortLink = ($shortlink !== $url);
+            $linkText = htmlspecialchars($shortlink, ENT_QUOTES, 'UTF-8');
             $result = <<<HTML
 <div class="kort kort--huvud">
-  <div class="kort__rubrik">✅ Skapad kortlänk</div>
-  <div class="kort__rad" style="display:flex;align-items:center;gap:0.5rem;">
-    <span id="shortLink"><a href="$shortlink">$shortlink</a></span>
-    <button type="button" class="knapp__ikon" onclick="copyShortLink()" aria-label="Kopiera kortlänk">
+  <div class="kort__rubrik">✅ Skapad delningslänk</div>
+  <div class="kort__rad" style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+    <span id="shortLink" style="flex:1;min-width:200px;word-break:break-all;"><a href="$shortlink" target="_blank">$linkText</a></span>
+    <button type="button" class="knapp__ikon" id="copyBtn" onclick="copyShortLink()" aria-label="Kopiera länk" title="Kopiera länk" style="flex-shrink:0;">
       <i class="fa-solid fa-copy"></i>
     </button>
   </div>
@@ -82,8 +98,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 <script>
 function copyShortLink() {
-  const link = document.querySelector('#shortLink a').href;
-  navigator.clipboard.writeText(link);
+  const linkEl = document.querySelector('#shortLink a');
+  const link = linkEl ? linkEl.href : document.querySelector('#shortLink').textContent.trim();
+  const btn = document.getElementById('copyBtn');
+
+  if (!btn) return;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(link).then(() => {
+      // Visa feedback med visuell ändring
+      const originalContent = btn.innerHTML;
+      const originalTitle = btn.getAttribute('aria-label') || 'Kopiera länk';
+      btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+      btn.style.color = '#28a745';
+      btn.setAttribute('aria-label', 'Kopierat!');
+
+      setTimeout(() => {
+        btn.innerHTML = originalContent;
+        btn.style.color = '';
+        btn.setAttribute('aria-label', originalTitle);
+      }, 2000);
+    }).catch(err => {
+      console.error('Kunde inte kopiera:', err);
+      // Fallback: visa länken i en prompt
+      prompt('Kopiera länken:', link);
+    });
+  } else {
+    // Fallback för äldre webbläsare
+    const textarea = document.createElement('textarea');
+    textarea.value = link;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      const originalContent = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+      btn.style.color = '#28a745';
+      setTimeout(() => {
+        btn.innerHTML = originalContent;
+        btn.style.color = '';
+      }, 2000);
+    } catch (err) {
+      prompt('Kopiera länken:', link);
+    }
+    document.body.removeChild(textarea);
+  }
 }
 function toggleLongLink() {
   const el = document.getElementById('longlink');
