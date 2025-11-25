@@ -67,6 +67,75 @@
         document.getElementById('visits-humans').textContent = (visits.humans || 0).toLocaleString('sv-SE');
         document.getElementById('visits-bots').textContent = (visits.bots || 0).toLocaleString('sv-SE');
         document.getElementById('visits-today').textContent = (visits.today || 0).toLocaleString('sv-SE');
+
+        // Referrers
+        const referrersTbody = document.getElementById('referrers-tbody');
+        if (visits.top_referrers && visits.top_referrers.length > 0) {
+            referrersTbody.innerHTML = visits.top_referrers.map(ref => {
+                const domain = ref.domain || ref.referer;
+                const displayUrl = ref.referer.length > 60 ? ref.referer.substring(0, 60) + '...' : ref.referer;
+                return `
+                    <tr>
+                        <td><a href="${escapeHtml(ref.referer)}" target="_blank" title="${escapeHtml(ref.referer)}">${escapeHtml(domain)}</a></td>
+                        <td>${ref.count.toLocaleString('sv-SE')}</td>
+                    </tr>
+                `;
+            }).join('');
+        } else {
+            referrersTbody.innerHTML = '<tr><td colspan="2">Inga referrers hittades</td></tr>';
+        }
+
+        // Search terms
+        const searchTbody = document.getElementById('search-terms-tbody');
+        if (visits.search_terms && visits.search_terms.length > 0) {
+            searchTbody.innerHTML = visits.search_terms.map(term => `
+                <tr>
+                    <td><strong>${escapeHtml(term.term)}</strong></td>
+                    <td>${term.count.toLocaleString('sv-SE')}</td>
+                </tr>
+            `).join('');
+        } else {
+            searchTbody.innerHTML = '<tr><td colspan="2">Inga sökord hittades</td></tr>';
+        }
+
+        // Click events
+        const clicksTbody = document.getElementById('click-events-tbody');
+        if (visits.click_events && visits.click_events.length > 0) {
+            clicksTbody.innerHTML = visits.click_events.map(click => `
+                <tr>
+                    <td>${escapeHtml(click.label)}</td>
+                    <td>${click.count.toLocaleString('sv-SE')}</td>
+                </tr>
+            `).join('');
+        } else {
+            clicksTbody.innerHTML = '<tr><td colspan="2">Inga klick hittades</td></tr>';
+        }
+
+        // Languages
+        const langTbody = document.getElementById('languages-tbody');
+        if (visits.languages && visits.languages.length > 0) {
+            langTbody.innerHTML = visits.languages.map(lang => `
+                <tr>
+                    <td><strong>${escapeHtml(lang.language.toUpperCase())}</strong></td>
+                    <td>${lang.count.toLocaleString('sv-SE')}</td>
+                </tr>
+            `).join('');
+        } else {
+            langTbody.innerHTML = '<tr><td colspan="2">Inga språk hittades</td></tr>';
+        }
+
+        // Device types
+        const deviceTbody = document.getElementById('device-types-tbody');
+        if (visits.device_types && visits.device_types.length > 0) {
+            deviceTbody.innerHTML = visits.device_types.map(device => `
+                <tr>
+                    <td>${escapeHtml(device.device || 'Okänd')}</td>
+                    <td>${device.count.toLocaleString('sv-SE')}</td>
+                </tr>
+            `).join('');
+        } else {
+            deviceTbody.innerHTML = '<tr><td colspan="2">Inga enhetstyper hittades</td></tr>';
+        }
     }
 
     // Update kortlank section

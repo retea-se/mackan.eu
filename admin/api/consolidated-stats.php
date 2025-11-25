@@ -125,6 +125,146 @@ try {
             ];
         }
 
+        // Top referrers (last 30 days, exclude empty and same domain)
+        $result = $conn->query("SELECT referer, COUNT(*) as count
+            FROM visits
+            WHERE visited_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+            AND referer IS NOT NULL
+            AND referer != ''
+            AND referer NOT LIKE '%mackan.eu%'
+            GROUP BY referer
+            ORDER BY count DESC
+            LIMIT 20");
+        $stats['visits']['top_referrers'] = [];
+        while ($row = $result->fetch_assoc()) {
+            $referer = $row['referer'];
+            // Extract domain from referer
+            $domain = parse_url($referer, PHP_URL_HOST) ?: $referer;
+            $stats['visits']['top_referrers'][] = [
+                'referer' => $referer,
+                'domain' => $domain,
+                'count' => (int)$row['count']
+            ];
+        }
+
+        // Search terms (extract from get_data)
+        $result = $conn->query("SELECT get_data
+            FROM visits
+            WHERE visited_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+            AND get_data IS NOT NULL
+            AND get_data != ''
+            AND get_data != 'null'");
+        $searchTerms = [];
+        while ($row = $result->fetch_assoc()) {
+            $getData = json_decode($row['get_data'], true);
+            if (is_array($getData)) {
+                // Check common search parameter names
+                $searchKeys = ['q', 'query', 'search', 's', 'keyword', 'keywords'];
+                foreach ($searchKeys as $key) {
+                    if (isset($getData[$key]) && !empty($getData[$key])) {
+                        $term = trim(strtolower($getData[$key]));
+                        if (strlen($term) > 1) {
+                            $searchTerms[$term] = ($searchTerms[$term] ?? 0) + 1;
+                        }
+                    }
+                }
+            }
+        }
+        arsort($searchTerms);
+        $stats['visits']['search_terms'] = [];
+        $count = 0;
+        foreach ($searchTerms as $term => $termCount) {
+            if ($count++ >= 20) break;
+            $stats['visits']['search_terms'][] = [
+                'term' => $term,
+                'count' => $termCount
+            ];
+        }
+
+        // Click events (what users click on)
+        $result = $conn->query("SELECT click_event, COUNT(*) as count
+            FROM visits
+            WHERE visited_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+            AND click_event IS NOT NULL
+            AND click_event != ''
+            GROUP BY click_event
+            ORDER BY count DESC
+            LIMIT 20");
+        $stats['visits']['click_events'] = [];
+        while ($row = $result->fetch_assoc()) {
+            $clickData = json_decode($row['click_event'], true);
+            $label = 'Unknown';
+            if (is_array($clickData)) {
+                $label = $clickData['text'] ?? $clickData['href'] ?? $clickData['target'] ?? 'Unknown';
+            } else {
+                $label = $row['click_event'];
+            }
+            $stats['visits']['click_events'][] = [
+                'label' => $label,
+                'raw' => $row['click_event'],
+                'count' => (int)$row['count']
+            ];
+        }
+
+        // Language statistics
+        $result = $conn->query("SELECT language, COUNT(*) as count
+            FROM visits
+            WHERE visited_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+            AND language IS NOT NULL
+            AND language != ''
+            GROUP BY language
+            ORDER BY count DESC
+            LIMIT 15");
+        $stats['visits']['languages'] = [];
+        while ($row = $result->fetch_assoc()) {
+            // Extract primary language (e.g., "sv-SE" -> "sv")
+            $lang = explode('-', explode(',', $row['language'])[0])[0];
+            if (!isset($stats['visits']['languages'][$lang])) {
+                $stats['visits']['languages'][$lang] = 0;
+            }
+            $stats['visits']['languages'][$lang] += (int)$row['count'];
+        }
+        // Convert to array format
+        $langArray = [];
+        foreach ($stats['visits']['languages'] as $lang => $count) {
+            $langArray[] = ['language' => $lang, 'count' => $count];
+        }
+        usort($langArray, function($a, $b) { return $b['count'] - $a['count']; });
+        $stats['visits']['languages'] = array_slice($langArray, 0, 15);
+
+        // Device types
+        $result = $conn->query("SELECT device_type, COUNT(*) as count
+            FROM visits
+            WHERE visited_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+            AND device_type IS NOT NULL
+            AND device_type != ''
+            GROUP BY device_type
+            ORDER BY count DESC");
+        $stats['visits']['device_types'] = [];
+        while ($row = $result->fetch_assoc()) {
+            $stats['visits']['device_types'][] = [
+                'device' => $row['device_type'],
+                'count' => (int)$row['count']
+            ];
+        }
+
+        // Screen sizes
+        $result = $conn->query("SELECT screen_size, COUNT(*) as count
+            FROM visits
+            WHERE visited_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+            AND screen_size IS NOT NULL
+            AND screen_size != ''
+            GROUP BY screen_size
+            ORDER BY count DESC
+            LIMIT 15");
+        $stats['visits']['screen_sizes'] = [];
+        while ($row = $result->fetch_assoc()) {
+            $stats['visits']['screen_sizes'][] = [
+                'size' => $row['screen_size'],
+                'count' => (int)$row['count']
+            ];
+        }
+
         $conn->close();
     }
 } catch (Exception $e) {

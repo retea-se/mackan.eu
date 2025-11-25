@@ -22,22 +22,38 @@ if (isset($_GET['token']) && isset($_GET['email'])) {
             $tokenData = $tokens[$token];
 
             // Check if token is expired (1 hour)
-            if (time() - $tokenData['created'] <= 3600 && !$tokenData['used']) {
-                // Check if email matches
-                if (strtolower($tokenData['email']) === strtolower($email)) {
-                    // Mark token as used
-                    $tokens[$token]['used'] = true;
-                    file_put_contents($tokenFile, json_encode($tokens));
+            $isExpired = (time() - $tokenData['created']) > 3600;
+            $isUsed = !empty($tokenData['used']);
 
-                    // Create session
-                    $_SESSION['admin_logged_in'] = true;
-                    $_SESSION['admin_email'] = $email;
-                    $_SESSION['admin_login_time'] = time();
+            if ($isExpired) {
+                unset($tokens[$token]);
+                file_put_contents($tokenFile, json_encode($tokens));
+                header('Location: auth.php?error=expired_token');
+                exit;
+            }
 
-                    // Redirect to remove token from URL
-                    header('Location: index.php');
-                    exit;
-                }
+            if ($isUsed) {
+                header('Location: auth.php?error=token_used');
+                exit;
+            }
+
+            // Check if email matches
+            if (strtolower($tokenData['email']) === strtolower($email)) {
+                // Mark token as used BEFORE creating session
+                $tokens[$token]['used'] = true;
+                file_put_contents($tokenFile, json_encode($tokens));
+
+                // Create session
+                $_SESSION['admin_logged_in'] = true;
+                $_SESSION['admin_email'] = $email;
+                $_SESSION['admin_login_time'] = time();
+
+                // Redirect to remove token from URL
+                header('Location: index.php');
+                exit;
+            } else {
+                header('Location: auth.php?error=email_mismatch');
+                exit;
             }
         }
     }
@@ -150,6 +166,96 @@ if (empty($_SESSION['admin_logged_in'])) {
                         <div class="chart-container" data-lazy data-chart-id="top-pages">
                             <h3>Topp sidor</h3>
                             <div id="chart-top-pages" class="chart"></div>
+                        </div>
+                    </div>
+
+                    <!-- Referrers -->
+                    <div class="data-table-container">
+                        <h3>Topp referrers (30 dagar)</h3>
+                        <div class="table-wrapper">
+                            <table id="referrers-table">
+                                <thead>
+                                    <tr>
+                                        <th>Referrer</th>
+                                        <th>Besök</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="referrers-tbody">
+                                    <tr><td colspan="2">Laddar...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Search Terms -->
+                    <div class="data-table-container">
+                        <h3>Sökord (30 dagar)</h3>
+                        <div class="table-wrapper">
+                            <table id="search-terms-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sökord</th>
+                                        <th>Antal</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="search-terms-tbody">
+                                    <tr><td colspan="2">Laddar...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Click Events -->
+                    <div class="data-table-container">
+                        <h3>Vad användare klickar på (30 dagar)</h3>
+                        <div class="table-wrapper">
+                            <table id="click-events-table">
+                                <thead>
+                                    <tr>
+                                        <th>Element</th>
+                                        <th>Klick</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="click-events-tbody">
+                                    <tr><td colspan="2">Laddar...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Languages & Devices -->
+                    <div class="stats-grid-2">
+                        <div class="data-table-container">
+                            <h3>Språk (30 dagar)</h3>
+                            <div class="table-wrapper">
+                                <table id="languages-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Språk</th>
+                                            <th>Besök</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="languages-tbody">
+                                        <tr><td colspan="2">Laddar...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="data-table-container">
+                            <h3>Enhetstyper (30 dagar)</h3>
+                            <div class="table-wrapper">
+                                <table id="device-types-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Enhet</th>
+                                            <th>Besök</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="device-types-tbody">
+                                        <tr><td colspan="2">Laddar...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

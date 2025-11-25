@@ -246,6 +246,19 @@ body {
     margin-top: 1.5rem;
 }
 
+.stats-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .stats-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .chart-container {
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-color);
