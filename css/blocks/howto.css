@@ -1,0 +1,104 @@
+/* ===================================================== */
+/* Fil: howto.css                                        */
+/* Syfte: Stilar för How-to guides                       */
+/* Struktur: BEM (.howto, .howto__steps, etc.)          */
+/* ===================================================== */
+
+.howto {
+  margin: 2rem 0;
+}
+
+.howto__steps {
+  list-style: none;
+  counter-reset: step-counter;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.howto__steps > li {
+  counter-increment: step-counter;
+  position: relative;
+  padding-left: 3rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 2px solid var(--border-color, #e5e7eb);
+}
+
+.howto__steps > li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: -1rem;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  background: var(--primary-color, #0066cc);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.howto__steps > li:last-child {
+  border-left: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.howto__steps > li strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary, #1f2937);
+  font-size: 1.1rem;
+}
+
+.howto__steps > li ul {
+  margin-top: 0.75rem;
+  margin-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.howto__steps > li ul li {
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary, #6b7280);
+}
+
+.howto__steps code {
+  background: var(--code-bg, #f3f4f6);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  color: var(--code-color, #d63384);
+}
+
+[data-theme="dark"] .howto__steps > li {
+  border-left-color: var(--border-color, #374151);
+}
+
+[data-theme="dark"] .howto__steps > li::before {
+  background: var(--primary-color, #3b82f6);
+}
+
+[data-theme="dark"] .howto__steps code {
+  background: var(--code-bg, #1f2937);
+  color: var(--code-color, #f472b6);
+}
+
+/* Responsiv design */
+@media (max-width: 768px) {
+  .howto__steps > li {
+    padding-left: 2.5rem;
+  }
+
+  .howto__steps > li::before {
+    left: -0.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.85rem;
+  }
+}
+

@@ -123,6 +123,38 @@ usort($tools, function ($a, $b) {
   </section>
 
   <section class="layout__sektion">
+    <h2 class="rubrik rubrik--sektion text--center">Hjälp & support</h2>
+    <div class="layout__grid" style="margin-bottom: 2rem;">
+      <article class="kort text--center">
+        <h3 class="rubrik rubrik--underrubrik">
+          <a href="/faq.php" style="text-decoration: none; color: inherit;">
+            <i class="fa-solid fa-circle-question"></i> Vanliga frågor
+          </a>
+        </h3>
+        <p class="text--muted">
+          Hitta svar på vanliga frågor om alla verktyg på Mackan.eu.
+        </p>
+        <div class="knapp__grupp">
+          <a class="knapp knapp--liten" href="/faq.php">Läs FAQ</a>
+        </div>
+      </article>
+      <article class="kort text--center">
+        <h3 class="rubrik rubrik--underrubrik">
+          <a href="/howto.php" style="text-decoration: none; color: inherit;">
+            <i class="fa-solid fa-book"></i> How-to guides
+          </a>
+        </h3>
+        <p class="text--muted">
+          Steg-för-steg-guider för att använda verktygen effektivt.
+        </p>
+        <div class="knapp__grupp">
+          <a class="knapp knapp--liten" href="/howto.php">Läs guider</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="layout__sektion">
     <h2 class="rubrik rubrik--sektion text--center">Vanliga frågor</h2>
     <div class="faq">
       <details class="faq__item">

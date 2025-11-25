@@ -30,7 +30,9 @@ function generateBreadcrumbs($customPath = null) {
         'passwordgenerator' => '🔐 Lösenordsgenerator',
         'converter' => '🔄 Konverterare',
         'pts' => '📋 PTS-sök',
-        'bolagsverket' => '🏢 Bolagsverket'
+        'bolagsverket' => '🏢 Bolagsverket',
+        'faq' => '❓ Vanliga frågor',
+        'howto' => '📖 How-to guides'
     ];
 
     foreach ($cleanSegments as $segment) {

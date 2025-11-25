@@ -59,6 +59,7 @@ function scanDirectoryRecursive($dir, $baseUrl, $rootDir) {
 function getPriority($path) {
     // Prioritera viktiga sidor högre
     if ($path === 'index.php') return '1.0';
+    if (basename($path) === 'faq.php') return '0.9';
     if (preg_match('/^(om|verktyg)\.php$/', basename($path))) return '0.9';
     if (preg_match('/^(tools|verktyg)\//', $path)) return '0.9';
     if (strpos($path, 'koordinat') !== false) return '0.8';
@@ -69,7 +70,7 @@ function getPriority($path) {
 }
 
 // Lägg till root-filer först
-$rootFiles = ['index.php', 'om.php', 'sitemap.php', 'todo.php'];
+$rootFiles = ['index.php', 'om.php', 'faq.php', 'sitemap.php', 'todo.php'];
 foreach ($rootFiles as $file) {
     if (file_exists($rootDir . '/' . $file)) {
         addUrlToSitemap(
